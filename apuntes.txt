@@ -1,0 +1,22 @@
+Buscar_ducto.html
+
+
+Ducto -> codigo
+Trayectoria cambiar por descripcion
+MATERIAL
+SCH
+Long. Total.
+LONGITUG POR DIAMETRO
+
+
+seleccionar tres ductos
+seleccionar tuberias->casilla check para seleccionar -> 
+	lupa para ver los detalles(tuberia.html) solo lectura
+
+editar la pagina para editar Observaciones para colocar el por que tuberia
+
+
+Boton Editar solo Administradores
+Agregar fecha a la pagina Tuberia.html
+
+Boton: exportar a excel
