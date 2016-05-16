@@ -1,254 +1,192 @@
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-  <meta http-equiv="X-UA-Compatible" content="IE=9">
-  <meta http-equiv="PRAGMA" content="NO-CACHE">
-  <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
-  <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta http-equiv="PRAGMA" content="NO-CACHE">
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <meta http-equiv="Expires" content="-1">
 
-  <title>Bienvenido a CNPC</title>
+    <title>Bienvenido a CNPC</title>
 
-  <link rel="shortcut icon" href="favicon.ico">
-  <link rel="stylesheet" type="text/css" href="css/menu.css">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <!--<link rel="stylesheet" type="text/css" href="css/estiloPetro.css">-->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/estiloPetro.css">
+    <link rel="stylesheet" type="text/c	ss" href="css/menu.css">
 
-
-  <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-  <script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js" type="text/javascript"></script>
-  <!--<script type="text/javascript" src="js/scripts.js"></script>-->
-
-  <script type="text/javascript">
-function MM_openBrWindow(theURL,winName,features) { //v2.0
-  window.open(theURL,winName,features);
-}
-function cierra(){
-	window.close();
-}
-</script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
+    <!--<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js" type="text/javascript"></script>-->
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script type="text/javascript">
+        function MM_openBrWindow(theURL, winName, features) { //v2.0
+            window.open(theURL, winName, features);
+        }
+    </script>
 </head>
 <body>
-  <div id="container">			
-   <div id="body">
-
-     <h3>Registro de Oleoductos</h3>
-
-     <div id="content" align="left">
-
-      <form class="form-inline ">
-        <div class="form-group">
-          <label class="col-xs-2 control-label" for="lblCodigo">CÃ³digo</label>
-          <div class="col-xs-4">
-            <input type="text" id="txtCodigo" class="form-control" placeholder="CÃ³digo del Oleoducto">
-          </div>
-          <div class="form-group ">
-
-            <label class="col-xs-2 control-label" for="lblFecha">Fecha</label>
-            <div class="col-sm-4">
-             <input class="form-control" type="date" name="date2" id="date2" >
-           </div  >
-           <!--<label class="col-xs-6 control-label" for="lblCodigo">*</label>-->
-         </div  >
-
-         <div class="form-group ">
-          <label class="col-xs-2 control-label" for="lblCodigo">DescripciÃ³n</label>
-          <div class="col-xs-10">
-            <input type="password" id="txtCodigo" class="form-control" placeholder="DescripciÃ³n">
-          </div>
+    <div id="container">
+        <div id="body">
+            <div id="content">
+                <div id="content" align="center">
+                    <form class="form-inline">
+                        <table>
+                            <tr>
+                                <td class="tituloh1">
+                                    <h3>
+                                        Registro de Oleoductos
+                                    </h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <table border="0" align="center">
+                                        <tr>
+                                            <td class="texto">
+                                                <label>Código</label>
+                                            </td>
+                                            <td class="texto" align="left">
+                                                <input type="text" class="ui-inputfield" id="txtCodigo" placeholder="Código">
+                                            </td>
+                                            <td class="texto">
+                                                <label>Fecha</label>
+                                            </td>
+                                            <td align="left">
+                                                <input class="ui-inputfield" type="date" name="date" id="date">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="texto">
+                                                <label>Descripción</label>
+                                            </td>
+                                            <td class="texto" colspan="3" align="left">
+                                                <input type="text" id="txtCodigo" class="ui-inputfield" placeholder="Descripción">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="texto">
+                                                <label>Lamina</label>
+                                            </td>
+                                            <td class="texto" colspan="3">
+                                                <input type="text" id="txtNLamina" class="ui-inputfield" placeholder="Lamina">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="texto">
+                                                <label>Ubicación</label>
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtUbicación" class="ui-inputfield" placeholder="Ubicación">
+                                            </td>
+                                            <td class="texto">
+                                                <p class="text-center">NPS</p>
+                                            </td>
+                                            <td class="texto">
+                                                <p class=" text-center">Longitud</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="texto">
+                                                <label for="lblMaterial">Material</label>
+                                            </td>
+                                            <td class="texto inlinecontrols" align="left">
+                                                <input type="text" id="txtUbicación" class="ui-inputfield col-xs-4" placeholder="Ubicación">
+                                                <input type="text" id="txtUbicación" class="ui-inputfield col-xs-4" placeholder="Ubicación">
+                                                <input type="text" id="txtUbicación" class="ui-inputfield col-xs-4" placeholder="Ubicación">
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtNPS01" class="ui-inputfield" placeholder="">
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtLongitud01" class="ui-inputfield" placeholder="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="texto">
+                                                <label>Schedule</label>
+                                            </td>
+                                            <td class="texto inlinecontrols" align="left">
+                                                <input type="text" id="txtSchedule" class="ui-inputfield col-xs-4" placeholder="Schedule">
+                                                <input type="text" id="txtSchedule" class="ui-inputfield col-xs-4" placeholder="Schedule">
+                                                <input type="text" id="txtSchedule" class="ui-inputfield col-xs-4" placeholder="Schedule">
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtNPS02" class="ui-inputfield" placeholder="">
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtLongitud02" class="ui-inputfield" placeholder="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="texto">
+                                                <label for="lblBLPD">BLPD</label>
+                                            </td>
+                                            <td class="texto" align="left">
+                                                <input type="text" id="txtBLPD" class="ui-inputfield" placeholder="BLPD">
+                                            </td>
+                                            <td class="texto" align="left">
+                                                <input type="text" id="txtNPS03" class="ui-inputfield" placeholder=" ">
+                                            </td>
+                                            <td class="texto" align="left">
+                                                <input type="text" id="txtLongitud03" class="ui-inputfield" placeholder="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="texto">
+                                                <label for="lblPresion">Presión (Psig)</label>
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtPresion" class="ui-inputfield" placeholder="Presión">
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtNPS04" class="ui-inputfield" placeholder="">
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtLongitud04" class="ui-inputfield" placeholder="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="texto">
+                                                <label for="lblPresion">Temperatura (°F)</label>
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtTemperatura" class="ui-inputfield" placeholder="Presión">
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtNPS05" class="ui-inputfield" placeholder="">
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtLongitud05" class="ui-inputfield" placeholder="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="texto">
+                                                <label for="lblBSW">BSW</label>
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtBSW" class="ui-inputfield" placeholder="BSW">
+                                            </td>
+                                            <td class="texto">
+                                                <label for="lblLongitudTotal">Longitud Total:</label>
+                                            </td>
+                                            <td class="texto">
+                                                <input type="text" id="txtLongitudTotal" class="ui-inputfield" placeholder="">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="6" align="right">
+                                                <br />
+                                                <button type="submit" class="btn btn-primary">
+                                                    Guardar
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="form-group ">
-          <label class="col-xs-2 control-label" for="lblNLamina">Lamina</label>
-          <div class="col-xs-10">
-            <input type="email" id="txtNLamina" class="form-control" placeholder="NÂ° de Lamina">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-xs-2 control-label" for="lblCodigo">UbicaciÃ³n</label>
-          <div class="col-sm-10">
-            <input type="text" id="txtCodigo" class="form-control" placeholder="UbicaciÃ³n">
-          </div  >
-        </div>
-        <div class="form-group">
-          <label class="col-xs-2 control-label" for="lblMaterial">Material</label> 
-          <div class="col-sm-10">
-            <input class="col-sm-4 form-textcontrol" type="text" id="txt01"  placeholder="">
-            <input class="col-sm-4 form-textcontrol" type="text" id="txt02"  placeholder="">
-            <input class="col-sm-4 form-textcontrol" type="text" id="txt03"  placeholder="">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-xs-2 control-label" for="lblMaterial">Material</label> 
-          <div class="col-sm-10">
-            <input class="col-sm-4 form-textcontrol" type="text" id="txt01"  placeholder="">
-            <input class="col-sm-4 form-textcontrol" type="text" id="txt02"  placeholder="">
-            <input class="col-sm-4 form-textcontrol" type="text" id="txt03"  placeholder="">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-xs-2 control-label" for="lblCodigo">BLPD</label>
-          <div class="col-sm-4">
-            <input type="text" id="txtCodigo" class="form-control" placeholder="BLPD">
-          </div  >
-          <label class="col-xs-2 control-label" for="lblCodigo">Presion</label>
-          <div class="col-sm-4">
-            <input type="text" id="txtCodigo" class="form-control" placeholder="Presion">
-          </div  >
-        </div>
-        <div class="form-group">
-          <label class="col-xs-2 control-label" for="lblCodigo">Temperatura</label>
-          <div class="col-sm-4">
-            <input type="text" id="txtCodigo" class="form-control" placeholder="Temperatura">
-          </div  >
-          <label class="col-xs-2 control-label" for="lblCodigo">BSW</label>
-          <div class="col-sm-4">
-            <input type="text" id="txtCodigo" class="form-control" placeholder="BSW">
-          </div  >
-        </div>
-
-        <div class="form-group">
-         <label class="col-xs-6 control-label" for="lblCodigo">NPS</label>
-         <label class="col-xs-6 control-label" for="lblCodigo">Longitud</label>
-       </div>
-       <div class="form-group">
-        <div class="col-sm-6">
-          <input class="form-control" list="nps01">
-        </div>
-        <datalist id="nps01">
-          <option value="1/8"> 0.125</option>
-          <option value="1/4">0.25</option>
-          <option value="3/8"> 0.375</option>
-          <option value="1">1</option>
-          <option value="1 1/4">1.25</option>
-          <option value="1 1/2">1.5</option>
-          <option value="2">2</option>
-          <option value="2 1/2">2.5</option>
-          <option value="3">3</option>
-          <option value="3 1/2">3.5</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="8">8</option>
-          <option value="10">10</option>
-          <option value="12">12</option>
-          <option value="14">14</option>
-          <option value="16">16</option>
-          <option value="18">18</option>
-          <option value="20">20</option>
-          <option value="22">22</option>
-          <option value="24">24</option>
-        </datalist>
-        <div class="col-sm-6">
-          <input type="text" id="txtLongitud01" class="form-control" placeholder="Longitud">
-        </div  >
-      </div>
-      <div class="form-group">
-        <div class="col-sm-6">
-          <input class="form-control" list="nps02">
-        </div>
-        <datalist id="nps02">
-          <option value="1/8"> 0.125</option>
-          <option value="1/4">0.25</option>
-          <option value="3/8"> 0.375</option>
-          <option value="1">1</option>
-          <option value="1 1/4">1.25</option>
-          <option value="1 1/2">1.5</option>
-          <option value="2">2</option>
-          <option value="2 1/2">2.5</option>
-          <option value="3">3</option>
-          <option value="3 1/2">3.5</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="8">8</option>
-          <option value="10">10</option>
-          <option value="12">12</option>
-          <option value="14">14</option>
-          <option value="16">16</option>
-          <option value="18">18</option>
-          <option value="20">20</option>
-          <option value="22">22</option>
-          <option value="24">24</option>
-        </datalist>
-        <div class="col-sm-6">
-          <input type="text" id="txtLongitud02" class="form-control" placeholder="Longitud">
-        </div  >
-      </div>
-      <div class="form-group">
-        <div class="col-sm-6">
-          <input class="form-control" list="nps03">
-        </div>
-        <datalist id="nps03">
-          <option value="1/8"> 0.125</option>
-          <option value="1/4">0.25</option>
-          <option value="3/8"> 0.375</option>
-          <option value="1">1</option>
-          <option value="1 1/4">1.25</option>
-          <option value="1 1/2">1.5</option>
-          <option value="2">2</option>
-          <option value="2 1/2">2.5</option>
-          <option value="3">3</option>
-          <option value="3 1/2">3.5</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-          <option value="6">6</option>
-          <option value="8">8</option>
-          <option value="10">10</option>
-          <option value="12">12</option>
-          <option value="14">14</option>
-          <option value="16">16</option>
-          <option value="18">18</option>
-          <option value="20">20</option>
-          <option value="22">22</option>
-          <option value="24">24</option>
-        </datalist>
-        <div class="col-sm-6">
-         <input type="text" id="txtLongitud03" class="form-control" placeholder="Longitud">
-       </div >
-     </div>
-     <div class="form-group">
-      <div class="col-sm-6">
-        <input class="form-control" list="nps04">
-      </div>
-      <datalist id="nps04">
-        <option value="1/8"> 0.125</option>
-        <option value="1/4">0.25</option>
-        <option value="3/8"> 0.375</option>
-        <option value="1">1</option>
-        <option value="1 1/4">1.25</option>
-        <option value="1 1/2">1.5</option>
-        <option value="2">2</option>
-        <option value="2 1/2">2.5</option>
-        <option value="3">3</option>
-        <option value="3 1/2">3.5</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="8">8</option>
-        <option value="10">10</option>
-        <option value="12">12</option>
-        <option value="14">14</option>
-        <option value="16">16</option>
-        <option value="18">18</option>
-        <option value="20">20</option>
-        <option value="22">22</option>
-        <option value="24">24</option>
-      </datalist>
-      <div class="col-sm-6">
-        <input type="text" id="txtLongitud04" class="form-control" placeholder="Longitud">
-      </div>
     </div>
-    <tr>
-      <div  class="form-group">
-        <table width="20%" border="0" align="right">
-          <td class="button">
-            <a href="" target="_self">Guardar</a>
-          </td>
-        </table>
-      </div>
-    </tr>
-  </form>
-</div>
-</div>
-</div>
 </body>
 </html>
