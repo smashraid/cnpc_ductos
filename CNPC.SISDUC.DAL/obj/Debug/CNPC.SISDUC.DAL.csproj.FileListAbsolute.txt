@@ -1,0 +1,12 @@
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.DAL.dll.config
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.DAL.dll
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.DAL.pdb
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.Model.dll
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\bin\Debug\EntityFramework.dll
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.Model.pdb
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\bin\Debug\EntityFramework.xml
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.dll
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.pdb

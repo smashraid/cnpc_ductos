@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi aplicacion Angular JS</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/app.css" rel="stylesheet" />
+</head>
+<body ng-app="registrationModule">
+    <!--Menu Principal-->
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="../" class="navbar-brand"><img src="~/Content/Imagenes/logo.png" /></a>
+                <button class="navbar-toggle"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbar-main">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/FaseDeGrupos">Fase de Grupos<span class="color-pasos-navbar">&nbsp;1&nbsp;</span></a>
+                    </li>
+                    <li>
+                        <a href="/OctavosDeFinal">Octavos de Final<span class="color-pasos-navbar">&nbsp;2&nbsp;</span></a>
+                    </li>
+                    <li>
+                        <a href="/CuartosDeFinal">Cuartos de Final<span class="color-pasos-navbar">&nbsp;3&nbsp;</span></a>
+                    </li>
+                    <li>
+                        <a href="/SemifinalYFinal">Semifinal y Final<span class="color-pasos-navbar">&nbsp;4&nbsp;</span></a>
+                    </li>
+
+                </ul>
+
+
+            </div>
+        </div>
+    </div>
+    <!--Fin del Menu Principal-->
+    <!--Contenido-->
+    @RenderBody()
+    <!--fin de Contenido-->
+    <!--Pie de pagina-->
+    <div id="footer">
+        WebSite: <a href="https://angularjs.org/">AngularJS</a>
+        <h4>Curso de Angularjs en COFIDE</h4>
+    </div>
+    <!--Fin de Pie de Pagina-->
+    <!--Librerias JQuery y Bootstrap-->
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!--Fin de Librerias JQuery y Bootstrap-->
+    <!--Librerias angularJS-->
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.min.js"></script>
+    <!--Fin de Librerias AngularJS-->
+    <!--Librerias de nuestra aplicacion angularjs-->
+    <script src="~/AngularJS/RegistrationModule.js"></script>
+    <script src="~/AngularJS/Bienvenidos/BienvenidosController.js"></script>
+    <script src="~/AngularJS/FaseDeGrupos/FaseDeGruposController.js"></script>
+    <script src="~/AngularJS/CuratosDeFinal/CuartosDeFinalController.js"></script>
+    <script src="~/AngularJS/OctavosDeFinal/OctavosDeFinalController.js"></script>
+    <script src="~/AngularJS/SemiFinalYFinal/SemiFinalYFinalController.js"></script>
+    <!--fin de nuestras librerias angularjs-->
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,10 @@
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Model\bin\Debug\CNPC.SISDUC.Model.dll.config
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Model\bin\Debug\CNPC.SISDUC.Model.dll
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Model\bin\Debug\CNPC.SISDUC.Model.pdb
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Model\bin\Debug\EntityFramework.dll
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Model\bin\Debug\EntityFramework.xml
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Model\obj\Debug\CNPC.SISDUC.Model.csprojResolveAssemblyReference.cache
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Model\obj\Debug\CNPC.SISDUC.Model.dll
+C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Model\obj\Debug\CNPC.SISDUC.Model.pdb
