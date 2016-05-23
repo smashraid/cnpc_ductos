@@ -172,6 +172,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DuctoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\WSDuctoController.cs" />
     <Compile Include="Global.asax.cs">
@@ -183,12 +184,15 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AngularJS\Bienvenidos\BienvenidosController.js" />
+    <Content Include="AngularJS\Bienvenidos\bienvenidosController.js" />
+    <Content Include="AngularJS\Bienvenidos\bienvenidosRepository.js" />
     <Content Include="AngularJS\CuratosDeFinal\CuartosDeFinalController.js" />
+    <Content Include="AngularJS\Ducto\ductoRepository.js" />
     <Content Include="AngularJS\FaseDeGrupos\FaseDeGruposController.js" />
-    <Content Include="AngularJS\OctavosDeFinal\OctavosDeFinalController.js" />
+    <Content Include="AngularJS\Ducto\ductoController.js" />
     <Content Include="AngularJS\RegistrationModule.js" />
     <Content Include="AngularJS\SemiFinalYFinal\SemiFinalYFinalController.js" />
+    <Content Include="AngularJS\Templates\Ductos.html" />
     <Content Include="AngularJS\Templates\Bienvenidos.html" />
     <Content Include="AngularJS\Templates\CuartosDeFinal.html" />
     <Content Include="AngularJS\Templates\FaseDeGrupos.html" />
@@ -196,6 +200,22 @@
     <Content Include="AngularJS\Templates\SemiFinalYFinal.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\estiloPetro.css" />
+    <Content Include="Content\img\01.PNG" />
+    <Content Include="Content\img\02.PNG" />
+    <Content Include="Content\img\bg_log.png" />
+    <Content Include="Content\img\bg_pretobras.png" />
+    <Content Include="Content\img\ico-editar.png" />
+    <Content Include="Content\img\ico-ver.png" />
+    <Content Include="Content\img\ico_delete.png" />
+    <Content Include="Content\img\ico_salir.png" />
+    <Content Include="Content\img\ico_select.png" />
+    <Content Include="Content\img\logo_petrobras.jpg" />
+    <Content Include="Content\img\logo_petrobras_log.jpg" />
+    <Content Include="Content\img\logo_petrobras_log.png" />
+    <Content Include="Content\img\logo_petrobras_popup.jpg" />
+    <Content Include="Content\img\progress.jpg" />
+    <Content Include="Content\menu.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -510,12 +530,16 @@
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.11.0.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\jquery-1.11.0.min.js" />
+    <Content Include="Scripts\js\scripts.js" />
+    <Content Include="Scripts\js\tabmenu.js" />
+    <Content Include="Scripts\js\TreeMenu.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -555,6 +579,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CNPC.SISDUC.BLL\CNPC.SISDUC.BLL.csproj">
+      <Project>{303900e2-d8ad-45bb-8d73-9a4e0b1b1184}</Project>
+      <Name>CNPC.SISDUC.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CNPC.SISDUC.Model\CNPC.SISDUC.Model.csproj">
+      <Project>{8ca54ef0-9d9a-434e-95fd-0e8da49660f2}</Project>
+      <Name>CNPC.SISDUC.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

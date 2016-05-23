@@ -1,3 +1,3 @@
-﻿registrationModule.controller("BienvenidosController", function ($scope) {
+﻿app.controller("BienvenidosController", function ($scope) {
 
 });

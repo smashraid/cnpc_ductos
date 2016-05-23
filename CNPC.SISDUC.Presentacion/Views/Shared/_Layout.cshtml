@@ -1,74 +1,129 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi aplicacion Angular JS</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/app.css" rel="stylesheet" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta http-equiv="PRAGMA" content="NO-CACHE">
+    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+    <meta http-equiv="Expires" content="-1">
+
+    <title>SISTEMA DE INSPECCION DE DUCTOS</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="Content/estiloPetro.css">
+    <link rel="stylesheet" type="text/css" href="Content/menu.css">
+
+    <script type="text/javascript" src="Scripts/jquery-1.11.0.min.js"></script>
+    @*<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js" type="text/javascript"></script>*@
+    <script type="text/javascript" src="Scripts/js/scripts.js"></script>
+    @*<script type="text/javascript">
+            function MM_openBrWindow(theURL, winName, features) { //v2.0
+                window.open(theURL, winName, features);
+            }
+        </script>*@
 </head>
-<body ng-app="registrationModule">
+
+
+<body ng-app="app">
     <!--Menu Principal-->
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <a href="../" class="navbar-brand"><img src="~/Content/Imagenes/logo.png" /></a>
-                <button class="navbar-toggle"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbar-main">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+    <div id="container">
+        <div id="body">
+            <div id="usuario">
+                <table width="290" border="0" align="right" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th width="90" height="28" align="left" class="user"><label>bienvenido(a):</label></th>
+                        <td width="200" align="right" class="user"><label>Yury Alexander Gonzales Niño</label></td>
+                    </tr>
+                </table>
             </div>
-            <div class="navbar-collapse collapse" id="navbar-main">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="/FaseDeGrupos">Fase de Grupos<span class="color-pasos-navbar">&nbsp;1&nbsp;</span></a>
-                    </li>
-                    <li>
-                        <a href="/OctavosDeFinal">Octavos de Final<span class="color-pasos-navbar">&nbsp;2&nbsp;</span></a>
-                    </li>
-                    <li>
-                        <a href="/CuartosDeFinal">Cuartos de Final<span class="color-pasos-navbar">&nbsp;3&nbsp;</span></a>
-                    </li>
-                    <li>
-                        <a href="/SemifinalYFinal">Semifinal y Final<span class="color-pasos-navbar">&nbsp;4&nbsp;</span></a>
-                    </li>
+            <!--Cabcera-->
+            <div id="header">
+                <div style="margin-bottom: 0px">
+                    <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" id="header">
+                        <tbody>
+                            <tr>
+                                <td width="24%" align="center">
+                                    <a href="home.html">
+                                        <img src="Content/img/logo_petrobras.jpg" alt="Petrobras" width="324" height="100" title="Petrobras" style="border:none">
+                                    </a>
+                                </td>
+                                <td>&nbsp;</td>
+                                <td valign="middle">
+                                    <table width="150" border="0" align="right">
+                                        <tr>
+                                            <td colspan="2" class="user"><strong>Vers.1.0</strong></td>
+                                        </tr>
+                                        <tr>
+                                            <td width="80" height="29" class="user">Cerrar Sesi&oacute;n</td>
+                                            <td width="20" class="user">
+                                                <a href="login.html">
+                                                    <img src="Content/img/ico_salir.png" width="29" height="29" alt="" style="border:none" />
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!--Fin de Cabecera-->
+            <!--Menu Principal-->
+            <ul id="nav">
+                <li style="background:#f3c307;">
+                    <a href="" target="_self">FICHA DE DUCTOS</a>
+                    <ul>
+                        <li><a href="Listar_Oleoductos.html" title="Gesti&oacute;n de Ductos" target="_self">Ductos</a></li>
+                        <li>@Html.ActionLink("Ducto", "Index", "Ducto")</li>
+                        <li style="background:#1a4b8e;">
+                            <a href="Listar_Tuberia.html" title="Gesti&oacute;n de Tuberias" target="_self" style="background:#c52e33 !important;">
+                                Tuberia
+                            </a>
+                        </li>
+                        <li><a href="EnContruccion.html" target="_self">Mediciones de Extremos</a></li>
+                        <li><a href="EnContruccion.html" target="_self">Consulta de Ductos</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" target="_self">TABLAS</a>
+                    <ul>
+                        <li><a href="EnContruccion.html" target="_self">Tabla de Valores</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!--Fin del Menu Principal-->
 
-                </ul>
+            <!--Contenido-->
+            @RenderBody()
+            <!--Fin de Contenido-->
 
-
+            <!--Pie de pagina-->
+            <div id="footer">
+                <h4>SISTEMA DE INSPECCION DE DUCTOS</h4>
             </div>
         </div>
     </div>
-    <!--Fin del Menu Principal-->
-    <!--Contenido-->
-    @RenderBody()
-    <!--fin de Contenido-->
-    <!--Pie de pagina-->
-    <div id="footer">
-        WebSite: <a href="https://angularjs.org/">AngularJS</a>
-        <h4>Curso de Angularjs en COFIDE</h4>
-    </div>
     <!--Fin de Pie de Pagina-->
+
     <!--Librerias JQuery y Bootstrap-->
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery-1.11.0.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <!--Fin de Librerias JQuery y Bootstrap-->
+
     <!--Librerias angularJS-->
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <!--Fin de Librerias AngularJS-->
+
     <!--Librerias de nuestra aplicacion angularjs-->
     <script src="~/AngularJS/RegistrationModule.js"></script>
-    <script src="~/AngularJS/Bienvenidos/BienvenidosController.js"></script>
-    <script src="~/AngularJS/FaseDeGrupos/FaseDeGruposController.js"></script>
-    <script src="~/AngularJS/CuratosDeFinal/CuartosDeFinalController.js"></script>
-    <script src="~/AngularJS/OctavosDeFinal/OctavosDeFinalController.js"></script>
-    <script src="~/AngularJS/SemiFinalYFinal/SemiFinalYFinalController.js"></script>
+    <script src="~/AngularJS/Bienvenidos/bienvenidosRepository.js"></script>
+    <script src="~/AngularJS/Bienvenidos/bienvenidosController.js"></script>
+    <script src="~/AngularJS/Ducto/ductoRepository.js"></script>
+    <script src="~/AngularJS/Ducto/ductoController.js"></script>
     <!--fin de nuestras librerias angularjs-->
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
