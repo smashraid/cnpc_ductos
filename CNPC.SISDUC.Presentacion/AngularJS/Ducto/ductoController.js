@@ -2,7 +2,7 @@
 
     var getSuccessCallback = function (data, status)
     {
-        
+        $scope.listaDuctos = data;
     }
     var errorCallBack = function (data, status, headers, config)
     {
@@ -14,7 +14,8 @@
     .error(errorCallBack);
 
     var nuevoDucto = null;
-    var agregarOleoducto = function () {
-        ducto = {"Id":0, "Cliente":"", "Ducto1":"","NoLamina":"","Trayectorio":"","Ubicacion":"", "Inspector":"", "FechaInspeccion":"", "NumeroTubos":""}
+    $scope.agregarOleoducto = function () {
+        ducto = { "Id": 0, "Cliente": "", "Ducto1": "", "NoLamina": "", "Trayectorio": "", "Ubicacion": "", "Inspector": "", "FechaInspeccion": "", "NumeroTubos": "" };
+        $('#NuevoGaseoducto').modal('show');
     }
 });

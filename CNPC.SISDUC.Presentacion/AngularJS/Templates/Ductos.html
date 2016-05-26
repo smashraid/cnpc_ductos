@@ -57,10 +57,10 @@
                                             <td width="15%" class="celda2_grilla">{{item.NoLamina}}</td>
                                             <td width="5%" class="celda2_grilla">{{item.Ubicacion}}</td>
                                             <td width="8%" class="celda2_grilla">{{item.LongitudTotal}}</td>
-                                            <td width="10%" class="celda2_grilla">{{item.FechaInspeccion}}</td>
+                                            <td width="10%" class="celda2_grilla">{{item.FechaInspeccion|date:'dd/MM/yyyy'}}</td>
 
-                                            <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoEdit.html', '', 'width=800,height=570')"><img src="img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                                            <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoRead.html', '', 'width=800,height=550')"><img src="img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
+                                            <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoEdit.html', '', 'width=800,height=570')"><img src="Content/img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
+                                            <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoRead.html', '', 'width=800,height=550')"><img src="Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
                                         </tr>
                                         <tr class="celda2_grilla">
                                             <td width="5%" align="center" class="celda2_grilla">2</td>
@@ -236,5 +236,29 @@
                 </td>
             </tr>
         </table>
+
+        <!-- Modal -->
+        <div id="NuevoGaseoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Nuevo Oleoducto</h4>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
+
+
+
+
