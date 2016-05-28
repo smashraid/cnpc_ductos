@@ -10,20 +10,16 @@
     <title>SISTEMA DE INSPECCION DE DUCTOS</title>
 
     <link rel="shortcut icon" href="favicon.ico">
-   <link rel="stylesheet" type="text/css" href="Content/estiloPetro.css">
-    @*<link rel="stylesheet" type="text/css" href="Content/menu.css">*@
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/estiloPetro.css" rel="stylesheet" /> 
 
-    <link href="~/Content/bootstrap.css" rel="stylesheet" />
-
-    <script type="text/javascript" src="Scripts/jquery-1.11.0.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    @*<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js" type="text/javascript"></script>*@
-    <script type="text/javascript" src="Scripts/js/scripts.js"></script>
-    @*<script type="text/javascript">
-            function MM_openBrWindow(theURL, winName, features) { //v2.0
-                window.open(theURL, winName, features);
-            }
-        </script>*@
+    <script src="~/Scripts/js/jquery-1.11.0.min.js"></script>
+    <script src="~/Scripts/js/scripts.js"></script>
+    <script type="text/javascript">
+        function MM_openBrWindow(theURL, winName, features) { //v2.0
+            window.open(theURL, winName, features);
+        }
+    </script>
 </head>
 
 
@@ -73,60 +69,45 @@
                 </div>
             </div>
             <!--Fin de Cabecera-->
-
             <!--Menu Principal-->
-            <div id="navbar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li class="dropdown open">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Dropdown <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
+            <div class="navbar navbar-default">
+                <div id="menuHorizontal">
+                    <div id="navbar-main">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown ">
+                                <a href="Listar_Oleoductos.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">GESTION DE DUCTOS <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                   
+                                    <li>@Html.ActionLink("Oleoducto","Index","Oleoducto")</li>
+                                    <li><a href="Listar_Tuberia.html">Tuberia</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="EnContruccion.html">Mediciones de Extremos</a></li>
+                                    <li><a href="EnContruccion.html">Consulta de Ductos</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#about">TABLAS</a></li>
                         </ul>
-                    </li>
-                </ul>
-                <form class="navbar-form navbar-left" role="search">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
+
                     </div>
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                    <li><a href="#">Link</a></li>
-                </ul>
+                </div>
             </div>
             <!--Fin del Menu Principal-->
-
             <!--Contenido-->
             @RenderBody()
             <!--Fin de Contenido-->
-
             <!--Pie de pagina-->
-            
+
         </div>
     </div>
     <!--Fin de Pie de Pagina-->
-
     <!--Librerias JQuery y Bootstrap-->
-    <script src="~/Scripts/jquery-1.11.0.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
     <!--Fin de Librerias JQuery y Bootstrap-->
-
     <!--Librerias angularJS-->
     <script src="~/Scripts/angular.min.js"></script>
     <script src="~/Scripts/angular-route.min.js"></script>
     <!--Fin de Librerias AngularJS-->
-
     <!--Librerias de nuestra aplicacion angularjs-->
     <script src="~/AngularJS/RegistrationModule.js"></script>
     <script src="~/AngularJS/Bienvenidos/bienvenidosRepository.js"></script>
@@ -134,7 +115,6 @@
     <script src="~/AngularJS/Ducto/ductoRepository.js"></script>
     <script src="~/AngularJS/Ducto/ductoController.js"></script>
     <!--fin de nuestras librerias angularjs-->
-
     @RenderSection("scripts", required: false)
 </body>
 </html>

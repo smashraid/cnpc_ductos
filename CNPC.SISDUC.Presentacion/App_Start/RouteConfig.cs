@@ -13,8 +13,8 @@ namespace CNPC.SISDUC.Presentacion
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
-                name: "Ducto",
-                url: "Ducto",
+                name: "Oleoducto",
+                url: "Oleoducto",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
 

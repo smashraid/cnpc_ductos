@@ -6,10 +6,10 @@ using System.Web.Mvc;
 
 namespace CNPC.SISDUC.Presentacion.Controllers
 {
-    public class DuctoController : Controller
+    public class OleoductoController : Controller
     {
         //
-        // GET: /Ducto/
+        // GET: /Oleoducto/
         public ActionResult Index()
         {
             return View();

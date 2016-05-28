@@ -4,7 +4,7 @@
         templateUrl: '/AngularJS/Templates/Bienvenidos.html',
         controller: 'bienvenidosController'
     });
-    $routeProvider.when('/Ducto', {
+    $routeProvider.when('/Oleoducto', {
         templateUrl: '/AngularJS/Templates/Ductos.html',
         controller: 'ductoController'
     });

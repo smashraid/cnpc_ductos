@@ -10,17 +10,18 @@
 
     <link rel="shortcut icon" href="favicon.ico">
     <link href="css/bootstrap.min.css" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="css/estiloPetro.css">
+    <!--<link rel="stylesheet" type="text/css" href="css/estiloPetro.css">-->
 
     <script type="text/javascript" src="js/jquery-1.11.0.min.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
-    <script type="text/javascript">
+    <!--<script type="text/javascript" src="js/scripts.js"></script>-->
+    <!--<script type="text/javascript">
         function MM_openBrWindow(theURL, winName, features) { //v2.0
             window.open(theURL, winName, features);
         }
-    </script>
+    </script>-->
 </head>
-<body>
+
+<body ng-app="app">
     <!--Menu Principal-->
     <div id="container">
         <div id="body">
@@ -66,7 +67,6 @@
                 </div>
             </div>
             <!--Fin de Cabecera-->
-
             <!--Menu Horizontal-->
             <div class="navbar navbar-default">
                 <div id="menuHorizontal">
@@ -128,155 +128,7 @@
                                         <td colspan="8" align="center">
                                             <table width="90%" border="0">
                                                 <tbody>
-                                                    <tr>
-                                                        <th align="center" class="titulo_grilla">ID</th>
-                                                        <th align="center" class="titulo_grilla">Código</th>
-                                                        <th align="center" class="titulo_grilla">Descripción</th>
-                                                        <th align="center" class="titulo_grilla">N° de Lamina</th>
-                                                        <th align="center" class="titulo_grilla">Ubicación</th>
-                                                        <th align="center" class="titulo_grilla">Longitud</th>
-                                                        <th align="center" class="titulo_grilla">FECHA INSPECCION</th>
-                                                        <th width="5%" align="center" class="titulo_grilla">Registro</th>
-                                                        <th width="6%" align="center" class="titulo_grilla">VerInformación</th>
-                                                    </tr>
-                                                    <tr class="celda2_grilla">
-                                                        <td width="5%" align="center" class="celda2_grilla">1</td>
-                                                        <td width="10%" class="celda2_grilla">OLB-0001-158</td>
-                                                        <td width="30%" class="celda2_grilla">ESTACION DE  BOMBAS 951 A PTC-CARRIZO</td>
-                                                        <td width="15%" class="celda2_grilla">1.1.2.21-2009-OO-PL-M-11</td>
-                                                        <td width="5%" class="celda2_grilla">Carrizo</td>
-                                                        <td width="8%" class="celda2_grilla">18780.5</td>
-                                                        <td width="10%" class="celda2_grilla">11/02/2016</td>
-
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoEdit.html', '', 'width=800,height=570')"><img src="img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoRead.html', '', 'width=800,height=550')"><img src="img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
-                                                    </tr>
-                                                    <tr class="celda2_grilla">
-                                                        <td width="5%" align="center" class="celda2_grilla">2</td>
-                                                        <td width="10%" class="celda2_grilla">OLB-0002-158</td>
-                                                        <td width="30%" class="celda2_grilla">LA-07 A ESTACION DE BOMBAS 951</td>
-                                                        <td width="15%" class="celda2_grilla">1.1.2.21-2009-OO-PL-M-12</td>
-                                                        <td width="5%" class="celda2_grilla">Laguna</td>
-                                                        <td width="8%" class="celda2_grilla">7605</td>
-                                                        <td width="10%" class="celda2_grilla">15/02/2016</td>
-
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoEdit.html', '', 'width=800,height=570')"><img src="img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoRead.html', '', 'width=800,height=550')"><img src="img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
-                                                    </tr>
-                                                    <tr class="celda2_grilla">
-                                                        <td width="5%" align="center" class="celda2_grilla">3</td>
-                                                        <td width="10%" class="celda2_grilla">OLB-0003-158</td>
-                                                        <td width="30%" class="celda2_grilla">ESTACION EL ALTO A  ESTACION DE BOMBAS 951</td>
-                                                        <td width="15%" class="celda2_grilla">1.1.2.21-2009-OO-PL-M-13</td>
-                                                        <td width="5%" class="celda2_grilla">Taiman</td>
-                                                        <td width="8%" class="celda2_grilla">6355.5</td>
-                                                        <td width="10%" class="celda2_grilla">19/02/2016</td>
-
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDucto.html', '', 'width=800,height=550')"><img src="img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDucto.html', '', 'width=800,height=550')"><img src="img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
-                                                    </tr>
-                                                    <tr class="celda2_grilla">
-                                                        <td width="5%" align="center" class="celda2_grilla">4</td>
-                                                        <td width="10%" class="celda2_grilla">OLB-0004-158</td>
-                                                        <td width="30%" class="celda2_grilla">OR-11 A  INTERSECCION ITEM 03</td>
-                                                        <td width="15%" class="celda2_grilla">1.1.2.21-2009-OO-PL-M-14</td>
-                                                        <td width="5%" class="celda2_grilla">Organos</td>
-                                                        <td width="8%" class="celda2_grilla">5538.6</td>
-                                                        <td width="10%" class="celda2_grilla">23/02/2016</td>
-
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoEdit.html', '', 'width=800,height=570')"><img src="img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoRead.html', '', 'width=800,height=550')"><img src="img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
-                                                    </tr>
-                                                    <tr class="celda2_grilla">
-                                                        <td width="5%" align="center" class="celda2_grilla">5</td>
-                                                        <td width="10%" class="celda2_grilla">OLB-0005-158</td>
-                                                        <td width="30%" class="celda2_grilla">TA-24 A INTERSECCION ITEM 01</td>
-                                                        <td width="15%" class="celda2_grilla">1.1.2.21-2009-OO-PL-M-15</td>
-                                                        <td width="5%" class="celda2_grilla">Taiman</td>
-                                                        <td width="8%" class="celda2_grilla">2969.6</td>
-                                                        <td width="10%" class="celda2_grilla">27/02/2016</td>
-
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoEdit.html', '', 'width=800,height=570')"><img src="img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoRead.html', '', 'width=800,height=550')"><img src="img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
-                                                    </tr>
-                                                    <tr class="celda2_grilla">
-                                                        <td width="5%" align="center" class="celda2_grilla">6</td>
-                                                        <td width="10%" class="celda2_grilla">OLB-0006-158</td>
-                                                        <td width="30%" class="celda2_grilla">CA-18 A PTC CARRIZO</td>
-                                                        <td width="15%" class="celda2_grilla">1.1.2.21-2009-OO-PL-M-16</td>
-                                                        <td width="5%" class="celda2_grilla">Carrizo</td>
-                                                        <td width="8%" class="celda2_grilla">11868.2</td>
-                                                        <td width="10%" class="celda2_grilla">02/03/2016</td>
-
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDucto.html', '', 'width=800,height=550')"><img src="img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDucto.html', '', 'width=800,height=550')"><img src="img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
-                                                    </tr>
-                                                    <tr class="celda2_grilla">
-                                                        <td width="5%" align="center" class="celda2_grilla">7</td>
-                                                        <td width="10%" class="celda2_grilla">OLB-0011-158</td>
-                                                        <td width="30%" class="celda2_grilla">TA-29 A TA-24</td>
-                                                        <td width="15%" class="celda2_grilla">1.1.2.21-2009-OO-PL-M-17</td>
-                                                        <td width="5%" class="celda2_grilla">Taiman</td>
-                                                        <td width="8%" class="celda2_grilla">1871.9</td>
-                                                        <td width="10%" class="celda2_grilla">06/03/2016</td>
-
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoEdit.html', '', 'width=800,height=570')"><img src="img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoRead.html', '', 'width=800,height=550')"><img src="img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
-                                                    </tr>
-                                                    <tr class="celda2_grilla">
-                                                        <td width="5%" align="center" class="celda2_grilla">8</td>
-                                                        <td width="10%" class="celda2_grilla">OLB-0012-158</td>
-                                                        <td width="30%" class="celda2_grilla">TA-27 A ESTACION EL ALTO</td>
-                                                        <td width="15%" class="celda2_grilla">1.1.2.21-2009-OO-PL-M-18</td>
-                                                        <td width="5%" class="celda2_grilla">Taiman</td>
-                                                        <td width="8%" class="celda2_grilla">1927.5</td>
-                                                        <td width="10%" class="celda2_grilla">10/03/2016</td>
-
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoEdit.html', '', 'width=800,height=570')"><img src="img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoRead.html', '', 'width=800,height=550')"><img src="img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
-                                                    </tr>
-                                                    <tr class="celda2_grilla">
-                                                        <td width="5%" align="center" class="celda2_grilla">9</td>
-                                                        <td width="10%" class="celda2_grilla">OLB-0013-158</td>
-                                                        <td width="30%" class="celda2_grilla">TA-25 A INTERSECCION ITEM 03</td>
-                                                        <td width="15%" class="celda2_grilla">1.1.2.21-2009-OO-PL-M-19</td>
-                                                        <td width="5%" class="celda2_grilla">Taiman</td>
-                                                        <td width="8%" class="celda2_grilla">395.3</td>
-                                                        <td width="10%" class="celda2_grilla">14/03/2016</td>
-
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoEdit.html', '', 'width=800,height=570')"><img src="img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoRead.html', '', 'width=800,height=550')"><img src="img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
-                                                    </tr>
-                                                    <tr class="celda2_grilla">
-                                                        <td width="5%" align="center" class="celda2_grilla">10</td>
-                                                        <td width="10%" class="celda2_grilla">OLB-0014-158</td>
-                                                        <td width="30%" class="celda2_grilla">MANIFOLD TA-26 A TA-25</td>
-                                                        <td width="15%" class="celda2_grilla">1.1.2.21-2009-OO-PL-M-20</td>
-                                                        <td width="5%" class="celda2_grilla">Taiman</td>
-                                                        <td width="8%" class="celda2_grilla">1479.7</td>
-                                                        <td width="10%" class="celda2_grilla">18/03/2016</td>
-
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoEdit.html', '', 'width=800,height=570')"><img src="img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                                                        <td align="center"><a href="#" onclick="MM_openBrWindow('NuevoDuctoRead.html', '', 'width=800,height=550')"><img src="img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="15" align="center">
-                                                            <table width="30%" border="0" align="left">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td class="texto"><label>7 Registros encontrados</label></td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                            <table width="30%" border="0" align="right">
-                                                                <tbody>
-                                                                    <tr>
-                                                                        <td align="right" class="texto" style="text-align:right"><a href="#"><strong>[1]</strong></a> <strong><a href="#">&nbsp;[2]</a> <a href="#">[3]</a>&nbsp; <a href="#">[4]</a>&nbsp; <a href="#">[5]</a> | Paginaci&oacute;n</strong></td>
-                                                                    </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
+                                                   
                                                     <tr>
                                                         <td colspan="15" align="center">&nbsp;</td>
                                                     </tr>
@@ -288,7 +140,7 @@
                                                                         <td>
                                                                             <table width="100%" border="0" align="right">
                                                                                 <td class="button">
-                                                                                    <a href="#" target="_self" onclick="MM_openBrWindow('NuevoDucto.html', '', 'width=800,height=560')">
+                                                                                    <a href="#" target="_self" ng-click="agregarOleoducto()">
                                                                                         Agregar Oleoducto
                                                                                     </a>
                                                                                 </td>
@@ -297,9 +149,7 @@
                                                                         <td>
                                                                             <table width="100%" border="0" align="right">
                                                                                 <td class="button">
-                                                                                    <a href="#" target="_self">
-                                                                                        IMPRIMIR
-                                                                                    </a>
+                                                                                    <button ng-click="agregarOleoducto()">Oleoducto</button>
                                                                                 </td>
                                                                             </table>
                                                                         </td>
@@ -331,8 +181,40 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div id="NuevoOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Nuevo Oleoducto</h4>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+
+    <!--Librerias angularJS-->
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/angular-route.min.js"></script>
+    <!--Fin de Librerias AngularJS-->
+    <!--Librerias de nuestra aplicacion angularjs-->
+    <script src="AngularJS/RegistrationModule.js"></script>
+    <script src="AngularJS/Bienvenidos/bienvenidosRepository.js"></script>
+    <script src="AngularJS/Bienvenidos/bienvenidosController.js"></script>
+    <script src="AngularJS/Ducto/ductoRepository.js"></script>
+    <script src="AngularJS/Ducto/ductoController.js"></script>
+    <!--fin de nuestras librerias angularjs-->
 
 </body>
 
