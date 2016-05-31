@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CNPC_DuctosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CNPC_DuctosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Ductos">
           <Key>
             <PropertyRef Name="Id" />
@@ -31,6 +31,7 @@
           <Property Name="Shedule" Type="int" />
           <Property Name="Material" Type="varchar" MaxLength="50" />
           <Property Name="Temperatura" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="BSW" Type="varchar" MaxLength="10" />
           <Property Name="Esfuerzo_S" Type="int" />
           <Property Name="FactorJunta_E" Type="int" />
           <Property Name="FactorSensibilidadError" Type="decimal" Precision="4" Scale="2" />
@@ -40,11 +41,13 @@
         <EntityContainer Name="CNPC_DuctosModelStoreContainer">
           <EntitySet Name="Ductos" EntityType="Self.Ductos" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CNPC_DuctosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CNPC_DuctosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Ductos" EntityType="CNPC_DuctosModel.Ducto" />
+        </EntityContainer>
         <EntityType Name="Ducto">
           <Key>
             <PropertyRef Name="Id" />
@@ -71,15 +74,13 @@
           <Property Name="Shedule" Type="Int32" />
           <Property Name="Material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Temperatura" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="BSW" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Esfuerzo_S" Type="Int32" />
           <Property Name="FactorJunta_E" Type="Int32" />
           <Property Name="FactorSensibilidadError" Type="Decimal" Precision="4" Scale="2" />
           <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="LastUpdate" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityContainer Name="CNPC_DuctosEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Ductos" EntityType="Self.Ducto" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -89,33 +90,34 @@
           <EntitySetMapping Name="Ductos">
             <EntityTypeMapping TypeName="CNPC_DuctosModel.Ducto">
               <MappingFragment StoreEntitySet="Ductos">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
-                <ScalarProperty Name="Ducto1" ColumnName="Ducto" />
-                <ScalarProperty Name="NoLamina" ColumnName="NoLamina" />
-                <ScalarProperty Name="Trayectoria" ColumnName="Trayectoria" />
-                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
-                <ScalarProperty Name="Inspector" ColumnName="Inspector" />
-                <ScalarProperty Name="FechaInspeccion" ColumnName="FechaInspeccion" />
-                <ScalarProperty Name="NumeroTubos" ColumnName="NumeroTubos" />
-                <ScalarProperty Name="LongitudTotalTubo" ColumnName="LongitudTotalTubo" />
-                <ScalarProperty Name="PresionDiseño" ColumnName="PresionDiseño" />
-                <ScalarProperty Name="PresionMaximaAdmisibleOperacion" ColumnName="PresionMaximaAdmisibleOperacion" />
-                <ScalarProperty Name="PresionMaximaOperacion" ColumnName="PresionMaximaOperacion" />
-                <ScalarProperty Name="PresionNormalOperacion" ColumnName="PresionNormalOperacion" />
-                <ScalarProperty Name="TemperaturaMaximaOperacion" ColumnName="TemperaturaMaximaOperacion" />
-                <ScalarProperty Name="TemperaturaNormalOperacion" ColumnName="TemperaturaNormalOperacion" />
-                <ScalarProperty Name="NPS" ColumnName="NPS" />
-                <ScalarProperty Name="Presion" ColumnName="Presion" />
-                <ScalarProperty Name="BLPD" ColumnName="BLPD" />
-                <ScalarProperty Name="Shedule" ColumnName="Shedule" />
-                <ScalarProperty Name="Material" ColumnName="Material" />
-                <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
-                <ScalarProperty Name="Esfuerzo_S" ColumnName="Esfuerzo_S" />
-                <ScalarProperty Name="FactorJunta_E" ColumnName="FactorJunta_E" />
-                <ScalarProperty Name="FactorSensibilidadError" ColumnName="FactorSensibilidadError" />
-                <ScalarProperty Name="RowState" ColumnName="RowState" />
                 <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="RowState" ColumnName="RowState" />
+                <ScalarProperty Name="FactorSensibilidadError" ColumnName="FactorSensibilidadError" />
+                <ScalarProperty Name="FactorJunta_E" ColumnName="FactorJunta_E" />
+                <ScalarProperty Name="Esfuerzo_S" ColumnName="Esfuerzo_S" />
+                <ScalarProperty Name="BSW" ColumnName="BSW" />
+                <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
+                <ScalarProperty Name="Material" ColumnName="Material" />
+                <ScalarProperty Name="Shedule" ColumnName="Shedule" />
+                <ScalarProperty Name="BLPD" ColumnName="BLPD" />
+                <ScalarProperty Name="Presion" ColumnName="Presion" />
+                <ScalarProperty Name="NPS" ColumnName="NPS" />
+                <ScalarProperty Name="TemperaturaNormalOperacion" ColumnName="TemperaturaNormalOperacion" />
+                <ScalarProperty Name="TemperaturaMaximaOperacion" ColumnName="TemperaturaMaximaOperacion" />
+                <ScalarProperty Name="PresionNormalOperacion" ColumnName="PresionNormalOperacion" />
+                <ScalarProperty Name="PresionMaximaOperacion" ColumnName="PresionMaximaOperacion" />
+                <ScalarProperty Name="PresionMaximaAdmisibleOperacion" ColumnName="PresionMaximaAdmisibleOperacion" />
+                <ScalarProperty Name="PresionDiseño" ColumnName="PresionDiseño" />
+                <ScalarProperty Name="LongitudTotalTubo" ColumnName="LongitudTotalTubo" />
+                <ScalarProperty Name="NumeroTubos" ColumnName="NumeroTubos" />
+                <ScalarProperty Name="FechaInspeccion" ColumnName="FechaInspeccion" />
+                <ScalarProperty Name="Inspector" ColumnName="Inspector" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Trayectoria" ColumnName="Trayectoria" />
+                <ScalarProperty Name="NoLamina" ColumnName="NoLamina" />
+                <ScalarProperty Name="Ducto1" ColumnName="Ducto" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

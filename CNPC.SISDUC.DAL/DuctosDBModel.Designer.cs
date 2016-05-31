@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.DAL\DuctosDBModel.edmx'. 
+﻿// T4 code generation is enabled for model 'F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\DuctosDBModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -1,25 +1,17 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <meta http-equiv="X-UA-Compatible" content="IE=9">
-    <meta http-equiv="PRAGMA" content="NO-CACHE">
-    <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
-    <meta http-equiv="Expires" content="-1">
+
 
     <title>SISTEMA DE INSPECCION DE DUCTOS</title>
 
-    <link rel="shortcut icon" href="favicon.ico">
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/Content/estiloPetro.css" rel="stylesheet" /> 
-
-    <script src="~/Scripts/js/jquery-1.11.0.min.js"></script>
-    <script src="~/Scripts/js/scripts.js"></script>
-    <script type="text/javascript">
-        function MM_openBrWindow(theURL, winName, features) { //v2.0
-            window.open(theURL, winName, features);
-        }
-    </script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/menu.css" rel="stylesheet" />
+    <link href="~/Content/estiloPetro.css" rel="stylesheet" />
 </head>
 
 
@@ -75,10 +67,10 @@
                     <div id="navbar-main">
                         <ul class="nav navbar-nav">
                             <li class="dropdown ">
-                                <a href="Listar_Oleoductos.html" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">GESTION DE DUCTOS <span class="caret"></span></a>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">GESTION DE DUCTOS <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                   
-                                    <li>@Html.ActionLink("Oleoducto","Index","Oleoducto")</li>
+
+                                    <li>@Html.ActionLink("Oleoducto", "Index", "Oleoducto")</li>
                                     <li><a href="Listar_Tuberia.html">Tuberia</a></li>
                                     <li role="separator" class="divider"></li>
                                     <li><a href="EnContruccion.html">Mediciones de Extremos</a></li>
@@ -101,8 +93,10 @@
     </div>
     <!--Fin de Pie de Pagina-->
     <!--Librerias JQuery y Bootstrap-->
-    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/respond.js"></script>
+    @RenderSection("scripts", required: false)
     <!--Fin de Librerias JQuery y Bootstrap-->
     <!--Librerias angularJS-->
     <script src="~/Scripts/angular.min.js"></script>
@@ -115,6 +109,5 @@
     <script src="~/AngularJS/Ducto/ductoRepository.js"></script>
     <script src="~/AngularJS/Ducto/ductoController.js"></script>
     <!--fin de nuestras librerias angularjs-->
-    @RenderSection("scripts", required: false)
 </body>
 </html>

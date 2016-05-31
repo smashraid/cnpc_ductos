@@ -5,7 +5,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="889db98b275b4b43b5037fc197b39915" Name="Diagram1" ZoomLevel="88">
-        <EntityTypeShape EntityType="CNPC_DuctosModel.Ducto" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CNPC_DuctosModel.Ducto" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

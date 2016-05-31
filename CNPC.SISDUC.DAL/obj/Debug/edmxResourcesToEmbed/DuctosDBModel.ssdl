@@ -26,6 +26,7 @@
     <Property Name="Shedule" Type="int" />
     <Property Name="Material" Type="varchar" MaxLength="50" />
     <Property Name="Temperatura" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="BSW" Type="varchar" MaxLength="10" />
     <Property Name="Esfuerzo_S" Type="int" />
     <Property Name="FactorJunta_E" Type="int" />
     <Property Name="FactorSensibilidadError" Type="decimal" Precision="4" Scale="2" />

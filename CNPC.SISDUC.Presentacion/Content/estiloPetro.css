@@ -185,6 +185,7 @@ a:hover {
 		-o-box-shadow: #e0e0e0 0 2px 4px inset;
 	box-shadow: #de0e0e0 0 2px 4px inset;
 	width:90%;
+    height:25px;
 	}
 .ui-combo{
 	background:#ebebeb;

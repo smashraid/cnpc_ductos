@@ -36,6 +36,7 @@ namespace CNPC.SISDUC.Model
         public Nullable<int> Shedule { get; set; }
         public string Material { get; set; }
         public Nullable<decimal> Temperatura { get; set; }
+        public string BSW { get; set; }
         public Nullable<int> Esfuerzo_S { get; set; }
         public Nullable<int> FactorJunta_E { get; set; }
         public Nullable<decimal> FactorSensibilidadError { get; set; }
