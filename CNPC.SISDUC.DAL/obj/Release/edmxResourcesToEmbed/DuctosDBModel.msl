@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CNPC_DuctosModelStoreContainer" CdmEntityContainer="CNPC_DuctosEntities">
+    <EntitySetMapping Name="Ductos">
+      <EntityTypeMapping TypeName="CNPC_DuctosModel.Ducto">
+        <MappingFragment StoreEntitySet="Ductos">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="RowState" ColumnName="RowState" />
+          <ScalarProperty Name="FactorSensibilidadError" ColumnName="FactorSensibilidadError" />
+          <ScalarProperty Name="FactorJunta_E" ColumnName="FactorJunta_E" />
+          <ScalarProperty Name="Esfuerzo_S" ColumnName="Esfuerzo_S" />
+          <ScalarProperty Name="BSW" ColumnName="BSW" />
+          <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="Shedule" ColumnName="Shedule" />
+          <ScalarProperty Name="BLPD" ColumnName="BLPD" />
+          <ScalarProperty Name="Presion" ColumnName="Presion" />
+          <ScalarProperty Name="NPS" ColumnName="NPS" />
+          <ScalarProperty Name="TemperaturaNormalOperacion" ColumnName="TemperaturaNormalOperacion" />
+          <ScalarProperty Name="TemperaturaMaximaOperacion" ColumnName="TemperaturaMaximaOperacion" />
+          <ScalarProperty Name="PresionNormalOperacion" ColumnName="PresionNormalOperacion" />
+          <ScalarProperty Name="PresionMaximaOperacion" ColumnName="PresionMaximaOperacion" />
+          <ScalarProperty Name="PresionMaximaAdmisibleOperacion" ColumnName="PresionMaximaAdmisibleOperacion" />
+          <ScalarProperty Name="PresionDiseño" ColumnName="PresionDiseño" />
+          <ScalarProperty Name="LongitudTotalTubo" ColumnName="LongitudTotalTubo" />
+          <ScalarProperty Name="NumeroTubos" ColumnName="NumeroTubos" />
+          <ScalarProperty Name="FechaInspeccion" ColumnName="FechaInspeccion" />
+          <ScalarProperty Name="Inspector" ColumnName="Inspector" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+          <ScalarProperty Name="Trayectoria" ColumnName="Trayectoria" />
+          <ScalarProperty Name="NoLamina" ColumnName="NoLamina" />
+          <ScalarProperty Name="Ducto1" ColumnName="Ducto" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

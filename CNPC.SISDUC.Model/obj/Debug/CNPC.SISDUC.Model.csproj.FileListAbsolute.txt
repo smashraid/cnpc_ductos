@@ -17,3 +17,4 @@ F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\bin\Debug\EntityFramework.xml
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\bin\Debug\EntityFramework.SqlServer.xml
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\obj\Debug\CNPC.SISDUC.Model.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\obj\Debug\CNPC.SISDUC.Model.pdb
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\obj\Debug\CNPC.SISDUC.Model.csprojResolveAssemblyReference.cache

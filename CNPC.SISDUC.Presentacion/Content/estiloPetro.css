@@ -166,7 +166,26 @@ a:hover {
 	color: #666;
 	padding-left:5px;
 	line-height:25px;}
-
+.ui-txtfield{
+	font-family: arial;
+	font-size:11px;
+	color: #666;
+	border: 1px solid #b9b9b9;
+	border-radius:3px;
+	/*padding: 6px 3px;*/		
+	-webkit-border-radius: 3px;
+		-moz-border-radius: 3px;
+		-ms-border-radius: 3px;
+		-o-border-radius: 3px;
+	border-radius: 3px;
+		-webkit-box-shadow: #e0e0e0 0 2px 4px inset;
+		-moz-box-shadow: #e0e0e0 0 2px 4px inset;
+		-ms-box-shadow: #e0e0e0 0 2px 4px inset;
+		-o-box-shadow: #e0e0e0 0 2px 4px inset;
+	box-shadow: #de0e0e0 0 2px 4px inset;
+	
+    height:25px;
+	}
 .ui-inputfield{
 	font-family: arial;
 	font-size:11px;
@@ -184,7 +203,7 @@ a:hover {
 		-ms-box-shadow: #e0e0e0 0 2px 4px inset;
 		-o-box-shadow: #e0e0e0 0 2px 4px inset;
 	box-shadow: #de0e0e0 0 2px 4px inset;
-	width:90%;
+	width:100%;
     height:25px;
 	}
 .ui-combo{

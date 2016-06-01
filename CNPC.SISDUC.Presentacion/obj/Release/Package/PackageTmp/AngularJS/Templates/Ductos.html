@@ -1,0 +1,425 @@
+﻿<div id="content" align="center">
+    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
+        <tr>
+            <td class="tituloh1"><label>Lista de Oleoductos</label></td>
+        </tr>
+        <tr>
+            <td>
+                <table width="50%" border="0" align="right">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" align="right">
+                                    <td>
+                                        <input class="ui-inputfield" id="txtoleoductobuscar" />
+                                    </td>
+                                </table>
+                            </td>
+                            <td>
+                                <table width="70%" border="0" align="left">
+                                    <td class="button">
+                                        <a href="#" target="_self">BUSCAR</a>
+                                    </td>
+                                </table>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <table width="100%" border="0" align="center">
+                    <tr>
+                        <td colspan="8" align="center">
+                            <table width="90%" border="0">
+                                <thead>
+                                    <tr>
+                                        <th align="center" class="titulo_grilla">ID</th>
+                                        <th align="center" class="titulo_grilla">Código</th>
+                                        <th align="center" class="titulo_grilla">Descripción</th>
+                                        <th align="center" class="titulo_grilla">N° de Lamina</th>
+                                        <th align="center" class="titulo_grilla">Ubicación</th>
+                                        <th align="center" class="titulo_grilla">Longitud</th>
+                                        <th align="center" class="titulo_grilla">FECHA INSPECCION</th>
+                                        <th width="5%" align="center" class="titulo_grilla">Registro</th>
+                                        <th width="6%" align="center" class="titulo_grilla">VerInformación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="celda2_grilla" ng-repeat="item in listaOleoductos">
+                                        <td width="5%" align="center" class="celda2_grilla">{{item.Id}}</td>
+                                        <td width="10%" class="celda2_grilla">{{item.Ducto1}}</td>
+                                        <td width="30%" class="celda2_grilla">{{item.Trayectoria}}</td>
+                                        <td width="15%" class="celda2_grilla">{{item.NoLamina}}</td>
+                                        <td width="5%" class="celda2_grilla">{{item.Ubicacion}}</td>
+                                        <td width="8%" class="celda2_grilla">{{item.LongitudTotal}}</td>
+                                        <td width="10%" class="celda2_grilla">{{item.FechaInspeccion|date:'dd/MM/yyyy'}}</td>
+
+                                        <td align="center"><a href="#" ng-click="agregarOleoducto()"><img src="Content/img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
+                                        <td align="center"><a href="#" ng-click="verOleoducto(item)"><img src="Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="15" align="center">
+                                            <table width="30%" border="0" align="left">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="texto"><label>7 Registros encontrados</label></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            <table width="30%" border="0" align="right">
+                                                <tbody>
+                                                    <tr>
+                                                        <td align="right" class="texto" style="text-align:right"><a href="#"><strong>[1]</strong></a> <strong><a href="#">&nbsp;[2]</a> <a href="#">[3]</a>&nbsp; <a href="#">[4]</a>&nbsp; <a href="#">[5]</a> | Paginaci&oacute;n</strong></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="15" align="center">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="15" align="center">
+                                            <table width="30%" border="0" align="right">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>
+                                                            <table width="100%" border="0" align="right">
+                                                                <td class="button">
+                                                                    <a href="#" ng-click="agregarOleoducto()">
+                                                                        Agregar Oleoducto
+                                                                    </a>
+                                                                </td>
+                                                            </table>
+                                                        </td>
+                                                        <td>
+                                                            <table width="100%" border="0" align="right">
+                                                                <td class="button">
+                                                                    <a href="#" target="_self">
+                                                                        IMPRIMIR
+                                                                    </a>
+                                                                </td>
+                                                            </table>
+                                                        </td>
+                                                        <td>
+                                                            <table width="100%" border="0" align="right">
+                                                                <td class="button">
+                                                                    <a href="Login.html" target="_self">SALIR</a>
+                                                                </td>
+                                                            </table>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="15" align="center">&nbsp;</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+<!-- Modal -->
+<div id="NuevoOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button> <h4 class="modal-title" id="myModalLabel">Registro de Oleoductos</h4>
+            </div>
+            <div class="modal-body">
+                <table border="0" align="center">
+                    <tr>
+                        <td class="texto">
+                            <label>Código</label>
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" class="ui-inputfield" id="txtCodigo" placeholder="Código">
+                        </td>
+                        <td class="texto">
+                            <label>Fecha</label>
+                        </td>
+                        <td align="left">
+                            <input class="ui-inputfield" type="date" name="date" id="date">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Descripción</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <input type="text" id="txtCodigo" class="ui-inputfield" placeholder="Descripción">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Lamina</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <input type="text" id="txtNLamina" class="ui-inputfield" placeholder="Lamina">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Ubicación</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtUbicación" class="ui-inputfield" placeholder="Ubicación">
+                        </td>
+                        <td class="texto">
+                            <p class="text-center">NPS</p>
+                        </td>
+                        <td class="texto">
+                            <p class=" text-center">Longitud</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblMaterial">Material</label>
+                        </td>
+                        <td class="texto inlinecontrols" align="left">
+                            <input type="text" id="txtUbicación" class="ui-inputfield col-xs-4" placeholder="Ubicación">
+                            <input type="text" id="txtUbicación" class="ui-inputfield col-xs-4" placeholder="Ubicación">
+                            <input type="text" id="txtUbicación" class="ui-inputfield col-xs-4" placeholder="Ubicación">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS01" class="ui-inputfield" placeholder="">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud01" class="ui-inputfield" placeholder="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Schedule</label>
+                        </td>
+                        <td class="texto inlinecontrols" align="left">
+                            <input type="text" id="txtSchedule" class="ui-inputfield col-xs-4" placeholder="Schedule">
+                            <input type="text" id="txtSchedule" class="ui-inputfield col-xs-4" placeholder="Schedule">
+                            <input type="text" id="txtSchedule" class="ui-inputfield col-xs-4" placeholder="Schedule">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS02" class="ui-inputfield" placeholder="">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud02" class="ui-inputfield" placeholder="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBLPD">BLPD</label>
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtBLPD" class="ui-inputfield" placeholder="BLPD">
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtNPS03" class="ui-inputfield" placeholder=" ">
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtLongitud03" class="ui-inputfield" placeholder="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Presión (Psig)</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtPresion" class="ui-inputfield" placeholder="Presión">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS04" class="ui-inputfield" placeholder="">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud04" class="ui-inputfield" placeholder="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Temperatura (°F)</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtTemperatura" class="ui-inputfield" placeholder="Presión">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS05" class="ui-inputfield" placeholder="">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud05" class="ui-inputfield" placeholder="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBSW">BSW</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtBSW" class="ui-inputfield" placeholder="BSW">
+                        </td>
+                        <td class="texto">
+                            <label for="lblLongitudTotal">Longitud Total:</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitudTotal" class="ui-inputfield" placeholder="">
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button> <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="VerOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button> <h4 class="modal-title" id="myModalLabel">Ver Oleoducto</h4>
+            </div>
+            <div class="modal-body">
+                <table border="0" align="center">
+                    <tr>
+                        <td class="texto">
+                            <label>Código</label>
+                        </td>
+                        <td  class="texto" align="left">
+                            <input type="text" class="ui-inputfield" id="txtCodigo" ng-model="verDucto.Ducto1" readonly>
+                        </td>
+                        <td class="texto">
+                            <label>Fecha</label>
+                        </td>
+                        <td align="left">
+                            <input class="ui-inputfield" type="date" name="date" id="date" ng-model="verDucto.FechaInspeccion">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Descripción</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <input type="text" id="txtCodigo" class="ui-inputfield" ng-model="verDucto.Trayectoria">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Ubicación</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtUbicación" class="ui-inputfield" ng-model="verDucto.Ubicacion">
+                        </td>
+                        <td class="texto">
+                            <p class="text-center">NPS</p>
+                        </td>
+                        <td class="texto">
+                            <p class=" text-center">Longitud</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblMaterial">Material</label>
+                        </td>
+                        <td class="texto inlinecontrols" align="left">
+                            <input type="text" id="txtUbicación" class="ui-txtfield col-xs-4" placeholder="Ubicación">
+                            <input type="text" id="txtUbicación" class="ui-txtfield col-xs-4" placeholder="Ubicación">
+                            <input type="text" id="txtUbicación" class="ui-txtfield col-xs-4" placeholder="Ubicación">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS01" class="ui-inputfield" placeholder="">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud01" class="ui-inputfield" placeholder="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Schedule</label>
+                        </td>
+                        <td class="texto inlinecontrols" align="left">
+                            <input type="text" id="txtSchedule" class="ui-txtfield col-xs-4" placeholder="Schedule">
+                            <input type="text" id="txtSchedule" class="ui-txtfield col-xs-4" placeholder="Schedule">
+                            <input type="text" id="txtSchedule" class="ui-txtfield col-xs-4" placeholder="Schedule">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS02" class="ui-inputfield" placeholder="">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud02" class="ui-inputfield" placeholder="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBLPD">BLPD</label>
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtBLPD" class="ui-inputfield" ng-model="verDucto.BLPD">
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtNPS03" class="ui-inputfield" placeholder=" ">
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtLongitud03" class="ui-inputfield" placeholder="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Pres.(Psig)</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtPresion" class="ui-inputfield" ng-model="verDucto.Presion">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS04" class="ui-inputfield" placeholder="">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud04" class="ui-inputfield" placeholder="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Tempe(°F)</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtTemperatura" class="ui-inputfield" ng-model="verDucto.Temperatura">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS05" class="ui-inputfield" placeholder="">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud05" class="ui-inputfield" placeholder="">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBSW">BSW</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtBSW" class="ui-inputfield" ng-model="verDucto.BSW">
+                        </td>
+                        <td class="texto">
+                            <label for="lblLongitudTotal">Longitud Total:</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitudTotal" class="ui-inputfield" placeholder="">
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button> <button type="button" class="btn btn-primary">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

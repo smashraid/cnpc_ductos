@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CNPC_DuctosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="CNPC_DuctosEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Ductos" EntityType="CNPC_DuctosModel.Ducto" />
+  </EntityContainer>
+  <EntityType Name="Ducto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ducto1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NoLamina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Trayectoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Inspector" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FechaInspeccion" Type="DateTime" Precision="3" />
+    <Property Name="NumeroTubos" Type="Int32" />
+    <Property Name="LongitudTotalTubo" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="PresionDiseño" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="PresionMaximaAdmisibleOperacion" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="PresionMaximaOperacion" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="PresionNormalOperacion" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="TemperaturaMaximaOperacion" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="TemperaturaNormalOperacion" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="NPS" Type="Int32" />
+    <Property Name="Presion" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="BLPD" Type="Int32" />
+    <Property Name="Shedule" Type="Int32" />
+    <Property Name="Material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Temperatura" Type="Decimal" Precision="6" Scale="2" />
+    <Property Name="BSW" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Esfuerzo_S" Type="Int32" />
+    <Property Name="FactorJunta_E" Type="Int32" />
+    <Property Name="FactorSensibilidadError" Type="Decimal" Precision="4" Scale="2" />
+    <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
+</Schema>

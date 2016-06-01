@@ -89,9 +89,9 @@ namespace CNPC.SISDUC.DAL
             {
                 Result = EntitySet.Where(criteria).ToList();
             }
-            catch
+            catch(Exception ex)
             {
-
+                var a = ex.Message;
             }
             return Result;
         }

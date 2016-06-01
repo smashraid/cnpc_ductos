@@ -1,0 +1,11 @@
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\CNPC.SISDUC.BLL.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\CNPC.SISDUC.BLL.pdb
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\CNPC.SISDUC.DAL.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\CNPC.SISDUC.Model.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\EntityFramework.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\CNPC.SISDUC.DAL.pdb
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\CNPC.SISDUC.Model.pdb
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\EntityFramework.xml
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\obj\Release\CNPC.SISDUC.BLL.csprojResolveAssemblyReference.cache
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\obj\Release\CNPC.SISDUC.BLL.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\obj\Release\CNPC.SISDUC.BLL.pdb

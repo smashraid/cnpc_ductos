@@ -16,7 +16,8 @@ namespace CNPC.SISDUC.Presentacion.Controllers
         public HttpResponseMessage Get()
         {
             IEnumerable<Ducto> ducto = _db.FilterByName("OLB");
-            return Request.CreateResponse<IEnumerable<Ducto>>(HttpStatusCode.OK, ducto);
+            var result = Request.CreateResponse<IEnumerable<Ducto>>(HttpStatusCode.OK, ducto);
+            return result;
         }
     }
 }

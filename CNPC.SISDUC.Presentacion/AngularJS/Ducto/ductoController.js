@@ -12,11 +12,15 @@
 
     var nuevoDucto = null;
     $scope.agregarOleoducto = function () {
-        // nuevoDucto = { "Id": 0, "Cliente": "", "Ducto1": "", "NoLamina": "", "Trayectorio": "", "Ubicacion": "", "Inspector": "", "FechaInspeccion": "", "NumeroTubos": "" };
+        nuevoDucto = { "Id": 0, "Cliente": "", "Ducto1": "", "NoLamina": "", "Trayectorio": "", "Ubicacion": "", "Inspector": "", "FechaInspeccion": "", "NumeroTubos": "" };
         $('#NuevoOleoducto').modal('show');
     }
     $scope.verOleoducto = function (oleoducto) {
         $scope.verDucto = oleoducto;
         $('#VerOleoducto').modal('show');
+    }
+    $scope.editarOleoducto = function (oleoducto) {
+        $scope.verDucto = oleoducto;
+        $('#EditarOleoducto').modal('show');
     }
 });

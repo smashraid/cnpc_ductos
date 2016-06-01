@@ -1,0 +1,10 @@
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\bin\Release\CNPC.SISDUC.Model.dll.config
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\bin\Release\CNPC.SISDUC.Model.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\bin\Release\CNPC.SISDUC.Model.pdb
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\bin\Release\EntityFramework.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\bin\Release\EntityFramework.SqlServer.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\bin\Release\EntityFramework.xml
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\bin\Release\EntityFramework.SqlServer.xml
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\obj\Release\CNPC.SISDUC.Model.csprojResolveAssemblyReference.cache
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\obj\Release\CNPC.SISDUC.Model.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Model\obj\Release\CNPC.SISDUC.Model.pdb

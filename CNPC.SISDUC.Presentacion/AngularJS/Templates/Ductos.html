@@ -57,7 +57,7 @@
                                         <td width="8%" class="celda2_grilla">{{item.LongitudTotal}}</td>
                                         <td width="10%" class="celda2_grilla">{{item.FechaInspeccion|date:'dd/MM/yyyy'}}</td>
 
-                                        <td align="center"><a href="#" ng-click="agregarOleoducto()"><img src="Content/img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
+                                        <td align="center"><a href="#" ng-click="editarOleoducto(item)"><img src="Content/img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
                                         <td align="center"><a href="#" ng-click="verOleoducto(item)"><img src="Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
                                     </tr>
                                     <tr>
@@ -128,13 +128,13 @@
     </table>
 </div>
 <!-- Modal -->
-<div id="NuevoOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div id = "NuevoOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
-                </button> <h4 class="modal-title" id="myModalLabel">Registro de Oleoductos</h4>
+                </button> <h4 class="modal-title" id="myModalLabel">Nuevo Oleoducto</h4>
             </div>
             <div class="modal-body">
                 <table border="0" align="center">
@@ -143,13 +143,13 @@
                             <label>Código</label>
                         </td>
                         <td class="texto" align="left">
-                            <input type="text" class="ui-inputfield" id="txtCodigo" placeholder="Código">
+                            <input type="text" class="ui-inputfield" id="txtCodigo" ng-model="verDucto.Ducto1" >
                         </td>
                         <td class="texto">
                             <label>Fecha</label>
                         </td>
                         <td align="left">
-                            <input class="ui-inputfield" type="date" name="date" id="date">
+                            <input class="ui-inputfield" type="date" name="date" id="date" ng-model="verDucto.FechaInspeccion" >
                         </td>
                     </tr>
                     <tr>
@@ -157,15 +157,7 @@
                             <label>Descripción</label>
                         </td>
                         <td class="texto" colspan="3" align="left">
-                            <input type="text" id="txtCodigo" class="ui-inputfield" placeholder="Descripción">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label>Lamina</label>
-                        </td>
-                        <td class="texto" colspan="3">
-                            <input type="text" id="txtNLamina" class="ui-inputfield" placeholder="Lamina">
+                            <input type="text" id="txtCodigo" class="ui-inputfield" ng-model="verDucto.Trayectoria" >
                         </td>
                     </tr>
                     <tr>
@@ -173,7 +165,7 @@
                             <label>Ubicación</label>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtUbicación" class="ui-inputfield" placeholder="Ubicación">
+                            <input type="text" id="txtUbicación" class="ui-inputfield" ng-model="verDucto.Ubicacion" >
                         </td>
                         <td class="texto">
                             <p class="text-center">NPS</p>
@@ -187,15 +179,15 @@
                             <label for="lblMaterial">Material</label>
                         </td>
                         <td class="texto inlinecontrols" align="left">
-                            <input type="text" id="txtUbicación" class="ui-inputfield col-xs-4" placeholder="Ubicación">
-                            <input type="text" id="txtUbicación" class="ui-inputfield col-xs-4" placeholder="Ubicación">
-                            <input type="text" id="txtUbicación" class="ui-inputfield col-xs-4" placeholder="Ubicación">
+                            <input type="text" id="txtUbicación" class="ui-txtfield col-xs-4" >
+                            <input type="text" id="txtUbicación" class="ui-txtfield col-xs-4" >
+                            <input type="text" id="txtUbicación" class="ui-txtfield col-xs-4" >
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtNPS01" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtNPS01" class="ui-inputfield" >
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtLongitud01" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtLongitud01" class="ui-inputfield" >
                         </td>
                     </tr>
                     <tr>
@@ -203,15 +195,15 @@
                             <label>Schedule</label>
                         </td>
                         <td class="texto inlinecontrols" align="left">
-                            <input type="text" id="txtSchedule" class="ui-inputfield col-xs-4" placeholder="Schedule">
-                            <input type="text" id="txtSchedule" class="ui-inputfield col-xs-4" placeholder="Schedule">
-                            <input type="text" id="txtSchedule" class="ui-inputfield col-xs-4" placeholder="Schedule">
+                            <input type="text" id="txtSchedule" class="ui-txtfield col-xs-4" >
+                            <input type="text" id="txtSchedule" class="ui-txtfield col-xs-4" >
+                            <input type="text" id="txtSchedule" class="ui-txtfield col-xs-4" >
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtNPS02" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtNPS02" class="ui-inputfield" >
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtLongitud02" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtLongitud02" class="ui-inputfield" >
                         </td>
                     </tr>
                     <tr>
@@ -219,41 +211,41 @@
                             <label for="lblBLPD">BLPD</label>
                         </td>
                         <td class="texto" align="left">
-                            <input type="text" id="txtBLPD" class="ui-inputfield" placeholder="BLPD">
+                            <input type="text" id="txtBLPD" class="ui-inputfield" ng-model="verDucto.BLPD" >
                         </td>
                         <td class="texto" align="left">
-                            <input type="text" id="txtNPS03" class="ui-inputfield" placeholder=" ">
+                            <input type="text" id="txtNPS03" class="ui-inputfield" >
                         </td>
                         <td class="texto" align="left">
-                            <input type="text" id="txtLongitud03" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtLongitud03" class="ui-inputfield" >
                         </td>
                     </tr>
                     <tr>
                         <td class="texto">
-                            <label for="lblPresion">Presión (Psig)</label>
+                            <label for="lblPresion">Pres.(Psig)</label>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtPresion" class="ui-inputfield" placeholder="Presión">
+                            <input type="text" id="txtPresion" class="ui-inputfield" ng-model="verDucto.Presion" >
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtNPS04" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtNPS04" class="ui-inputfield" >
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtLongitud04" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtLongitud04" class="ui-inputfield" >
                         </td>
                     </tr>
                     <tr>
                         <td class="texto">
-                            <label for="lblPresion">Temperatura (°F)</label>
+                            <label for="lblPresion">Tempe(°F)</label>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtTemperatura" class="ui-inputfield" placeholder="Presión">
+                            <input type="text" id="txtTemperatura" class="ui-inputfield" ng-model="verDucto.Temperatura" >
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtNPS05" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtNPS05" class="ui-inputfield" >
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtLongitud05" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtLongitud05" class="ui-inputfield" >
                         </td>
                     </tr>
                     <tr>
@@ -261,13 +253,13 @@
                             <label for="lblBSW">BSW</label>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtBSW" class="ui-inputfield" placeholder="BSW">
+                            <input type="text" id="txtBSW" class="ui-inputfield" ng-model="verDucto.BSW" >
                         </td>
                         <td class="texto">
                             <label for="lblLongitudTotal">Longitud Total:</label>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtLongitudTotal" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtLongitudTotal" class="ui-inputfield" placeholder="" >
                         </td>
                     </tr>
 
@@ -280,7 +272,7 @@
     </div>
 </div>
 
-<div id="VerOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div id = "VerOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -294,14 +286,14 @@
                         <td class="texto">
                             <label>Código</label>
                         </td>
-                        <td class="texto" align="left">
+                        <td  class="texto" align="left">
                             <input type="text" class="ui-inputfield" id="txtCodigo" ng-model="verDucto.Ducto1" readonly>
                         </td>
                         <td class="texto">
                             <label>Fecha</label>
                         </td>
                         <td align="left">
-                            <input class="ui-inputfield" type="date" name="date" id="date" ng-model="verDucto.FechaInspeccion">
+                            <input class="ui-inputfield" type="date" name="date" id="date" ng-model="verDucto.FechaInspeccion" readonly>
                         </td>
                     </tr>
                     <tr>
@@ -309,7 +301,7 @@
                             <label>Descripción</label>
                         </td>
                         <td class="texto" colspan="3" align="left">
-                            <input type="text" id="txtCodigo" class="ui-inputfield" ng-model="verDucto.Trayectoria">
+                            <input type="text" id="txtCodigo" class="ui-inputfield" ng-model="verDucto.Trayectoria" readonly>
                         </td>
                     </tr>
                     <tr>
@@ -317,7 +309,7 @@
                             <label>Ubicación</label>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtUbicación" class="ui-inputfield" ng-model="verDucto.Ubicacion">
+                            <input type="text" id="txtUbicación" class="ui-inputfield" ng-model="verDucto.Ubicacion" readonly>
                         </td>
                         <td class="texto">
                             <p class="text-center">NPS</p>
@@ -331,15 +323,15 @@
                             <label for="lblMaterial">Material</label>
                         </td>
                         <td class="texto inlinecontrols" align="left">
-                            <input type="text" id="txtUbicación" class="ui-inputfield col-xs-4" placeholder="Ubicación">
-                            <input type="text" id="txtUbicación" class="ui-inputfield col-xs-4" placeholder="Ubicación">
-                            <input type="text" id="txtUbicación" class="ui-inputfield col-xs-4" placeholder="Ubicación">
+                            <input type="text" id="txtUbicación" class="ui-txtfield col-xs-4" readonly>
+                            <input type="text" id="txtUbicación" class="ui-txtfield col-xs-4" readonly>
+                            <input type="text" id="txtUbicación" class="ui-txtfield col-xs-4" readonly>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtNPS01" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtNPS01" class="ui-inputfield" readonly>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtLongitud01" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtLongitud01" class="ui-inputfield" readonly>
                         </td>
                     </tr>
                     <tr>
@@ -347,15 +339,15 @@
                             <label>Schedule</label>
                         </td>
                         <td class="texto inlinecontrols" align="left">
-                            <input type="text" id="txtSchedule" class="ui-inputfield col-xs-4" placeholder="Schedule">
-                            <input type="text" id="txtSchedule" class="ui-inputfield col-xs-4" placeholder="Schedule">
-                            <input type="text" id="txtSchedule" class="ui-inputfield col-xs-4" placeholder="Schedule">
+                            <input type="text" id="txtSchedule" class="ui-txtfield col-xs-4" readonly>
+                            <input type="text" id="txtSchedule" class="ui-txtfield col-xs-4" readonly>
+                            <input type="text" id="txtSchedule" class="ui-txtfield col-xs-4" readonly>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtNPS02" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtNPS02" class="ui-inputfield" readonly>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtLongitud02" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtLongitud02" class="ui-inputfield" readonly>
                         </td>
                     </tr>
                     <tr>
@@ -363,41 +355,41 @@
                             <label for="lblBLPD">BLPD</label>
                         </td>
                         <td class="texto" align="left">
-                            <input type="text" id="txtBLPD" class="ui-inputfield" ng-model="verDucto.BLPD">
+                            <input type="text" id="txtBLPD" class="ui-inputfield" ng-model="verDucto.BLPD" readonly>
                         </td>
                         <td class="texto" align="left">
-                            <input type="text" id="txtNPS03" class="ui-inputfield" placeholder=" ">
+                            <input type="text" id="txtNPS03" class="ui-inputfield" readonly>
                         </td>
                         <td class="texto" align="left">
-                            <input type="text" id="txtLongitud03" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtLongitud03" class="ui-inputfield" readonly>
                         </td>
                     </tr>
                     <tr>
                         <td class="texto">
-                            <label for="lblPresion">Presión (Psig)</label>
+                            <label for="lblPresion">Pres.(Psig)</label>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtPresion" class="ui-inputfield" ng-model="verDucto.Presion">
+                            <input type="text" id="txtPresion" class="ui-inputfield" ng-model="verDucto.Presion" readonly>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtNPS04" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtNPS04" class="ui-inputfield" readonly>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtLongitud04" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtLongitud04" class="ui-inputfield" readonly>
                         </td>
                     </tr>
                     <tr>
                         <td class="texto">
-                            <label for="lblPresion">Temperatura (°F)</label>
+                            <label for="lblPresion">Tempe(°F)</label>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtTemperatura" class="ui-inputfield" ng-model="verDucto.Temperatura">
+                            <input type="text" id="txtTemperatura" class="ui-inputfield" ng-model="verDucto.Temperatura" readonly>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtNPS05" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtNPS05" class="ui-inputfield" readonly>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtLongitud05" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtLongitud05" class="ui-inputfield" readonly>
                         </td>
                     </tr>
                     <tr>
@@ -405,13 +397,157 @@
                             <label for="lblBSW">BSW</label>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtBSW" class="ui-inputfield" ng-model="verDucto.BSW">
+                            <input type="text" id="txtBSW" class="ui-inputfield" ng-model="verDucto.BSW" readonly>
                         </td>
                         <td class="texto">
                             <label for="lblLongitudTotal">Longitud Total:</label>
                         </td>
                         <td class="texto">
-                            <input type="text" id="txtLongitudTotal" class="ui-inputfield" placeholder="">
+                            <input type="text" id="txtLongitudTotal" class="ui-inputfield" placeholder="" readonly>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button> 
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id = "EditarOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button> <h4 class="modal-title" id="myModalLabel">Editar Oleoducto</h4>
+            </div>
+            <div class="modal-body">
+                <table border="0" align="center">
+                    <tr>
+                        <td class="texto">
+                            <label>Código</label>
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" class="ui-inputfield" id="txtCodigo" ng-model="verDucto.Ducto1" >
+                        </td>
+                        <td class="texto">
+                            <label>Fecha</label>
+                        </td>
+                        <td align="left">
+                            <input class="ui-inputfield" type="date" name="date" id="date" ng-model="verDucto.FechaInspeccion" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Descripción</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <input type="text" id="txtCodigo" class="ui-inputfield" ng-model="verDucto.Trayectoria" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Ubicación</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtUbicación" class="ui-inputfield" ng-model="verDucto.Ubicacion" >
+                        </td>
+                        <td class="texto">
+                            <p class="text-center">NPS</p>
+                        </td>
+                        <td class="texto">
+                            <p class=" text-center">Longitud</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblMaterial">Material</label>
+                        </td>
+                        <td class="texto inlinecontrols" align="left">
+                            <input type="text" id="txtUbicación" class="ui-txtfield col-xs-4" >
+                            <input type="text" id="txtUbicación" class="ui-txtfield col-xs-4" >
+                            <input type="text" id="txtUbicación" class="ui-txtfield col-xs-4" >
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS01" class="ui-inputfield" >
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud01" class="ui-inputfield" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Schedule</label>
+                        </td>
+                        <td class="texto inlinecontrols" align="left">
+                            <input type="text" id="txtSchedule" class="ui-txtfield col-xs-4" >
+                            <input type="text" id="txtSchedule" class="ui-txtfield col-xs-4" >
+                            <input type="text" id="txtSchedule" class="ui-txtfield col-xs-4" >
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS02" class="ui-inputfield" >
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud02" class="ui-inputfield" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBLPD">BLPD</label>
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtBLPD" class="ui-inputfield" ng-model="verDucto.BLPD" >
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtNPS03" class="ui-inputfield" >
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtLongitud03" class="ui-inputfield" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Pres.(Psig)</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtPresion" class="ui-inputfield" ng-model="verDucto.Presion" >
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS04" class="ui-inputfield" >
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud04" class="ui-inputfield" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Tempe(°F)</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtTemperatura" class="ui-inputfield" ng-model="verDucto.Temperatura" >
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS05" class="ui-inputfield" >
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud05" class="ui-inputfield" >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBSW">BSW</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtBSW" class="ui-inputfield" ng-model="verDucto.BSW" >
+                        </td>
+                        <td class="texto">
+                            <label for="lblLongitudTotal">Longitud Total:</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitudTotal" class="ui-inputfield" placeholder="" >
                         </td>
                     </tr>
 
