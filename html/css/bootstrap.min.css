@@ -4870,7 +4870,7 @@ select[multiple].input-group-sm > .form-control, select[multiple].input-group-sm
 }
 
 .navbar-default {
-    background-color: #C52E33;
+    background-color: rgba(212, 63, 58, 1);
     border-color: #C52E33;
     height: 40px;
 }
