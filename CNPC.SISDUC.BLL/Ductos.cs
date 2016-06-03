@@ -15,7 +15,7 @@ namespace CNPC.SISDUC.BLL
             Ducto Result = null;
             using (var r = new Repository<Ducto>())
             {
-                Ducto d = r.Retrieve(p => p.Ducto1 == newDucto.Ducto1);
+                Ducto d = r.Retrieve(p => p.Codigo == newDucto.Codigo);
                 if (d == null)
                 {
                     Result = r.Create(newDucto);
@@ -41,7 +41,7 @@ namespace CNPC.SISDUC.BLL
             bool Result = false;
             using (var r = new Repository<Ducto>())
             {
-                Ducto d = r.Retrieve(p => p.Ducto1 == ductoToUpdate.Ducto1);
+                Ducto d = r.Retrieve(p => p.Codigo == ductoToUpdate.Codigo);
                 if (d != null)
                 {
                     Result = r.Update(ductoToUpdate);
@@ -82,7 +82,7 @@ namespace CNPC.SISDUC.BLL
             List<Ducto> Result = null;
             using (var r = new Repository<Ducto>())
             {
-                Result = r.Filter(p => p.Ducto1.Contains(Nombre));
+                Result = r.Filter(p => p.Codigo.Contains(Nombre));
             }
             return Result;
         }

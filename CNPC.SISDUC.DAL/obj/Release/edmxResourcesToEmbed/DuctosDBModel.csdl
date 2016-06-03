@@ -9,27 +9,40 @@
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Ducto1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="NoLamina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Trayectoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Inspector" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="FechaInspeccion" Type="DateTime" Precision="3" />
     <Property Name="NumeroTubos" Type="Int32" />
-    <Property Name="LongitudTotalTubo" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="Longitud01" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="Longitud02" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="Longitud03" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="Longitud04" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="Longitud05" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="LongitudTotal" Type="Decimal" Precision="8" Scale="2" />
     <Property Name="PresionDiseño" Type="Decimal" Precision="6" Scale="2" />
     <Property Name="PresionMaximaAdmisibleOperacion" Type="Decimal" Precision="6" Scale="2" />
     <Property Name="PresionMaximaOperacion" Type="Decimal" Precision="6" Scale="2" />
     <Property Name="PresionNormalOperacion" Type="Decimal" Precision="6" Scale="2" />
     <Property Name="TemperaturaMaximaOperacion" Type="Decimal" Precision="6" Scale="2" />
     <Property Name="TemperaturaNormalOperacion" Type="Decimal" Precision="6" Scale="2" />
-    <Property Name="NPS" Type="Int32" />
+    <Property Name="NPS01" Type="Int32" />
+    <Property Name="NPS02" Type="Int32" />
+    <Property Name="NPS03" Type="Int32" />
+    <Property Name="NPS04" Type="Int32" />
+    <Property Name="NPS05" Type="Int32" />
     <Property Name="Presion" Type="Decimal" Precision="6" Scale="2" />
     <Property Name="BLPD" Type="Int32" />
-    <Property Name="Shedule" Type="Int32" />
-    <Property Name="Material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Schedule1" Type="Int32" />
+    <Property Name="Schedule2" Type="Int32" />
+    <Property Name="Schedule3" Type="Int32" />
+    <Property Name="Material1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Material2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Material3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Temperatura" Type="Decimal" Precision="6" Scale="2" />
-    <Property Name="BSW" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="BSW" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Esfuerzo_S" Type="Int32" />
     <Property Name="FactorJunta_E" Type="Int32" />
     <Property Name="FactorSensibilidadError" Type="Decimal" Precision="4" Scale="2" />

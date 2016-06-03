@@ -11,27 +11,40 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Cliente" Type="varchar" MaxLength="50" />
-          <Property Name="Ducto" Type="varchar" MaxLength="50" />
+          <Property Name="Codigo" Type="varchar" MaxLength="50" />
           <Property Name="NoLamina" Type="varchar" MaxLength="50" />
           <Property Name="Trayectoria" Type="varchar" MaxLength="50" />
           <Property Name="Ubicacion" Type="varchar" MaxLength="50" />
           <Property Name="Inspector" Type="varchar" MaxLength="100" />
           <Property Name="FechaInspeccion" Type="datetime" />
           <Property Name="NumeroTubos" Type="int" />
-          <Property Name="LongitudTotalTubo" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Longitud01" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Longitud02" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Longitud03" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Longitud04" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="Longitud05" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="LongitudTotal" Type="decimal" Precision="8" Scale="2" />
           <Property Name="PresionDiseño" Type="decimal" Precision="6" Scale="2" />
           <Property Name="PresionMaximaAdmisibleOperacion" Type="decimal" Precision="6" Scale="2" />
           <Property Name="PresionMaximaOperacion" Type="decimal" Precision="6" Scale="2" />
           <Property Name="PresionNormalOperacion" Type="decimal" Precision="6" Scale="2" />
           <Property Name="TemperaturaMaximaOperacion" Type="decimal" Precision="6" Scale="2" />
           <Property Name="TemperaturaNormalOperacion" Type="decimal" Precision="6" Scale="2" />
-          <Property Name="NPS" Type="int" />
+          <Property Name="NPS01" Type="int" />
+          <Property Name="NPS02" Type="int" />
+          <Property Name="NPS03" Type="int" />
+          <Property Name="NPS04" Type="int" />
+          <Property Name="NPS05" Type="int" />
           <Property Name="Presion" Type="decimal" Precision="6" Scale="2" />
           <Property Name="BLPD" Type="int" />
-          <Property Name="Shedule" Type="int" />
-          <Property Name="Material" Type="varchar" MaxLength="50" />
+          <Property Name="Schedule1" Type="int" />
+          <Property Name="Schedule2" Type="int" />
+          <Property Name="Schedule3" Type="int" />
+          <Property Name="Material1" Type="varchar" MaxLength="50" />
+          <Property Name="Material2" Type="varchar" MaxLength="50" />
+          <Property Name="Material3" Type="varchar" MaxLength="50" />
           <Property Name="Temperatura" Type="decimal" Precision="6" Scale="2" />
-          <Property Name="BSW" Type="varchar" MaxLength="10" />
+          <Property Name="BSW" Type="varchar" MaxLength="50" />
           <Property Name="Esfuerzo_S" Type="int" />
           <Property Name="FactorJunta_E" Type="int" />
           <Property Name="FactorSensibilidadError" Type="decimal" Precision="4" Scale="2" />
@@ -54,27 +67,40 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Ducto1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="NoLamina" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Trayectoria" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Ubicacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Inspector" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="FechaInspeccion" Type="DateTime" Precision="3" />
           <Property Name="NumeroTubos" Type="Int32" />
-          <Property Name="LongitudTotalTubo" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Longitud01" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Longitud02" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Longitud03" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Longitud04" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="Longitud05" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="LongitudTotal" Type="Decimal" Precision="8" Scale="2" />
           <Property Name="PresionDiseño" Type="Decimal" Precision="6" Scale="2" />
           <Property Name="PresionMaximaAdmisibleOperacion" Type="Decimal" Precision="6" Scale="2" />
           <Property Name="PresionMaximaOperacion" Type="Decimal" Precision="6" Scale="2" />
           <Property Name="PresionNormalOperacion" Type="Decimal" Precision="6" Scale="2" />
           <Property Name="TemperaturaMaximaOperacion" Type="Decimal" Precision="6" Scale="2" />
           <Property Name="TemperaturaNormalOperacion" Type="Decimal" Precision="6" Scale="2" />
-          <Property Name="NPS" Type="Int32" />
+          <Property Name="NPS01" Type="Int32" />
+          <Property Name="NPS02" Type="Int32" />
+          <Property Name="NPS03" Type="Int32" />
+          <Property Name="NPS04" Type="Int32" />
+          <Property Name="NPS05" Type="Int32" />
           <Property Name="Presion" Type="Decimal" Precision="6" Scale="2" />
           <Property Name="BLPD" Type="Int32" />
-          <Property Name="Shedule" Type="Int32" />
-          <Property Name="Material" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Schedule1" Type="Int32" />
+          <Property Name="Schedule2" Type="Int32" />
+          <Property Name="Schedule3" Type="Int32" />
+          <Property Name="Material1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Material2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Material3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Temperatura" Type="Decimal" Precision="6" Scale="2" />
-          <Property Name="BSW" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="BSW" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Esfuerzo_S" Type="Int32" />
           <Property Name="FactorJunta_E" Type="Int32" />
           <Property Name="FactorSensibilidadError" Type="Decimal" Precision="4" Scale="2" />
@@ -97,25 +123,38 @@
                 <ScalarProperty Name="Esfuerzo_S" ColumnName="Esfuerzo_S" />
                 <ScalarProperty Name="BSW" ColumnName="BSW" />
                 <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
-                <ScalarProperty Name="Material" ColumnName="Material" />
-                <ScalarProperty Name="Shedule" ColumnName="Shedule" />
+                <ScalarProperty Name="Material3" ColumnName="Material3" />
+                <ScalarProperty Name="Material2" ColumnName="Material2" />
+                <ScalarProperty Name="Material1" ColumnName="Material1" />
+                <ScalarProperty Name="Schedule3" ColumnName="Schedule3" />
+                <ScalarProperty Name="Schedule2" ColumnName="Schedule2" />
+                <ScalarProperty Name="Schedule1" ColumnName="Schedule1" />
                 <ScalarProperty Name="BLPD" ColumnName="BLPD" />
                 <ScalarProperty Name="Presion" ColumnName="Presion" />
-                <ScalarProperty Name="NPS" ColumnName="NPS" />
+                <ScalarProperty Name="NPS05" ColumnName="NPS05" />
+                <ScalarProperty Name="NPS04" ColumnName="NPS04" />
+                <ScalarProperty Name="NPS03" ColumnName="NPS03" />
+                <ScalarProperty Name="NPS02" ColumnName="NPS02" />
+                <ScalarProperty Name="NPS01" ColumnName="NPS01" />
                 <ScalarProperty Name="TemperaturaNormalOperacion" ColumnName="TemperaturaNormalOperacion" />
                 <ScalarProperty Name="TemperaturaMaximaOperacion" ColumnName="TemperaturaMaximaOperacion" />
                 <ScalarProperty Name="PresionNormalOperacion" ColumnName="PresionNormalOperacion" />
                 <ScalarProperty Name="PresionMaximaOperacion" ColumnName="PresionMaximaOperacion" />
                 <ScalarProperty Name="PresionMaximaAdmisibleOperacion" ColumnName="PresionMaximaAdmisibleOperacion" />
                 <ScalarProperty Name="PresionDiseño" ColumnName="PresionDiseño" />
-                <ScalarProperty Name="LongitudTotalTubo" ColumnName="LongitudTotalTubo" />
+                <ScalarProperty Name="LongitudTotal" ColumnName="LongitudTotal" />
+                <ScalarProperty Name="Longitud05" ColumnName="Longitud05" />
+                <ScalarProperty Name="Longitud04" ColumnName="Longitud04" />
+                <ScalarProperty Name="Longitud03" ColumnName="Longitud03" />
+                <ScalarProperty Name="Longitud02" ColumnName="Longitud02" />
+                <ScalarProperty Name="Longitud01" ColumnName="Longitud01" />
                 <ScalarProperty Name="NumeroTubos" ColumnName="NumeroTubos" />
                 <ScalarProperty Name="FechaInspeccion" ColumnName="FechaInspeccion" />
                 <ScalarProperty Name="Inspector" ColumnName="Inspector" />
                 <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
                 <ScalarProperty Name="Trayectoria" ColumnName="Trayectoria" />
                 <ScalarProperty Name="NoLamina" ColumnName="NoLamina" />
-                <ScalarProperty Name="Ducto1" ColumnName="Ducto" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Cliente" ColumnName="Cliente" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

@@ -6,27 +6,40 @@
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Cliente" Type="varchar" MaxLength="50" />
-    <Property Name="Ducto" Type="varchar" MaxLength="50" />
+    <Property Name="Codigo" Type="varchar" MaxLength="50" />
     <Property Name="NoLamina" Type="varchar" MaxLength="50" />
     <Property Name="Trayectoria" Type="varchar" MaxLength="50" />
     <Property Name="Ubicacion" Type="varchar" MaxLength="50" />
     <Property Name="Inspector" Type="varchar" MaxLength="100" />
     <Property Name="FechaInspeccion" Type="datetime" />
     <Property Name="NumeroTubos" Type="int" />
-    <Property Name="LongitudTotalTubo" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="Longitud01" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="Longitud02" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="Longitud03" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="Longitud04" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="Longitud05" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="LongitudTotal" Type="decimal" Precision="8" Scale="2" />
     <Property Name="PresionDiseño" Type="decimal" Precision="6" Scale="2" />
     <Property Name="PresionMaximaAdmisibleOperacion" Type="decimal" Precision="6" Scale="2" />
     <Property Name="PresionMaximaOperacion" Type="decimal" Precision="6" Scale="2" />
     <Property Name="PresionNormalOperacion" Type="decimal" Precision="6" Scale="2" />
     <Property Name="TemperaturaMaximaOperacion" Type="decimal" Precision="6" Scale="2" />
     <Property Name="TemperaturaNormalOperacion" Type="decimal" Precision="6" Scale="2" />
-    <Property Name="NPS" Type="int" />
+    <Property Name="NPS01" Type="int" />
+    <Property Name="NPS02" Type="int" />
+    <Property Name="NPS03" Type="int" />
+    <Property Name="NPS04" Type="int" />
+    <Property Name="NPS05" Type="int" />
     <Property Name="Presion" Type="decimal" Precision="6" Scale="2" />
     <Property Name="BLPD" Type="int" />
-    <Property Name="Shedule" Type="int" />
-    <Property Name="Material" Type="varchar" MaxLength="50" />
+    <Property Name="Schedule1" Type="int" />
+    <Property Name="Schedule2" Type="int" />
+    <Property Name="Schedule3" Type="int" />
+    <Property Name="Material1" Type="varchar" MaxLength="50" />
+    <Property Name="Material2" Type="varchar" MaxLength="50" />
+    <Property Name="Material3" Type="varchar" MaxLength="50" />
     <Property Name="Temperatura" Type="decimal" Precision="6" Scale="2" />
-    <Property Name="BSW" Type="varchar" MaxLength="10" />
+    <Property Name="BSW" Type="varchar" MaxLength="50" />
     <Property Name="Esfuerzo_S" Type="int" />
     <Property Name="FactorJunta_E" Type="int" />
     <Property Name="FactorSensibilidadError" Type="decimal" Precision="4" Scale="2" />
