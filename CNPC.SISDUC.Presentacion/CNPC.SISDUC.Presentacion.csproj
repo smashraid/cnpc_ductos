@@ -199,7 +199,6 @@
     <Content Include="AngularJS\Templates\OctavosDeFinal.html" />
     <Content Include="AngularJS\Templates\SemiFinalYFinal.html" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\estiloPetro.css" />
     <Content Include="Content\img\01.PNG" />
     <Content Include="Content\img\02.PNG" />
@@ -248,6 +247,7 @@
     <Content Include="Scripts\angular-sanitize.min.js.map" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Properties\PublishProfiles\Default Settings %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\sisduc.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

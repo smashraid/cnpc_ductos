@@ -12,6 +12,8 @@ namespace CNPC.SISDUC.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class CNPC_DuctosEntities : DbContext
     {
@@ -26,5 +28,22 @@ namespace CNPC.SISDUC.Model
         }
     
         public virtual DbSet<Ducto> Ductos { get; set; }
+    
+        public virtual ObjectResult<uspGetListOleoductos_Result> uspGetListOleoductos(string nombre, Nullable<int> page, Nullable<int> records, ObjectParameter totalPage)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var pageParameter = page.HasValue ?
+                new ObjectParameter("Page", page) :
+                new ObjectParameter("Page", typeof(int));
+    
+            var recordsParameter = records.HasValue ?
+                new ObjectParameter("Records", records) :
+                new ObjectParameter("Records", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetListOleoductos_Result>("uspGetListOleoductos", nombreParameter, pageParameter, recordsParameter, totalPage);
+        }
     }
 }

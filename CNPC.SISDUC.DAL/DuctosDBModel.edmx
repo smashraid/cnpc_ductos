@@ -51,6 +51,12 @@
           <Property Name="RowState" Type="char" MaxLength="1" />
           <Property Name="LastUpdate" Type="datetime" />
         </EntityType>
+        <Function Name="uspGetListOleoductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Page" Type="int" Mode="In" />
+          <Parameter Name="Records" Type="int" Mode="In" />
+          <Parameter Name="TotalPage" Type="int" Mode="InOut" />
+        </Function>
         <EntityContainer Name="CNPC_DuctosModelStoreContainer">
           <EntitySet Name="Ductos" EntityType="Self.Ductos" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
@@ -60,6 +66,12 @@
       <Schema Namespace="CNPC_DuctosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="CNPC_DuctosEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Ductos" EntityType="CNPC_DuctosModel.Ducto" />
+          <FunctionImport Name="uspGetListOleoductos" ReturnType="Collection(CNPC_DuctosModel.uspGetListOleoductos_Result)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Page" Mode="In" Type="Int32" />
+            <Parameter Name="Records" Mode="In" Type="Int32" />
+            <Parameter Name="TotalPage" Mode="InOut" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Ducto">
           <Key>
@@ -107,6 +119,49 @@
           <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="LastUpdate" Type="DateTime" Precision="3" />
         </EntityType>
+        <ComplexType Name="uspGetListOleoductos_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Cliente" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Codigo" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NoLamina" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Trayectoria" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Ubicacion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Inspector" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="FechaInspeccion" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="NumeroTubos" Nullable="true" />
+          <Property Type="Decimal" Name="Longitud01" Nullable="true" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="Longitud02" Nullable="true" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="Longitud03" Nullable="true" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="Longitud04" Nullable="true" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="Longitud05" Nullable="true" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="LongitudTotal" Nullable="true" Precision="8" Scale="2" />
+          <Property Type="Decimal" Name="PresionDiseño" Nullable="true" Precision="6" Scale="2" />
+          <Property Type="Decimal" Name="PresionMaximaAdmisibleOperacion" Nullable="true" Precision="6" Scale="2" />
+          <Property Type="Decimal" Name="PresionMaximaOperacion" Nullable="true" Precision="6" Scale="2" />
+          <Property Type="Decimal" Name="PresionNormalOperacion" Nullable="true" Precision="6" Scale="2" />
+          <Property Type="Decimal" Name="TemperaturaMaximaOperacion" Nullable="true" Precision="6" Scale="2" />
+          <Property Type="Decimal" Name="TemperaturaNormalOperacion" Nullable="true" Precision="6" Scale="2" />
+          <Property Type="Int32" Name="NPS01" Nullable="true" />
+          <Property Type="Int32" Name="NPS02" Nullable="true" />
+          <Property Type="Int32" Name="NPS03" Nullable="true" />
+          <Property Type="Int32" Name="NPS04" Nullable="true" />
+          <Property Type="Int32" Name="NPS05" Nullable="true" />
+          <Property Type="Decimal" Name="Presion" Nullable="true" Precision="6" Scale="2" />
+          <Property Type="Int32" Name="BLPD" Nullable="true" />
+          <Property Type="Int32" Name="Schedule1" Nullable="true" />
+          <Property Type="Int32" Name="Schedule2" Nullable="true" />
+          <Property Type="Int32" Name="Schedule3" Nullable="true" />
+          <Property Type="String" Name="Material1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Material2" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Material3" Nullable="true" MaxLength="50" />
+          <Property Type="Decimal" Name="Temperatura" Nullable="true" Precision="6" Scale="2" />
+          <Property Type="String" Name="BSW" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="Esfuerzo_S" Nullable="true" />
+          <Property Type="Int32" Name="FactorJunta_E" Nullable="true" />
+          <Property Type="Decimal" Name="FactorSensibilidadError" Nullable="true" Precision="4" Scale="2" />
+          <Property Type="String" Name="RowState" Nullable="true" MaxLength="1" />
+          <Property Type="DateTime" Name="LastUpdate" Nullable="true" Precision="23" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -160,6 +215,53 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="uspGetListOleoductos" FunctionName="CNPC_DuctosModel.Store.uspGetListOleoductos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CNPC_DuctosModel.uspGetListOleoductos_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="NoLamina" ColumnName="NoLamina" />
+                <ScalarProperty Name="Trayectoria" ColumnName="Trayectoria" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Inspector" ColumnName="Inspector" />
+                <ScalarProperty Name="FechaInspeccion" ColumnName="FechaInspeccion" />
+                <ScalarProperty Name="NumeroTubos" ColumnName="NumeroTubos" />
+                <ScalarProperty Name="Longitud01" ColumnName="Longitud01" />
+                <ScalarProperty Name="Longitud02" ColumnName="Longitud02" />
+                <ScalarProperty Name="Longitud03" ColumnName="Longitud03" />
+                <ScalarProperty Name="Longitud04" ColumnName="Longitud04" />
+                <ScalarProperty Name="Longitud05" ColumnName="Longitud05" />
+                <ScalarProperty Name="LongitudTotal" ColumnName="LongitudTotal" />
+                <ScalarProperty Name="PresionDiseño" ColumnName="PresionDiseño" />
+                <ScalarProperty Name="PresionMaximaAdmisibleOperacion" ColumnName="PresionMaximaAdmisibleOperacion" />
+                <ScalarProperty Name="PresionMaximaOperacion" ColumnName="PresionMaximaOperacion" />
+                <ScalarProperty Name="PresionNormalOperacion" ColumnName="PresionNormalOperacion" />
+                <ScalarProperty Name="TemperaturaMaximaOperacion" ColumnName="TemperaturaMaximaOperacion" />
+                <ScalarProperty Name="TemperaturaNormalOperacion" ColumnName="TemperaturaNormalOperacion" />
+                <ScalarProperty Name="NPS01" ColumnName="NPS01" />
+                <ScalarProperty Name="NPS02" ColumnName="NPS02" />
+                <ScalarProperty Name="NPS03" ColumnName="NPS03" />
+                <ScalarProperty Name="NPS04" ColumnName="NPS04" />
+                <ScalarProperty Name="NPS05" ColumnName="NPS05" />
+                <ScalarProperty Name="Presion" ColumnName="Presion" />
+                <ScalarProperty Name="BLPD" ColumnName="BLPD" />
+                <ScalarProperty Name="Schedule1" ColumnName="Schedule1" />
+                <ScalarProperty Name="Schedule2" ColumnName="Schedule2" />
+                <ScalarProperty Name="Schedule3" ColumnName="Schedule3" />
+                <ScalarProperty Name="Material1" ColumnName="Material1" />
+                <ScalarProperty Name="Material2" ColumnName="Material2" />
+                <ScalarProperty Name="Material3" ColumnName="Material3" />
+                <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
+                <ScalarProperty Name="BSW" ColumnName="BSW" />
+                <ScalarProperty Name="Esfuerzo_S" ColumnName="Esfuerzo_S" />
+                <ScalarProperty Name="FactorJunta_E" ColumnName="FactorJunta_E" />
+                <ScalarProperty Name="FactorSensibilidadError" ColumnName="FactorSensibilidadError" />
+                <ScalarProperty Name="RowState" ColumnName="RowState" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

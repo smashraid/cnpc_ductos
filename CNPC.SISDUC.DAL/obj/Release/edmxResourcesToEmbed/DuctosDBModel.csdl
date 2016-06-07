@@ -2,6 +2,12 @@
 <Schema Namespace="CNPC_DuctosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="CNPC_DuctosEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Ductos" EntityType="CNPC_DuctosModel.Ducto" />
+    <FunctionImport Name="uspGetListOleoductos" ReturnType="Collection(CNPC_DuctosModel.uspGetListOleoductos_Result)">
+      <Parameter Name="Nombre" Mode="In" Type="String" />
+      <Parameter Name="Page" Mode="In" Type="Int32" />
+      <Parameter Name="Records" Mode="In" Type="Int32" />
+      <Parameter Name="TotalPage" Mode="InOut" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <EntityType Name="Ducto">
     <Key>
@@ -49,4 +55,47 @@
     <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="LastUpdate" Type="DateTime" Precision="3" />
   </EntityType>
+  <ComplexType Name="uspGetListOleoductos_Result">
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="Cliente" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Codigo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NoLamina" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Trayectoria" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Ubicacion" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Inspector" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="FechaInspeccion" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="NumeroTubos" Nullable="true" />
+    <Property Type="Decimal" Name="Longitud01" Nullable="true" Precision="8" Scale="2" />
+    <Property Type="Decimal" Name="Longitud02" Nullable="true" Precision="8" Scale="2" />
+    <Property Type="Decimal" Name="Longitud03" Nullable="true" Precision="8" Scale="2" />
+    <Property Type="Decimal" Name="Longitud04" Nullable="true" Precision="8" Scale="2" />
+    <Property Type="Decimal" Name="Longitud05" Nullable="true" Precision="8" Scale="2" />
+    <Property Type="Decimal" Name="LongitudTotal" Nullable="true" Precision="8" Scale="2" />
+    <Property Type="Decimal" Name="PresionDiseño" Nullable="true" Precision="6" Scale="2" />
+    <Property Type="Decimal" Name="PresionMaximaAdmisibleOperacion" Nullable="true" Precision="6" Scale="2" />
+    <Property Type="Decimal" Name="PresionMaximaOperacion" Nullable="true" Precision="6" Scale="2" />
+    <Property Type="Decimal" Name="PresionNormalOperacion" Nullable="true" Precision="6" Scale="2" />
+    <Property Type="Decimal" Name="TemperaturaMaximaOperacion" Nullable="true" Precision="6" Scale="2" />
+    <Property Type="Decimal" Name="TemperaturaNormalOperacion" Nullable="true" Precision="6" Scale="2" />
+    <Property Type="Int32" Name="NPS01" Nullable="true" />
+    <Property Type="Int32" Name="NPS02" Nullable="true" />
+    <Property Type="Int32" Name="NPS03" Nullable="true" />
+    <Property Type="Int32" Name="NPS04" Nullable="true" />
+    <Property Type="Int32" Name="NPS05" Nullable="true" />
+    <Property Type="Decimal" Name="Presion" Nullable="true" Precision="6" Scale="2" />
+    <Property Type="Int32" Name="BLPD" Nullable="true" />
+    <Property Type="Int32" Name="Schedule1" Nullable="true" />
+    <Property Type="Int32" Name="Schedule2" Nullable="true" />
+    <Property Type="Int32" Name="Schedule3" Nullable="true" />
+    <Property Type="String" Name="Material1" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Material2" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Material3" Nullable="true" MaxLength="50" />
+    <Property Type="Decimal" Name="Temperatura" Nullable="true" Precision="6" Scale="2" />
+    <Property Type="String" Name="BSW" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Esfuerzo_S" Nullable="true" />
+    <Property Type="Int32" Name="FactorJunta_E" Nullable="true" />
+    <Property Type="Decimal" Name="FactorSensibilidadError" Nullable="true" Precision="4" Scale="2" />
+    <Property Type="String" Name="RowState" Nullable="true" MaxLength="1" />
+    <Property Type="DateTime" Name="LastUpdate" Nullable="true" Precision="23" />
+  </ComplexType>
 </Schema>

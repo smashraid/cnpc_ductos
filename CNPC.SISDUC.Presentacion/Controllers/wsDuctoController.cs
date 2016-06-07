@@ -17,8 +17,17 @@ namespace CNPC.SISDUC.Presentacion.Controllers
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            IEnumerable<Ducto> ducto = _db.FilterByName("");
-            var result = Request.CreateResponse<IEnumerable<Ducto>>(HttpStatusCode.OK, ducto);
+            //IEnumerable<Ducto> ducto = _db.FilterByName("");
+            //var result = Request.CreateResponse<IEnumerable<Ducto>>(HttpStatusCode.OK, ducto);
+            DuctoResponse ductos = _db.FilterByName("", 1, 3);
+            var result = Request.CreateResponse<DuctoResponse>(HttpStatusCode.OK, ductos);
+            return result;
+        }
+        [HttpGet]
+        public HttpResponseMessage Get(string nombre, int page, int records)
+        {
+            DuctoResponse ductos = _db.FilterByName(nombre, page, records);
+            var result = Request.CreateResponse<DuctoResponse>(HttpStatusCode.OK, ductos);
             return result;
         }
         [HttpPost]

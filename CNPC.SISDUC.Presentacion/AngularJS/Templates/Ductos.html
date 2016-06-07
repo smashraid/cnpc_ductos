@@ -64,14 +64,21 @@
                                             <table width="30%" border="0" align="left">
                                                 <tbody>
                                                     <tr>
-                                                        <td class="texto"><label>7 Registros encontrados</label></td>
+                                                        <td class="texto"></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                             <table width="30%" border="0" align="right">
                                                 <tbody>
                                                     <tr>
-                                                        <td align="right" class="texto" style="text-align:right"><a href="#"><strong>[1]</strong></a> <strong><a href="#">&nbsp;[2]</a> <a href="#">[3]</a>&nbsp; <a href="#">[4]</a>&nbsp; <a href="#">[5]</a> | Paginaci&oacute;n</strong></td>
+                                                        <td align="right" class="texto" style="text-align:right">
+                                                            <a href="#" ng-click='firstPage()'><strong>[1]</strong></a> <strong>
+                                                                <a href="#" ng-click='firstPage()'>&nbsp;[2]</a>
+                                                                <a href="#">[3]</a>&nbsp;<label>{{parameterlist.totalRecords}} Registros encontrados</label>
+                                                                <a href="#">[4]</a>&nbsp;
+                                                                <a href="#">[5]</a> | Paginaci&oacute;n
+                                                            </strong>
+                                                        </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -94,19 +101,12 @@
                                                                 </td>
                                                             </table>
                                                         </td>
+
                                                         <td>
                                                             <table width="100%" border="0" align="right">
                                                                 <td class="button">
-                                                                    <a href="#" target="_self">
-                                                                        IMPRIMIR
-                                                                    </a>
-                                                                </td>
-                                                            </table>
-                                                        </td>
-                                                        <td>
-                                                            <table width="100%" border="0" align="right">
-                                                                <td class="button">
-                                                                    <a href="Login.html" target="_self">SALIR</a>
+                                                                    <a href="/Home/Index" target="_self">SALIR</a>
+
                                                                 </td>
                                                             </table>
                                                         </td>

@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using CNPC.SISDUC.DAL;
 using CNPC.SISDUC.Model;
 
 namespace CNPC.SISDUC.BLL
 {
-    public class Ductos
+    public class Ductos:IDisposable
     {
         public Ducto Create(Ducto newDucto)
         {
@@ -86,6 +83,17 @@ namespace CNPC.SISDUC.BLL
             }
             return Result;
         }
+
+        public DuctoResponse FilterByName(string Nombre, int page, int records)
+        {
+            DuctoResponse Result = null;
+            using (var r = new Repository<Ducto>())
+            {
+                Result = r.FilterByName(Nombre,page,records);
+            }
+            return Result;
+        }
+
         public Ducto FilterByID(int ID)
         {
             Ducto Result = null;
@@ -94,6 +102,11 @@ namespace CNPC.SISDUC.BLL
                 Result = r.Retrieve(p => p.Id == ID);
             }
             return Result;
+        }
+
+        public void Dispose()
+        {
+            GC.SuppressFinalize(this);
         }
     }
 }

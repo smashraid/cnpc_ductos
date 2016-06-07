@@ -1,8 +1,15 @@
 ﻿var ductoUrl = '/api/wsducto/';
 app.factory('ductoRepository', function ($http) {
     return {
-        get: function () {
-            return $http.get(ductoUrl);
+        get: function (parameterlist) {
+            return $http.get(ductoUrl,
+            {
+                params: {
+                    name: parameterlist.name,
+                    page: parameterlist.page,
+                    records: parameterlist.records
+                }
+            });
         },
         add: function (ducto) {
             return $http.post(ductoUrl, ducto);
