@@ -8,17 +8,9 @@
         templateUrl: '/AngularJS/Templates/Ductos.html',
         controller: 'ductoController'
     });
-    //$routeProvider.when('/OctavosDeFinal', {
-    //    templateUrl: '/AngularJS/Templates/OctavosDeFinal.html',
-    //    controller: 'OctavosDeFinalController'
-    //});
-    //$routeProvider.when('/CuartosDeFinal', {
-    //    templateUrl: '/AngularJS/Templates/CuartosDeFinal.html',
-    //    controller: 'CuartosDeFinalController'
-    //});
-    //$routeProvider.when('/SemifinalYFinal', {
-    //    templateUrl: '/AngularJS/Templates/SemifinalYFinal.html',
-    //    controller: 'SemifinalYFinalController'
-    //});
-    $locationProvider.html5Mode(true);
+
+    $locationProvider.html5Mode({
+        enabled: true,
+        requireBase: false
+    });
 });

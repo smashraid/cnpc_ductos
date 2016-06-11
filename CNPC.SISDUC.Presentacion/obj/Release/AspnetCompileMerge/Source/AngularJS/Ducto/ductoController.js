@@ -1,13 +1,24 @@
 ﻿app.controller("ductoController", function ($scope, ductoRepository) {
     //Metodo GET
     var getSuccessCallback = function (data, status) {
-        $scope.listaOleoductos = data;
+        $scope.listaOleoductos = data.List;
+        $scope.parameterlist.pages = data.TotalPages;
+        $scope.parameterlist.totalRecords = data.TotalRecords;
     }
     var errorCallBack = function (data, status, headers, config) {
         alert("Ocurrio un problema");
     }
 
-    ductoRepository.get()
+    //Paginación
+    $scope.parameterlist = {
+        name: '',
+        page: 1,
+        records: 8,
+        pages: 0,
+        totalRecords: 0
+    }
+
+    ductoRepository.get($scope.parameterlist)
     .success(getSuccessCallback)
     .error(errorCallBack);
     //Fin Metodo GET
@@ -56,6 +67,8 @@
     }
     $scope.guardarOleoducto = function (oleoducto) {
         if (validar(oleoducto)) {
+            oleoducto.LastUpdate = new Date();
+            oleoducto.RowState = "A";
             ductoRepository.add(oleoducto).success(postSuccessCallBack).error(errorCallBack);
         }
     }
@@ -73,6 +86,8 @@
     }
     $scope.actualizarOleoducto = function (oleoducto) {
         if (validar(oleoducto)) {
+            oleoducto.LastUpdate = new Date();
+            oleoducto.RowState = "A";
             ductoRepository.update(oleoducto).success(putSuccessCallBack).error(errorCallBack);
         }
     }
@@ -81,5 +96,38 @@
         $('#EditarOleoducto').modal('show');
     }
     //Fin Editar Oleoducto
+       
+    //paginación
+    $scope.firstPage = function () {
+        $scope.parameterlist.page = 1;
+        ductoRepository.get($scope.parameterlist)
+         .success(getSuccessCallback)
+         .error(errorCallBack);
+    };
 
+    $scope.previousPage = function () {
+        if ($scope.parameterlist.page > 1) {
+            $scope.parameterlist.page--;
+            ductoRepository.get($scope.parameterlist)
+             .success(getSuccessCallback)
+             .error(errorCallBack);
+        }
+    };
+
+    $scope.nextPage = function () {
+        if ($scope.parameterlist.page < $scope.parameterlist.pages) {
+            $scope.parameterlist.page++;
+            ductoRepository.get($scope.parameterlist)
+             .success(getSuccessCallback)
+             .error(errorCallBack);
+        }
+    };
+
+    $scope.lastPage = function () {
+        $scope.parameterlist.page = $scope.parameterlist.pages;
+        ductoRepository.get($scope.parameterlist)
+         .success(getSuccessCallback)
+         .error(errorCallBack);
+    };
+    //Fin de Paginación
 });

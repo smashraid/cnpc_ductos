@@ -46,8 +46,6 @@ namespace CNPC.SISDUC.Presentacion.Controllers
                 msg.Headers.Location = new Uri(Request.RequestUri + nuevoDucto.Id.ToString());
             }
             return msg;
-
-
         }
         [HttpPut]
         public HttpResponseMessage Put([FromBody]Ducto editarDucto)
@@ -69,7 +67,6 @@ namespace CNPC.SISDUC.Presentacion.Controllers
             {
                 return msg;
             }
-
         }
 
         public string ReadSetting(string key)

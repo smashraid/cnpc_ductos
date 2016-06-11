@@ -121,7 +121,7 @@ namespace CNPC.SISDUC.DAL
                     d.Codigo = reader.GetString(reader.GetOrdinal("Codigo"));
                     d.NoLamina = reader.GetString(reader.GetOrdinal("NoLamina"));
                     d.Trayectoria = reader.GetString(reader.GetOrdinal("Trayectoria"));
-                    d.Ubicacion = reader.GetString(reader.GetOrdinal("Trayectoria"));
+                    d.Ubicacion = reader.GetString(reader.GetOrdinal("Ubicacion"));
                     d.FechaInspeccion = reader.GetDateTime(reader.GetOrdinal("FechaInspeccion"));
                     d.NumeroTubos = reader.GetInt32(reader.GetOrdinal("NumeroTubos"));
                     d.Longitud01 = reader.GetDecimal(reader.GetOrdinal("Longitud01"));
