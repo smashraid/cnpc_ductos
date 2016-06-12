@@ -11,7 +11,7 @@
                             <td>
                                 <table width="100%" border="0" align="right">
                                     <td>
-                                        <input class="ui-inputfield" id="txtoleoductobuscar" />
+                                        <input ng-model="parameterlist.name" ng-keyup="firstPage()" class="ui-inputfield" id="txtoleoductobuscar" />
                                     </td>
                                 </table>
                             </td>
@@ -50,7 +50,7 @@
                                     <tr class="celda2_grilla" ng-repeat="item in listaOleoductos">
                                         <td width="5%" align="center" class="celda2_grilla">{{item.Id}}</td>
                                         <td width="8%" class="celda2_grilla">{{item.Codigo}}</td>
-                                        <td width="30%" class="celda2_grilla">{{item.Trayectoria}}</td>
+                                        <td width="30%" class="celda2_grilla">{{item.Descripcion}}</td>
                                         <td width="12%" class="celda2_grilla">{{item.NoLamina}}</td>
                                         <td width="10%" class="celda2_grilla">{{item.Ubicacion}}</td>
                                         <td width="8%" class="celda2_grilla">{{item.LongitudTotal}}</td>
@@ -72,16 +72,17 @@
                                                 <tbody>
                                                     <tr>
                                                         <td align="right" class="texto" style="text-align:right">
-                                                            <a href="#" ng-click='firstPage()'><strong>[1]</strong></a> <strong>
-                                                                <a href="#" ng-click='firstPage()'>&nbsp;[2]</a>
-                                                                <a href="#">[3]</a>&nbsp;<label>{{parameterlist.totalRecords}} Registros encontrados</label>
-                                                                <a href="#">[4]</a>&nbsp;
-                                                                <a href="#">[5]</a> | Paginaci&oacute;n
+                                                            <a href="#" ng-click='firstPage()'><strong>[|<]</strong></a> <strong>
+                                                                <a href="#" ng-click='firstPage()'>&nbsp;[<]</a>
+                                                                &nbsp;<label>{{parameterlist.page}}/ {{parameterlist.pages}}</label>
+                                                                <a href="#" ng-click='nextPage()'>[>]</a>&nbsp;
+                                                                <a href="#" ng-click='lastPage()'>[>|]</a>
                                                             </strong>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
+
                                         </td>
                                     </tr>
                                     <tr>
@@ -321,21 +322,11 @@
                     </tr>
                     <tr>
                         <td class="texto">
-                            <label>No Lamina</label>
-                        </td>
-                        <td class="texto" colspan="3" align="left">
-                            <div ng-class="{'has-error':verDucto.NoLamina==''}">
-                                <input type="text" id="txtNoLamina" class="form-control ui-inputfield" readonly ng-model="verDucto.NoLamina">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
                             <label>Descripción</label>
                         </td>
                         <td class="texto" colspan="3" align="left">
-                            <div ng-class="{'has-error':verDucto.Trayectoria==''}">
-                                <input type="text" id="txtCodigo" class="form-control ui-inputfield" readonly ng-model="verDucto.Trayectoria">
+                            <div ng-class="{'has-error':verDucto.Descripcion==''}">
+                                <input type="text" id="txtDescripcion" class="form-control ui-inputfield" readonly ng-model="verDucto.Descripcion">
                             </div>
                         </td>
                     </tr>
@@ -343,104 +334,64 @@
                         <td class="texto">
                             <label>Ubicación</label>
                         </td>
-                        <td class="texto">
+                        <td class="texto" colspan="3">
                             <div ng-class="{'has-error':verDucto.Ubicacion==''}">
                                 <input type="text" id="txtUbicación" class="form-control ui-inputfield" readonly ng-model="verDucto.Ubicacion">
                             </div>
-                        </td>
-                        <td class="texto">
-                            <p class="text-center">NPS</p>
-                        </td>
-                        <td class="texto">
-                            <p class=" text-center">Longitud</p>
                         </td>
                     </tr>
                     <tr>
                         <td class="texto">
                             <label for="lblMaterial">Material</label>
                         </td>
-                        <td class="texto inlinecontrols" align="left">
+                        <td class="texto inlinecontrols" colspan="3" align="left">
                             <input type="text" id="txtMaterial1" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material1">
                             <input type="text" id="txtMaterial2" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material2">
                             <input type="text" id="txtMaterial3" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material3">
-                        </td>
-                        <td class="texto">
-                            <input type="text" id="txtNPS01" class="form-control ui-inputfield" readonly ng-model="verDucto.NPS01">
-                        </td>
-                        <td class="texto">
-                            <input type="text" id="txtLongitud01" class="form-control ui-inputfield" readonly ng-model="verDucto.Longitud01">
                         </td>
                     </tr>
                     <tr>
                         <td class="texto">
                             <label>Schedule</label>
                         </td>
-                        <td class="texto inlinecontrols" align="left">
+                        <td class="texto inlinecontrols" colspan="3" align="left">
                             <input type="text" id="txtSchedule1" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule1">
                             <input type="text" id="txtSchedule2" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule2">
                             <input type="text" id="txtSchedule3" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule3">
                         </td>
-                        <td class="texto">
-                            <input type="text" id="txtNPS02" class="form-control ui-inputfield" readonly ng-model="verDucto.NPS02">
-                        </td>
-                        <td class="texto">
-                            <input type="text" id="txtLongitud02" class="form-control ui-inputfield" readonly ng-model="verDucto.Longitud02">
-                        </td>
+                       
                     </tr>
                     <tr>
                         <td class="texto">
                             <label for="lblBLPD">BLPD</label>
                         </td>
-                        <td class="texto" align="left">
+                        <td class="texto" colspan="3" align="left">
                             <input type="text" id="txtBLPD" class="form-control ui-inputfield" readonly ng-model="verDucto.BLPD">
                         </td>
-                        <td class="texto" align="left">
-                            <input type="text" id="txtNPS03" class="form-control ui-inputfield" readonly ng-model="verDucto.NPS03">
-                        </td>
-                        <td class="texto" align="left">
-                            <input type="text" id="txtLongitud03" class="form-control ui-inputfield" readonly ng-model="verDucto.Longitud03">
-                        </td>
+                        
                     </tr>
                     <tr>
                         <td class="texto">
                             <label for="lblPresion">Pres.(Psig)</label>
                         </td>
-                        <td class="texto">
+                        <td class="texto" colspan="3">
                             <input type="text" id="txtPresion" class="form-control ui-inputfield" readonly ng-model="verDucto.Presion">
-                        </td>
-                        <td class="texto">
-                            <input type="text" id="txtNPS04" class="form-control ui-inputfield" readonly ng-model="verDucto.NPS04">
-                        </td>
-                        <td class="texto">
-                            <input type="text" id="txtLongitud04" class="form-control ui-inputfield" readonly ng-model="verDucto.Longitud04">
                         </td>
                     </tr>
                     <tr>
                         <td class="texto">
                             <label for="lblPresion">Tempe(°F)</label>
                         </td>
-                        <td class="texto">
+                        <td class="texto" colspan="3">
                             <input type="text" id="txtTemperatura" class="form-control ui-inputfield" readonly ng-model="verDucto.Temperatura">
-                        </td>
-                        <td class="texto">
-                            <input type="text" id="txtNPS05" class="form-control ui-inputfield" readonly ng-model="verDucto.NPS05">
-                        </td>
-                        <td class="texto">
-                            <input type="text" id="txtLongitud05" class="form-control ui-inputfield" readonly ng-model="verDucto.Longitud05">
                         </td>
                     </tr>
                     <tr>
-                        <td class="texto">
+                        <td class="texto" >
                             <label for="lblBSW">BSW</label>
                         </td>
-                        <td class="texto">
+                        <td class="texto" colspan="3">
                             <input type="text" id="txtBSW" class="form-control ui-inputfield" readonly ng-model="verDucto.BSW">
-                        </td>
-                        <td class="texto">
-                            <label for="lblLongitudTotal">Longitud Total:</label>
-                        </td>
-                        <td class="texto">
-                            <input type="text" id="txtLongitudTotal" class="form-control ui-inputfield" placeholder="" readonly ng-model="verDucto.LongitudTotal">
                         </td>
                     </tr>
                 </table>

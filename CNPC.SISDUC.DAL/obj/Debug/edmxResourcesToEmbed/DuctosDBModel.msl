@@ -1,35 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="CNPC_DuctosModelStoreContainer" CdmEntityContainer="CNPC_DuctosEntities">
-    <EntitySetMapping Name="Ductos">
-      <EntityTypeMapping TypeName="CNPC_DuctosModel.Ducto">
-        <MappingFragment StoreEntitySet="Ductos">
+    <FunctionImportMapping FunctionImportName="uspGetListOleoductos" FunctionName="CNPC_DuctosModel.Store.uspGetListOleoductos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CNPC_DuctosModel.uspGetListOleoductos_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+          <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+          <ScalarProperty Name="FechaInspeccion" ColumnName="FechaInspeccion" />
+          <ScalarProperty Name="Presion" ColumnName="Presion" />
+          <ScalarProperty Name="BLPD" ColumnName="BLPD" />
+          <ScalarProperty Name="Schedule1" ColumnName="Schedule1" />
+          <ScalarProperty Name="Schedule2" ColumnName="Schedule2" />
+          <ScalarProperty Name="Schedule3" ColumnName="Schedule3" />
+          <ScalarProperty Name="Material1" ColumnName="Material1" />
+          <ScalarProperty Name="Material2" ColumnName="Material2" />
+          <ScalarProperty Name="Material3" ColumnName="Material3" />
+          <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
+          <ScalarProperty Name="BSW" ColumnName="BSW" />
+          <ScalarProperty Name="RowState" ColumnName="RowState" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="uspGetCountOleoductos" FunctionName="CNPC_DuctosModel.Store.uspGetCountOleoductos">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CNPC_DuctosModel.uspGetCountOleoductos_Result">
+          <ScalarProperty Name="TotalPage" ColumnName="TotalPage" />
+          <ScalarProperty Name="TotalRecords" ColumnName="TotalRecords" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Oleoductos">
+      <EntityTypeMapping TypeName="CNPC_DuctosModel.Oleoducto">
+        <MappingFragment StoreEntitySet="Oleoductos">
           <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
           <ScalarProperty Name="RowState" ColumnName="RowState" />
-          <ScalarProperty Name="FactorSensibilidadError" ColumnName="FactorSensibilidadError" />
-          <ScalarProperty Name="FactorJunta_E" ColumnName="FactorJunta_E" />
-          <ScalarProperty Name="Esfuerzo_S" ColumnName="Esfuerzo_S" />
+          <ScalarProperty Name="FechaInspeccion" ColumnName="FechaInspeccion" />
           <ScalarProperty Name="BSW" ColumnName="BSW" />
           <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
-          <ScalarProperty Name="Material" ColumnName="Material" />
-          <ScalarProperty Name="Shedule" ColumnName="Shedule" />
-          <ScalarProperty Name="BLPD" ColumnName="BLPD" />
           <ScalarProperty Name="Presion" ColumnName="Presion" />
-          <ScalarProperty Name="NPS" ColumnName="NPS" />
-          <ScalarProperty Name="TemperaturaNormalOperacion" ColumnName="TemperaturaNormalOperacion" />
-          <ScalarProperty Name="TemperaturaMaximaOperacion" ColumnName="TemperaturaMaximaOperacion" />
-          <ScalarProperty Name="PresionNormalOperacion" ColumnName="PresionNormalOperacion" />
-          <ScalarProperty Name="PresionMaximaOperacion" ColumnName="PresionMaximaOperacion" />
-          <ScalarProperty Name="PresionMaximaAdmisibleOperacion" ColumnName="PresionMaximaAdmisibleOperacion" />
-          <ScalarProperty Name="PresionDiseño" ColumnName="PresionDiseño" />
-          <ScalarProperty Name="LongitudTotalTubo" ColumnName="LongitudTotalTubo" />
-          <ScalarProperty Name="NumeroTubos" ColumnName="NumeroTubos" />
-          <ScalarProperty Name="FechaInspeccion" ColumnName="FechaInspeccion" />
-          <ScalarProperty Name="Inspector" ColumnName="Inspector" />
+          <ScalarProperty Name="BLPD" ColumnName="BLPD" />
+          <ScalarProperty Name="Schedule3" ColumnName="Schedule3" />
+          <ScalarProperty Name="Schedule2" ColumnName="Schedule2" />
+          <ScalarProperty Name="Schedule1" ColumnName="Schedule1" />
+          <ScalarProperty Name="Material3" ColumnName="Material3" />
+          <ScalarProperty Name="Material2" ColumnName="Material2" />
+          <ScalarProperty Name="Material1" ColumnName="Material1" />
           <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
-          <ScalarProperty Name="Trayectoria" ColumnName="Trayectoria" />
           <ScalarProperty Name="NoLamina" ColumnName="NoLamina" />
-          <ScalarProperty Name="Ducto1" ColumnName="Ducto" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Codigo" ColumnName="Codigo" />
           <ScalarProperty Name="Cliente" ColumnName="Cliente" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>

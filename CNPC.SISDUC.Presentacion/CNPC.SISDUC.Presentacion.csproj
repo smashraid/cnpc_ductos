@@ -173,7 +173,6 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\OleoductoController.cs" />
     <Compile Include="Controllers\WSDuctoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -187,12 +186,12 @@
     <Content Include="AngularJS\Bienvenidos\bienvenidosController.js" />
     <Content Include="AngularJS\Bienvenidos\bienvenidosRepository.js" />
     <Content Include="AngularJS\CuratosDeFinal\CuartosDeFinalController.js" />
-    <Content Include="AngularJS\Ducto\ductoRepository.js" />
+    <Content Include="AngularJS\Oleoducto\OleoductoRepository.js" />
     <Content Include="AngularJS\FaseDeGrupos\FaseDeGruposController.js" />
-    <Content Include="AngularJS\Ducto\ductoController.js" />
+    <Content Include="AngularJS\Oleoducto\OleoductoController.js" />
     <Content Include="AngularJS\RegistrationModule.js" />
     <Content Include="AngularJS\SemiFinalYFinal\SemiFinalYFinalController.js" />
-    <Content Include="AngularJS\Templates\Ductos.html" />
+    <Content Include="AngularJS\Templates\Oleoductos.html" />
     <Content Include="AngularJS\Templates\Bienvenidos.html" />
     <Content Include="AngularJS\Templates\CuartosDeFinal.html" />
     <Content Include="AngularJS\Templates\FaseDeGrupos.html" />
@@ -215,6 +214,7 @@
     <Content Include="Content\img\logo_petrobras_popup.jpg" />
     <Content Include="Content\img\progress.jpg" />
     <Content Include="Content\menu.css" />
+    <Content Include="Scripts\ui-bootstrap-tpls-1.3.3.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -571,7 +571,6 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
-    <Content Include="Views\Oleoducto\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

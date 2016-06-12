@@ -13,7 +13,7 @@ namespace CNPC.SISDUC.Testing
         [TestMethod]
         public void LeerDeExcelDO()
         {
-            List<Ducto> listaOriginal = null;
+            List<Oleoducto> listaOriginal = null;
 
             int totalRegistrosEsperado = 2;
             using (ArchivoExterno archivo = new ArchivoExterno())
@@ -39,7 +39,7 @@ namespace CNPC.SISDUC.Testing
         {
             int totalPage = 3;
             int resultado = 0;
-            using (Ductos objTest = new Ductos())
+            using (Oleoductos objTest = new Oleoductos())
             {
                 resultado = objTest.FilterByName("", 3, 3).TotalPages;
             }

@@ -1,8 +1,8 @@
-﻿var ductoUrl = '/api/wsducto/';
+﻿var ductoUrl = '/api/wsducto/get';
 app.factory('bienvenidosRepository', function ($http) {
     return {
         get: function () {
-            return $http.get(ductoUrl);
+            return $http.get();
         },
         add: function (ducto) {
             return $http.post(ductoUrl, ducto);

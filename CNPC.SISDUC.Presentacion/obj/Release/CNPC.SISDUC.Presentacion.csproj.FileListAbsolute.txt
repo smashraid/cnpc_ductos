@@ -1,4 +1,3 @@
-F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Release\CNPC.SISDUC.Presentacion.csprojResolveAssemblyReference.cache
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.Presentacion.dll.config
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.Presentacion.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.Presentacion.pdb
@@ -65,5 +64,6 @@ F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Owin.Security.Twitte
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.DAL.pdb
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\EPPlus.xml
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Release\CNPC.SISDUC.Presentacion.csprojResolveAssemblyReference.cache
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Release\CNPC.SISDUC.Presentacion.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Release\CNPC.SISDUC.Presentacion.pdb

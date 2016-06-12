@@ -27,7 +27,7 @@ namespace CNPC.SISDUC.Model
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Ducto> Ductos { get; set; }
+        public virtual DbSet<Oleoducto> Oleoductos { get; set; }
     
         public virtual ObjectResult<uspGetListOleoductos_Result> uspGetListOleoductos(string nombre, Nullable<int> page, Nullable<int> records, ObjectParameter totalPage)
         {
@@ -44,6 +44,23 @@ namespace CNPC.SISDUC.Model
                 new ObjectParameter("Records", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetListOleoductos_Result>("uspGetListOleoductos", nombreParameter, pageParameter, recordsParameter, totalPage);
+        }
+    
+        public virtual ObjectResult<uspGetCountOleoductos_Result> uspGetCountOleoductos(string nombre, Nullable<int> page, Nullable<int> records)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var pageParameter = page.HasValue ?
+                new ObjectParameter("Page", page) :
+                new ObjectParameter("Page", typeof(int));
+    
+            var recordsParameter = records.HasValue ?
+                new ObjectParameter("Records", records) :
+                new ObjectParameter("Records", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetCountOleoductos_Result>("uspGetCountOleoductos", nombreParameter, pageParameter, recordsParameter);
         }
     }
 }

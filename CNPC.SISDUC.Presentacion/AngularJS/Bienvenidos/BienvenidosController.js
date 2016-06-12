@@ -6,7 +6,7 @@
         alert("Ocurrio un problema");
     }
 
-    bienvenidosRepository.get()
-    .success(getSuccessCallback)
-    .error(errorCallBack);
+    //bienvenidosRepository.get()
+    //.success(getSuccessCallback)
+    //.error(errorCallBack);
 });

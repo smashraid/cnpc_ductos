@@ -59,7 +59,6 @@ C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Presenta
 C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Presentacion\obj\Debug\CNPC.SISDUC.Presentacion.csprojResolveAssemblyReference.cache
 C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Presentacion\obj\Debug\CNPC.SISDUC.Presentacion.dll
 C:\Users\Usuario\Documents\Visual Studio 2013\Projects\html\CNPC.SISDUC.Presentacion\obj\Debug\CNPC.SISDUC.Presentacion.pdb
-F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Debug\CNPC.SISDUC.Presentacion.csprojResolveAssemblyReference.cache
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.Presentacion.dll.config
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.Presentacion.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.Presentacion.pdb
@@ -95,6 +94,7 @@ F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.WebPages.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.WebPages.Razor.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\WebGrease.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.DAL.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\EPPlus.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.BLL.pdb
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.Model.pdb
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.Helpers.xml
@@ -124,5 +124,7 @@ F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Owin.Security.Google
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Owin.Security.Twitter.xml
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.DAL.pdb
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\EPPlus.xml
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Debug\CNPC.SISDUC.Presentacion.csprojResolveAssemblyReference.cache
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Debug\CNPC.SISDUC.Presentacion.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Debug\CNPC.SISDUC.Presentacion.pdb

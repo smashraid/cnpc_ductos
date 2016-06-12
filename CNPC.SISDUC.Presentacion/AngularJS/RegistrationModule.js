@@ -5,9 +5,10 @@
         controller: 'bienvenidosController'
     });
     $routeProvider.when('/Oleoducto', {
-        templateUrl: '/AngularJS/Templates/Ductos.html',
-        controller: 'ductoController'
+        templateUrl: '/AngularJS/Templates/Oleoductos.html',
+        controller: 'OleoductoController'
     });
+
 
     $locationProvider.html5Mode({
         enabled: true,

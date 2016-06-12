@@ -4,6 +4,7 @@ F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Release\CNPC.SISDUC.DAL.pdb
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Release\CNPC.SISDUC.Model.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Release\EntityFramework.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Release\EntityFramework.SqlServer.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Release\EPPlus.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Release\CNPC.SISDUC.Model.pdb
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Release\EntityFramework.xml
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Release\EntityFramework.SqlServer.xml

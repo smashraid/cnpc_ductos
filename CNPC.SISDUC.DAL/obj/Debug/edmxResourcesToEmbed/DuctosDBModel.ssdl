@@ -1,39 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CNPC_DuctosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Ductos">
+  <EntityType Name="Oleoductos">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Cliente" Type="varchar" MaxLength="50" />
-    <Property Name="Ducto" Type="varchar" MaxLength="50" />
+    <Property Name="Codigo" Type="varchar" MaxLength="50" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="150" />
     <Property Name="NoLamina" Type="varchar" MaxLength="50" />
-    <Property Name="Trayectoria" Type="varchar" MaxLength="50" />
     <Property Name="Ubicacion" Type="varchar" MaxLength="50" />
-    <Property Name="Inspector" Type="varchar" MaxLength="100" />
-    <Property Name="FechaInspeccion" Type="datetime" />
-    <Property Name="NumeroTubos" Type="int" />
-    <Property Name="LongitudTotalTubo" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="PresionDiseño" Type="decimal" Precision="6" Scale="2" />
-    <Property Name="PresionMaximaAdmisibleOperacion" Type="decimal" Precision="6" Scale="2" />
-    <Property Name="PresionMaximaOperacion" Type="decimal" Precision="6" Scale="2" />
-    <Property Name="PresionNormalOperacion" Type="decimal" Precision="6" Scale="2" />
-    <Property Name="TemperaturaMaximaOperacion" Type="decimal" Precision="6" Scale="2" />
-    <Property Name="TemperaturaNormalOperacion" Type="decimal" Precision="6" Scale="2" />
-    <Property Name="NPS" Type="int" />
-    <Property Name="Presion" Type="decimal" Precision="6" Scale="2" />
+    <Property Name="Material1" Type="varchar" MaxLength="50" />
+    <Property Name="Material2" Type="varchar" MaxLength="50" />
+    <Property Name="Material3" Type="varchar" MaxLength="50" />
+    <Property Name="Schedule1" Type="int" />
+    <Property Name="Schedule2" Type="int" />
+    <Property Name="Schedule3" Type="int" />
     <Property Name="BLPD" Type="int" />
-    <Property Name="Shedule" Type="int" />
-    <Property Name="Material" Type="varchar" MaxLength="50" />
+    <Property Name="Presion" Type="decimal" Precision="6" Scale="2" />
     <Property Name="Temperatura" Type="decimal" Precision="6" Scale="2" />
-    <Property Name="BSW" Type="varchar" MaxLength="10" />
-    <Property Name="Esfuerzo_S" Type="int" />
-    <Property Name="FactorJunta_E" Type="int" />
-    <Property Name="FactorSensibilidadError" Type="decimal" Precision="4" Scale="2" />
-    <Property Name="RowState" Type="char" MaxLength="1" />
-    <Property Name="LastUpdate" Type="datetime" />
+    <Property Name="BSW" Type="varchar" MaxLength="50" />
+    <Property Name="FechaInspeccion" Type="datetime" />
+    <Property Name="RowState" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" Nullable="false" />
   </EntityType>
+  <Function Name="uspGetCountOleoductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Page" Type="int" Mode="In" />
+    <Parameter Name="Records" Type="int" Mode="In" />
+  </Function>
+  <Function Name="uspGetListOleoductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Nombre" Type="varchar" Mode="In" />
+    <Parameter Name="Page" Type="int" Mode="In" />
+    <Parameter Name="Records" Type="int" Mode="In" />
+    <Parameter Name="TotalPage" Type="int" Mode="InOut" />
+  </Function>
   <EntityContainer Name="CNPC_DuctosModelStoreContainer">
-    <EntitySet Name="Ductos" EntityType="Self.Ductos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Oleoductos" EntityType="Self.Oleoductos" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

@@ -13,25 +13,25 @@ namespace CNPC.SISDUC.Presentacion.Controllers
 {
     public class WSDuctoController : ApiController
     {
-        Ductos _db = new Ductos();
+        Oleoductos _db = new Oleoductos();
         [HttpGet]
         public HttpResponseMessage Get()
         {
             //IEnumerable<Ducto> ducto = _db.FilterByName("");
             //var result = Request.CreateResponse<IEnumerable<Ducto>>(HttpStatusCode.OK, ducto);
-            DuctoResponse ductos = _db.FilterByName("", 1, 3);
-            var result = Request.CreateResponse<DuctoResponse>(HttpStatusCode.OK, ductos);
+            OleoductoResponse ductos = _db.FilterByName("", 1, 8);
+            var result = Request.CreateResponse<OleoductoResponse>(HttpStatusCode.OK, ductos);
             return result;
         }
         [HttpGet]
-        public HttpResponseMessage Get(string nombre, int page, int records)
+        public HttpResponseMessage GetOleoductos(string name, int page, int records)
         {
-            DuctoResponse ductos = _db.FilterByName(nombre, page, records);
-            var result = Request.CreateResponse<DuctoResponse>(HttpStatusCode.OK, ductos);
+            OleoductoResponse ductos = _db.FilterByName(name, page, records);
+            var result = Request.CreateResponse<OleoductoResponse>(HttpStatusCode.OK, ductos);
             return result;
         }
         [HttpPost]
-        public HttpResponseMessage Post([FromBody]Ducto nuevoDucto)
+        public HttpResponseMessage Post([FromBody]Oleoducto nuevoDucto)
         {
             var msg = new HttpResponseMessage(HttpStatusCode.NotAcceptable);
             if (ModelState.IsValid)
@@ -48,7 +48,7 @@ namespace CNPC.SISDUC.Presentacion.Controllers
             return msg;
         }
         [HttpPut]
-        public HttpResponseMessage Put([FromBody]Ducto editarDucto)
+        public HttpResponseMessage Put([FromBody]Oleoducto editarDucto)
         {
             var msg = new HttpResponseMessage(HttpStatusCode.NotFound);
             if (ModelState.IsValid)
@@ -56,7 +56,7 @@ namespace CNPC.SISDUC.Presentacion.Controllers
                 if (editarDucto != null && editarDucto.Codigo != string.Empty)
                 {
                     _db.Update(editarDucto);
-                    return Request.CreateResponse<Ducto>(HttpStatusCode.OK, editarDucto);
+                    return Request.CreateResponse<Oleoducto>(HttpStatusCode.OK, editarDucto);
                 }
                 else
                 {
