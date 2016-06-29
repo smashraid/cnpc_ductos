@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RegistroInspeccionVisuales.cs" />
     <Compile Include="Oleoductos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

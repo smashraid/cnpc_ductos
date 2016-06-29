@@ -29,6 +29,60 @@
           <Property Name="RowState" Type="char" MaxLength="1" Nullable="false" />
           <Property Name="LastUpdate" Type="datetime" Nullable="false" />
         </EntityType>
+        <EntityType Name="RegistroInspeccionVisual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OleoductoID" Type="int" Nullable="false" />
+          <Property Name="CodigoDelTubo" Type="varchar" MaxLength="50" />
+          <Property Name="NumeroAnterior" Type="int" />
+          <Property Name="NPS" Type="int" />
+          <Property Name="Schedule" Type="int" />
+          <Property Name="SHC" Type="int" />
+          <Property Name="TipoMaterial" Type="varchar" MaxLength="50" />
+          <Property Name="Longitud" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="CoordenadasUTM_X" Type="varchar" MaxLength="10" />
+          <Property Name="CoordenadasUTM_Y" Type="varchar" MaxLength="10" />
+          <Property Name="ExtremoInicial1" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="ExtremoInicial2" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="ExtremoInicial3" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="ExtremoInicial4" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="BSCAN" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="EspesorPared" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoMedio1" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="ExtremoMedio2" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="ExtremoMedio3" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="ExtremoMedio4" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="MapeoCorrison" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="PitCorrosion" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoFinal1" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoFinal2" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoFinal3" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoFinal4" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="LEFT_MINIMO" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="EspesorRemanente" Type="decimal" Precision="8" Scale="3" />
+          <Property Name="Defecto" Type="varchar" MaxLength="100" />
+          <Property Name="Defecto2" Type="varchar" MaxLength="50" />
+          <Property Name="NumeroGrapas" Type="int" />
+          <Property Name="TipoSoporte" Type="varchar" MaxLength="2" />
+          <Property Name="Elastomero" Type="bit" />
+          <Property Name="Maleza" Type="bit" />
+          <Property Name="TuberiaAlrededor" Type="bit" />
+          <Property Name="Pintura" Type="bit" />
+          <Property Name="CruceCarretera" Type="bit" />
+          <Property Name="TipoProteccion" Type="varchar" MaxLength="50" />
+          <Property Name="EstadoProteccion" Type="varchar" MaxLength="50" />
+          <Property Name="EstadoTuberia" Type="varchar" MaxLength="2" />
+          <Property Name="EspesorNominal" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="EspesorMinimoRealRemanente" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ObservacionesDeLaInspeccionVisual" Type="varchar" MaxLength="500" />
+          <Property Name="CondicionDelTramo" Type="varchar" MaxLength="500" />
+          <Property Name="UltimaFechaDeInspeccion" Type="datetime" />
+          <Property Name="SeleccionarTuberia" Type="bit" />
+          <Property Name="RowState" Type="char" MaxLength="1" />
+          <Property Name="LastUpdate" Type="datetime" />
+        </EntityType>
         <Function Name="uspGetCountOleoductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="Page" Type="int" Mode="In" />
@@ -42,6 +96,7 @@
         </Function>
         <EntityContainer Name="CNPC_DuctosModelStoreContainer">
           <EntitySet Name="Oleoductos" EntityType="Self.Oleoductos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RegistroInspeccionVisual" EntityType="Self.RegistroInspeccionVisual" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -60,6 +115,7 @@
             <Parameter Name="Records" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="Oleoductos" EntityType="CNPC_DuctosModel.Oleoducto" />
+          <EntitySet Name="RegistroInspeccionVisuals" EntityType="CNPC_DuctosModel.RegistroInspeccionVisual" />
         </EntityContainer>
         <ComplexType Name="uspGetListOleoductos_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -108,6 +164,60 @@
           <Property Name="FechaInspeccion" Type="DateTime" Precision="3" />
           <Property Name="RowState" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="RegistroInspeccionVisual">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OleoductoID" Type="Int32" Nullable="false" />
+          <Property Name="CodigoDelTubo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroAnterior" Type="Int32" />
+          <Property Name="NPS" Type="Int32" />
+          <Property Name="Schedule" Type="Int32" />
+          <Property Name="SHC" Type="Int32" />
+          <Property Name="TipoMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Longitud" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="CoordenadasUTM_X" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CoordenadasUTM_Y" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ExtremoInicial1" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="ExtremoInicial2" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="ExtremoInicial3" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="ExtremoInicial4" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="BSCAN" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="EspesorPared" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoMedio1" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="ExtremoMedio2" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="ExtremoMedio3" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="ExtremoMedio4" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="MapeoCorrison" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PitCorrosion" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoFinal1" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoFinal2" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoFinal3" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoFinal4" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="LEFT_MINIMO" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="EspesorRemanente" Type="Decimal" Precision="8" Scale="3" />
+          <Property Name="Defecto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Defecto2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroGrapas" Type="Int32" />
+          <Property Name="TipoSoporte" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Elastomero" Type="Boolean" />
+          <Property Name="Maleza" Type="Boolean" />
+          <Property Name="TuberiaAlrededor" Type="Boolean" />
+          <Property Name="Pintura" Type="Boolean" />
+          <Property Name="CruceCarretera" Type="Boolean" />
+          <Property Name="TipoProteccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoProteccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoTuberia" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="EspesorNominal" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="EspesorMinimoRealRemanente" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ObservacionesDeLaInspeccionVisual" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CondicionDelTramo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="UltimaFechaDeInspeccion" Type="DateTime" Precision="3" />
+          <Property Name="SeleccionarTuberia" Type="Boolean" />
+          <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -168,6 +278,61 @@
                 <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
                 <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RegistroInspeccionVisuals">
+            <EntityTypeMapping TypeName="CNPC_DuctosModel.RegistroInspeccionVisual">
+              <MappingFragment StoreEntitySet="RegistroInspeccionVisual">
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="RowState" ColumnName="RowState" />
+                <ScalarProperty Name="SeleccionarTuberia" ColumnName="SeleccionarTuberia" />
+                <ScalarProperty Name="UltimaFechaDeInspeccion" ColumnName="UltimaFechaDeInspeccion" />
+                <ScalarProperty Name="CondicionDelTramo" ColumnName="CondicionDelTramo" />
+                <ScalarProperty Name="ObservacionesDeLaInspeccionVisual" ColumnName="ObservacionesDeLaInspeccionVisual" />
+                <ScalarProperty Name="EspesorMinimoRealRemanente" ColumnName="EspesorMinimoRealRemanente" />
+                <ScalarProperty Name="EspesorNominal" ColumnName="EspesorNominal" />
+                <ScalarProperty Name="EstadoTuberia" ColumnName="EstadoTuberia" />
+                <ScalarProperty Name="EstadoProteccion" ColumnName="EstadoProteccion" />
+                <ScalarProperty Name="TipoProteccion" ColumnName="TipoProteccion" />
+                <ScalarProperty Name="CruceCarretera" ColumnName="CruceCarretera" />
+                <ScalarProperty Name="Pintura" ColumnName="Pintura" />
+                <ScalarProperty Name="TuberiaAlrededor" ColumnName="TuberiaAlrededor" />
+                <ScalarProperty Name="Maleza" ColumnName="Maleza" />
+                <ScalarProperty Name="Elastomero" ColumnName="Elastomero" />
+                <ScalarProperty Name="TipoSoporte" ColumnName="TipoSoporte" />
+                <ScalarProperty Name="NumeroGrapas" ColumnName="NumeroGrapas" />
+                <ScalarProperty Name="Defecto2" ColumnName="Defecto2" />
+                <ScalarProperty Name="Defecto" ColumnName="Defecto" />
+                <ScalarProperty Name="EspesorRemanente" ColumnName="EspesorRemanente" />
+                <ScalarProperty Name="LEFT_MINIMO" ColumnName="LEFT_MINIMO" />
+                <ScalarProperty Name="ExtremoFinal4" ColumnName="ExtremoFinal4" />
+                <ScalarProperty Name="ExtremoFinal3" ColumnName="ExtremoFinal3" />
+                <ScalarProperty Name="ExtremoFinal2" ColumnName="ExtremoFinal2" />
+                <ScalarProperty Name="ExtremoFinal1" ColumnName="ExtremoFinal1" />
+                <ScalarProperty Name="PitCorrosion" ColumnName="PitCorrosion" />
+                <ScalarProperty Name="MapeoCorrison" ColumnName="MapeoCorrison" />
+                <ScalarProperty Name="ExtremoMedio4" ColumnName="ExtremoMedio4" />
+                <ScalarProperty Name="ExtremoMedio3" ColumnName="ExtremoMedio3" />
+                <ScalarProperty Name="ExtremoMedio2" ColumnName="ExtremoMedio2" />
+                <ScalarProperty Name="ExtremoMedio1" ColumnName="ExtremoMedio1" />
+                <ScalarProperty Name="EspesorPared" ColumnName="EspesorPared" />
+                <ScalarProperty Name="BSCAN" ColumnName="BSCAN" />
+                <ScalarProperty Name="ExtremoInicial4" ColumnName="ExtremoInicial4" />
+                <ScalarProperty Name="ExtremoInicial3" ColumnName="ExtremoInicial3" />
+                <ScalarProperty Name="ExtremoInicial2" ColumnName="ExtremoInicial2" />
+                <ScalarProperty Name="ExtremoInicial1" ColumnName="ExtremoInicial1" />
+                <ScalarProperty Name="CoordenadasUTM_Y" ColumnName="CoordenadasUTM_Y" />
+                <ScalarProperty Name="CoordenadasUTM_X" ColumnName="CoordenadasUTM_X" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="TipoMaterial" ColumnName="TipoMaterial" />
+                <ScalarProperty Name="SHC" ColumnName="SHC" />
+                <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+                <ScalarProperty Name="NPS" ColumnName="NPS" />
+                <ScalarProperty Name="NumeroAnterior" ColumnName="NumeroAnterior" />
+                <ScalarProperty Name="CodigoDelTubo" ColumnName="CodigoDelTubo" />
+                <ScalarProperty Name="OleoductoID" ColumnName="OleoductoID" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

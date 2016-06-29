@@ -1,0 +1,16 @@
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\CNPC.SISDUC.Testing.dll.config
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\CNPC.SISDUC.Testing.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\CNPC.SISDUC.Testing.pdb
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\CNPC.SISDUC.BLL.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\CNPC.SISDUC.DAL.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\CNPC.SISDUC.Model.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\EntityFramework.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\EPPlus.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\CNPC.SISDUC.BLL.pdb
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\CNPC.SISDUC.DAL.pdb
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\CNPC.SISDUC.Model.pdb
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\EntityFramework.xml
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\bin\Debug\EPPlus.xml
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\obj\Debug\CNPC.SISDUC.Testing.csprojResolveAssemblyReference.cache
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\obj\Debug\CNPC.SISDUC.Testing.dll
+F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Testing\obj\Debug\CNPC.SISDUC.Testing.pdb

@@ -93,10 +93,12 @@
         }
         //Fin Agregar Nuevo Oleoducto
 
+        //Ver Oleoducto
         $scope.verOleoducto = function (oleoducto) {
             $scope.verDucto = oleoducto;
             $('#VerOleoducto').modal('show');
         }
+
 
         //Editar Oleoducto
         var putSuccessCallBack = function (data, status) {

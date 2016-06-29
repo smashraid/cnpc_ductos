@@ -13,6 +13,7 @@
       <Parameter Name="Records" Mode="In" Type="Int32" />
     </FunctionImport>
     <EntitySet Name="Oleoductos" EntityType="CNPC_DuctosModel.Oleoducto" />
+    <EntitySet Name="RegistroInspeccionVisuals" EntityType="CNPC_DuctosModel.RegistroInspeccionVisual" />
   </EntityContainer>
   <ComplexType Name="uspGetListOleoductos_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -61,5 +62,59 @@
     <Property Name="FechaInspeccion" Type="DateTime" Precision="3" />
     <Property Name="RowState" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="RegistroInspeccionVisual">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OleoductoID" Type="Int32" Nullable="false" />
+    <Property Name="CodigoDelTubo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroAnterior" Type="Int32" />
+    <Property Name="NPS" Type="Int32" />
+    <Property Name="Schedule" Type="Int32" />
+    <Property Name="SHC" Type="Int32" />
+    <Property Name="TipoMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Longitud" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="CoordenadasUTM_X" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="CoordenadasUTM_Y" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="ExtremoInicial1" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoInicial2" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoInicial3" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoInicial4" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="BSCAN" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="EspesorPared" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="ExtremoMedio1" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoMedio2" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoMedio3" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoMedio4" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="MapeoCorrison" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="PitCorrosion" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="ExtremoFinal1" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="ExtremoFinal2" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="ExtremoFinal3" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="ExtremoFinal4" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="LEFT_MINIMO" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="EspesorRemanente" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="Defecto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Defecto2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NumeroGrapas" Type="Int32" />
+    <Property Name="TipoSoporte" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Elastomero" Type="Boolean" />
+    <Property Name="Maleza" Type="Boolean" />
+    <Property Name="TuberiaAlrededor" Type="Boolean" />
+    <Property Name="Pintura" Type="Boolean" />
+    <Property Name="CruceCarretera" Type="Boolean" />
+    <Property Name="TipoProteccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EstadoProteccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EstadoTuberia" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="EspesorNominal" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="EspesorMinimoRealRemanente" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="ObservacionesDeLaInspeccionVisual" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CondicionDelTramo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="UltimaFechaDeInspeccion" Type="DateTime" Precision="3" />
+    <Property Name="SeleccionarTuberia" Type="Boolean" />
+    <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
   </EntityType>
 </Schema>

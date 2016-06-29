@@ -17,8 +17,6 @@ namespace CNPC.SISDUC.Presentacion.Controllers
         [HttpGet]
         public HttpResponseMessage Get()
         {
-            //IEnumerable<Ducto> ducto = _db.FilterByName("");
-            //var result = Request.CreateResponse<IEnumerable<Ducto>>(HttpStatusCode.OK, ducto);
             OleoductoResponse ductos = _db.FilterByName("", 1, 8);
             var result = Request.CreateResponse<OleoductoResponse>(HttpStatusCode.OK, ductos);
             return result;
@@ -68,7 +66,19 @@ namespace CNPC.SISDUC.Presentacion.Controllers
                 return msg;
             }
         }
-
+        [HttpDelete]
+        public HttpResponseMessage Delete(int id)
+        {
+            try
+            {
+                var Existe = _db.Delete(id);
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            catch (Exception)
+            {
+                throw new HttpResponseException(HttpStatusCode.NotFound);
+            }
+        }
         public string ReadSetting(string key)
         {
             string result;

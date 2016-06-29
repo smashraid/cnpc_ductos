@@ -1,0 +1,639 @@
+﻿<div id="content">
+    <div class="form-group">
+        <label class="col-lg-5">CODIGO: OLB-0001-158</label>
+        <label class="col-lg-4">UBICACIÓN: CARRIZO</label>
+        <label class="col-lg-3">LONGITUD TOTAL: 18781.5</label>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-5">DESCRIPCION: ESTACION DE  BOMBAS 951 A PTC-CARRIZO</label>
+        <label class="col-lg-4">LAMINA: 1.1.2.21-2009-OO-PL-M-11</label>
+        <label class="col-lg-3">PRESION: 30 psig</label>
+    </div>
+    <div>
+        <label class="tituloh1"></label>
+    </div>
+    <div width="90%">
+        <div class="col-lg-1"></div>
+        <div class="from-group">
+            <div class="col-lg-9">
+                <input type="Text" name="txtBuscar" ng-model="parameterlist.name" class="form-control col-lg-3" placeholder="Buscar" ng-keyup="firstPage()" />
+                <button class="btn btn-danger col-lg-1">Buscar</button>
+            </div>
+            
+        </div>
+
+    </div>
+</div>
+
+<table border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>
+            <table border="0" align="center">
+
+                <tr>
+                    <td align="center">
+                        <table  border="0">
+                            <thead>
+                                <tr>
+                                    <th align="center" class="titulo_grilla">ID</th>
+                                    <th align="center" class="titulo_grilla">Código</th>
+                                    <th align="center" class="titulo_grilla">NPS</th>
+                                    <th align="center" class="titulo_grilla">SHC</th>
+                                    <th align="center" class="titulo_grilla">Longitud (m)</th>
+                                    <th align="center" class="titulo_grilla">Espesor Nominal</th>
+                                    <th align="center" class="titulo_grilla">Espesor Minimo Real Remanente</th>
+                                    <th align="center" class="titulo_grilla">Cruce Carretera</th>
+                                    <th align="center" class="titulo_grilla">Observaciones De La InspeccionVisual</th>
+                                    <th align="center" class="titulo_grilla">Condicion Del Tramo</th>
+                                    <th align="center" class="titulo_grilla">Ultima Fecha De Inspeccion</th>
+                                    <th align="center" class="titulo_grilla">Seleccionar Tuberia</th>
+                                    <th align="center" class="titulo_grilla">Ver Información</th>
+                                    <th align="center" class="titulo_grilla"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="celda2_grilla" ng-repeat="item in listaTuberia">
+                                    <td width="2%" align="center" class="celda2_grilla">{{item.Id}}</td>
+                                    <td width="19%" class="celda2_grilla">{{item.CodigoDelTubo}}</td>
+                                    <td width="3%" class="celda2_grilla">{{item.NPS}}</td>
+                                    <td width="3%" class="celda2_grilla">{{item.Schedule}}</td>
+                                    <td width="5%" class="celda2_grilla">{{item.Longitud}}</td>
+                                    <td width="5%" class="celda2_grilla">{{item.EspesorNominal}}</td>
+                                    <td width="8%" class="celda2_grilla">{{item.EspesorMinimoRealRemanente}}</td>
+                                    <td width="5%" class="celda2_grilla">{{item.CruceCarretera ? '':'X'}}</td>
+                                    <td width="15%" class="celda2_grilla">{{item.ObservacionesDeLaInspeccionVisual}}</td>
+                                    <td width="15%" class="celda2_grilla">{{item.CondicionDelTramo}}</td>
+                                    <td width="10%" class="celda2_grilla">{{item.UltimaFechaDeInspeccion | date: 'dd-MM-yyyy' }}</td>
+                                    <td width="5%" class="celda2_grilla">{{item.SeleccionarTuberia ? '' : 'X' }}</td>
+
+                                    <td align="center">
+                                        <a href="#" ng-click="verOleoducto(item)"><img src="Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="15" align="center">
+                                        <table width="30%" border="0" align="left">
+                                            <tbody>
+                                                <tr>
+                                                    <td class="texto"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="30%" border="0" align="right">
+                                            <tbody>
+                                                <tr>
+                                                    <td align="right" class="texto" style="text-align:right">
+                                                        <a href="#" ng-click='firstPage()'><strong>[|<]</strong></a> <strong>
+                                                            <a href="#" ng-click='firstPage()'>&nbsp;[<]</a>
+                                                            &nbsp;<label>{{parameterlist.page}}/ {{parameterlist.pages}}</label>
+                                                            <a href="#" ng-click='nextPage()'>[>]</a>&nbsp;
+                                                            <a href="#" ng-click='lastPage()'>[>|]</a>
+                                                        </strong>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="15" align="center">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="15" align="center">
+                                        <table width="60%" border="0" align="left">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table border="0" align="left">
+                                                            <td class="button">
+                                                                <a href="#" ng-click="ReporteGeneral()">
+                                                                    Reporte General
+                                                                </a>
+                                                            </td>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table border="0" align="left">
+                                                            <td class="button">
+                                                                <a href="#" target="_self">Generar Reporte</a>
+
+                                                            </td>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table border="0" align="left">
+                                                            <td class="button">
+                                                                <a href="#" ng-click="TablaResumen()">
+                                                                    Tabla Resumen
+                                                                </a>
+                                                            </td>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table border="0" align="left">
+                                                            <td class="button">
+                                                                <a href="#" ng-click="FiltroDatos()">
+                                                                    Filtro de Datos
+                                                                </a>
+                                                            </td>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table border="0" align="right">
+                                                            <td class="button">
+                                                                <a href="#" ng-click="Historial()">
+                                                                    Historial
+                                                                </a>
+                                                            </td>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table border="0" align="right">
+                                                            <td class="button">
+                                                                <a href="#" ng-click="NuevoRegistro()">
+                                                                    Nuevo Registro
+                                                                </a>
+                                                            </td>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="15" align="center">&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <table width="20%" border="0" align="right">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table width="100%" border="0" align="right">
+                                                            <td class="button">
+                                                                <a href="#" ng-click="agregarTuberia()">
+                                                                    Agregar Tuberia
+                                                                </a>
+                                                            </td>
+                                                        </table>
+                                                    </td>
+                                                    <td>
+                                                        <table width="100%" border="0" align="right">
+                                                            <td class="button">
+                                                                <a href="/Home/Index" target="_self">SALIR</a>
+
+                                                            </td>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="15" align="center">&nbsp;</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</div>
+<!-- Modal -->
+<div id="NuevoOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Nuevo Oleoducto
+                </h4>
+            </div>
+            <div class="modal-body">
+                <table border="0" align="center">
+                    <tr>
+                        <td class="texto">
+                            <label>Código</label>
+                        </td>
+                        <td class="texto" align="left">
+                            <div ng-class="{'has-error':nuevoDucto.Codigo==''}">
+                                <input type="text" class="form-control ui-inputfield" id="txtCodigo" ng-model="nuevoDucto.Codigo">
+                            </div>
+                        </td>
+                        <td class="texto">
+                            <label>Fecha</label>
+                        </td>
+                        <td align="left">
+                            <input class="ui-inputfield" type="date" name="date" id="date" ng-model="nuevoDucto.FechaInspeccion">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>No Lamina</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <div ng-class="{'has-error':nuevoDucto.NoLamina==''}">
+                                <input type="text" id="txtNoLamina" class="form-control ui-inputfield" ng-model="nuevoDucto.NoLamina">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Descripción</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <div ng-class="{'has-error':nuevoDucto.Trayectoria==''}">
+                                <input type="text" id="txtCodigo" class="form-control ui-inputfield" ng-model="nuevoDucto.Trayectoria">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Ubicación</label>
+                        </td>
+                        <td class="texto">
+                            <div ng-class="{'has-error':nuevoDucto.Ubicacion==''}">
+                                <input type="text" id="txtUbicación" class="form-control ui-inputfield" ng-model="nuevoDucto.Ubicacion">
+                            </div>
+                        </td>
+                        <td class="texto">
+                            <p class="text-center">NPS</p>
+                        </td>
+                        <td class="texto">
+                            <p class=" text-center">Longitud</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblMaterial">Material</label>
+                        </td>
+                        <td class="texto inlinecontrols" align="left">
+                            <input type="text" id="txtMaterial1" class="ui-txtfield col-xs-4" ng-model="nuevoDucto.Material1">
+                            <input type="text" id="txtMaterial2" class="ui-txtfield col-xs-4" ng-model="nuevoDucto.Material2">
+                            <input type="text" id="txtMaterial3" class="ui-txtfield col-xs-4" ng-model="nuevoDucto.Material3">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS01" class="ui-inputfield" ng-model="nuevoDucto.NPS01">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud01" class="ui-inputfield" ng-model="nuevoDucto.Longitud01">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Schedule</label>
+                        </td>
+                        <td class="texto inlinecontrols" align="left">
+                            <input type="text" id="txtSchedule1" class="ui-txtfield col-xs-4" ng-model="nuevoDucto.Schedule1">
+                            <input type="text" id="txtSchedule2" class="ui-txtfield col-xs-4" ng-model="nuevoDucto.Schedule2">
+                            <input type="text" id="txtSchedule3" class="ui-txtfield col-xs-4" ng-model="nuevoDucto.Schedule3">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS02" class="ui-inputfield" ng-model="nuevoDucto.NPS02">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud02" class="ui-inputfield" ng-model="nuevoDucto.Longitud02">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBLPD">BLPD</label>
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtBLPD" class="ui-inputfield" ng-model="nuevoDucto.BLPD">
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtNPS03" class="ui-inputfield" ng-model="nuevoDucto.NPS03">
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtLongitud03" class="ui-inputfield" ng-model="nuevoDucto.Longitud03">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Pres.(Psig)</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtPresion" class="ui-inputfield" ng-model="nuevoDucto.Presion">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS04" class="ui-inputfield" ng-model="nuevoDucto.NPS04">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud04" class="ui-inputfield" ng-model="nuevoDucto.Longitud04">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Tempe(°F)</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtTemperatura" class="ui-inputfield" ng-model="nuevoDucto.Temperatura">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS05" class="ui-inputfield" ng-model="nuevoDucto.NPS05">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud05" class="ui-inputfield" ng-model="nuevoDucto.Longitud05">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBSW">BSW</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtBSW" class="ui-inputfield" ng-model="nuevoDucto.BSW">
+                        </td>
+                        <td class="texto">
+                            <label for="lblLongitudTotal">Longitud Total:</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitudTotal" class="ui-inputfield" placeholder="" ng-model="nuevoDucto.LongitudTotal">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" ng-click="guardarOleoducto(nuevoDucto)">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="VerOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Ver Oleoducto
+                </h4>
+            </div>
+            <div class="modal-body">
+                <table border="0" align="center">
+                    <tr>
+                        <td class="texto">
+                            <label>Código</label>
+                        </td>
+                        <td class="texto" align="left">
+                            <div ng-class="{'has-error':verDucto.Codigo==''}">
+                                <input type="text" class="form-control ui-inputfield" id="txtCodigo" readonly ng-model="verDucto.Codigo">
+                            </div>
+                        </td>
+                        <td class="texto">
+                            <label>Fecha</label>
+                        </td>
+                        <td align="left">
+                            <input class="form-control ui-inputfield" type="date" name="date" id="date" readonly ng-model="verDucto.FechaInspeccion">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Descripción</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <div ng-class="{'has-error':verDucto.Descripcion==''}">
+                                <input type="text" id="txtDescripcion" class="form-control ui-inputfield" readonly ng-model="verDucto.Descripcion">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Ubicación</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <div ng-class="{'has-error':verDucto.Ubicacion==''}">
+                                <input type="text" id="txtUbicación" class="form-control ui-inputfield" readonly ng-model="verDucto.Ubicacion">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblMaterial">Material</label>
+                        </td>
+                        <td class="texto inlinecontrols" colspan="3" align="left">
+                            <input type="text" id="txtMaterial1" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material1">
+                            <input type="text" id="txtMaterial2" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material2">
+                            <input type="text" id="txtMaterial3" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Schedule</label>
+                        </td>
+                        <td class="texto inlinecontrols" colspan="3" align="left">
+                            <input type="text" id="txtSchedule1" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule1">
+                            <input type="text" id="txtSchedule2" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule2">
+                            <input type="text" id="txtSchedule3" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule3">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBLPD">BLPD</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <input type="text" id="txtBLPD" class="form-control ui-inputfield" readonly ng-model="verDucto.BLPD">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Pres.(Psig)</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <input type="text" id="txtPresion" class="form-control ui-inputfield" readonly ng-model="verDucto.Presion">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Tempe(°F)</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <input type="text" id="txtTemperatura" class="form-control ui-inputfield" readonly ng-model="verDucto.Temperatura">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBSW">BSW</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <input type="text" id="txtBSW" class="form-control ui-inputfield" readonly ng-model="verDucto.BSW">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="EditarOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Nuevo Oleoducto
+                </h4>
+            </div>
+            <div class="modal-body">
+                <table border="0" align="center">
+                    <tr>
+                        <td class="texto">
+                            <label>Código</label>
+                        </td>
+                        <td class="texto" align="left">
+                            <div ng-class="{'has-error':editarDucto.Codigo==''}">
+                                <input type="text" class="form-control ui-inputfield" id="txtCodigo" ng-model="editarDucto.Codigo" readonly>
+                            </div>
+                        </td>
+                        <td class="texto">
+                            <label>Fecha</label>
+                        </td>
+                        <td align="left">
+                            <input class="ui-inputfield" type="date" name="date" id="date" ng-model="editarDucto.FechaInspeccion">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>No Lamina</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <div ng-class="{'has-error':editarDucto.NoLamina==''}">
+                                <input type="text" id="txtNoLamina" class="form-control ui-inputfield" ng-model="editarDucto.NoLamina">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Descripción</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <div ng-class="{'has-error':editarDucto.Descripcion==''}">
+                                <input type="text" id="txtCodigo" class="form-control ui-inputfield" ng-model="editarDucto.Descripcion">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Ubicación</label>
+                        </td>
+                        <td class="texto">
+                            <div ng-class="{'has-error':editarDucto.Ubicacion==''}">
+                                <input type="text" id="txtUbicación" class="form-control ui-inputfield" ng-model="editarDucto.Ubicacion">
+                            </div>
+                        </td>
+                        <td class="texto">
+                            <p class="text-center">NPS</p>
+                        </td>
+                        <td class="texto">
+                            <p class=" text-center">Longitud</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblMaterial">Material</label>
+                        </td>
+                        <td class="texto inlinecontrols" align="left">
+                            <input type="text" id="txtMaterial1" class="ui-txtfield col-xs-4" ng-model="editarDucto.Material1">
+                            <input type="text" id="txtMaterial2" class="ui-txtfield col-xs-4" ng-model="editarDucto.Material2">
+                            <input type="text" id="txtMaterial3" class="ui-txtfield col-xs-4" ng-model="editarDucto.Material3">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS01" class="form-control ui-inputfield" ng-model="editarDucto.NPS01" readonly>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud01" class="form-control ui-inputfield" ng-model="editarDucto.Longitud01" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Schedule</label>
+                        </td>
+                        <td class="texto inlinecontrols" align="left">
+                            <input type="text" id="txtSchedule1" class="ui-txtfield col-xs-4" ng-model="editarDucto.Schedule1">
+                            <input type="text" id="txtSchedule2" class="ui-txtfield col-xs-4" ng-model="editarDucto.Schedule2">
+                            <input type="text" id="txtSchedule3" class="ui-txtfield col-xs-4" ng-model="editarDucto.Schedule3">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS02" class="form-control ui-inputfield" ng-model="editarDucto.NPS02" readonly>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud02" class="form-control ui-inputfield" ng-model="editarDucto.Longitud02" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBLPD">BLPD</label>
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtBLPD" class="ui-inputfield" ng-model="editarDucto.BLPD">
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtNPS03" class="form-control ui-inputfield" ng-model="editarDucto.NPS03" readonly>
+                        </td>
+                        <td class="texto" align="left">
+                            <input type="text" id="txtLongitud03" class="form-control ui-inputfield" ng-model="editarDucto.Longitud03" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Pres.(Psig)</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtPresion" class="ui-inputfield" ng-model="editarDucto.Presion">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS04" class="form-control ui-inputfield" ng-model="editarDucto.NPS04" readonly>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud04" class="form-control ui-inputfield" ng-model="editarDucto.Longitud04" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Tempe(°F)</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtTemperatura" class="ui-inputfield" ng-model="editarDucto.Temperatura">
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtNPS05" class="form-control ui-inputfield" ng-model="editarDucto.NPS05" readonly>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitud05" class="form-control ui-inputfield" ng-model="editarDucto.Longitud05" readonly>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBSW">BSW</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtBSW" class="ui-inputfield" ng-model="editarDucto.BSW">
+                        </td>
+                        <td class="texto">
+                            <label for="lblLongitudTotal">Longitud Total:</label>
+                        </td>
+                        <td class="texto">
+                            <input type="text" id="txtLongitudTotal" class="form-control ui-inputfield" placeholder="" ng-model="editarDucto.LongitudTotal" readonly>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" ng-click="actualizarOleoducto(editarDucto)">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>

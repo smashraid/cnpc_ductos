@@ -8,7 +8,10 @@
         templateUrl: '/AngularJS/Templates/Oleoductos.html',
         controller: 'OleoductoController'
     });
-
+    $routeProvider.when('/Tuberia/:id/', {
+        templateUrl: '/AngularJS/Templates/Tuberia.html',
+        controller: 'RegistroInspeccionVisualController'
+    });
 
     $locationProvider.html5Mode({
         enabled: true,

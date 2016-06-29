@@ -24,6 +24,60 @@
     <Property Name="RowState" Type="char" MaxLength="1" Nullable="false" />
     <Property Name="LastUpdate" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="RegistroInspeccionVisual">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OleoductoID" Type="int" Nullable="false" />
+    <Property Name="CodigoDelTubo" Type="varchar" MaxLength="50" />
+    <Property Name="NumeroAnterior" Type="int" />
+    <Property Name="NPS" Type="int" />
+    <Property Name="Schedule" Type="int" />
+    <Property Name="SHC" Type="int" />
+    <Property Name="TipoMaterial" Type="varchar" MaxLength="50" />
+    <Property Name="Longitud" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="CoordenadasUTM_X" Type="varchar" MaxLength="10" />
+    <Property Name="CoordenadasUTM_Y" Type="varchar" MaxLength="10" />
+    <Property Name="ExtremoInicial1" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoInicial2" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoInicial3" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoInicial4" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="BSCAN" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="EspesorPared" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="ExtremoMedio1" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoMedio2" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoMedio3" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoMedio4" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="MapeoCorrison" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="PitCorrosion" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="ExtremoFinal1" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="ExtremoFinal2" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="ExtremoFinal3" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="ExtremoFinal4" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="LEFT_MINIMO" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="EspesorRemanente" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="Defecto" Type="varchar" MaxLength="100" />
+    <Property Name="Defecto2" Type="varchar" MaxLength="50" />
+    <Property Name="NumeroGrapas" Type="int" />
+    <Property Name="TipoSoporte" Type="varchar" MaxLength="2" />
+    <Property Name="Elastomero" Type="bit" />
+    <Property Name="Maleza" Type="bit" />
+    <Property Name="TuberiaAlrededor" Type="bit" />
+    <Property Name="Pintura" Type="bit" />
+    <Property Name="CruceCarretera" Type="bit" />
+    <Property Name="TipoProteccion" Type="varchar" MaxLength="50" />
+    <Property Name="EstadoProteccion" Type="varchar" MaxLength="50" />
+    <Property Name="EstadoTuberia" Type="varchar" MaxLength="2" />
+    <Property Name="EspesorNominal" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="EspesorMinimoRealRemanente" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="ObservacionesDeLaInspeccionVisual" Type="varchar" MaxLength="500" />
+    <Property Name="CondicionDelTramo" Type="varchar" MaxLength="500" />
+    <Property Name="UltimaFechaDeInspeccion" Type="datetime" />
+    <Property Name="SeleccionarTuberia" Type="bit" />
+    <Property Name="RowState" Type="char" MaxLength="1" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
   <Function Name="uspGetCountOleoductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
     <Parameter Name="Page" Type="int" Mode="In" />
@@ -37,5 +91,6 @@
   </Function>
   <EntityContainer Name="CNPC_DuctosModelStoreContainer">
     <EntitySet Name="Oleoductos" EntityType="Self.Oleoductos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RegistroInspeccionVisual" EntityType="Self.RegistroInspeccionVisual" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

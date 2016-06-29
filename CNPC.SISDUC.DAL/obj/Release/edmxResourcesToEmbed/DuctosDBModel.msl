@@ -58,5 +58,60 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="RegistroInspeccionVisuals">
+      <EntityTypeMapping TypeName="CNPC_DuctosModel.RegistroInspeccionVisual">
+        <MappingFragment StoreEntitySet="RegistroInspeccionVisual">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="RowState" ColumnName="RowState" />
+          <ScalarProperty Name="SeleccionarTuberia" ColumnName="SeleccionarTuberia" />
+          <ScalarProperty Name="UltimaFechaDeInspeccion" ColumnName="UltimaFechaDeInspeccion" />
+          <ScalarProperty Name="CondicionDelTramo" ColumnName="CondicionDelTramo" />
+          <ScalarProperty Name="ObservacionesDeLaInspeccionVisual" ColumnName="ObservacionesDeLaInspeccionVisual" />
+          <ScalarProperty Name="EspesorMinimoRealRemanente" ColumnName="EspesorMinimoRealRemanente" />
+          <ScalarProperty Name="EspesorNominal" ColumnName="EspesorNominal" />
+          <ScalarProperty Name="EstadoTuberia" ColumnName="EstadoTuberia" />
+          <ScalarProperty Name="EstadoProteccion" ColumnName="EstadoProteccion" />
+          <ScalarProperty Name="TipoProteccion" ColumnName="TipoProteccion" />
+          <ScalarProperty Name="CruceCarretera" ColumnName="CruceCarretera" />
+          <ScalarProperty Name="Pintura" ColumnName="Pintura" />
+          <ScalarProperty Name="TuberiaAlrededor" ColumnName="TuberiaAlrededor" />
+          <ScalarProperty Name="Maleza" ColumnName="Maleza" />
+          <ScalarProperty Name="Elastomero" ColumnName="Elastomero" />
+          <ScalarProperty Name="TipoSoporte" ColumnName="TipoSoporte" />
+          <ScalarProperty Name="NumeroGrapas" ColumnName="NumeroGrapas" />
+          <ScalarProperty Name="Defecto2" ColumnName="Defecto2" />
+          <ScalarProperty Name="Defecto" ColumnName="Defecto" />
+          <ScalarProperty Name="EspesorRemanente" ColumnName="EspesorRemanente" />
+          <ScalarProperty Name="LEFT_MINIMO" ColumnName="LEFT_MINIMO" />
+          <ScalarProperty Name="ExtremoFinal4" ColumnName="ExtremoFinal4" />
+          <ScalarProperty Name="ExtremoFinal3" ColumnName="ExtremoFinal3" />
+          <ScalarProperty Name="ExtremoFinal2" ColumnName="ExtremoFinal2" />
+          <ScalarProperty Name="ExtremoFinal1" ColumnName="ExtremoFinal1" />
+          <ScalarProperty Name="PitCorrosion" ColumnName="PitCorrosion" />
+          <ScalarProperty Name="MapeoCorrison" ColumnName="MapeoCorrison" />
+          <ScalarProperty Name="ExtremoMedio4" ColumnName="ExtremoMedio4" />
+          <ScalarProperty Name="ExtremoMedio3" ColumnName="ExtremoMedio3" />
+          <ScalarProperty Name="ExtremoMedio2" ColumnName="ExtremoMedio2" />
+          <ScalarProperty Name="ExtremoMedio1" ColumnName="ExtremoMedio1" />
+          <ScalarProperty Name="EspesorPared" ColumnName="EspesorPared" />
+          <ScalarProperty Name="BSCAN" ColumnName="BSCAN" />
+          <ScalarProperty Name="ExtremoInicial4" ColumnName="ExtremoInicial4" />
+          <ScalarProperty Name="ExtremoInicial3" ColumnName="ExtremoInicial3" />
+          <ScalarProperty Name="ExtremoInicial2" ColumnName="ExtremoInicial2" />
+          <ScalarProperty Name="ExtremoInicial1" ColumnName="ExtremoInicial1" />
+          <ScalarProperty Name="CoordenadasUTM_Y" ColumnName="CoordenadasUTM_Y" />
+          <ScalarProperty Name="CoordenadasUTM_X" ColumnName="CoordenadasUTM_X" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+          <ScalarProperty Name="TipoMaterial" ColumnName="TipoMaterial" />
+          <ScalarProperty Name="SHC" ColumnName="SHC" />
+          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+          <ScalarProperty Name="NPS" ColumnName="NPS" />
+          <ScalarProperty Name="NumeroAnterior" ColumnName="NumeroAnterior" />
+          <ScalarProperty Name="CodigoDelTubo" ColumnName="CodigoDelTubo" />
+          <ScalarProperty Name="OleoductoID" ColumnName="OleoductoID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

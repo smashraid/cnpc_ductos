@@ -6,8 +6,6 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CNPC.SISDUC.DAL
 {
@@ -24,7 +22,6 @@ namespace CNPC.SISDUC.DAL
             {
                 return Context.Set<TEntity>();
             }
-
         }
         public TEntity Create(TEntity toCreate)
         {
@@ -61,12 +58,14 @@ namespace CNPC.SISDUC.DAL
             bool Result = false;
             try
             {
+                
                 EntitySet.Attach(toUpdate);
                 Context.Entry<TEntity>(toUpdate).State = EntityState.Modified;
                 Result = Context.SaveChanges() > 0;
             }
-            catch
+            catch (Exception e)
             {
+                Result = false;
             }
             return Result;
         }
@@ -160,6 +159,68 @@ namespace CNPC.SISDUC.DAL
                 cnn.Close();
             }
              return ductos;
+        }
+        public RegistroInspeccionVisualResponse FilterByNameRegistroInspeccionVisual(int OleoductoID, string Nombre, int page, int records)
+        {
+            RegistroInspeccionVisualResponse registros = new RegistroInspeccionVisualResponse();
+            registros.List = new List<RegistroInspeccionVisual>();
+            using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+            {
+
+                SqlCommand cmd = new SqlCommand("uspGetListRegistroInspeccionVisual", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@OleoductoID", SqlDbType.Int).Value = OleoductoID;
+                cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
+                cmd.Parameters.Add("@Records", SqlDbType.Int).Value = records;
+                cmd.Parameters.Add("@Page", SqlDbType.Int).Value = page;
+                cmd.Parameters.Add("@TotalPage", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cnn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    RegistroInspeccionVisual d = new RegistroInspeccionVisual();
+                    d.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                    d.OleoductoID = reader.GetInt32(reader.GetOrdinal("OleoductoID"));
+                    d.CodigoDelTubo = reader.GetString(reader.GetOrdinal("CodigoDelTubo"));
+                    d.NumeroAnterior = reader.GetInt32(reader.GetOrdinal("NumeroAnterior"));
+                    d.NPS = reader.GetInt32(reader.GetOrdinal("NPS"));
+                    d.Schedule = reader.GetInt32(reader.GetOrdinal("Schedule"));
+                    d.TipoMaterial = reader.GetString(reader.GetOrdinal("TipoMaterial"));
+                    d.Longitud = reader.GetDecimal(reader.GetOrdinal("Longitud"));
+                    d.EspesorNominal = reader.GetDecimal(reader.GetOrdinal("EspesorNominal"));
+                    d.EspesorMinimoRealRemanente = reader.GetDecimal(reader.GetOrdinal("EspesorMinimoRealRemanente"));
+                    d.CruceCarretera = reader.GetBoolean(reader.GetOrdinal("CruceCarretera"));
+                    d.ObservacionesDeLaInspeccionVisual = reader.GetString(reader.GetOrdinal("ObservacionesDeLaInspeccionVisual"));
+                    d.CondicionDelTramo = reader.GetString(reader.GetOrdinal("CondicionDelTramo"));
+                    d.UltimaFechaDeInspeccion = reader.GetDateTime(reader.GetOrdinal("UltimaFechaDeInspeccion"));
+                    d.SeleccionarTuberia = reader.GetBoolean(reader.GetOrdinal("SeleccionarTuberia"));
+                    d.RowState = reader.GetString(reader.GetOrdinal("RowState"));
+                    d.LastUpdate = reader.GetDateTime(reader.GetOrdinal("LastUpdate"));
+                    registros.List.Add(d);
+                }
+                registros.Page = page;
+                registros.Records = records;
+                cnn.Close();
+            }
+            using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+            {
+
+                SqlCommand cmd = new SqlCommand("uspGetCountRegistroInspeccionVisual", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
+                cmd.Parameters.Add("@Records", SqlDbType.Int).Value = records;
+                cmd.Parameters.Add("@Page", SqlDbType.Int).Value = page;
+
+                cnn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    registros.TotalPages = reader.GetInt32(reader.GetOrdinal("TotalPage"));
+                    registros.TotalRecords = reader.GetInt32(reader.GetOrdinal("TotalRecords"));
+                }
+                cnn.Close();
+            }
+            return registros;
         }
         public void Dispose()
         {
