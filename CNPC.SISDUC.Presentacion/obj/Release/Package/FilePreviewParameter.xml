@@ -4,7 +4,7 @@
     <parameterEntry kind="ProviderPath" scope="IisApp" match="^F:\\Datos\\CNPC\\DUCTOS\\CNPC\.SISDUC\.Presentacion\\obj\\Release\\Package\\PackageTmp$" />
     <parameterEntry kind="ProviderPath" scope="setAcl" match="^F:\\Datos\\CNPC\\DUCTOS\\CNPC\.SISDUC\.Presentacion\\obj\\Release\\Package\\PackageTmp$" />
   </parameter>
-  <parameter name="CNPC_Ductos-Web.config Connection String" description="" value="Data Source=SQL5026.Smarterasp.net;Initial Catalog=DB_9EB27B_ducto;User Id=DB_9EB27B_ducto_admin;Password=hernan@123" tags="">
+  <parameter name="CNPC_Ductos-Web.config Connection String" description="" value="Data Source=SQL5026.Smarterasp.net;Initial Catalog=DB_9EB27B_ducto;User Id= DB_9EB27B_ducto_admin ;Password=hernan@123" tags="">
     <parameterEntry kind="XmlFile" scope="F:\\Datos\\CNPC\\DUCTOS\\CNPC\.SISDUC\.Presentacion\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='CNPC_Ductos']/@connectionString" />
   </parameter>
   <parameter name="CNPC_DuctosEntities-Web.config Connection String" description="" value="metadata=res://*/DuctosDBModel.csdl|res://*/DuctosDBModel.ssdl|res://*/DuctosDBModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=SQL5026.Smarterasp.net;initial catalog=DB_9EB27B_ducto;persist security info=True;user id=DB_9EB27B_ducto_admin;password=hernan@123;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="">

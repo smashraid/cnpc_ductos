@@ -10,18 +10,21 @@ namespace CNPC.SISDUC.Presentacion.Controllers
 {
     public class WSRegistroInspeccionVisualController : ApiController
     {
-        RegistroInspeccionVisuales _db = new RegistroInspeccionVisuales();
+        RegistroInspeccionVisuales _dbTuberia = new RegistroInspeccionVisuales();
+        Oleoductos _dbOleoducto = new Oleoductos();
         [HttpGet]
         public HttpResponseMessage Get(int id = 1)
         {
-            RegistroInspeccionVisualResponse respuesta = _db.FilterByNameRegistroInspeccionVisual(id, "", 1, 8);
+            RegistroInspeccionVisualResponse respuesta = _dbTuberia.FilterByNameRegistroInspeccionVisual(id, "", 1, 8);
             var result = Request.CreateResponse<RegistroInspeccionVisualResponse>(HttpStatusCode.OK, respuesta);
             return result;
         }
         [HttpGet]
         public HttpResponseMessage GetTuberia(int oleoductoid, string name, int page, int records)
         {
-            RegistroInspeccionVisualResponse respuesta = _db.FilterByNameRegistroInspeccionVisual(oleoductoid, name, page, records);
+
+            Oleoducto oleoducto=  _dbOleoducto.FilterByID(oleoductoid);
+            RegistroInspeccionVisualResponse respuesta = _dbTuberia.FilterByNameRegistroInspeccionVisual(oleoductoid, name, page, records);
             var result = Request.CreateResponse<RegistroInspeccionVisualResponse>(HttpStatusCode.OK, respuesta);
             return result;
         }
@@ -36,7 +39,7 @@ namespace CNPC.SISDUC.Presentacion.Controllers
                     return msg;
                 }
 
-                _db.Create(nuevoTuberia);
+                _dbTuberia.Create(nuevoTuberia);
                 msg = new HttpResponseMessage(HttpStatusCode.Created);
                 msg.Headers.Location = new Uri(Request.RequestUri + nuevoTuberia.Id.ToString());
             }
@@ -50,7 +53,7 @@ namespace CNPC.SISDUC.Presentacion.Controllers
             {
                 if (editarTuberia != null && editarTuberia.CodigoDelTubo != string.Empty)
                 {
-                    _db.Update(editarTuberia);
+                    _dbTuberia.Update(editarTuberia);
                     return Request.CreateResponse<RegistroInspeccionVisual>(HttpStatusCode.OK, editarTuberia);
                 }
                 else
@@ -68,7 +71,7 @@ namespace CNPC.SISDUC.Presentacion.Controllers
         {
             try
             {
-                var Existe = _db.Delete(id);
+                var Existe = _dbTuberia.Delete(id);
                 return new HttpResponseMessage(HttpStatusCode.OK);
             }
             catch (Exception)

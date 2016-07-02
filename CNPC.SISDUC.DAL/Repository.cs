@@ -58,7 +58,7 @@ namespace CNPC.SISDUC.DAL
             bool Result = false;
             try
             {
-                
+
                 EntitySet.Attach(toUpdate);
                 Context.Entry<TEntity>(toUpdate).State = EntityState.Modified;
                 Result = Context.SaveChanges() > 0;
@@ -131,6 +131,7 @@ namespace CNPC.SISDUC.DAL
                     d.Material1 = reader.GetString(reader.GetOrdinal("Material1"));
                     d.Material2 = reader.GetString(reader.GetOrdinal("Material2"));
                     d.Material3 = reader.GetString(reader.GetOrdinal("Material3"));
+                    d.LongitudTotal = reader.GetDecimal(reader.GetOrdinal("LongitudTotal"));
                     d.BSW = reader.GetString(reader.GetOrdinal("BSW"));
                     d.RowState = reader.GetString(reader.GetOrdinal("RowState"));
                     d.LastUpdate = reader.GetDateTime(reader.GetOrdinal("LastUpdate"));
@@ -140,7 +141,7 @@ namespace CNPC.SISDUC.DAL
                 ductos.Records = records;
                 cnn.Close();
             }
-             using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+            using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
             {
 
                 SqlCommand cmd = new SqlCommand("uspGetCountOleoductos", cnn);
@@ -158,7 +159,7 @@ namespace CNPC.SISDUC.DAL
                 }
                 cnn.Close();
             }
-             return ductos;
+            return ductos;
         }
         public RegistroInspeccionVisualResponse FilterByNameRegistroInspeccionVisual(int OleoductoID, string Nombre, int page, int records)
         {
@@ -221,6 +222,26 @@ namespace CNPC.SISDUC.DAL
                 cnn.Close();
             }
             return registros;
+        }
+        public decimal LongitudOleoducto(int Id)
+        {
+            decimal result = 0;
+
+            using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand("uspGetLongitudOleoducto", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Id", SqlDbType.Int).Value = Id;
+                cnn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    result = reader.GetDecimal(reader.GetOrdinal("LongitudTotal"));
+                }
+                cnn.Close();
+            
+            }
+            return result;
         }
         public void Dispose()
         {

@@ -189,12 +189,13 @@
     <Content Include="AngularJS\Oleoducto\OleoductoRepository.js" />
     <Content Include="AngularJS\Oleoducto\OleoductoController.js" />
     <Content Include="AngularJS\RegistrationModule.js" />
+    <Content Include="AngularJS\Templates\Tuberias_old.html" />
     <Content Include="AngularJS\Templates\Tuberias.html" />
     <Content Include="AngularJS\Templates\Oleoductos.html" />
     <Content Include="AngularJS\Templates\Bienvenidos.html" />
     <Content Include="AngularJS\RegistroInspeccionVisual\RegistroInspeccionVisualRepository.js" />
     <Content Include="AngularJS\RegistroInspeccionVisual\RegistroInspeccionVisualController.js" />
-    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\estiloPetro.css" />
     <Content Include="Content\img\01.PNG" />
     <Content Include="Content\img\02.PNG" />

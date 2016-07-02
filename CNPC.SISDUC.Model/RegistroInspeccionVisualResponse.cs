@@ -8,5 +8,6 @@ namespace CNPC.SISDUC.Model
 {
     public class RegistroInspeccionVisualResponse : Response<RegistroInspeccionVisual>
     {
+        public Oleoducto oleoducto { get; set; }
     }
 }

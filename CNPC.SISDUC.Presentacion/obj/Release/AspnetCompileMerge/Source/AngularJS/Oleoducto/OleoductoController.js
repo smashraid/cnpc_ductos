@@ -64,19 +64,13 @@
         $scope.nuevoDucto = null;
         $scope.agregarOleoducto = function () {
             $scope.nuevoDucto = {
-                "Id": 0, "Cliente": "", "Codigo": "", "NoLamina": "",
-                "Direccion": "", "Ubicacion": "", "Inspector": "",
-                "FechaInspeccion": "", "NumeroTubos": "", "Longitud01": "",
-                "Longitud02": "", "Longitud03": "", "Longitud04": "",
-                "Longitud05": "", "LongitudTotal": "", "PresionDiseño": "",
-                "PresionMaximaAdmisibleOperacion": "", "PresionMaximaOperacion": "",
-                "PresionNormalOperacion": "", "TemperaturaMaximaOperacion": "",
-                "TemperaturaNormalOperacion": "", "NPS01": "", "NPS02": "", "NPS03": "",
-                "NPS04": "", "NPS05": "", "Presion": "", "BLPD": "", "Schedule1": "",
-                "Schedule2": "", "Schedule3": "", "Material1": "", "Material2": "",
-                "Material3": "", "Temperatura": "", "BSW": "", "Esfuerzo_S": "",
-                "FactorJunta_E": "", "FactorSensibilidadError": "", "RowState": "",
-                "LastUpdate": ""
+                "Id": 0, "Cliente": "", "Codigo": "",
+                "Direccion": "", "NoLamina": "", "Ubicacion": "",
+                "Material1": "", "Material2": "", "Material3": "",
+                "Schedule1": "", "Schedule2": "", "Schedule3": "",
+                "BLPD": "", "Presion": "", "Temperatura": "","BSW": "", 
+                "FechaInspeccion": "", "RowState": "", "LastUpdate": ""
+                
             };
             $('#NuevoOleoducto').modal('show');
         }
@@ -88,7 +82,7 @@
             if (validar(oleoducto)) {
                 oleoducto.LastUpdate = new Date();
                 oleoducto.RowState = "A";
-                ductoRepository.add(oleoducto).success(postSuccessCallBack).error(errorCallBack);
+                OleoductoRepository.add(oleoducto).success(postSuccessCallBack).error(errorCallBack);
             }
         }
         //Fin Agregar Nuevo Oleoducto

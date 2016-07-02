@@ -8,7 +8,7 @@
         templateUrl: '/AngularJS/Templates/Oleoductos.html',
         controller: 'OleoductoController'
     });
-    $routeProvider.when('/Tuberia/:id/', {
+    $routeProvider.when('/Tuberia/:id', {
         templateUrl: '/AngularJS/Templates/Tuberias.html',
         controller: 'RegistroInspeccionVisualController'
     });

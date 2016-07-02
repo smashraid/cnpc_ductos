@@ -82,7 +82,7 @@ namespace CNPC.SISDUC.BLL
                     p.ObservacionesDeLaInspeccionVisual == registroToUpdate.ObservacionesDeLaInspeccionVisual &
                     p.CondicionDelTramo == registroToUpdate.CondicionDelTramo &
                     p.UltimaFechaDeInspeccion == registroToUpdate.UltimaFechaDeInspeccion &
-                    p.SeleccionarTuberia == registroToUpdate.SeleccionarTuberia 
+                    p.SeleccionarTuberia == registroToUpdate.SeleccionarTuberia
                     );
                 if (d == null)
                 {
@@ -131,10 +131,17 @@ namespace CNPC.SISDUC.BLL
         public RegistroInspeccionVisualResponse FilterByNameRegistroInspeccionVisual(int OleoductoId, string Nombre, int page, int records)
         {
             RegistroInspeccionVisualResponse Result = null;
+            Oleoducto ducto = null;
             using (var r = new Repository<RegistroInspeccionVisual>())
             {
                 Result = r.FilterByNameRegistroInspeccionVisual(OleoductoId, Nombre, page, records);
             }
+            using (var p = new Repository<Oleoducto>())
+            {
+                ducto = p.Retrieve(q => q.Id == OleoductoId);
+                ducto.LongitudTotal = p.LongitudOleoducto(OleoductoId);
+            }
+            Result.oleoducto = ducto;
             return Result;
         }
         public RegistroInspeccionVisual FilterByID(int ID)

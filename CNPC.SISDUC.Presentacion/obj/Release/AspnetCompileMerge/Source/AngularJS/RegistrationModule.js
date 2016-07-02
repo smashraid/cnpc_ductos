@@ -9,7 +9,7 @@
         controller: 'OleoductoController'
     });
     $routeProvider.when('/Tuberia/:id/', {
-        templateUrl: '/AngularJS/Templates/Tuberia.html',
+        templateUrl: '/AngularJS/Templates/Tuberias.html',
         controller: 'RegistroInspeccionVisualController'
     });
 

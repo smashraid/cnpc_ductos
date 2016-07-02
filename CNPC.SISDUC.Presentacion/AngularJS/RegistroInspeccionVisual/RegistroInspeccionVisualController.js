@@ -4,6 +4,7 @@
         //Metodo GET
         var getSuccessCallback = function (data, status) {
             $scope.listaTuberia = data.List;
+            $scope.oleoducto = data.oleoducto;
             $scope.parameterlist.pages = data.TotalPages;
             $scope.parameterlist.totalRecords = data.TotalRecords;
         }
@@ -96,7 +97,7 @@
                 RegistroInspeccionVisualRepository.add(tuberia).success(postSuccessCallBack).error(errorCallBack);
             }
         }
-        //Fin Agregar Nuevo Tuberia
+        //Fin Ver Tuberia
 
         $scope.verTuberia = function (tuberia) {
             $scope.vertuberia = tuberia;

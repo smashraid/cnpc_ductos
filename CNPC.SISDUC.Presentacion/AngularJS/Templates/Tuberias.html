@@ -1,13 +1,13 @@
 ﻿<div id="content">
     <div class="form-group">
-        <label class="col-lg-5">CODIGO: OLB-0001-158</label>
-        <label class="col-lg-4">UBICACIÓN: CARRIZO</label>
-        <label class="col-lg-3">LONGITUD TOTAL: 18781.5</label>
+        <label class="col-lg-5">CODIGO: {{oleoducto.Codigo}}</label>
+        <label class="col-lg-4">UBICACIÓN: {{oleoducto.Ubicacion}}</label>
+        <label class="col-lg-3">LONGITUD TOTAL: {{oleoducto.LongitudTotal}}</label>
     </div>
     <div class="form-group">
-        <label class="col-lg-5">DESCRIPCION: ESTACION DE  BOMBAS 951 A PTC-CARRIZO</label>
-        <label class="col-lg-4">LAMINA: 1.1.2.21-2009-OO-PL-M-11</label>
-        <label class="col-lg-3">PRESION: 30 psig</label>
+        <label class="col-lg-5">DESCRIPCION: {{oleoducto.Descripcion}}</label>
+        <label class="col-lg-4">LAMINA: {{oleoducto.NoLamina}}</label>
+        <label class="col-lg-3">PRESION: {{oleoducto.Presion}}</label>
     </div>
     <div>
         <label class="tituloh1"></label>
@@ -60,14 +60,14 @@
                                     <td width="5%" class="celda2_grilla">{{item.Longitud}}</td>
                                     <td width="5%" class="celda2_grilla">{{item.EspesorNominal}}</td>
                                     <td width="8%" class="celda2_grilla">{{item.EspesorMinimoRealRemanente}}</td>
-                                    <td width="5%" class="celda2_grilla">{{item.CruceCarretera ? '':'X'}}</td>
+                                    <td width="5%" class="celda2_grilla">{{item.CruceCarretera ? 'X':''}}</td>
                                     <td width="15%" class="celda2_grilla">{{item.ObservacionesDeLaInspeccionVisual}}</td>
                                     <td width="15%" class="celda2_grilla">{{item.CondicionDelTramo}}</td>
                                     <td width="10%" class="celda2_grilla">{{item.UltimaFechaDeInspeccion | date: 'dd-MM-yyyy' }}</td>
-                                    <td width="5%" class="celda2_grilla">{{item.SeleccionarTuberia ? '' : 'X' }}</td>
+                                    <td width="5%" class="celda2_grilla">{{item.SeleccionarTuberia ? 'X' : '' }}</td>
 
                                     <td align="center">
-                                        <a href="#" ng-click="verOleoducto(item)"><img src="../../Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a>
+                                        <a href="#" ng-click="verTuberia(item)"><img src="../../Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -200,8 +200,8 @@
 </table>
 
 <!-- Modal -->
-<div id="ReporteTuberia" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-    <div class="modal-dialog" role="document">
+<div id="VerTuberia" class="modal fade" role="dialog">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -212,296 +212,98 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <table border="0" align="center">
-                    <tr>
-                        <td class="texto">
-                            <label>Oleoducto</label>
-                        </td>
-                        <td class="texto" align="left">
-                            <div>
-                                <input type="text" class="form-control ui-inputfield" id="txtOleoducto" ng-model="reporteTuberia.Oleoducto">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Descripción:</label>
-                        </td>
-                        <td align="left">
-                            <input class="ui-inputfield" type="text" name="txtDescripcionOleoducto" id="txtDescripcionOleoducto" ng-model="reporteTuberia.DescripcionOleoducto">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label>Código del Tubo</label>
-                        </td>
-                        <td class="texto" colspan="3" align="left">
-                            <div ng-class="{'has-error':reporteTuberia.NoLamina==''}">
-                                <input type="text" id="txtNoLamina" class="form-control ui-inputfield" ng-model="reporteTuberia.NoLamina">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label>Número Anterior</label>
-                        </td>
-                        <td class="texto" colspan="3" align="left">
-                            <div ng-class="{'has-error':reporteTuberia.NumeroAnterior==''}">
-                                <input type="text" id="txtNumeroAnterior" class="form-control ui-inputfield" ng-model="reporteTuberia.NumeroAnterior">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>NPS</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.NPS==''}">
-                                <input type="text" id="txtNPS" class="form-control ui-inputfield" ng-model="reporteTuberia.NPS">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Schedule</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.Schedule==''}">
-                                <input type="text" id="txtSchedule" class="form-control ui-inputfield" ng-model="reporteTuberia.Schedule">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label>Tipo de Material</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.TipoMaterial==''}">
-                                <input type="text" id="txtTipoMaterial" class="form-control ui-inputfield" ng-model="reporteTuberia.TipoMaterial">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Longitud</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.Longitud==''}">
-                                <input type="text" id="txtLongitud" class="form-control ui-inputfield" ng-model="reporteTuberia.Longitud">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Coordenas UTM</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.Longitud==''}">
-                                <input type="text" id="txtCoordenadasUTM_X" class="ui-txtfield col-xs-2" ng-model="reporteTuberia.CoordenadasUTM_X">
-                                <input type="text" id="txtCoordenadasUTM_Y" class="ui-txtfield col-xs-2" ng-model="reporteTuberia.CoordenadasUTM_Y">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label for="lblMaterial">Extremo Inicial</label>
-                        </td>
-                        <td class="texto inlinecontrols" align="left">
-                            <input type="text" id="txtExtremoInicial1" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.ExtremoInicial1">
-                            <input type="text" id="txtExtremoInicial2" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.ExtremoInicial2">
-                            <input type="text" id="txtExtremoInicial3" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.ExtremoInicial3">
-                            <input type="text" id="txtExtremoInicial4" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.ExtremoInicial4">
-                        </td>
-                        <td class="texto">
-                            <label>BSCAN</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.BSCAN==''}">
-                                <input type="text" id="txtBSCAN" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.BSCAN">
-                                <button class="btn btn-danger">...</button>
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Espesor de Pared</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.EspesorPared==''}">
-                                <input type="text" id="txtEspesorPared" class="form-control ui-inputfield" ng-model="reporteTuberia.EspesorPared">
-                            </div>
-                        </td>
-                    </tr>
+                <form role="form">
+                    <div class="form-group">
+                        <h6><label for="txtOleoducto" class=" col-lg-2">Oleoducto:</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtOleoducto" class="form-control" ng-model="reporteTuberia.Codigo">
+                        </div>
+                        <h6>
+                            <label for="txtDescripcion" class="control-label col-lg-2">Descripción:</label>
+                        </h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtDescripcion" class="form-control" ng-model="reporteTuberia.DescripcionOleoducto">
+                        </div>
+                    </div>
 
-                    <tr>
-                        <td class="texto">
-                            <label for="lblMaterial">Extremo Medio</label>
-                        </td>
-                        <td class="texto inlinecontrols" align="left">
-                            <input type="text" id="txtExtremoMedio1" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.ExtremoMedio1">
-                            <input type="text" id="txtExtremoMedio2" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.ExtremoMedio2">
-                            <input type="text" id="txtExtremoMedio3" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.ExtremoMedio3">
-                            <input type="text" id="txtExtremoMedio4" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.ExtremoMedio4">
-                        </td>
-                        <td class="texto">
-                            <label>Mapeo de Corrosión</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.BSCAN==''}">
-                                <input type="text" id="txtMapeoCorrison" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.MapeoCorrison">
-                                <button class="btn btn-danger">...</button>
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Pit de Corrosión</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.PitCorrosion==''}">
-                                <input type="text" id="txtPitCorrosion" class="form-control ui-inputfield" ng-model="reporteTuberia.PitCorrosion">
-                            </div>
-                        </td>
-                    </tr>
+                    <div class="form-group">
+                        <h6><label for="txtCodigoTubo" class="control-label col-lg-2">Código del Tubo:</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtCodigoTubo" class="form-control" ng-model="reporteTuberia.NoLamina">
+                        </div>
+                        <h6><label for="txtNumeroAnterior" class="control-label col-lg-1">Número Anterior</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtNumeroAnterior" class="form-control " ng-model="reporteTuberia.NumeroAnterior">
+                        </div>
+                        <h6><label for="txtNPS" class="control-label col-lg-1">NPS</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtNPS" class="form-control " ng-model="reporteTuberia.NPS">
+                        </div>
+                        <h6><label for="txtSchedule" class="control-label col-lg-1">Schedule</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtSchedule" class="form-control " ng-model="reporteTuberia.Schedule">
+                        </div>
+                    </div>
 
-                    <tr>
-                        <td class="texto">
-                            <label for="lblMaterial">Extremo Final</label>
-                        </td>
-                        <td class="texto inlinecontrols" align="left">
-                            <input type="text" id="txtExtremoFinal1" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.ExtremoMedio1">
-                            <input type="text" id="txtExtremoFinal2" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.ExtremoFinal2">
-                            <input type="text" id="txtExtremoFinal3" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.ExtremoFinal3">
-                            <input type="text" id="txtExtremoFinal4" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.ExtremoFinal4">
-                        </td>
-                        <td class="texto">
-                            <label>LEFT</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.LEFT_MINIMO==''}">
-                                <input type="text" id="txtLEFT_MINIMO" class="ui-txtfield col-xs-1" ng-model="reporteTuberia.LEFT_MINIMO">
-                                <button class="btn btn-danger">...</button>
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Espesor Remanente</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.EspesorRemanente==''}">
-                                <input type="text" id="txtEspesorRemanente" class="form-control ui-inputfield" ng-model="reporteTuberia.EspesorRemanente">
-                            </div>
-                        </td>
-                    </tr>
+                    <div class="form-group">
+                        <h6><label for="txtTipoMaterial" class="control-label col-lg-2">Tipo Material:</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtTipoMaterial" class="form-control" ng-model="reporteTuberia.TipoMaterial">
+                        </div>
+                        <h6><label for="txtLongitud" class="control-label col-lg-1">Longitud</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtLongitud" class="form-control " ng-model="reporteTuberia.Longitud">
+                        </div>
+                        <h6><label for="txtCoordenadasUTM_X" class="control-label col-lg-1">Coordenas UTM</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtCoordenadasUTM_X" class="form-control " ng-model="reporteTuberia.CoordenadasUTM_X">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtCoordenadasUTM_X" class="form-control " ng-model="reporteTuberia.CoordenadasUTM_X">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <h5>
+                                Lecturas con Ultrasonido Pulso- Eco:
+                            </h5>
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>
+                                Otro Método:
+                            </h5>
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>
+                                Corrosión Externa:
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtExtremoInicial1" class="control-label col-lg-2 sin-espacio">Extremo Inicial:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial1" class="form-control" ng-model="reporteTuberia.ExtremoInicial1">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial2" class="form-control" ng-model="reporteTuberia.ExtremoInicial2">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial3" class="form-control" ng-model="reporteTuberia.ExtremoInicial3">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial4" class="form-control" ng-model="reporteTuberia.ExtremoInicial4">
+                        </div>
 
-                    <tr>
-                        <td class="texto">
-                            <label>Inspección Visual</label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label>Defecto</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.Defecto==''}">
-                                <input type="text" id="txtDefecto" class="form-control ui-inputfield" ng-model="reporteTuberia.Defecto">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.DefinirDefecto==''}">
-                                <input type="text" id="txtDefinirDefecto" class="form-control ui-inputfield" ng-model="reporteTuberia.DefinirDefecto">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Número de Grapas</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.NumeroGrapas==''}">
-                                <input type="text" id="txtNumeroGrapas" class="form-control ui-inputfield" ng-model="reporteTuberia.NumeroGrapas">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label>Tipo de Soporte</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.TipoSoporte==''}">
-                                <input type="text" id="txtTipoSoporte" class="form-control ui-inputfield" ng-model="reporteTuberia.TipoSoporte">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Elastómero</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.Elastomero==''}">
-                                <input type="text" id="txtElastomero" class="form-control ui-inputfield" ng-model="reporteTuberia.Elastomero">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Maleza</label>
-                        </td>
-                        <td class="texto">  
-                            <div ng-class="{'has-error':reporteTuberia.Maleza==''}">
-                                <input type="text" id="txtMaleza" class="form-control ui-inputfield" ng-model="reporteTuberia.Maleza">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Tuberia Alrededor</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.TuberiaAlrededor==''}">
-                                <input type="text" id="txtTuberiaAlrededor" class="form-control ui-inputfield" ng-model="reporteTuberia.TuberiaAlrededor">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label>Pintura</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.Pintura==''}">
-                                <input type="text" id="txtPintura" class="form-control ui-inputfield" ng-model="reporteTuberia.Pintura">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Cruce de Carretera</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.CruceCarretera==''}">
-                                <input type="text" id="txtCruceCarretera" class="form-control ui-inputfield" ng-model="reporteTuberia.CruceCarretera">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Tipo de Protección</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.TipoProteccion==''}">
-                                <input type="text" id="txtTipoProteccion" class="form-control ui-inputfield" ng-model="reporteTuberia.TipoProteccion">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Estado de Protección</label>
-                        </td>
-                        <td class="texto">
-                            <div ng-class="{'has-error':reporteTuberia.EstadoProteccion==''}">
-                                <input type="text" id="txtEstadoProteccion" class="form-control ui-inputfield" ng-model="reporteTuberia.EstadoProteccion">
-                            </div>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <td class="texto">
-                            <label for="lblEstado de la tuberia">Estado de la tuberia</label>
-                        </td>
-                        <td class="texto">
-                            <input type="text" id="txtEstadoTuberia" class="ui-inputfield" ng-model="reporteTuberia.EstadoTuberia">
-                        </td>
-                        <td class="texto">
-                            <label for="lblAccesorios">Accesorios</label>
-                        </td>
-                        <td class="texto">
-                            <button class="btn btn-danger">...</button>
-                        </td>
-                        <td class="texto">
-                            <label id="lblAviso">NO SE PUEDE MODIFICAR VALORES - SOLO VERLOS</label>
-                        </td>
-                    </tr>
-
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-primary" ng-click="guardarOleoducto(reporteTuberia)">Guardar</button>
-            </div>
+                    </div>
+                </form>
+        </div>
+        <div class="modal-footer modal-footerTuberia">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" ng-click="guardarOleoducto(reporteTuberia)">Guardar</button>
         </div>
     </div>
+
+</div>
 </div>
 
 <div id="VerAccesorio" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">

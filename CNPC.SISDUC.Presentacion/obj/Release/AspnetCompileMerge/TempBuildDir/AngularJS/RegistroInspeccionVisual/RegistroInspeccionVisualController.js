@@ -67,19 +67,21 @@
         $scope.agregarTuberia = function () {
             $scope.nuevoTuberia = {
                 "Id": 0, "OleoductoID": 0, "CodigoDelTubo": "", "NumeroAnterior": "",
-                "NPS": "",
-                "Schedule": "", "SHC": "", "TipoMaterial": "",
+                "NPS": "", "Schedule": "", "SHC": "", "TipoMaterial": "",
                 "Longitud": "", "CoordenadasUTM_X": "", "CoordenadasUTM_Y": "",
                 "ExtremoInicial1": "", "ExtremoInicial2": "", "ExtremoInicial3": "",
                 "ExtremoInicial4": "", "BSCAN": "", "EspesorPared": "",
-                "ExtremoMedio1": "", "ExtremoMedio2": "", "ExtremoMedio3": "", "ExtremoMedio4": "",
-                "MapeoCorrison": "", "PitCorrosion": "", "ExtremoFinal1": "", "ExtremoFinal2": "",
-                "ExtremoFinal3": "", "ExtremoFinal4": "", "LEFT_MINIMO": "", "EspesorRemanente": "",
-                "Defecto": "", "Defecto2": "", "NumeroGrapas": "", "TipoSoporte": "", "Elastomero": "",
-                "Maleza": "", "TuberiaAlrededor": "", "Pintura": "", "CruceCarretera": "",
-                "TipoProteccion": "", "EstadoProteccion": "", "EstadoTuberia": "",
-                "EspesorNominal": "", "EspesorMinimoRealRemanente": "", "ObservacionesDeLaInspeccionVisual": "",
-                "CondicionDelTramo": "", "UltimaFechaDeInspeccion": "", "SeleccionarTuberia": ""
+                "ExtremoMedio1": "", "ExtremoMedio2": "", "ExtremoMedio3": "",
+                "ExtremoMedio4": "", "MapeoCorrison": "", "PitCorrosion": "",
+                "ExtremoFinal1": "", "ExtremoFinal2": "", "ExtremoFinal3": "",
+                "ExtremoFinal4": "", "LEFT_MINIMO": "", "EspesorRemanente": "",
+                "Defecto": "", "Defecto2": "", "NumeroGrapas": "", "TipoSoporte": "",
+                "Elastomero": "", "Maleza": "", "TuberiaAlrededor": "", "Pintura": "",
+                "CruceCarretera": "", "TipoProteccion": "", "EstadoProteccion": "",
+                "EstadoTuberia": "", "EspesorNominal": "", "EspesorMinimoRealRemanente": "",
+                "ObservacionesDeLaInspeccionVisual": "", "CondicionDelTramo": "",
+                "UltimaFechaDeInspeccion": "", "SeleccionarTuberia": "", "RowState": "",
+                "LastUpdate":""
             };
             $('#NuevoTuberia').modal('show');
         }
@@ -91,7 +93,7 @@
             if (validar(tuberia)) {
                 tuberia.LastUpdate = new Date();
                 tuberia.RowState = "A";
-                tuberiaRepository.add(tuberia).success(postSuccessCallBack).error(errorCallBack);
+                RegistroInspeccionVisualRepository.add(tuberia).success(postSuccessCallBack).error(errorCallBack);
             }
         }
         //Fin Agregar Nuevo Tuberia
@@ -110,7 +112,7 @@
             if (validar(tuberia)) {
                 tuberia.LastUpdate = new Date();
                 tuberia.RowState = "A";
-                TuberiaRepository.update(tuberia).success(putSuccessCallBack).error(errorCallBack);
+                RegistroInspeccionVisualRepository.update(tuberia).success(putSuccessCallBack).error(errorCallBack);
             }
         }
         $scope.editarTuberia = function (tuberia) {
