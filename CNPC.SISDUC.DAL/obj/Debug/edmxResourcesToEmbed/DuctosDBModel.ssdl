@@ -1,5 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="CNPC_DuctosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Accesorios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TuberiaId" Type="int" />
+    <Property Name="Accesorio" Type="varchar" MaxLength="50" />
+    <Property Name="TipoAccesorio" Type="varchar" MaxLength="50" />
+    <Property Name="CodigoAccesorio1" Type="varchar" MaxLength="50" />
+    <Property Name="CodigoAccesorio2" Type="varchar" MaxLength="50" />
+    <Property Name="CodigoAccesorio3" Type="varchar" MaxLength="50" />
+    <Property Name="NPS" Type="int" />
+    <Property Name="Schedule" Type="int" />
+    <Property Name="TipoMaterial" Type="varchar" MaxLength="50" />
+    <Property Name="Longitud" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="CoordenadasUTMX" Type="int" />
+    <Property Name="CoordenadasUTMY" Type="int" />
+    <Property Name="ExtremoInicial" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="ExtremoMedio" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="ExtremoFinal" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="BSCAN" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="MapeoCorrosion" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="InspeccionSonica" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="EspesorPared" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="PitCorrosion" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="EspesorRemanente" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="EstadoAccesorio" Type="varchar" MaxLength="50" />
+    <Property Name="Pintura" Type="bit" />
+    <Property Name="Defecto1" Type="varchar" MaxLength="50" />
+    <Property Name="Defecto2" Type="varchar" MaxLength="50" />
+    <Property Name="NumeroGrapas" Type="int" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="500" />
+    <Property Name="RowState" Type="char" MaxLength="1" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
   <EntityType Name="Oleoductos">
     <Key>
       <PropertyRef Name="Id" />
@@ -92,5 +129,39 @@
   <EntityContainer Name="CNPC_DuctosModelStoreContainer">
     <EntitySet Name="Oleoductos" EntityType="Self.Oleoductos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RegistroInspeccionVisual" EntityType="Self.RegistroInspeccionVisual" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Accesorios" EntityType="Self.Accesorios" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Accesorios].[Id] AS [Id], 
+    [Accesorios].[TuberiaId] AS [TuberiaId], 
+    [Accesorios].[Accesorio] AS [Accesorio], 
+    [Accesorios].[TipoAccesorio] AS [TipoAccesorio], 
+    [Accesorios].[CodigoAccesorio1] AS [CodigoAccesorio1], 
+    [Accesorios].[CodigoAccesorio2] AS [CodigoAccesorio2], 
+    [Accesorios].[CodigoAccesorio3] AS [CodigoAccesorio3], 
+    [Accesorios].[NPS] AS [NPS], 
+    [Accesorios].[Schedule] AS [Schedule], 
+    [Accesorios].[TipoMaterial] AS [TipoMaterial], 
+    [Accesorios].[Longitud] AS [Longitud], 
+    [Accesorios].[CoordenadasUTMX] AS [CoordenadasUTMX], 
+    [Accesorios].[CoordenadasUTMY] AS [CoordenadasUTMY], 
+    [Accesorios].[ExtremoInicial] AS [ExtremoInicial], 
+    [Accesorios].[ExtremoMedio] AS [ExtremoMedio], 
+    [Accesorios].[ExtremoFinal] AS [ExtremoFinal], 
+    [Accesorios].[BSCAN] AS [BSCAN], 
+    [Accesorios].[MapeoCorrosion] AS [MapeoCorrosion], 
+    [Accesorios].[InspeccionSonica] AS [InspeccionSonica], 
+    [Accesorios].[EspesorPared] AS [EspesorPared], 
+    [Accesorios].[PitCorrosion] AS [PitCorrosion], 
+    [Accesorios].[EspesorRemanente] AS [EspesorRemanente], 
+    [Accesorios].[EstadoAccesorio] AS [EstadoAccesorio], 
+    [Accesorios].[Pintura] AS [Pintura], 
+    [Accesorios].[Defecto1] AS [Defecto1], 
+    [Accesorios].[Defecto2] AS [Defecto2], 
+    [Accesorios].[NumeroGrapas] AS [NumeroGrapas], 
+    [Accesorios].[Observaciones] AS [Observaciones], 
+    [Accesorios].[RowState] AS [RowState], 
+    [Accesorios].[LastUpdate] AS [LastUpdate]
+    FROM [dbo].[Accesorios] AS [Accesorios]</DefiningQuery>
+    </EntitySet>
   </EntityContainer>
 </Schema>

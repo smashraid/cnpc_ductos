@@ -5,6 +5,43 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="CNPC_DuctosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Accesorios">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TuberiaId" Type="int" />
+          <Property Name="Accesorio" Type="varchar" MaxLength="50" />
+          <Property Name="TipoAccesorio" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoAccesorio1" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoAccesorio2" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoAccesorio3" Type="varchar" MaxLength="50" />
+          <Property Name="NPS" Type="int" />
+          <Property Name="Schedule" Type="int" />
+          <Property Name="TipoMaterial" Type="varchar" MaxLength="50" />
+          <Property Name="Longitud" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="CoordenadasUTMX" Type="int" />
+          <Property Name="CoordenadasUTMY" Type="int" />
+          <Property Name="ExtremoInicial" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoMedio" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoFinal" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="BSCAN" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="MapeoCorrosion" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="InspeccionSonica" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="EspesorPared" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="PitCorrosion" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="EspesorRemanente" Type="decimal" Precision="8" Scale="2" />
+          <Property Name="EstadoAccesorio" Type="varchar" MaxLength="50" />
+          <Property Name="Pintura" Type="bit" />
+          <Property Name="Defecto1" Type="varchar" MaxLength="50" />
+          <Property Name="Defecto2" Type="varchar" MaxLength="50" />
+          <Property Name="NumeroGrapas" Type="int" />
+          <Property Name="Observaciones" Type="varchar" MaxLength="500" />
+          <Property Name="RowState" Type="char" MaxLength="1" />
+          <Property Name="LastUpdate" Type="datetime" />
+        </EntityType>
         <EntityType Name="Oleoductos">
           <Key>
             <PropertyRef Name="Id" />
@@ -97,6 +134,40 @@
         <EntityContainer Name="CNPC_DuctosModelStoreContainer">
           <EntitySet Name="Oleoductos" EntityType="Self.Oleoductos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RegistroInspeccionVisual" EntityType="Self.RegistroInspeccionVisual" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Accesorios" EntityType="Self.Accesorios" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Accesorios].[Id] AS [Id], 
+    [Accesorios].[TuberiaId] AS [TuberiaId], 
+    [Accesorios].[Accesorio] AS [Accesorio], 
+    [Accesorios].[TipoAccesorio] AS [TipoAccesorio], 
+    [Accesorios].[CodigoAccesorio1] AS [CodigoAccesorio1], 
+    [Accesorios].[CodigoAccesorio2] AS [CodigoAccesorio2], 
+    [Accesorios].[CodigoAccesorio3] AS [CodigoAccesorio3], 
+    [Accesorios].[NPS] AS [NPS], 
+    [Accesorios].[Schedule] AS [Schedule], 
+    [Accesorios].[TipoMaterial] AS [TipoMaterial], 
+    [Accesorios].[Longitud] AS [Longitud], 
+    [Accesorios].[CoordenadasUTMX] AS [CoordenadasUTMX], 
+    [Accesorios].[CoordenadasUTMY] AS [CoordenadasUTMY], 
+    [Accesorios].[ExtremoInicial] AS [ExtremoInicial], 
+    [Accesorios].[ExtremoMedio] AS [ExtremoMedio], 
+    [Accesorios].[ExtremoFinal] AS [ExtremoFinal], 
+    [Accesorios].[BSCAN] AS [BSCAN], 
+    [Accesorios].[MapeoCorrosion] AS [MapeoCorrosion], 
+    [Accesorios].[InspeccionSonica] AS [InspeccionSonica], 
+    [Accesorios].[EspesorPared] AS [EspesorPared], 
+    [Accesorios].[PitCorrosion] AS [PitCorrosion], 
+    [Accesorios].[EspesorRemanente] AS [EspesorRemanente], 
+    [Accesorios].[EstadoAccesorio] AS [EstadoAccesorio], 
+    [Accesorios].[Pintura] AS [Pintura], 
+    [Accesorios].[Defecto1] AS [Defecto1], 
+    [Accesorios].[Defecto2] AS [Defecto2], 
+    [Accesorios].[NumeroGrapas] AS [NumeroGrapas], 
+    [Accesorios].[Observaciones] AS [Observaciones], 
+    [Accesorios].[RowState] AS [RowState], 
+    [Accesorios].[LastUpdate] AS [LastUpdate]
+    FROM [dbo].[Accesorios] AS [Accesorios]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -116,6 +187,7 @@
           </FunctionImport>
           <EntitySet Name="Oleoductos" EntityType="CNPC_DuctosModel.Oleoducto" />
           <EntitySet Name="RegistroInspeccionVisuals" EntityType="CNPC_DuctosModel.RegistroInspeccionVisual" />
+          <EntitySet Name="Accesorios" EntityType="CNPC_DuctosModel.Accesorio" />
         </EntityContainer>
         <ComplexType Name="uspGetListOleoductos_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -216,6 +288,41 @@
           <Property Name="CondicionDelTramo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="UltimaFechaDeInspeccion" Type="DateTime" Precision="3" />
           <Property Name="SeleccionarTuberia" Type="Boolean" />
+          <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Accesorio">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TuberiaId" Type="Int32" />
+          <Property Name="Accesorio1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TipoAccesorio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoAccesorio1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoAccesorio2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoAccesorio3" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NPS" Type="Int32" />
+          <Property Name="Schedule" Type="Int32" />
+          <Property Name="TipoMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Longitud" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="CoordenadasUTMX" Type="Int32" />
+          <Property Name="CoordenadasUTMY" Type="Int32" />
+          <Property Name="ExtremoInicial" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoMedio" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="ExtremoFinal" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="BSCAN" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="MapeoCorrosion" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="InspeccionSonica" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="EspesorPared" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="PitCorrosion" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="EspesorRemanente" Type="Decimal" Precision="8" Scale="2" />
+          <Property Name="EstadoAccesorio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pintura" Type="Boolean" />
+          <Property Name="Defecto1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Defecto2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroGrapas" Type="Int32" />
+          <Property Name="Observaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="LastUpdate" Type="DateTime" Precision="3" />
         </EntityType>
@@ -337,6 +444,42 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Accesorios">
+            <EntityTypeMapping TypeName="CNPC_DuctosModel.Accesorio">
+              <MappingFragment StoreEntitySet="Accesorios">
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="RowState" ColumnName="RowState" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="NumeroGrapas" ColumnName="NumeroGrapas" />
+                <ScalarProperty Name="Defecto2" ColumnName="Defecto2" />
+                <ScalarProperty Name="Defecto1" ColumnName="Defecto1" />
+                <ScalarProperty Name="Pintura" ColumnName="Pintura" />
+                <ScalarProperty Name="EstadoAccesorio" ColumnName="EstadoAccesorio" />
+                <ScalarProperty Name="EspesorRemanente" ColumnName="EspesorRemanente" />
+                <ScalarProperty Name="PitCorrosion" ColumnName="PitCorrosion" />
+                <ScalarProperty Name="EspesorPared" ColumnName="EspesorPared" />
+                <ScalarProperty Name="InspeccionSonica" ColumnName="InspeccionSonica" />
+                <ScalarProperty Name="MapeoCorrosion" ColumnName="MapeoCorrosion" />
+                <ScalarProperty Name="BSCAN" ColumnName="BSCAN" />
+                <ScalarProperty Name="ExtremoFinal" ColumnName="ExtremoFinal" />
+                <ScalarProperty Name="ExtremoMedio" ColumnName="ExtremoMedio" />
+                <ScalarProperty Name="ExtremoInicial" ColumnName="ExtremoInicial" />
+                <ScalarProperty Name="CoordenadasUTMY" ColumnName="CoordenadasUTMY" />
+                <ScalarProperty Name="CoordenadasUTMX" ColumnName="CoordenadasUTMX" />
+                <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+                <ScalarProperty Name="TipoMaterial" ColumnName="TipoMaterial" />
+                <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+                <ScalarProperty Name="NPS" ColumnName="NPS" />
+                <ScalarProperty Name="CodigoAccesorio3" ColumnName="CodigoAccesorio3" />
+                <ScalarProperty Name="CodigoAccesorio2" ColumnName="CodigoAccesorio2" />
+                <ScalarProperty Name="CodigoAccesorio1" ColumnName="CodigoAccesorio1" />
+                <ScalarProperty Name="TipoAccesorio" ColumnName="TipoAccesorio" />
+                <ScalarProperty Name="Accesorio1" ColumnName="Accesorio" />
+                <ScalarProperty Name="TuberiaId" ColumnName="TuberiaId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -354,7 +497,7 @@
         <DesignerProperty Name="EnablePluralization" Value="true" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

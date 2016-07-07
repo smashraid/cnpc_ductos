@@ -97,7 +97,7 @@ namespace CNPC.SISDUC.DAL
             }
             return Result;
         }
-        public OleoductoResponse FilterByName(string Nombre, int page, int records)
+        public OleoductoResponse FilterByNameOleoducto(string Nombre, int page, int records)
         {
             OleoductoResponse ductos = new OleoductoResponse();
             ductos.List = new List<Oleoducto>();
@@ -131,7 +131,7 @@ namespace CNPC.SISDUC.DAL
                     d.Material1 = reader.GetString(reader.GetOrdinal("Material1"));
                     d.Material2 = reader.GetString(reader.GetOrdinal("Material2"));
                     d.Material3 = reader.GetString(reader.GetOrdinal("Material3"));
-                    d.LongitudTotal = reader.GetDecimal(reader.GetOrdinal("LongitudTotal"));
+                    //d.LongitudTotal = reader.GetDecimal(reader.GetOrdinal("LongitudTotal"));
                     d.BSW = reader.GetString(reader.GetOrdinal("BSW"));
                     d.RowState = reader.GetString(reader.GetOrdinal("RowState"));
                     d.LastUpdate = reader.GetDateTime(reader.GetOrdinal("LastUpdate"));
@@ -222,6 +222,80 @@ namespace CNPC.SISDUC.DAL
                 cnn.Close();
             }
             return registros;
+        }
+        public AccesorioResponse FilterByNameAccesorio(int TuberiaId, string Nombre, int page, int records)
+        {
+            AccesorioResponse ductos = new AccesorioResponse();
+            ductos.List = new List<Accesorio>();
+            using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+            {
+
+                SqlCommand cmd = new SqlCommand("uspGetListOleoductos", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@TuberiaId", SqlDbType.Int).Value = TuberiaId;
+                cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
+                cmd.Parameters.Add("@Records", SqlDbType.Int).Value = records;
+                cmd.Parameters.Add("@Page", SqlDbType.Int).Value = page;
+                cmd.Parameters.Add("@TotalPage", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cnn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    Accesorio d = new Accesorio();
+                    d.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                    d.TuberiaId = reader.GetInt32(reader.GetOrdinal("TuberiaId"));
+                    d.TipoAccesorio = reader.GetString(reader.GetOrdinal("TipoAccesorio"));
+                    d.CodigoAccesorio1 = reader.GetString(reader.GetOrdinal("CodigoAccesorio1"));
+                    d.CodigoAccesorio2 = reader.GetString(reader.GetOrdinal("CodigoAccesorio2"));
+                    d.CodigoAccesorio3 = reader.GetString(reader.GetOrdinal("CodigoAccesorio3"));
+                    d.NPS = reader.GetInt32(reader.GetOrdinal("NPS"));
+                    d.Schedule = reader.GetInt32(reader.GetOrdinal("Schedule"));
+                    d.TipoMaterial = reader.GetString(reader.GetOrdinal("TipoMaterial"));
+                    d.Longitud = reader.GetDecimal(reader.GetOrdinal("Longitud"));
+                    d.CoordenadasUTMX = reader.GetInt32(reader.GetOrdinal("CoordenadasUTMX"));
+                    d.CoordenadasUTMY = reader.GetInt32(reader.GetOrdinal("CoordenadasUTMY"));
+                    d.ExtremoInicial = reader.GetDecimal(reader.GetOrdinal("ExtremoInicial"));
+                    d.ExtremoMedio = reader.GetDecimal(reader.GetOrdinal("ExtremoMedio"));
+                    d.ExtremoFinal = reader.GetDecimal(reader.GetOrdinal("ExtremoFinal"));
+                    d.BSCAN = reader.GetDecimal(reader.GetOrdinal("BSCAN"));
+                    d.MapeoCorrosion = reader.GetDecimal(reader.GetOrdinal("MapeoCorrosion"));
+                    d.InspeccionSonica = reader.GetDecimal(reader.GetOrdinal("InspeccionSonica"));
+                    d.EspesorPared = reader.GetDecimal(reader.GetOrdinal("EspesorPared"));
+                    d.PitCorrosion = reader.GetDecimal(reader.GetOrdinal("PitCorrosion"));
+                    d.EspesorRemanente = reader.GetDecimal(reader.GetOrdinal("EspesorRemanente"));
+                    d.EstadoAccesorio = reader.GetString(reader.GetOrdinal("EstadoAccesorio"));
+                    d.Pintura = reader.GetBoolean(reader.GetOrdinal("Pintura"));
+                    d.Defecto1 = reader.GetString(reader.GetOrdinal("Defecto1"));
+                    d.Defecto2 = reader.GetString(reader.GetOrdinal("Defecto2"));
+                    d.NumeroGrapas = reader.GetInt32(reader.GetOrdinal("NumeroGrapas"));
+                    d.RowState = reader.GetString(reader.GetOrdinal("RowState"));
+                    d.LastUpdate = reader.GetDateTime(reader.GetOrdinal("LastUpdate"));
+                    ductos.List.Add(d);
+                }
+                ductos.Page = page;
+                ductos.Records = records;
+                cnn.Close();
+            }
+            using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+            {
+
+                SqlCommand cmd = new SqlCommand("uspGetCountAccesorios", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@TuberiaId", SqlDbType.Int).Value = TuberiaId;
+                cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
+                cmd.Parameters.Add("@Records", SqlDbType.Int).Value = records;
+                cmd.Parameters.Add("@Page", SqlDbType.Int).Value = page;
+
+                cnn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ductos.TotalPages = reader.GetInt32(reader.GetOrdinal("TotalPage"));
+                    ductos.TotalRecords = reader.GetInt32(reader.GetOrdinal("TotalRecords"));
+                }
+                cnn.Close();
+            }
+            return ductos;
         }
         public decimal LongitudOleoducto(int Id)
         {

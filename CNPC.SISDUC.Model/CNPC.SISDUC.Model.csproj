@@ -50,6 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accesorio.cs">
+      <DependentUpon>DuctoDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AccesorioResponse.cs" />
     <Compile Include="DuctoDBModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -60,6 +64,7 @@
     <Compile Include="Oleoducto.cs">
       <DependentUpon>DuctoDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Adicionales.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistroInspeccionVisual.cs">
       <DependentUpon>DuctoDBModel.tt</DependentUpon>

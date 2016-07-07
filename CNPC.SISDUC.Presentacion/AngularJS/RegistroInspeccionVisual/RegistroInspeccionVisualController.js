@@ -97,12 +97,21 @@
                 RegistroInspeccionVisualRepository.add(tuberia).success(postSuccessCallBack).error(errorCallBack);
             }
         }
-        //Fin Ver Tuberia
+        //Fin Agregar Nueva Tuberia
 
+        //Ver Tuberia
         $scope.verTuberia = function (tuberia) {
             $scope.vertuberia = tuberia;
             $('#VerTuberia').modal('show');
         }
+        //Fin Ver Tuberia
+
+        //Ver Accesorio
+        $scope.VerAccesorio = function (tuberia) {
+            AccesorioRepository.get(tuberia).success(putSuccessCallBack).error(errorCallBack);
+            $('#VerAccesorio').modal('show');
+        }
+        //Fin Ver Tuberia
 
         //Editar Tuberia
         var putSuccessCallBack = function (data, status) {

@@ -10,7 +10,8 @@
 namespace CNPC.SISDUC.Model
 {
     using System;
-
+    using System.Collections.Generic;
+    
     public partial class Oleoducto
     {
         public int Id { get; set; }
@@ -29,7 +30,6 @@ namespace CNPC.SISDUC.Model
         public Nullable<decimal> Presion { get; set; }
         public Nullable<decimal> Temperatura { get; set; }
         public string BSW { get; set; }
-        public decimal LongitudTotal { get; set; }
         public Nullable<System.DateTime> FechaInspeccion { get; set; }
         public string RowState { get; set; }
         public System.DateTime LastUpdate { get; set; }

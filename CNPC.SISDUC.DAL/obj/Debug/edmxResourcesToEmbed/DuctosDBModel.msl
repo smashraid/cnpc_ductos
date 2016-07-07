@@ -113,5 +113,41 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Accesorios">
+      <EntityTypeMapping TypeName="CNPC_DuctosModel.Accesorio">
+        <MappingFragment StoreEntitySet="Accesorios">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="RowState" ColumnName="RowState" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="NumeroGrapas" ColumnName="NumeroGrapas" />
+          <ScalarProperty Name="Defecto2" ColumnName="Defecto2" />
+          <ScalarProperty Name="Defecto1" ColumnName="Defecto1" />
+          <ScalarProperty Name="Pintura" ColumnName="Pintura" />
+          <ScalarProperty Name="EstadoAccesorio" ColumnName="EstadoAccesorio" />
+          <ScalarProperty Name="EspesorRemanente" ColumnName="EspesorRemanente" />
+          <ScalarProperty Name="PitCorrosion" ColumnName="PitCorrosion" />
+          <ScalarProperty Name="EspesorPared" ColumnName="EspesorPared" />
+          <ScalarProperty Name="InspeccionSonica" ColumnName="InspeccionSonica" />
+          <ScalarProperty Name="MapeoCorrosion" ColumnName="MapeoCorrosion" />
+          <ScalarProperty Name="BSCAN" ColumnName="BSCAN" />
+          <ScalarProperty Name="ExtremoFinal" ColumnName="ExtremoFinal" />
+          <ScalarProperty Name="ExtremoMedio" ColumnName="ExtremoMedio" />
+          <ScalarProperty Name="ExtremoInicial" ColumnName="ExtremoInicial" />
+          <ScalarProperty Name="CoordenadasUTMY" ColumnName="CoordenadasUTMY" />
+          <ScalarProperty Name="CoordenadasUTMX" ColumnName="CoordenadasUTMX" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+          <ScalarProperty Name="TipoMaterial" ColumnName="TipoMaterial" />
+          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+          <ScalarProperty Name="NPS" ColumnName="NPS" />
+          <ScalarProperty Name="CodigoAccesorio3" ColumnName="CodigoAccesorio3" />
+          <ScalarProperty Name="CodigoAccesorio2" ColumnName="CodigoAccesorio2" />
+          <ScalarProperty Name="CodigoAccesorio1" ColumnName="CodigoAccesorio1" />
+          <ScalarProperty Name="TipoAccesorio" ColumnName="TipoAccesorio" />
+          <ScalarProperty Name="Accesorio1" ColumnName="Accesorio" />
+          <ScalarProperty Name="TuberiaId" ColumnName="TuberiaId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -104,7 +104,7 @@ namespace CNPC.SISDUC.BLL
             OleoductoResponse Result = null;
             using (var r = new Repository<Oleoducto>())
             {
-                Result = r.FilterByName(Nombre, page, records);
+                Result = r.FilterByNameOleoducto(Nombre, page, records);
             }
             return Result;
         }
