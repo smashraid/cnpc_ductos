@@ -11,3 +11,16 @@ F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\EPPlus.xml
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\obj\Release\CNPC.SISDUC.BLL.csprojResolveAssemblyReference.cache
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\obj\Release\CNPC.SISDUC.BLL.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\obj\Release\CNPC.SISDUC.BLL.pdb
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\CNPC.SISDUC.BLL.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\CNPC.SISDUC.BLL.pdb
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\CNPC.SISDUC.DAL.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\CNPC.SISDUC.Model.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\EntityFramework.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\EPPlus.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\CNPC.SISDUC.DAL.pdb
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\CNPC.SISDUC.Model.pdb
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\EntityFramework.xml
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Release\EPPlus.xml
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\obj\Release\CNPC.SISDUC.BLL.csprojResolveAssemblyReference.cache
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\obj\Release\CNPC.SISDUC.BLL.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\obj\Release\CNPC.SISDUC.BLL.pdb

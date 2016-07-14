@@ -64,5 +64,22 @@ namespace CNPC.SISDUC.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<uspGetCountOleoductos_Result>("uspGetCountOleoductos", nombreParameter, pageParameter, recordsParameter);
         }
+    
+        public virtual ObjectResult<usp_ValidarUsuario_Result> usp_ValidarUsuario(string usuario, string contrasenia, Nullable<bool> activeDirectory)
+        {
+            var usuarioParameter = usuario != null ?
+                new ObjectParameter("Usuario", usuario) :
+                new ObjectParameter("Usuario", typeof(string));
+    
+            var contraseniaParameter = contrasenia != null ?
+                new ObjectParameter("Contrasenia", contrasenia) :
+                new ObjectParameter("Contrasenia", typeof(string));
+    
+            var activeDirectoryParameter = activeDirectory.HasValue ?
+                new ObjectParameter("ActiveDirectory", activeDirectory) :
+                new ObjectParameter("ActiveDirectory", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ValidarUsuario_Result>("usp_ValidarUsuario", usuarioParameter, contraseniaParameter, activeDirectoryParameter);
+        }
     }
 }

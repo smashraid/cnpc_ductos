@@ -13,6 +13,12 @@ namespace CNPC.SISDUC.Presentacion
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            //routes.MapRoute(
+            //    name: "Login",
+            //    url: "",
+            //    defaults: new { controller = "Cuentas", action = "IniciarSesion", id = UrlParameter.Optional }
+            //);
+
             routes.MapRoute(
                 name: "Tuberia",
                 url: "Tuberia",

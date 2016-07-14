@@ -214,33 +214,36 @@
             <div class="modal-body">
                 <form role="form">
                     <div class="form-group">
-                        <h6><label for="txtOleoducto" class=" col-lg-2">Oleoducto:</label></h6>
+                        <h6><label for="txtOleoducto" class="col-lg-2">Oleoducto:</label></h6>
                         <div class="col-lg-4">
-                            <input type="text" id="txtOleoducto" class="form-control" ng-model="reporteTuberia.Codigo">
+                            <input type="text" id="txtOleoducto" class="form-control" ng-model="oleoducto.Codigo">
                         </div>
                         <h6>
                             <label for="txtDescripcion" class="control-label col-lg-2">Descripción:</label>
                         </h6>
                         <div class="col-lg-4">
-                            <input type="text" id="txtDescripcion" class="form-control" ng-model="reporteTuberia.DescripcionOleoducto">
+                            <input type="text" id="txtDescripcion" class="form-control" ng-model="oleoducto.Descripcion">
                         </div>
                     </div>
 
                     <div class="form-group">
                         <h6><label for="txtCodigoTubo" class="control-label col-lg-2">Código del Tubo:</label></h6>
-                        <div class="col-lg-2">
-                            <input type="text" id="txtCodigoTubo" class="form-control" ng-model="reporteTuberia.NoLamina">
+                        <div class="col-lg-4">
+                            <input type="text" id="txtCodigoTubo" class="form-control" ng-model="reporteTuberia.CodigoDelTubo">
                         </div>
-                        <h6><label for="txtNumeroAnterior" class="control-label col-lg-1">Número Anterior</label></h6>
-                        <div class="col-lg-2">
+                        <h6><label for="txtNumeroAnterior" class="control-label col-lg-2">Número Anterior</label></h6>
+                        <div class="col-lg-4">
                             <input type="text" id="txtNumeroAnterior" class="form-control " ng-model="reporteTuberia.NumeroAnterior">
                         </div>
-                        <h6><label for="txtNPS" class="control-label col-lg-1">NPS</label></h6>
-                        <div class="col-lg-1 sin-espacio">
+                    </div>
+
+                    <div class="form-group">
+                        <h6><label for="txtNPS" class="control-label col-lg-2">NPS</label></h6>
+                        <div class="col-lg-4 sin-espacio">
                             <input type="text" id="txtNPS" class="form-control " ng-model="reporteTuberia.NPS">
                         </div>
-                        <h6><label for="txtSchedule" class="control-label col-lg-1">Schedule</label></h6>
-                        <div class="col-lg-2">
+                        <h6><label for="txtSchedule" class="control-label col-lg-2">Schedule</label></h6>
+                        <div class="col-lg-4">
                             <input type="text" id="txtSchedule" class="form-control " ng-model="reporteTuberia.Schedule">
                         </div>
                     </div>
@@ -259,7 +262,7 @@
                             <input type="text" id="txtCoordenadasUTM_X" class="form-control " ng-model="reporteTuberia.CoordenadasUTM_X">
                         </div>
                         <div class="col-lg-2">
-                            <input type="text" id="txtCoordenadasUTM_X" class="form-control " ng-model="reporteTuberia.CoordenadasUTM_X">
+                            <input type="text" id="txtCoordenadasUTM_Y" class="form-control " ng-model="reporteTuberia.CoordenadasUTM_Y">
                         </div>
                     </div>
                     <div class="form-group">
@@ -424,6 +427,7 @@
                         <h5><label for="txtTipoProteccion" class="control-label col-lg-9 ">NO SE PUEDE MODIFICAR VALORES - SOLO VERLOS</label></h5>
 
                     </div>
+
 
                 </form>
             </div>

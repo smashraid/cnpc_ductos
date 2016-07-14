@@ -101,7 +101,7 @@
 
         //Ver Tuberia
         $scope.verTuberia = function (tuberia) {
-            $scope.vertuberia = tuberia;
+            $scope.reporteTuberia = tuberia;
             $('#VerTuberia').modal('show');
         }
         //Fin Ver Tuberia

@@ -24,3 +24,17 @@ F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Debug\EPPlus.xml
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.csprojResolveAssemblyReference.cache
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.dll
 F:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.pdb
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.DAL.dll.config
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.DAL.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.DAL.pdb
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.Model.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Debug\EntityFramework.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Debug\EPPlus.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.Model.pdb
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Debug\EntityFramework.xml
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\bin\Debug\EPPlus.xml
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.csprojResolveAssemblyReference.cache
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.pdb

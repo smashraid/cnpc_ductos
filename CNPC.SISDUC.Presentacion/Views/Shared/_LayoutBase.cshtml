@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+
+    <title>SISTEMA DE INSPECCION DE DUCTOS</title>
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/menu.css" rel="stylesheet" />
+    <link href="~/Content/estiloPetro.css" rel="stylesheet" />
+</head>
+
+<body ng-app="app">
+    <!--Menu Principal-->
+    <div id="container">
+        <div id="body">
+
+            <!--Contenido-->
+            @RenderBody()
+            <!--Fin de Contenido-->
+            <!--Pie de pagina-->
+        </div>
+    </div>
+    <!--Fin de Pie de Pagina-->
+    <!--Librerias JQuery y Bootstrap-->
+    @Scripts.Render("~/bundles/jquery")
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/respond.js"></script>
+    @RenderSection("scripts", required: false)
+  
+</body>
+</html>

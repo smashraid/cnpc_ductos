@@ -4,9 +4,9 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CNPC_DuctosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CNPC_DuctosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Accesorios">
           <Key>
             <PropertyRef Name="Id" />
@@ -72,7 +72,7 @@ advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definid
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OleoductoID" Type="int" Nullable="false" />
-          <Property Name="CodigoDelTubo" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoDelTubo" Type="varchar" MaxLength="100" />
           <Property Name="NumeroAnterior" Type="int" />
           <Property Name="NPS" Type="int" />
           <Property Name="Schedule" Type="int" />
@@ -110,7 +110,7 @@ advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definid
           <Property Name="CruceCarretera" Type="bit" />
           <Property Name="TipoProteccion" Type="varchar" MaxLength="50" />
           <Property Name="EstadoProteccion" Type="varchar" MaxLength="50" />
-          <Property Name="EstadoTuberia" Type="varchar" MaxLength="2" />
+          <Property Name="EstadoTuberia" Type="varchar" MaxLength="3" />
           <Property Name="EspesorNominal" Type="decimal" Precision="8" Scale="2" />
           <Property Name="EspesorMinimoRealRemanente" Type="decimal" Precision="8" Scale="2" />
           <Property Name="ObservacionesDeLaInspeccionVisual" Type="varchar" MaxLength="500" />
@@ -120,6 +120,11 @@ advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definid
           <Property Name="RowState" Type="char" MaxLength="1" />
           <Property Name="LastUpdate" Type="datetime" />
         </EntityType>
+        <Function Name="usp_ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Usuario" Type="varchar" Mode="In" />
+          <Parameter Name="Contrasenia" Type="varchar" Mode="In" />
+          <Parameter Name="ActiveDirectory" Type="bit" Mode="In" />
+        </Function>
         <Function Name="uspGetCountOleoductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
           <Parameter Name="Page" Type="int" Mode="In" />
@@ -188,6 +193,11 @@ advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definid
           <EntitySet Name="Oleoductos" EntityType="CNPC_DuctosModel.Oleoducto" />
           <EntitySet Name="RegistroInspeccionVisuals" EntityType="CNPC_DuctosModel.RegistroInspeccionVisual" />
           <EntitySet Name="Accesorios" EntityType="CNPC_DuctosModel.Accesorio" />
+          <FunctionImport Name="usp_ValidarUsuario" ReturnType="Collection(CNPC_DuctosModel.usp_ValidarUsuario_Result)">
+            <Parameter Name="Usuario" Mode="In" Type="String" />
+            <Parameter Name="Contrasenia" Mode="In" Type="String" />
+            <Parameter Name="ActiveDirectory" Mode="In" Type="Boolean" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="uspGetListOleoductos_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -243,7 +253,7 @@ advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definid
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OleoductoID" Type="Int32" Nullable="false" />
-          <Property Name="CodigoDelTubo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoDelTubo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="NumeroAnterior" Type="Int32" />
           <Property Name="NPS" Type="Int32" />
           <Property Name="Schedule" Type="Int32" />
@@ -281,7 +291,7 @@ advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definid
           <Property Name="CruceCarretera" Type="Boolean" />
           <Property Name="TipoProteccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EstadoProteccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="EstadoTuberia" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoTuberia" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
           <Property Name="EspesorNominal" Type="Decimal" Precision="8" Scale="2" />
           <Property Name="EspesorMinimoRealRemanente" Type="Decimal" Precision="8" Scale="2" />
           <Property Name="ObservacionesDeLaInspeccionVisual" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
@@ -326,6 +336,20 @@ advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definid
           <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="LastUpdate" Type="DateTime" Precision="3" />
         </EntityType>
+        <ComplexType Name="usp_ValidarUsuario_Result">
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Contrasenia" Nullable="false" MaxLength="250" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Apellido" Nullable="false" MaxLength="50" />
+          <Property Type="Boolean" Name="Activo" Nullable="false" />
+          <Property Type="Boolean" Name="ActiveDirectory" Nullable="false" />
+          <Property Type="Int32" Name="FacilitadorId" Nullable="false" />
+          <Property Type="Int32" Name="FiscalizadorId" Nullable="false" />
+          <Property Type="String" Name="RowState" Nullable="false" MaxLength="1" />
+          <Property Type="DateTime" Name="LastUpdate" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="RolId" Nullable="false" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -480,6 +504,24 @@ advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definid
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="usp_ValidarUsuario" FunctionName="CNPC_DuctosModel.Store.usp_ValidarUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="CNPC_DuctosModel.usp_ValidarUsuario_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="ActiveDirectory" ColumnName="ActiveDirectory" />
+                <ScalarProperty Name="FacilitadorId" ColumnName="FacilitadorId" />
+                <ScalarProperty Name="FiscalizadorId" ColumnName="FiscalizadorId" />
+                <ScalarProperty Name="RowState" ColumnName="RowState" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="RolId" ColumnName="RolId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

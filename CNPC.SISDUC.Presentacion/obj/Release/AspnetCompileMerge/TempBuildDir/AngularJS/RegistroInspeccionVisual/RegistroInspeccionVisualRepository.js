@@ -1,4 +1,5 @@
 ﻿var GetTuberiaUrl = '/api/WSRegistroInspeccionVisual/GetTuberia';
+var GetAccesorioUrl = '/api/WSAccesorio/GetAccesorio';
 var AddTuberiaUrl = '/api/WSRegistroInspeccionVisual/Post';
 var UpdateTuberiaUrl = '/api/WSRegistroInspeccionVisual/Put';
 
@@ -6,6 +7,17 @@ app.factory('RegistroInspeccionVisualRepository', function ($http) {
     return {
         get: function (parameterlist) {
             return $http.get(GetTuberiaUrl,
+            {
+                params: {
+                    oleoductoid: parameterlist.oleoductoid,
+                    name: parameterlist.name,
+                    page: parameterlist.page,
+                    records: parameterlist.records
+                }
+            });
+        },
+        getAccesorio: function (parameterlist) {
+            return $http.get(GetAccesorioUrl,
             {
                 params: {
                     oleoductoid: parameterlist.oleoductoid,

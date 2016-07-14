@@ -4,6 +4,7 @@
         //Metodo GET
         var getSuccessCallback = function (data, status) {
             $scope.listaTuberia = data.List;
+            $scope.oleoducto = data.oleoducto;
             $scope.parameterlist.pages = data.TotalPages;
             $scope.parameterlist.totalRecords = data.TotalRecords;
         }
@@ -96,12 +97,21 @@
                 RegistroInspeccionVisualRepository.add(tuberia).success(postSuccessCallBack).error(errorCallBack);
             }
         }
-        //Fin Agregar Nuevo Tuberia
+        //Fin Agregar Nueva Tuberia
 
+        //Ver Tuberia
         $scope.verTuberia = function (tuberia) {
-            $scope.vertuberia = tuberia;
+            $scope.reporteTuberia = tuberia;
             $('#VerTuberia').modal('show');
         }
+        //Fin Ver Tuberia
+
+        //Ver Accesorio
+        $scope.VerAccesorio = function (tuberia) {
+            AccesorioRepository.get(tuberia).success(putSuccessCallBack).error(errorCallBack);
+            $('#VerAccesorio').modal('show');
+        }
+        //Fin Ver Tuberia
 
         //Editar Tuberia
         var putSuccessCallBack = function (data, status) {

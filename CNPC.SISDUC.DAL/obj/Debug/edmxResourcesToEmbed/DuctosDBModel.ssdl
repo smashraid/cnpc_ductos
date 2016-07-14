@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="CNPC_DuctosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="CNPC_DuctosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
   <EntityType Name="Accesorios">
     <Key>
       <PropertyRef Name="Id" />
@@ -67,7 +67,7 @@ advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definid
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="OleoductoID" Type="int" Nullable="false" />
-    <Property Name="CodigoDelTubo" Type="varchar" MaxLength="50" />
+    <Property Name="CodigoDelTubo" Type="varchar" MaxLength="100" />
     <Property Name="NumeroAnterior" Type="int" />
     <Property Name="NPS" Type="int" />
     <Property Name="Schedule" Type="int" />
@@ -105,7 +105,7 @@ advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definid
     <Property Name="CruceCarretera" Type="bit" />
     <Property Name="TipoProteccion" Type="varchar" MaxLength="50" />
     <Property Name="EstadoProteccion" Type="varchar" MaxLength="50" />
-    <Property Name="EstadoTuberia" Type="varchar" MaxLength="2" />
+    <Property Name="EstadoTuberia" Type="varchar" MaxLength="3" />
     <Property Name="EspesorNominal" Type="decimal" Precision="8" Scale="2" />
     <Property Name="EspesorMinimoRealRemanente" Type="decimal" Precision="8" Scale="2" />
     <Property Name="ObservacionesDeLaInspeccionVisual" Type="varchar" MaxLength="500" />
@@ -115,6 +115,11 @@ advertencia 6002: La tabla o vista 'CNPC_Ductos.dbo.Accesorios' no tiene definid
     <Property Name="RowState" Type="char" MaxLength="1" />
     <Property Name="LastUpdate" Type="datetime" />
   </EntityType>
+  <Function Name="usp_ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Usuario" Type="varchar" Mode="In" />
+    <Parameter Name="Contrasenia" Type="varchar" Mode="In" />
+    <Parameter Name="ActiveDirectory" Type="bit" Mode="In" />
+  </Function>
   <Function Name="uspGetCountOleoductos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Nombre" Type="varchar" Mode="In" />
     <Parameter Name="Page" Type="int" Mode="In" />

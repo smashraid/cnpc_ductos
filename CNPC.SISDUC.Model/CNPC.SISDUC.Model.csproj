@@ -54,6 +54,7 @@
       <DependentUpon>DuctoDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="AccesorioResponse.cs" />
+    <Compile Include="Constantes.cs" />
     <Compile Include="DuctoDBModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -77,6 +78,10 @@
     <Compile Include="uspGetListOleoductos_Result.cs">
       <DependentUpon>DuctoDBModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="usp_ValidarUsuario_Result.cs">
+      <DependentUpon>DuctoDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

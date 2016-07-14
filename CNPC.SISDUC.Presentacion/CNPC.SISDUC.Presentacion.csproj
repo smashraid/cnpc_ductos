@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -42,6 +43,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.DirectoryServices.Protocols" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -172,8 +175,18 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\WSDuctoController.cs" />
+    <Compile Include="Models\CuadrillaViewModel.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Security\SesionActual.cs" />
+    <Compile Include="Security\UsuarioAgenteProxy.cs" />
+    <Compile Include="Security\ValidarAccesoAttribute.cs" />
+    <Compile Include="WSDuctoController.cs" />
     <Compile Include="Controllers\WSAccesorioController.cs" />
     <Compile Include="Controllers\WSRegistroInspeccionVisualController.cs" />
     <Compile Include="Global.asax.cs">
@@ -196,6 +209,7 @@
     <Content Include="AngularJS\Templates\Bienvenidos.html" />
     <Content Include="AngularJS\RegistroInspeccionVisual\RegistroInspeccionVisualRepository.js" />
     <Content Include="AngularJS\RegistroInspeccionVisual\RegistroInspeccionVisualController.js" />
+    <Content Include="Content\assets\font-awesome\fontawesome-webfont-v=4.0.3.svg" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\estiloPetro.css" />
     <Content Include="Content\img\01.PNG" />
@@ -246,6 +260,10 @@
     <Content Include="Scripts\angular-sanitize.min.js.map" />
     <Content Include="Scripts\angular-touch.min.js.map" />
     <Content Include="Scripts\angular.min.js.map" />
+    <Content Include="Content\assets\font-awesome\fontawesome-webfont-.eot" />
+    <Content Include="Content\assets\font-awesome\fontawesome-webfont-v=4.0.3.eot" />
+    <Content Include="Content\assets\font-awesome\fontawesome-webfont-v=4.0.3.ttf" />
+    <Content Include="Content\assets\font-awesome\fontawesome-webfont-v=4.0.3.woff" />
     <None Include="Properties\PublishProfiles\Default Settings %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
     <None Include="Properties\PublishProfiles\sisduc.pubxml" />
@@ -571,7 +589,9 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Include="Views\Shared\_LayoutBase.cshtml" />
+    <Content Include="Views\Cuentas\IniciarSesionXXX.cshtml" />
+    <Content Include="Views\Cuentas\IniciarSesion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -592,6 +612,12 @@
       <Project>{8ca54ef0-9d9a-434e-95fd-0e8da49660f2}</Project>
       <Name>CNPC.SISDUC.Model</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

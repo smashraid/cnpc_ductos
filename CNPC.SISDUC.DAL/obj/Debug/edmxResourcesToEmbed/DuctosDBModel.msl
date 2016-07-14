@@ -149,5 +149,23 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="usp_ValidarUsuario" FunctionName="CNPC_DuctosModel.Store.usp_ValidarUsuario">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CNPC_DuctosModel.usp_ValidarUsuario_Result">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="ActiveDirectory" ColumnName="ActiveDirectory" />
+          <ScalarProperty Name="FacilitadorId" ColumnName="FacilitadorId" />
+          <ScalarProperty Name="FiscalizadorId" ColumnName="FiscalizadorId" />
+          <ScalarProperty Name="RowState" ColumnName="RowState" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>
