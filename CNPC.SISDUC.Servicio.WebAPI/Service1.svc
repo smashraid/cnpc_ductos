@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="CNPC.SISDUC.Servicio.WebAPI.Service1" CodeBehind="Service1.svc.cs" %>

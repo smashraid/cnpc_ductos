@@ -1,4 +1,5 @@
 ﻿using CNPC.SISDUC.Model;
+using CNPC.SISDUC.Model.Servicio;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -103,7 +104,6 @@ namespace CNPC.SISDUC.DAL
             ductos.List = new List<Oleoducto>();
             using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
             {
-
                 SqlCommand cmd = new SqlCommand("uspGetListOleoductos", cnn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
@@ -167,7 +167,6 @@ namespace CNPC.SISDUC.DAL
             registros.List = new List<RegistroInspeccionVisual>();
             using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
             {
-
                 SqlCommand cmd = new SqlCommand("uspGetListRegistroInspeccionVisual", cnn);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@OleoductoID", SqlDbType.Int).Value = OleoductoID;

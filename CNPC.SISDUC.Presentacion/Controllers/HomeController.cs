@@ -1,4 +1,7 @@
-﻿using System.Web.Mvc;
+﻿using CNPC.SISDUC.Presentacion.Models;
+using System.Web.Mvc;
+
+using formsAuth = System.Web.Security.FormsAuthentication;
 
 namespace CNPC.SISDUC.Presentacion.Controllers
 {
@@ -23,6 +26,21 @@ namespace CNPC.SISDUC.Presentacion.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+        public ActionResult CerrarSesion()
+        {
+            var entrada = SesionActual.Usuario;
+
+            if (entrada != null)
+            {
+                SesionActual.Usuario = null;
+            }
+
+            formsAuth.SignOut();
+            SesionActual.EstaAutenticado = false;
+            Session.Clear();
+            Session.Abandon();
+            return Redirect(formsAuth.DefaultUrl);
         }
     }
 }

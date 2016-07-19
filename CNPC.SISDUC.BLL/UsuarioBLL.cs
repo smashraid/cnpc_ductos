@@ -53,11 +53,12 @@ namespace CNPC.SISDUC.BLL
         }
         public Usuario ValidaLogin(Usuario toItem)
         {
+            Usuario result = null;
             using (var r = new Repository<Usuario>())
             {
-                Usuario tExistente = r.usp_ValidarUsuario(toItem.Usuario1, toItem.Contrasenia, toItem.ActiveDirectory);
-                return tExistente;
+                result= r.usp_ValidarUsuario(toItem.Usuario1, toItem.Contrasenia, toItem.ActiveDirectory);
             }
+            return result;
         }
         public bool Update(Usuario toItem)
         {
@@ -208,6 +209,12 @@ namespace CNPC.SISDUC.BLL
                 }
             }
             return result;
+        }
+        public bool ValidaRolconAccion(int rolid, string controller)
+        {
+            
+                int nroRegistros =  new CNPC_DuctosEntities().usp_ValidaRolconAccion(rolid, controller);
+                return nroRegistros > 0;
         }
         public void Dispose()
         {

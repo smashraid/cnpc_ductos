@@ -63,5 +63,9 @@ namespace CNPC.SISDUC.Model
         public Nullable<bool> SeleccionarTuberia { get; set; }
         public string RowState { get; set; }
         public Nullable<System.DateTime> LastUpdate { get; set; }
+        public string Codigo { get; set; }
+        public string NumeroOleoducto { get; set; }
+        public string CodigoDelTubo02 { get; set; }
+        public string CodigoDelTubo03 { get; set; }
     }
 }

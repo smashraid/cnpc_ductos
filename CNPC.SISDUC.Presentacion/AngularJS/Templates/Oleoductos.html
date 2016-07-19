@@ -1,132 +1,107 @@
-﻿<div id="content" align="center">
-    <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
-        <tr>
-            <td class="tituloh1"><label>Lista de Oleoductos</label></td>
-        </tr>
+﻿<div id="content">
+    <table border="0"  cellpadding="0" cellspacing="0">
         <tr>
             <td>
-                <table width="50%" border="0" align="right">
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="parameterlist.name" placeholder="Buscar" ng-keyup="firstPage()">
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button">Buscar</button>
+                    </span>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<table border="0"  cellpadding="0" cellspacing="0">
+    <thead>
+        <tr>
+            <th align="center" class="titulo_grilla">ID</th>
+            <th align="center" class="titulo_grilla">Código</th>
+            <th align="center" class="titulo_grilla">Descripción</th>
+            <th align="center" class="titulo_grilla">N° de Lamina</th>
+            <th align="center" class="titulo_grilla">Ubicación</th>
+            <th align="center" class="titulo_grilla">Longitud</th>
+            <th align="center" class="titulo_grilla">FECHA INSPECCION</th>
+            <th width="5%" align="center" class="titulo_grilla">Registro</th>
+            <th width="6%" align="center" class="titulo_grilla">Ver Información</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="celda2_grilla" ng-repeat="item in listaOleoductos">
+            <td width="5%" align="center" class="celda2_grilla">{{item.Id}}</td>
+            <td width="8%" class="celda2_grilla">{{item.Codigo}}</td>
+            <td width="27%" class="celda2_grilla">{{item.Descripcion}}</td>
+            <td width="17%" class="celda2_grilla">{{item.NoLamina}}</td>
+            <td width="8%" class="celda2_grilla">{{item.Ubicacion}}</td>
+            <td width="8%" class="celda2_grilla">{{item.LongitudTotal}}</td>
+            <td width="10%" class="celda2_grilla">{{item.FechaInspeccion|date:'dd/MM/yyyy'}}</td>
+
+            <td align="center"><a href="#" ng-click="editarOleoducto(item)"><img src="Content/img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
+            <td align="center"><a ng-href="/Tuberia/{{item.Id}}"><img src="../../Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
+        </tr>
+        <tr>
+            <td colspan="15" align="center">
+                <table width="30%" border="0" align="left">
+                    <tbody>
+                        <tr>
+                            <td class="texto"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table width="30%" border="0" align="right">
+                    <tbody>
+                        <tr>
+                            <td align="right" class="texto" style="text-align:right">
+                                <a href="#" ng-click='firstPage()'><strong>[|<]</strong></a> <strong>
+                                    <a href="#" ng-click='firstPage()'>&nbsp;[<]</a>
+                                    &nbsp;<label>{{parameterlist.page}}/ {{parameterlist.pages}}</label>
+                                    <a href="#" ng-click='nextPage()'>[>]</a>&nbsp;
+                                    <a href="#" ng-click='lastPage()'>[>|]</a>
+                                </strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="15" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="15" align="center">
+                <table width="30%" border="0" align="right">
                     <tbody>
                         <tr>
                             <td>
                                 <table width="100%" border="0" align="right">
-                                    <td>
-                                        <input ng-model="parameterlist.name" ng-keyup="firstPage()" class="ui-inputfield" id="txtoleoductobuscar" />
-                                    </td>
-                                </table>
-                            </td>
-                            <td>
-                                <table width="70%" border="0" align="left">
                                     <td class="button">
-                                        <a href="#" target="_self">BUSCAR</a>
+                                        <a href="#" ng-click="agregarOleoducto()">
+                                            Agregar Oleoducto
+                                        </a>
                                     </td>
                                 </table>
                             </td>
+
+                            <td>
+                                <table width="100%" border="0" align="right">
+                                    <td class="button">
+                                        <a href="/Home/Index" target="_self">SALIR</a>
+
+                                    </td>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="15" align="center">&nbsp;</td>
                         </tr>
                     </tbody>
                 </table>
             </td>
         </tr>
-        <tr>
-            <td>
-                <table width="100%" border="0" align="center">
-                    <tr>
-                        <td colspan="8" align="center">
-                            <table width="90%" border="0">
-                                <thead>
-                                    <tr>
-                                        <th align="center" class="titulo_grilla">ID</th>
-                                        <th align="center" class="titulo_grilla">Código</th>
-                                        <th align="center" class="titulo_grilla">Descripción</th>
-                                        <th align="center" class="titulo_grilla">N° de Lamina</th>
-                                        <th align="center" class="titulo_grilla">Ubicación</th>
-                                        <th align="center" class="titulo_grilla">Longitud</th>
-                                        <th align="center" class="titulo_grilla">FECHA INSPECCION</th>
-                                        <th width="5%" align="center" class="titulo_grilla">Registro</th>
-                                        <th width="6%" align="center" class="titulo_grilla">Ver Información</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="celda2_grilla" ng-repeat="item in listaOleoductos">
-                                        <td width="5%" align="center" class="celda2_grilla">{{item.Id}}</td>
-                                        <td width="8%" class="celda2_grilla">{{item.Codigo}}</td>
-                                        <td width="27%" class="celda2_grilla">{{item.Descripcion}}</td>
-                                        <td width="17%" class="celda2_grilla">{{item.NoLamina}}</td>
-                                        <td width="8%" class="celda2_grilla">{{item.Ubicacion}}</td>
-                                        <td width="8%" class="celda2_grilla">{{item.LongitudTotal}}</td>
-                                        <td width="10%" class="celda2_grilla">{{item.FechaInspeccion|date:'dd/MM/yyyy'}}</td>
+</table>
 
-                                        <td align="center"><a href="#" ng-click="editarOleoducto(item)"><img src="Content/img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                                        <td align="center"><a ng-href="/Tuberia/{{item.Id}}"><img src="../../Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="15" align="center">
-                                            <table width="30%" border="0" align="left">
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="texto"></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                            <table width="30%" border="0" align="right">
-                                                <tbody>
-                                                    <tr>
-                                                        <td align="right" class="texto" style="text-align:right">
-                                                            <a href="#" ng-click='firstPage()'><strong>[|<]</strong></a> <strong>
-                                                                <a href="#" ng-click='firstPage()'>&nbsp;[<]</a>
-                                                                &nbsp;<label>{{parameterlist.page}}/ {{parameterlist.pages}}</label>
-                                                                <a href="#" ng-click='nextPage()'>[>]</a>&nbsp;
-                                                                <a href="#" ng-click='lastPage()'>[>|]</a>
-                                                            </strong>
-                                                        </td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="15" align="center">&nbsp;</td>
-                                    </tr>
-                                    <tr>
-                                        <td colspan="15" align="center">
-                                            <table width="30%" border="0" align="right">
-                                                <tbody>
-                                                    <tr>
-                                                        <td>
-                                                            <table width="100%" border="0" align="right">
-                                                                <td class="button">
-                                                                    <a href="#" ng-click="agregarOleoducto()">
-                                                                        Agregar Oleoducto
-                                                                    </a>
-                                                                </td>
-                                                            </table>
-                                                        </td>
-
-                                                        <td>
-                                                            <table width="100%" border="0" align="right">
-                                                                <td class="button">
-                                                                    <a href="/Home/Index" target="_self">SALIR</a>
-
-                                                                </td>
-                                                            </table>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="15" align="center">&nbsp;</td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </td>
-                                    </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-</div>
 <!-- Modal -->
 <div class="modal fade" id="NuevoOleoducto" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">

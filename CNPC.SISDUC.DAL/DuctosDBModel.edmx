@@ -72,7 +72,11 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OleoductoID" Type="int" Nullable="false" />
-          <Property Name="CodigoDelTubo" Type="varchar" MaxLength="100" />
+          <Property Name="Codigo" Type="nvarchar" MaxLength="70" />
+          <Property Name="NumeroOleoducto" Type="varchar" MaxLength="50" />
+          <Property Name="CodigoDelTubo" Type="varchar" MaxLength="5" />
+          <Property Name="CodigoDelTubo02" Type="nchar" MaxLength="1" />
+          <Property Name="CodigoDelTubo03" Type="nchar" MaxLength="4" />
           <Property Name="NumeroAnterior" Type="int" />
           <Property Name="NPS" Type="int" />
           <Property Name="Schedule" Type="int" />
@@ -120,6 +124,10 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
           <Property Name="RowState" Type="char" MaxLength="1" />
           <Property Name="LastUpdate" Type="datetime" />
         </EntityType>
+        <Function Name="usp_ValidaRolconAccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="rolid" Type="int" Mode="In" />
+          <Parameter Name="controller" Type="varchar" Mode="In" />
+        </Function>
         <Function Name="usp_ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Usuario" Type="varchar" Mode="In" />
           <Parameter Name="Contrasenia" Type="varchar" Mode="In" />
@@ -198,6 +206,10 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
             <Parameter Name="Contrasenia" Mode="In" Type="String" />
             <Parameter Name="ActiveDirectory" Mode="In" Type="Boolean" />
           </FunctionImport>
+          <FunctionImport Name="usp_ValidaRolconAccion">
+            <Parameter Name="rolid" Mode="In" Type="Int32" />
+            <Parameter Name="controller" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="uspGetListOleoductos_Result">
           <Property Type="Int32" Name="Id" Nullable="false" />
@@ -253,7 +265,7 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OleoductoID" Type="Int32" Nullable="false" />
-          <Property Name="CodigoDelTubo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoDelTubo" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
           <Property Name="NumeroAnterior" Type="Int32" />
           <Property Name="NPS" Type="Int32" />
           <Property Name="Schedule" Type="Int32" />
@@ -300,6 +312,10 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
           <Property Name="SeleccionarTuberia" Type="Boolean" />
           <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+          <Property Name="Codigo" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="NumeroOleoducto" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoDelTubo02" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="CodigoDelTubo03" Type="String" MaxLength="4" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="Accesorio">
           <Key>
@@ -416,6 +432,10 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
           <EntitySetMapping Name="RegistroInspeccionVisuals">
             <EntityTypeMapping TypeName="CNPC_DuctosModel.RegistroInspeccionVisual">
               <MappingFragment StoreEntitySet="RegistroInspeccionVisual">
+                <ScalarProperty Name="CodigoDelTubo03" ColumnName="CodigoDelTubo03" />
+                <ScalarProperty Name="CodigoDelTubo02" ColumnName="CodigoDelTubo02" />
+                <ScalarProperty Name="NumeroOleoducto" ColumnName="NumeroOleoducto" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
                 <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
                 <ScalarProperty Name="RowState" ColumnName="RowState" />
                 <ScalarProperty Name="SeleccionarTuberia" ColumnName="SeleccionarTuberia" />
@@ -522,6 +542,7 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="usp_ValidaRolconAccion" FunctionName="CNPC_DuctosModel.Store.usp_ValidaRolconAccion" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

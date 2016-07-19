@@ -1,5 +1,9 @@
 ﻿var app = angular.module("app", ["ngRoute"])
 .config(function ($routeProvider, $locationProvider) {
+    //$locationProvider.html5Mode({
+    //    enabled: true,
+    //    requireBase: true
+    //});
     $routeProvider.when('/', {
         templateUrl: '/AngularJS/Templates/Bienvenidos.html',
         controller: 'bienvenidosController'
@@ -12,9 +16,9 @@
         templateUrl: '/AngularJS/Templates/Tuberias.html',
         controller: 'RegistroInspeccionVisualController'
     });
-
-    $locationProvider.html5Mode({
-        enabled: true,
-        requireBase: false
+    $routeProvider.when('/Home/CerrarSesion', {
+        templateUrl: '/',
+        controller: 'CerrarSesionController'
     });
+    $locationProvider.html5Mode(true);
 });

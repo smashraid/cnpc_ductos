@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using CNPC.SISDUC.DAL;
 using CNPC.SISDUC.Model;
+using CNPC.SISDUC.Model.Servicio;
 
 namespace CNPC.SISDUC.BLL
 {

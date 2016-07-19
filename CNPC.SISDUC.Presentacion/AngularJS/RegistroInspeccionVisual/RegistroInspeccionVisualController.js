@@ -1,6 +1,5 @@
 ﻿app.controller("RegistroInspeccionVisualController",
-    function ($scope, $routeParams, RegistroInspeccionVisualRepository)
-    {
+    function ($scope, $routeParams, RegistroInspeccionVisualRepository) {
         //Metodo GET
         var getSuccessCallback = function (data, status) {
             $scope.listaTuberia = data.List;
@@ -82,19 +81,24 @@
                 "EstadoTuberia": "", "EspesorNominal": "", "EspesorMinimoRealRemanente": "",
                 "ObservacionesDeLaInspeccionVisual": "", "CondicionDelTramo": "",
                 "UltimaFechaDeInspeccion": "", "SeleccionarTuberia": "", "RowState": "",
-                "LastUpdate":""
+                "LastUpdate": ""
             };
-            $('#NuevoTuberia').modal('show');
+            $('#NuevaTuberia').modal('show');
         }
         var postSuccessCallBack = function (data, status) {
             alert('Tuberia Creada');
-            $('#NuevoTuberia').modal('hide');
+            $('#NuevaTuberia').modal('hide');
         }
-        $scope.guardarTuberia = function (tuberia) {
+
+        $scope.guardarTuberia = function (tuberia, oleoducto) {
             if (validar(tuberia)) {
+                tuberia.OleoductoID = oleoducto.Id
                 tuberia.LastUpdate = new Date();
                 tuberia.RowState = "A";
+
                 RegistroInspeccionVisualRepository.add(tuberia).success(postSuccessCallBack).error(errorCallBack);
+                //TODO: VERIFICAR REFRESH AUTOMATICO
+
             }
         }
         //Fin Agregar Nueva Tuberia
@@ -115,9 +119,19 @@
 
         //Editar Tuberia
         var putSuccessCallBack = function (data, status) {
-            alert('Tuberia Actualizado');
+            alert('Tuberia Actualizada');
             $('#EditarTuberia').modal('hide');
         }
+
+        $scope.guardarMotivo = function (tuberia, cambio) {
+            if (validar(cambio)) {
+                cambio.TuberiaID = tuberia.Id
+                cambio.LastUpdate = new Date();
+                cambio.RowState = "A";
+                CambioRepository.add(cambio).success(postSuccessCallBack).error(errorCallBack);
+            }
+        }
+
         $scope.actualizarTuberia = function (tuberia) {
             if (validar(tuberia)) {
                 tuberia.LastUpdate = new Date();
@@ -125,8 +139,8 @@
                 RegistroInspeccionVisualRepository.update(tuberia).success(putSuccessCallBack).error(errorCallBack);
             }
         }
-        $scope.editarTuberia = function (tuberia) {
-            $scope.editarTubo = tuberia;
+        $scope.EditarTuberia = function (tuberia) {
+            $scope.editaTuberia = tuberia;
             $('#EditarTuberia').modal('show');
         }
         //Fin Editar Tuberia

@@ -81,5 +81,18 @@ namespace CNPC.SISDUC.Model
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<usp_ValidarUsuario_Result>("usp_ValidarUsuario", usuarioParameter, contraseniaParameter, activeDirectoryParameter);
         }
+    
+        public virtual int usp_ValidaRolconAccion(Nullable<int> rolid, string controller)
+        {
+            var rolidParameter = rolid.HasValue ?
+                new ObjectParameter("rolid", rolid) :
+                new ObjectParameter("rolid", typeof(int));
+    
+            var controllerParameter = controller != null ?
+                new ObjectParameter("controller", controller) :
+                new ObjectParameter("controller", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("usp_ValidaRolconAccion", rolidParameter, controllerParameter);
+        }
     }
 }

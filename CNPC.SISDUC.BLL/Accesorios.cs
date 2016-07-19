@@ -1,5 +1,6 @@
 ﻿using CNPC.SISDUC.DAL;
 using CNPC.SISDUC.Model;
+using CNPC.SISDUC.Model.Servicio;
 using System;
 using System.Collections.Generic;
 
