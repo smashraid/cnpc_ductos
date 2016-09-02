@@ -3,6 +3,7 @@ using CNPC.SISDUC.Model.Servicio;
 using CNPC.SISDUC.BLL;
 using CNPC.SISDUC.Model;
 using System.Linq;
+using CNPC.SISDUC.DAL;
 
 namespace CNPC.SISDUC.SERVICIO.WCF
 {
@@ -57,7 +58,7 @@ namespace CNPC.SISDUC.SERVICIO.WCF
         }
         public OleoductoResponse OleoductoListarEntidad(string search = null, int page = 1, int rowsPerPage = 10)
         {
-            OleoductoResponse response = new OleoductoResponse();
+            OleoductoResponse response = null;
             try
             {
                 using (var dominio = new Oleoductos())
@@ -69,7 +70,7 @@ namespace CNPC.SISDUC.SERVICIO.WCF
             catch (Exception ex)
             {
                 response.Resultado = false;
-                response.MensajeError = ex.Message;//+ " "+ ex.InnerException + " " + ex.StackTrace; 
+                response.MensajeError += "Error: " + ex.Message + " " + ex.InnerException;//+ " "+ ex.InnerException + " " + ex.StackTrace; 
             }
             return response;
         }
@@ -139,11 +140,90 @@ namespace CNPC.SISDUC.SERVICIO.WCF
                     response = dominio.FilterByNameRegistroInspeccionVisual(oleoductoId, search, page, rowsPerPage);
                     response.Resultado = true;
                 }
+                using (var dominio = new TipoSoportes())
+                {
+                    response.ListTipoSoporte = dominio.GetListTipoSoporte();
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Resultado = false;
+                response.MensajeError = ex.Message + " " + ex.InnerException + " " + ex.StackTrace;
+            }
+            return response;
+        }
+
+        //Servicio para CambiosTuberia
+        public CambiosTuberiaResponse CambiosTuberiaEjecutarOperacion(CambiosTuberiaRequest request)
+        {
+            CambiosTuberiaResponse response = new CambiosTuberiaResponse();
+            try
+            {
+                using (var dominio = new CambiosTuberiaBLL())
+                {
+                    switch (request.Operacion)
+                    {
+                        case Operacion.Agregar:
+                            {
+                                response.Item = dominio.Create(request.Item);
+                            }
+                            break;
+                        case Operacion.Actualizar:
+                            {
+                                response.Resultado = dominio.Update(request.Item);
+                            }
+                            break;
+                        case Operacion.Eliminar:
+                            {
+                                response.Resultado = dominio.Delete(request.Item.Id);
+                            }
+                            break;
+                    }
+                    response.Resultado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Resultado = false;
+                response.MensajeError = ex.Message;// + " "+ ex.InnerException + " " + ex.StackTrace;;
+            }
+
+            return response;
+        }
+        public CambiosTuberiaResponse CambiosTuberiaListarAllEntidad()
+        {
+            CambiosTuberiaResponse response = new CambiosTuberiaResponse();
+            try
+            {
+                using (var dominio = new CambiosTuberiaBLL())
+                {
+                    response = dominio.GetListCambiosTuberia("",0, 1, 10);
+                    response.Resultado = true;
+                }
             }
             catch (Exception ex)
             {
                 response.Resultado = false;
                 response.MensajeError = ex.Message;//+ " "+ ex.InnerException + " " + ex.StackTrace; 
+            }
+            return response;
+        }
+        public CambiosTuberiaResponse CambiosTuberiaListarEntidad(string oleoducto, int TuberiaId = 0, int page = 1, int rowsPerPage = 10)
+        {
+            CambiosTuberiaResponse response = new CambiosTuberiaResponse();
+            try
+            {
+                using (var dominio = new CambiosTuberiaBLL())
+                {
+                    response = dominio.GetListCambiosTuberia(oleoducto, TuberiaId, page, rowsPerPage);
+                    response.Resultado = true;
+                }
+               
+            }
+            catch (Exception ex)
+            {
+                response.Resultado = false;
+                response.MensajeError = ex.Message + " " + ex.InnerException + " " + ex.StackTrace;
             }
             return response;
         }
@@ -222,6 +302,26 @@ namespace CNPC.SISDUC.SERVICIO.WCF
             return response;
         }
 
+        //Servicio para las Constantes
+        public TipoSoporteResponse TipoSoporteListarAllEntidad()
+        {
+            var response = new TipoSoporteResponse();
+            try
+            {
+                using (var dominio = new TipoSoportes())
+                {
+                    response = dominio.GetListTipoSoporte();
+                    response.Resultado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Resultado = false;
+                response.MensajeError = ex.Message + "\n " + ex.InnerException + " " + ex.StackTrace;
+            }
+            return response;
+        }
+
         //Servicio para Usuario
         public int ListCountUsuario()
         {
@@ -246,6 +346,7 @@ namespace CNPC.SISDUC.SERVICIO.WCF
             {
                 using (var dominio = new UsuarioBLL())
                 {
+                    request.Item.Contrasenia= SHA1.Encode(request.Item.Contrasenia);
                     switch (request.Operacion)
                     {
                         case Operacion.Agregar:
@@ -333,7 +434,6 @@ namespace CNPC.SISDUC.SERVICIO.WCF
             }
             return response;
         }
-
         public bool ValidaRolconAccion(int rolid, string controller)
         {
             var response = false;
@@ -351,10 +451,10 @@ namespace CNPC.SISDUC.SERVICIO.WCF
             }
             return response;
         }
-
         public int ListCountUsuario(ref string error)
         {
             throw new NotImplementedException();
         }
+
     }
 }

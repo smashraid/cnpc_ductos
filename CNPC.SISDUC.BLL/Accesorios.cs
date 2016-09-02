@@ -39,33 +39,18 @@ namespace CNPC.SISDUC.BLL
             bool Result = false;
             using (var r = new Repository<Accesorio>())
             {
-                Accesorio d = r.Retrieve(p => p.TuberiaId == ductoToUpdate.TuberiaId &
-                    p.Accesorio1 == ductoToUpdate.Accesorio1 &
-                    p.TipoAccesorio == ductoToUpdate.TipoAccesorio &
-                    p.CodigoAccesorio1 == ductoToUpdate.CodigoAccesorio1 &
-                    p.CodigoAccesorio2 == ductoToUpdate.CodigoAccesorio2 &
-                    p.CodigoAccesorio3 == ductoToUpdate.CodigoAccesorio3 &
+                Accesorio d = r.Retrieve(p => p.NombreAccesorio == ductoToUpdate.NombreAccesorio &
+                    p.CodigoTuberia == ductoToUpdate.CodigoTuberia &
+                    p.Correlativo == ductoToUpdate.Correlativo &
+                    p.CodigoAccesorio == ductoToUpdate.CodigoAccesorio &
                     p.NPS == ductoToUpdate.NPS &
                     p.Schedule == ductoToUpdate.Schedule &
                     p.TipoMaterial == ductoToUpdate.TipoMaterial &
                     p.Longitud == ductoToUpdate.Longitud &
                     p.CoordenadasUTMX == ductoToUpdate.CoordenadasUTMX &
                     p.CoordenadasUTMY == ductoToUpdate.CoordenadasUTMY &
-                    p.ExtremoInicial == ductoToUpdate.ExtremoInicial &
-                    p.ExtremoFinal == ductoToUpdate.ExtremoFinal &
-                    p.ExtremoMedio == ductoToUpdate.ExtremoMedio &
-                    p.BSCAN == ductoToUpdate.BSCAN &
-                    p.MapeoCorrosion == ductoToUpdate.MapeoCorrosion &
-                    p.InspeccionSonica == ductoToUpdate.InspeccionSonica &
-                    p.EspesorPared == ductoToUpdate.EspesorPared &
-                    p.PitCorrosion == ductoToUpdate.PitCorrosion &
-                    p.EspesorRemanente == ductoToUpdate.EspesorRemanente &
-                    p.EstadoAccesorio == ductoToUpdate.EstadoAccesorio &
-                    p.Pintura == ductoToUpdate.Pintura &
-                    p.Defecto1 == ductoToUpdate.Defecto1 &
-                    p.Defecto2 == ductoToUpdate.Defecto2 &
-                    p.NumeroGrapas == ductoToUpdate.NumeroGrapas &
                     p.Observaciones == ductoToUpdate.Observaciones &
+                    p.CondicionAccesorio == ductoToUpdate.CondicionAccesorio &
                     p.RowState == ductoToUpdate.RowState &
                     p.LastUpdate == ductoToUpdate.LastUpdate 
                     );
@@ -109,7 +94,7 @@ namespace CNPC.SISDUC.BLL
             List<Accesorio> Result = null;
             using (var r = new Repository<Accesorio>())
             {
-                Result = r.Filter(p => p.Accesorio1.Contains(Nombre));
+                Result = r.Filter(p => p.NombreAccesorio.Contains(Nombre));
             }
             return Result;
         }

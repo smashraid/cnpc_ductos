@@ -31,6 +31,7 @@ namespace CNPC.SISDUC.Model
         public Nullable<decimal> Temperatura { get; set; }
         public string BSW { get; set; }
         public Nullable<System.DateTime> FechaInspeccion { get; set; }
+        public string Observaciones { get; set; }
         public string RowState { get; set; }
         public System.DateTime LastUpdate { get; set; }
     }

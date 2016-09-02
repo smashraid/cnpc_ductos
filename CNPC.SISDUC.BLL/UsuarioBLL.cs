@@ -2,6 +2,8 @@
 using CNPC.SISDUC.Model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.Entity.Core.EntityClient;
 using System.Linq;
 
 namespace CNPC.SISDUC.BLL
@@ -56,9 +58,16 @@ namespace CNPC.SISDUC.BLL
             Usuario result = null;
             using (var r = new Repository<Usuario>())
             {
-                result= r.usp_ValidarUsuario(toItem.Usuario1, toItem.Contrasenia, toItem.ActiveDirectory);
+                result = r.usp_ValidarUsuario(toItem.Usuario1, toItem.Contrasenia, toItem.ActiveDirectory);
             }
-            return result;
+            if (result != null)
+            {
+                return result;
+            }
+            else
+            {
+                throw (new Exception("Usuario no valido"));
+            }
         }
         public bool Update(Usuario toItem)
         {
@@ -95,7 +104,7 @@ namespace CNPC.SISDUC.BLL
                 {
                     throw new Exception("Usuario Inxistente");
                 }
-                
+
                 using (var r = new Repository<Usuario>())
                 {
                     tExistente.RowState = EEstadoRowState.D.ToString(); ;
@@ -212,9 +221,15 @@ namespace CNPC.SISDUC.BLL
         }
         public bool ValidaRolconAccion(int rolid, string controller)
         {
-            
-                int nroRegistros =  new CNPC_DuctosEntities().usp_ValidaRolconAccion(rolid, controller);
-                return nroRegistros > 0;
+
+            EntityConnectionStringBuilder csb = new EntityConnectionStringBuilder();
+            csb.Metadata = "res://*/DuctosDBModel.csdl|res://*/DuctosDBModel.ssdl|res://*/DuctosDBModel.msl";
+            csb.Provider = "System.Data.SqlClient";
+            csb.ProviderConnectionString = ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString;
+            String entityConnStr = csb.ToString();
+
+            int nroRegistros = new CNPC_DuctosEntities(entityConnStr).usp_ValidaRolconAccion(rolid, controller);
+            return nroRegistros > 0;
         }
         public void Dispose()
         {

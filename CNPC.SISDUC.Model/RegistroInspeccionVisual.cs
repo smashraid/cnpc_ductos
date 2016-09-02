@@ -17,8 +17,12 @@ namespace CNPC.SISDUC.Model
         public int Id { get; set; }
         public int OleoductoID { get; set; }
         public string CodigoDelTubo { get; set; }
+        public string NumeroOleoducto { get; set; }
+        public string CodigoDelTubo01 { get; set; }
+        public string CodigoDelTubo02 { get; set; }
+        public string CodigoDelTubo03 { get; set; }
         public Nullable<int> NumeroAnterior { get; set; }
-        public Nullable<int> NPS { get; set; }
+        public Nullable<decimal> NPS { get; set; }
         public Nullable<int> Schedule { get; set; }
         public Nullable<int> SHC { get; set; }
         public string TipoMaterial { get; set; }
@@ -44,7 +48,7 @@ namespace CNPC.SISDUC.Model
         public Nullable<decimal> LEFT_MINIMO { get; set; }
         public Nullable<decimal> EspesorRemanente { get; set; }
         public string Defecto { get; set; }
-        public string Defecto2 { get; set; }
+        public Nullable<bool> Defecto2 { get; set; }
         public Nullable<int> NumeroGrapas { get; set; }
         public string TipoSoporte { get; set; }
         public Nullable<bool> Elastomero { get; set; }
@@ -55,17 +59,10 @@ namespace CNPC.SISDUC.Model
         public string TipoProteccion { get; set; }
         public string EstadoProteccion { get; set; }
         public string EstadoTuberia { get; set; }
-        public Nullable<decimal> EspesorNominal { get; set; }
-        public Nullable<decimal> EspesorMinimoRealRemanente { get; set; }
-        public string ObservacionesDeLaInspeccionVisual { get; set; }
-        public string CondicionDelTramo { get; set; }
         public Nullable<System.DateTime> UltimaFechaDeInspeccion { get; set; }
         public Nullable<bool> SeleccionarTuberia { get; set; }
         public string RowState { get; set; }
         public Nullable<System.DateTime> LastUpdate { get; set; }
-        public string Codigo { get; set; }
-        public string NumeroOleoducto { get; set; }
-        public string CodigoDelTubo02 { get; set; }
-        public string CodigoDelTubo03 { get; set; }
+        public Nullable<int> TuberiaId { get; set; }
     }
 }

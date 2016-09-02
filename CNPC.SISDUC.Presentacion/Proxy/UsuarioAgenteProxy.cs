@@ -12,27 +12,26 @@ namespace CNPC.SISDUC.Presentacion.Proxy
     {
         public UsuarioViewModel ValidaLogin(UsuarioViewModel request)
         {
-           UsuarioViewModel resultado = null;
+            UsuarioViewModel resultado = null;
             UsuarioResponse response;
             Usuario usuario = request.ConvertToModel();
-            Usuario req = new Usuario();
+            //Usuario req = new Usuario();
             using (var proxy = new ServicioClient())
             {
-                response = proxy.ValidaLogin(new UsuarioRequest { Item= req} );
+                response = proxy.ValidaLogin(new UsuarioRequest { Item = usuario });
             }
             if (response.Item != null)
             {
                 resultado = response.Item.ConvertToViewModel();
             }
-            return resultado ;
+            return resultado;
         }
-
         public UsuarioViewModel GetUsuarioByID(int id, ref string error)
         {
             UsuarioViewModel resultado = null;
             try
             {
-                UsuarioResponse response;   
+                UsuarioResponse response;
                 var reqobj = new Usuario() { Id = id };
                 var req = new UsuarioRequest() { Item = reqobj };
                 using (var proxy = new ServicioClient())

@@ -15,33 +15,18 @@ namespace CNPC.SISDUC.Model
     public partial class Accesorio
     {
         public int Id { get; set; }
-        public Nullable<int> TuberiaId { get; set; }
-        public string Accesorio1 { get; set; }
-        public string TipoAccesorio { get; set; }
-        public string CodigoAccesorio1 { get; set; }
-        public string CodigoAccesorio2 { get; set; }
-        public string CodigoAccesorio3 { get; set; }
-        public Nullable<int> NPS { get; set; }
+        public string NombreAccesorio { get; set; }
+        public string CodigoTuberia { get; set; }
+        public string Correlativo { get; set; }
+        public string CodigoAccesorio { get; set; }
+        public Nullable<decimal> NPS { get; set; }
         public Nullable<int> Schedule { get; set; }
         public string TipoMaterial { get; set; }
         public Nullable<decimal> Longitud { get; set; }
         public Nullable<int> CoordenadasUTMX { get; set; }
         public Nullable<int> CoordenadasUTMY { get; set; }
-        public Nullable<decimal> ExtremoInicial { get; set; }
-        public Nullable<decimal> ExtremoMedio { get; set; }
-        public Nullable<decimal> ExtremoFinal { get; set; }
-        public Nullable<decimal> BSCAN { get; set; }
-        public Nullable<decimal> MapeoCorrosion { get; set; }
-        public Nullable<decimal> InspeccionSonica { get; set; }
-        public Nullable<decimal> EspesorPared { get; set; }
-        public Nullable<decimal> PitCorrosion { get; set; }
-        public Nullable<decimal> EspesorRemanente { get; set; }
-        public string EstadoAccesorio { get; set; }
-        public Nullable<bool> Pintura { get; set; }
-        public string Defecto1 { get; set; }
-        public string Defecto2 { get; set; }
-        public Nullable<int> NumeroGrapas { get; set; }
         public string Observaciones { get; set; }
+        public string CondicionAccesorio { get; set; }
         public string RowState { get; set; }
         public Nullable<System.DateTime> LastUpdate { get; set; }
     }

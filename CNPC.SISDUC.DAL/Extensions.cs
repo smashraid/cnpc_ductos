@@ -140,6 +140,21 @@ namespace CNPC.SISDUC.DAL
                 return defaultValue;
             }
         }
+        public static string SafeGetDate(this SqlDataReader reader,
+                                      string columnName, DateTime defaultValue)
+        {
+            int ordinal = reader.GetOrdinal(columnName);
+
+            if (!reader.IsDBNull(ordinal))
+            {
+                var valor = reader.GetDateTime(ordinal);
+                return valor.ToString("dd/MMM/yyyy");
+            }
+            else
+            {
+                return defaultValue.ToString("dd/MMM/yyyy");
+            }
+        }
     }
     public static class SHA1
     {

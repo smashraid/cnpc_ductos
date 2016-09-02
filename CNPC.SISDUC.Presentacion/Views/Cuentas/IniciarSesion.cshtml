@@ -1,4 +1,4 @@
-﻿@model CNPC.SISDUC.Model.Usuario
+﻿@model CNPC.SISDUC.Presentacion.Models.UsuarioViewModel
 @{
     Layout = null;
 }
@@ -30,8 +30,8 @@
                 <div class="col-md-12">
                     <div class="widget widget-blue">
                         <div class="widget-title">
-                            <label class="inicio">Inicio de Sesión</input>
-                        </label>
+                            <label class="inicio">Inicio de Sesión</label>
+                        </div>
                         @using (Html.BeginForm("IniciarSesion", "Cuentas", FormMethod.Post))
                         {
                             @Html.ValidationSummary()

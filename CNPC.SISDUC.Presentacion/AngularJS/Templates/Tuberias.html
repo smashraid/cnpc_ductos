@@ -40,14 +40,16 @@
             <th align="center" class="titulo_grilla">Condicion Del Tramo</th>
             <th align="center" class="titulo_grilla">Ultima Fecha De Inspeccion</th>
             <th align="center" class="titulo_grilla">Seleccionar Tuberia</th>
-            <th align="center" class="titulo_grilla">Ver Información</th>
-            <th align="center" class="titulo_grilla"></th>
+            <th align="center" class="titulo_grilla">Editar</th>
+            <th align="center" class="titulo_grilla">Eliminar</th>
+            <th align="center" class="titulo_grilla">Ver</th>
+            <!--<th align="center" class="titulo_grilla">Accesorios</th>-->
         </tr>
     </thead>
     <tbody>
         <tr class="celda2_grilla" ng-repeat="item in listaTuberia">
             <td width="2%" align="center" class="celda2_grilla">{{item.Id}}</td>
-            <td width="19%" class="celda2_grilla">{{item.CodigoDelTubo}}</td>
+            <td width="12%" class="celda2_grilla">{{item.CodigoDelTubo}}</td>
             <td width="3%" class="celda2_grilla">{{item.NPS}}</td>
             <td width="3%" class="celda2_grilla">{{item.Schedule}}</td>
             <td width="5%" class="celda2_grilla">{{item.Longitud}}</td>
@@ -60,11 +62,17 @@
             <td width="5%" class="celda2_grilla">{{item.SeleccionarTuberia ? 'X' : '' }}</td>
 
             <td align="center">
-                <a href="#" ng-click="EditarTuberia(item)"><img src="../../Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a>
+                <a href="#" ng-click="EditarTuberia(item)"><img src="../../Content/img/ico-editar.png" width="14" height="14" alt="" style="border:none;" /></a>
+            </td>
+            <td align="center">
+                <a href="#" ng-click="EliminarTuberia(item)"><img src="../../Content/img/ico_delete.png" width="14" height="14" alt="" style="border:none;" /></a>
             </td>
             <td>
-                <a href="#" ng-click="verTuberia(item)"><img src="../../Content/img/ico-editar.png" width="16" height="18" alt="" style="border:none;" /></a>
+                <a href="#" ng-click="verTuberia(item)"><img src="../../Content/img/ico-ver.png" width="10" height="10" alt="" style="border:none;" /></a>
             </td>
+            <!--<td>
+                <a href="#" ng-click="agragarAccesorio(item)"><img src="../../Content/img/ico_select.png" width="14" height="14" alt="" style="border:none;" /></a>
+            </td>-->
         </tr>
         <tr>
             <td colspan="15" align="center">
@@ -187,7 +195,7 @@
                 </table>
             </td>
         </tr>
-
+    </tbody>
 </table>
 
 <!-- Modal -->
@@ -203,36 +211,51 @@
                 </h4>
             </div>
             <div class="modal-body">
-                <form role="form">
+                <form name="formNuevoMotivo" role="form">
                     <div class="form-group">
-                        <h6><label for="txtOleoducto" class="col-lg-2">Motivo:</label></h6>
-                        <div class="col-lg-10">
-                            <input type="text" id="txtMotivo" class="form-control" readonly ng-model="cambio.Motivo">
+                        <h6>
+                            <label for="txtDescripcion" class="control-label col-sm-2">Id Tubería:</label>
+                        </h6>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtCodigoDelTubo" name="txtFecha" class="form-control" ng-model="deleteTuberia.Id" required="required">
+                        </div>
+                        <h6>
+                            <label for="txtDescripcion" class="control-label col-sm-2">Código de Tuberia:</label>
+                        </h6>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtCodigoDelTubo" name="txtFecha" class="form-control" ng-model="deleteTuberia.CodigoDelTubo" required="required">
                         </div>
                     </div>
                     <div class="form-group">
                         <h6>
-                            <label for="txtDescripcion" class="control-label col-lg-2">Orden de Servicio:</label>
+                            <label for="txtDescripcion" class="control-label col-sm-2">Fecha:</label>
                         </h6>
-                        <div class="col-lg-10">
-                            <input type="text" id="txtOrdenDeServicio" class="form-control" readonly ng-model="cambio.OrdenServicio">
+                        <div class="col-sm-4">
+                            <input type="date" id="txtFecha" name="txtFecha" class="form-control" ng-model="deleteTuberia.Fecha" required="required">
                         </div>
                     </div>
                     <div class="form-group">
                         <h6>
-                            <label for="txtDescripcion" class="control-label col-lg-2">Fecha:</label>
+                            <label for="txtDescripcion" class="control-label col-sm-2">Orden de Servicio:</label>
                         </h6>
-                        <div class="col-lg-10">
-                            <input type="date" id="txtFecha" class="form-control" readonly ng-model="cambio.Fecha">
+                        <div class="col-sm-4">
+                            <input type="text" id="txtOrdenDeServicio" name="txtOrdenDeServicio" class="form-control" ng-model="deleteTuberia.OrdenServicio" required="required">
                         </div>
                     </div>
+                    <div class="form-group">
+                        <h6><label for="txtOleoducto" class="col-sm-2">Motivo:</label></h6>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtMotivo" name="txtMotivo" class="form-control" ng-model="deleteTuberia.Motivo" required="required">
+                        </div>
+                    </div>
+                    
+                    <p>Ingrese los datos obligatorios</p>
                 </form>
             </div>
             <div class="modal-footer modal-footerTuberia">
-                <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Aceptar</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" ng-click="guardarMotivo(deleteTuberia)">Aceptar</button>
             </div>
         </div>
-
     </div>
 </div>
 
@@ -708,121 +731,6 @@
     </div>
 </div>
 
-<div id="VerAccesorio" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-                <h4 class="modal-title" id="myModalLabel">
-                    REPORTE DE ACCESORIOS
-                </h4>
-            </div>
-            <div class="modal-body">
-                <table border="0" align="center">
-                    <tr>
-                        <td class="texto">
-                            <label>Código</label>
-                        </td>
-                        <td class="texto" align="left">
-                            <div ng-class="{'has-error':verDucto.Codigo==''}">
-                                <input type="text" class="form-control ui-inputfield" id="txtCodigo" readonly ng-model="verDucto.Codigo">
-                            </div>
-                            <div ng-class="{'has-error':verDucto.Codigo==''}">
-                                <input type="text" class="form-control ui-inputfield" id="txtCodigo" readonly ng-model="verDucto.Codigo">
-                            </div>
-                        </td>
-                        <td class="texto">
-                            <label>Fecha</label>
-                        </td>
-                        <td align="left">
-                            <input class="form-control ui-inputfield" type="date" name="date" id="date" readonly ng-model="verDucto.FechaInspeccion">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label>Descripción</label>
-                        </td>
-                        <td class="texto" colspan="3" align="left">
-                            <div ng-class="{'has-error':verDucto.Descripcion==''}">
-                                <input type="text" id="txtDescripcion" class="form-control ui-inputfield" readonly ng-model="verDucto.Descripcion">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label>Ubicación</label>
-                        </td>
-                        <td class="texto" colspan="3">
-                            <div ng-class="{'has-error':verDucto.Ubicacion==''}">
-                                <input type="text" id="txtUbicación" class="form-control ui-inputfield" readonly ng-model="verDucto.Ubicacion">
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label for="lblMaterial">Material</label>
-                        </td>
-                        <td class="texto inlinecontrols" colspan="3" align="left">
-                            <input type="text" id="txtMaterial1" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material1">
-                            <input type="text" id="txtMaterial2" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material2">
-                            <input type="text" id="txtMaterial3" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material3">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label>Schedule</label>
-                        </td>
-                        <td class="texto inlinecontrols" colspan="3" align="left">
-                            <input type="text" id="txtSchedule1" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule1">
-                            <input type="text" id="txtSchedule2" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule2">
-                            <input type="text" id="txtSchedule3" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule3">
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label for="lblBLPD">BLPD</label>
-                        </td>
-                        <td class="texto" colspan="3" align="left">
-                            <input type="text" id="txtBLPD" class="form-control ui-inputfield" readonly ng-model="verDucto.BLPD">
-                        </td>
-
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label for="lblPresion">Pres.(Psig)</label>
-                        </td>
-                        <td class="texto" colspan="3">
-                            <input type="text" id="txtPresion" class="form-control ui-inputfield" readonly ng-model="verDucto.Presion">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label for="lblPresion">Tempe(°F)</label>
-                        </td>
-                        <td class="texto" colspan="3">
-                            <input type="text" id="txtTemperatura" class="form-control ui-inputfield" readonly ng-model="verDucto.Temperatura">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="texto">
-                            <label for="lblBSW">BSW</label>
-                        </td>
-                        <td class="texto" colspan="3">
-                            <input type="text" id="txtBSW" class="form-control ui-inputfield" readonly ng-model="verDucto.BSW">
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 <div id="EditarTuberia" class="modal fade" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -848,7 +756,6 @@
                             <input type="text" id="txtDescripcion" class="form-control" ng-model="oleoducto.Descripcion">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <h6><label for="txtCodigoTubo" class="control-label col-lg-2">Código del Tubo:</label></h6>
                         <div class="col-lg-4">
@@ -859,7 +766,6 @@
                             <input type="text" id="txtNumeroAnterior" class="form-control " ng-model="editaTuberia.NumeroAnterior">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <h6><label for="txtNPS" class="control-label col-lg-2">NPS</label></h6>
                         <div class="col-lg-4 sin-espacio">
@@ -870,7 +776,6 @@
                             <input type="text" id="txtSchedule" class="form-control " ng-model="editaTuberia.Schedule">
                         </div>
                     </div>
-
                     <div class="form-group">
                         <h6><label for="txtTipoMaterial" class="control-label col-lg-2">Tipo Material:</label></h6>
                         <div class="col-lg-2">
@@ -984,93 +889,50 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class="col-lg-2">
-                            <h5>
-                                Defecto:
-                            </h5>
-                        </div>
-                        <div class="col-lg-5">
-                            <h5>
-                                Socavación en cordon de soldadura:
-                            </h5>
-                        </div>
-                        <div class="col-lg-2">
-                            <h5>
-                                Rechazado:
-                            </h5>
-                        </div>
-                        <div class="col-lg-3">
-                            <h5>
-                                Número de Grapas:
-                            </h5>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <h6><label for="txtTipoSoporte" class="control-label col-lg-2 sin-espacio">Tipo de Soporte:</label></h6>
-                        <div class="col-lg-1 sin-espacio">
-                            <input type="text" id="txtTipoSoporte" class="form-control2" ng-model="editaTuberia.TipoSoporte">
+                        <h6><label for="cboTipoSoporte" class="control-label col-lg-2 sin-espacio">Tipo de Soporte:</label></h6>
+                        <div class="col-lg-5 sin-espacio">
+                            <!--<input type="text" id="txtTipoSoporte" class="form-control2" ng-model="editaTuberia.TipoSoporte">-->
+                            <select name="repeatSelect" id="repeatSelect" ng-model="editaTuberia.TipoSoporte">
+                                <option ng-repeat="option in listaTipoSoporte" value="{{option.Valor}}">{{option.Nombre}}</option>
+                            </select><br>
                         </div>
                         <h6><label for="chkElastomero" class="control-label col-lg-2 ">Elastomero:</label></h6>
                         <div class="col-lg-1 sin-espacio">
                             <input type="checkbox" id="chkElastomero" class="control-label" ng-model="editaTuberia.Elastomero">
                         </div>
-                        <h6><label for="chkMaleza" class="control-label col-lg-2 ">Maleza:</label></h6>
+                        <h6><label for="chkMaleza" class="control-label col-lg-1 ">Maleza:</label></h6>
                         <div class="col-lg-1 sin-espacio">
                             <input type="checkbox" id="chkMaleza" class="control-label" ng-model="editaTuberia.Maleza">
                         </div>
-                        <h6><label for="chkTuberiaAlrededor" class="control-label col-lg-2 ">Tuberia Alrededor:</label></h6>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="chkTuberiaAlrededor" class="control-label col-lg-2 sin-espacio">Tuberia Alrededor:</label></h6>
                         <div class="col-lg-1 sin-espacio">
                             <input type="checkbox" id="chkTuberiaAlrededor" class="control-label" ng-model="editaTuberia.TuberiaAlrededor">
                         </div>
-                    </div>
-                    <div class="form-group">
                         <h6><label for="chkPintura" class="control-label col-lg-2 sin-espacio">Pintura:</label></h6>
                         <div class="col-lg-1 sin-espacio">
                             <input type="checkbox" id="chkPintura" class="control-label" ng-model="editaTuberia.Pintura">
                         </div>
-                        <h6><label for="chkCruceCarretera" class="control-label col-lg-2 ">Cruce de Carretera:</label></h6>
-                        <div class="col-lg-1 sin-espacio">
+                        <h6><label for="chkCruceCarretera" class="control-label col-lg-4 ">Cruce de Carretera:</label></h6>
+                        <div class="col-lg-2 sin-espacio">
                             <input type="checkbox" id="chkCruceCarretera" class="control-label" ng-model="editaTuberia.CruceCarretera">
                         </div>
-                        <h6><label for="txtTipoProteccion" class="control-label col-lg-2 ">Tipo de Proteccion:</label></h6>
-                        <div class="col-lg-1 sin-espacio">
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtTipoProteccion" class="control-label col-lg-3 sin-espacio">Tipo de Proteccion:</label></h6>
+                        <div class="col-lg-3 sin-espacio">
                             <input type="text" id="txtTipoProteccion" class="form-control2" ng-model="editaTuberia.TipoProteccion">
                         </div>
                         <h6><label for="txtEstadoProteccion" class="control-label col-lg-2 ">Estado de Protección:</label></h6>
                         <div class="col-lg-1 sin-espacio">
                             <input type="text" id="txtEstadoProteccion" class="form-control2" ng-model="editaTuberia.EstadoProteccion">
                         </div>
-                    </div>
-                    <div class="form-group">
                         <h6><label for="txtEstadoTuberia" class="control-label col-lg-2 sin-espacio">Estado de la tuberia:</label></h6>
                         <div class="col-lg-1 sin-espacio">
                             <input type="text" id="txtEstadoTuberia" class="form-control2" ng-model="editaTuberia.EstadoTuberia">
                         </div>
                     </div>
-                    <!--<br/>
-                    <div class="form-group">
-                        <h6><label for="txtOleoducto" class="col-lg-2">Motivo:</label></h6>
-                        <div class="col-lg-10">
-                            <input type="text" id="txtMotivo" class="form-control"  ng-model="editaTuberia.Motivo">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <h6>
-                            <label for="txtDescripcion" class="control-label col-lg-2">Orden de Servicio:</label>
-                        </h6>
-                        <div class="col-lg-5">
-                            <input type="text" id="txtOrdenDeServicio" class="form-control"  ng-model="editaTuberia.OrdenServicio">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <h6>
-                            <label for="txtDescripcion" class="control-label col-lg-2">Fecha:</label>
-                        </h6>
-                        <div class="col-lg-5">
-                            <input type="date" id="txtFecha" class="form-control"  ng-model="editaTuberia.Fecha">
-                        </div>
-                    </div>-->
-
                 </form>
             </div>
             <div class="modal-footer modal-footerTuberia">
@@ -1079,6 +941,121 @@
             </div>
         </div>
 
+    </div>
+</div>
+
+<div id="VerAccesorio" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    REPORTE DE ACCESORIOS
+                </h4>
+            </div>
+            <div class="modal-body">
+                <table border="0" align="center">
+                    <tr>
+                        <td class="texto">
+                            <label>Código</label>
+                        </td>
+                        <td class="texto" align="left">
+                            <div ng-class="{'has-error':verDucto.Codigo==''}">
+                                <input type="text" class="form-control ui-inputfield" id="txtCodigo" readonly ng-model="verDucto.Codigo">
+                            </div>
+                            <div ng-class="{'has-error':verDucto.Codigo==''}">
+                                <input type="text" class="form-control ui-inputfield" id="txtCodigo" readonly ng-model="verDucto.Codigo">
+                            </div>
+                        </td>
+                        <td class="texto">
+                            <label>Fecha</label>
+                        </td>
+                        <td align="left">
+                            <input class="form-control ui-inputfield" type="date" name="date" id="date" readonly ng-model="verDucto.FechaInspeccion">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Descripción</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <div ng-class="{'has-error':verDucto.Descripcion==''}">
+                                <input type="text" id="txtDescripcion" class="form-control ui-inputfield" readonly ng-model="verDucto.Descripcion">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Ubicación</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <div ng-class="{'has-error':verDucto.Ubicacion==''}">
+                                <input type="text" id="txtUbicación" class="form-control ui-inputfield" readonly ng-model="verDucto.Ubicacion">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblMaterial">Material</label>
+                        </td>
+                        <td class="texto inlinecontrols" colspan="3" align="left">
+                            <input type="text" id="txtMaterial1" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material1">
+                            <input type="text" id="txtMaterial2" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material2">
+                            <input type="text" id="txtMaterial3" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Schedule</label>
+                        </td>
+                        <td class="texto inlinecontrols" colspan="3" align="left">
+                            <input type="text" id="txtSchedule1" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule1">
+                            <input type="text" id="txtSchedule2" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule2">
+                            <input type="text" id="txtSchedule3" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule3">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBLPD">BLPD</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <input type="text" id="txtBLPD" class="form-control ui-inputfield" readonly ng-model="verDucto.BLPD">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Pres.(Psig)</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <input type="text" id="txtPresion" class="form-control ui-inputfield" readonly ng-model="verDucto.Presion">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Tempe(°F)</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <input type="text" id="txtTemperatura" class="form-control ui-inputfield" readonly ng-model="verDucto.Temperatura">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBSW">BSW</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <input type="text" id="txtBSW" class="form-control ui-inputfield" readonly ng-model="verDucto.BSW">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
     </div>
 </div>
 

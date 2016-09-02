@@ -10,4 +10,11 @@ namespace CNPC.SISDUC.Model
     {
         public decimal LongitudTotal { get; set; }
     }
+    public partial class RegistroInspeccionVisual
+    {
+        public decimal EspesorNominal { get; set; }
+        public decimal EspesorMinimoRealRemanente { get; set; }
+        public string ObservacionesDeLaInspeccionVisual { get; set; }
+        public string CondicionDelTramo { get; set; }
+    }
 }

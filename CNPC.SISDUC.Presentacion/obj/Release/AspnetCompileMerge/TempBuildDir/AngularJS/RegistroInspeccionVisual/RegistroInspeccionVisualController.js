@@ -3,6 +3,7 @@
         //Metodo GET
         var getSuccessCallback = function (data, status) {
             $scope.listaTuberia = data.List;
+            $scope.listaTipoSoporte = data.ListTipoSoporte.List;
             $scope.oleoducto = data.oleoducto;
             $scope.parameterlist.pages = data.TotalPages;
             $scope.parameterlist.totalRecords = data.TotalRecords;

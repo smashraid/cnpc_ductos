@@ -8,6 +8,8 @@ namespace CNPC.SISDUC.Model.Servicio
         [DataMember]
         public RegistroInspeccionVisual registroInspeccionVisual { get; set; }
         [DataMember]
+        public TipoSoporteResponse ListTipoSoporte { get; set; }
+        [DataMember]
         public Oleoducto oleoducto { get; set; }
         [DataMember]
         public bool Resultado { get; set; } //true-OK, false-Error

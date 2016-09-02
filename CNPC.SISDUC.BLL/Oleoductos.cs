@@ -103,9 +103,17 @@ namespace CNPC.SISDUC.BLL
         public OleoductoResponse FilterByName(string Nombre, int page, int records)
         {
             OleoductoResponse Result = null;
-            using (var r = new Repository<Oleoducto>())
+            try
             {
-                Result = r.FilterByNameOleoducto(Nombre, page, records);
+                using (var r = new Repository<Oleoducto>())
+                {
+                    Result = r.FilterByNameOleoducto(Nombre, page, records);
+                }
+            }
+            catch (Exception ex)
+            {
+                Result.Resultado = false;
+                Result.MensajeError += " Capa BLL: " + ex.Message;
             }
             return Result;
         }

@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Data.Entity.Core.EntityClient;
 
 namespace CNPC.SISDUC.DAL
 {
@@ -15,7 +16,12 @@ namespace CNPC.SISDUC.DAL
         CNPC_DuctosEntities Context = null;
         public Repository()
         {
-            Context = new CNPC_DuctosEntities();
+            EntityConnectionStringBuilder csb = new EntityConnectionStringBuilder();
+            csb.Metadata = "res://*/DuctosDBModel.csdl|res://*/DuctosDBModel.ssdl|res://*/DuctosDBModel.msl";
+            csb.Provider = "System.Data.SqlClient";
+            csb.ProviderConnectionString = ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString;
+            String entityConnStr = csb.ToString();
+            Context = new CNPC_DuctosEntities(entityConnStr);
         }
         public DbSet<TEntity> EntitySet
         {
@@ -33,12 +39,13 @@ namespace CNPC.SISDUC.DAL
                 Context.SaveChanges();
                 Result = toCreate;
             }
-            catch
+            catch(Exception ex)
             {
+                string error = "Error: " + ex.InnerException;
+                throw (new Exception(error));
             }
             return Result;
         }
-
         public bool Delete(TEntity toDelete)
         {
             bool Result = false;
@@ -53,7 +60,6 @@ namespace CNPC.SISDUC.DAL
             }
             return Result;
         }
-
         public bool Update(TEntity toUpdate)
         {
             bool Result = false;
@@ -70,7 +76,6 @@ namespace CNPC.SISDUC.DAL
             }
             return Result;
         }
-
         public TEntity Retrieve(System.Linq.Expressions.Expression<Func<TEntity, bool>> criteria)
         {
             TEntity Result = null;
@@ -84,7 +89,6 @@ namespace CNPC.SISDUC.DAL
             }
             return Result;
         }
-
         public List<TEntity> Filter(System.Linq.Expressions.Expression<Func<TEntity, bool>> criteria)
         {
             List<TEntity> Result = null;
@@ -102,63 +106,72 @@ namespace CNPC.SISDUC.DAL
         {
             OleoductoResponse ductos = new OleoductoResponse();
             ductos.List = new List<Oleoducto>();
-            using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+            try
             {
-                SqlCommand cmd = new SqlCommand("uspGetListOleoductos", cnn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
-                cmd.Parameters.Add("@Records", SqlDbType.Int).Value = records;
-                cmd.Parameters.Add("@Page", SqlDbType.Int).Value = page;
-                cmd.Parameters.Add("@TotalPage", SqlDbType.Int).Direction = ParameterDirection.Output;
-                cnn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
                 {
-                    Oleoducto d = new Oleoducto();
-                    d.Id = reader.SafeGetInt32("Id", 0);
-                    d.Cliente = reader.SafeGetString("Cliente", "");
-                    d.Codigo = reader.SafeGetString("Codigo", "");
-                    d.Descripcion = reader.SafeGetString("Descripcion", "");
-                    d.Ubicacion = reader.SafeGetString("Ubicacion", "");
-                    d.NoLamina = reader.SafeGetString("NoLamina", "");
-                    d.FechaInspeccion = reader.SafeGetDateTime("FechaInspeccion", new DateTime(1950, 01, 01));
-                    d.Presion = reader.SafeGetDecimal("Presion", 0);
-                    d.Temperatura = reader.SafeGetDecimal("Temperatura", 0);
-                    d.BLPD = reader.SafeGetInt32("BLPD", 0);
-                    d.Schedule1 = reader.SafeGetInt32("Schedule1", 0);
-                    d.Schedule2 = reader.SafeGetInt32("Schedule2", 0);
-                    d.Schedule3 = reader.SafeGetInt32("Schedule3", 0);
-                    d.Material1 = reader.SafeGetString("Material1", "");
-                    d.Material2 = reader.SafeGetString("Material2", "");
-                    d.Material3 = reader.SafeGetString("Material3", "");
-                    //d.LongitudTotal = reader.SafeGetDecimal("LongitudTotal","");
-                    d.BSW = reader.SafeGetString("BSW", "");
-                    d.RowState = reader.SafeGetString("RowState", "");
-                    d.LastUpdate = reader.SafeGetDateTime("LastUpdate", new DateTime(1950, 01, 01));
-                    ductos.List.Add(d);
+                    SqlCommand cmd = new SqlCommand("uspGetListOleoductos", cnn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
+                    cmd.Parameters.Add("@Records", SqlDbType.Int).Value = records;
+                    cmd.Parameters.Add("@Page", SqlDbType.Int).Value = page;
+                    cmd.Parameters.Add("@TotalPage", SqlDbType.Int).Direction = ParameterDirection.Output;
+                    cnn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Oleoducto d = new Oleoducto();
+                        d.Id = reader.SafeGetInt32("Id", 0);
+                        d.Cliente = reader.SafeGetString("Cliente", "");
+                        d.Codigo = reader.SafeGetString("Codigo", "");
+                        d.Descripcion = reader.SafeGetString("Descripcion", "");
+                        d.Ubicacion = reader.SafeGetString("Ubicacion", "");
+                        d.NoLamina = reader.SafeGetString("NoLamina", "");
+                        d.FechaInspeccion = reader.SafeGetDateTime("FechaInspeccion", new DateTime(1950, 01, 01));
+                        d.Presion = reader.SafeGetDecimal("Presion", 0);
+                        d.Temperatura = reader.SafeGetDecimal("Temperatura", 0);
+                        d.BLPD = reader.SafeGetInt32("BLPD", 0);
+                        d.Schedule1 = reader.SafeGetInt32("Schedule1", 0);
+                        d.Schedule2 = reader.SafeGetInt32("Schedule2", 0);
+                        d.Schedule3 = reader.SafeGetInt32("Schedule3", 0);
+                        d.Material1 = reader.SafeGetString("Material1", "");
+                        d.Material2 = reader.SafeGetString("Material2", "");
+                        d.Material3 = reader.SafeGetString("Material3", "");
+                        d.LongitudTotal = reader.SafeGetDecimal("LongitudTotal", 0);
+                        d.BSW = reader.SafeGetString("BSW", "");
+                        d.RowState = reader.SafeGetString("RowState", "");
+                        d.LastUpdate = reader.SafeGetDateTime("LastUpdate", new DateTime(1950, 01, 01));
+                        ductos.List.Add(d);
+                    }
+                    ductos.Page = page;
+                    ductos.Records = records;
+                    cnn.Close();
                 }
-                ductos.Page = page;
-                ductos.Records = records;
-                cnn.Close();
+                using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+                {
+
+                    SqlCommand cmd = new SqlCommand("uspGetCountOleoductos", cnn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
+                    cmd.Parameters.Add("@Records", SqlDbType.Int).Value = records;
+                    cmd.Parameters.Add("@Page", SqlDbType.Int).Value = page;
+
+                    cnn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ductos.TotalPages = reader.SafeGetInt32("TotalPage", 0);
+                        ductos.TotalRecords = reader.SafeGetInt32("TotalRecords", 0);
+                    }
+                    cnn.Close();
+                }
             }
-            using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+            catch (Exception ex)
             {
-
-                SqlCommand cmd = new SqlCommand("uspGetCountOleoductos", cnn);
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
-                cmd.Parameters.Add("@Records", SqlDbType.Int).Value = records;
-                cmd.Parameters.Add("@Page", SqlDbType.Int).Value = page;
-
-                cnn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    ductos.TotalPages = reader.SafeGetInt32("TotalPage", 0);
-                    ductos.TotalRecords = reader.SafeGetInt32("TotalRecords", 0);
-                }
-                cnn.Close();
+                ductos.Resultado = false;
+                ductos.MensajeError = "Capa BLL: " + ex.Message;
             }
+
             return ductos;
         }
         public RegistroInspeccionVisualResponse FilterByNameRegistroInspeccionVisual(int OleoductoID, string Nombre, int page, int records)
@@ -182,8 +195,12 @@ namespace CNPC.SISDUC.DAL
                     d.Id = reader.SafeGetInt32("Id", 0);
                     d.OleoductoID = reader.SafeGetInt32("OleoductoID", 0);
                     d.CodigoDelTubo = reader.SafeGetString("CodigoDelTubo", "");
+                    d.NumeroOleoducto = reader.SafeGetString("NumeroOleoducto", "");
+                    d.CodigoDelTubo01 = reader.SafeGetString("CodigoDelTubo01", "00000");
+                    d.CodigoDelTubo02 = reader.SafeGetString("CodigoDelTubo02", "0");
+                    d.CodigoDelTubo03 = reader.SafeGetString("CodigoDelTubo03", "0000");
                     d.NumeroAnterior = reader.SafeGetInt32("NumeroAnterior", 0);
-                    d.NPS = reader.SafeGetInt32("NPS", 0);
+                    d.NPS = reader.SafeGetDecimal("NPS", 0);
                     d.Schedule = reader.SafeGetInt32("Schedule", 0);
                     d.SHC = reader.SafeGetInt32("SHC", 0);
                     d.TipoMaterial = reader.SafeGetString("TipoMaterial", "");
@@ -208,8 +225,10 @@ namespace CNPC.SISDUC.DAL
                     d.ExtremoFinal4 = reader.SafeGetDecimal("ExtremoFinal4", 0);
                     d.LEFT_MINIMO = reader.SafeGetDecimal("LEFT_MINIMO", 0);
                     d.EspesorRemanente = reader.SafeGetDecimal("EspesorRemanente", 0);
-                    d.Defecto = reader.SafeGetString("Defecto", "");
-                    d.Defecto2 = reader.SafeGetString("Defecto2", "");
+                    d.EspesorNominal = reader.SafeGetDecimal("EspesorNominal", 0);
+                    d.EspesorMinimoRealRemanente = reader.SafeGetDecimal("EspesorMinimoRealRemanente", 0);
+                    d.ObservacionesDeLaInspeccionVisual = reader.SafeGetString("Defecto", "");
+                    d.Defecto2 = reader.SafeGetBoolean("Defecto2", true);
                     d.NumeroGrapas = reader.SafeGetInt32("NumeroGrapas", 0);
                     d.TipoSoporte = reader.SafeGetString("TipoSoporte", "");
                     d.Elastomero = reader.SafeGetBoolean("Elastomero", false);
@@ -220,13 +239,9 @@ namespace CNPC.SISDUC.DAL
                     d.TipoProteccion = reader.SafeGetString("TipoProteccion", "");
                     d.EstadoProteccion = reader.SafeGetString("EstadoProteccion", "");
                     d.EstadoTuberia = reader.SafeGetString("EstadoTuberia", "");
-                    d.EspesorNominal = reader.SafeGetDecimal("EspesorNominal", 0);
-                    d.EspesorMinimoRealRemanente = reader.SafeGetDecimal("EspesorMinimoRealRemanente", 0);
-                    d.ObservacionesDeLaInspeccionVisual = reader.SafeGetString("ObservacionesDeLaInspeccionVisual", "");
-                    d.CondicionDelTramo = reader.SafeGetString("CondicionDelTramo", "");
-                    d.UltimaFechaDeInspeccion = reader.SafeGetDateTime("UltimaFechaDeInspeccion", new DateTime(1950, 1, 1));
+                    d.UltimaFechaDeInspeccion = reader.SafeGetDateTime("UltimaFechaDeInspeccion", new DateTime(1950, 01, 01));
                     d.SeleccionarTuberia = reader.SafeGetBoolean("SeleccionarTuberia", false);
-
+                    d.CondicionDelTramo = reader.SafeGetString("CondicionDelTramo", "");
                     d.RowState = reader.SafeGetString("RowState", "");
                     d.LastUpdate = reader.SafeGetDateTime("LastUpdate", new DateTime(1950, 1, 1));
                     registros.List.Add(d);
@@ -275,31 +290,18 @@ namespace CNPC.SISDUC.DAL
                 {
                     Accesorio d = new Accesorio();
                     d.Id = reader.SafeGetInt32("Id", 0);
-                    d.TuberiaId = reader.SafeGetInt32("TuberiaId", 0);
-                    d.TipoAccesorio = reader.SafeGetString("TipoAccesorio", "");
-                    d.CodigoAccesorio1 = reader.SafeGetString("CodigoAccesorio1", "");
-                    d.CodigoAccesorio2 = reader.SafeGetString("CodigoAccesorio2", "");
-                    d.CodigoAccesorio3 = reader.SafeGetString("CodigoAccesorio3", "");
+                    d.CodigoTuberia = reader.SafeGetString("CodigoTuberia", "");
+                    d.NombreAccesorio = reader.SafeGetString("NombreAccesorio", "");
+                    d.Correlativo = reader.SafeGetString("Correlativo", "");
+                    d.CodigoAccesorio = reader.SafeGetString("CodigoAccesorio", "");
                     d.NPS = reader.SafeGetInt32("NPS", 0);
                     d.Schedule = reader.SafeGetInt32("Schedule", 0);
                     d.TipoMaterial = reader.SafeGetString("TipoMaterial", "");
                     d.Longitud = reader.SafeGetDecimal("Longitud", 0);
                     d.CoordenadasUTMX = reader.SafeGetInt32("CoordenadasUTMX", 0);
                     d.CoordenadasUTMY = reader.SafeGetInt32("CoordenadasUTMY", 0);
-                    d.ExtremoInicial = reader.SafeGetDecimal("ExtremoInicial", 0);
-                    d.ExtremoMedio = reader.SafeGetDecimal("ExtremoMedio", 0);
-                    d.ExtremoFinal = reader.SafeGetDecimal("ExtremoFinal", 0);
-                    d.BSCAN = reader.SafeGetDecimal("BSCAN", 0);
-                    d.MapeoCorrosion = reader.SafeGetDecimal("MapeoCorrosion", 0);
-                    d.InspeccionSonica = reader.SafeGetDecimal("InspeccionSonica", 0);
-                    d.EspesorPared = reader.SafeGetDecimal("EspesorPared", 0);
-                    d.PitCorrosion = reader.SafeGetDecimal("PitCorrosion", 0);
-                    d.EspesorRemanente = reader.SafeGetDecimal("EspesorRemanente", 0);
-                    d.EstadoAccesorio = reader.SafeGetString("EstadoAccesorio", "");
-                    d.Pintura = reader.SafeGetBoolean("Pintura", false);
-                    d.Defecto1 = reader.SafeGetString("Defecto1", "");
-                    d.Defecto2 = reader.SafeGetString("Defecto2", "");
-                    d.NumeroGrapas = reader.SafeGetInt32("NumeroGrapas", 0);
+                    d.Observaciones = reader.SafeGetString("Observaciones", "");
+                    d.CondicionAccesorio = reader.SafeGetString("CondicionAccesorio", "");
                     d.RowState = reader.SafeGetString("RowState", "");
                     d.LastUpdate = reader.SafeGetDateTime("LastUpdate", new DateTime(1950, 01, 01));
                     ductos.List.Add(d);
@@ -317,6 +319,64 @@ namespace CNPC.SISDUC.DAL
                 cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
                 cmd.Parameters.Add("@Records", SqlDbType.Int).Value = records;
                 cmd.Parameters.Add("@Page", SqlDbType.Int).Value = page;
+
+                cnn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    ductos.TotalPages = reader.SafeGetInt32("TotalPage", 0);
+                    ductos.TotalRecords = reader.SafeGetInt32("TotalRecords", 0);
+                }
+                cnn.Close();
+            }
+            return ductos;
+        }
+        public CambiosTuberiaResponse FilterByMotivoCambiosTuberia(int TuberiaId, string Nombre, int page, int records)
+        {
+            CambiosTuberiaResponse ductos = new CambiosTuberiaResponse();
+            ductos.List = new List<CambiosTuberia>();
+            using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+            {
+
+                SqlCommand cmd = new SqlCommand("uspGetListCambiosTuberia", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@NumeroOleoducto", SqlDbType.VarChar).Value = Nombre;
+                cmd.Parameters.Add("@TuberiaId", SqlDbType.Int).Value = TuberiaId;
+                cmd.Parameters.Add("@Motivo", SqlDbType.VarChar).Value = Nombre;
+                cmd.Parameters.Add("@Records", SqlDbType.Int).Value = records;
+                cmd.Parameters.Add("@Page", SqlDbType.Int).Value = page;
+                cmd.Parameters.Add("@TotalPage", SqlDbType.Int).Direction = ParameterDirection.Output;
+                cnn.Open();
+
+                cmd.ExecuteNonQuery();
+                ductos.TotalPages = Int32.Parse(cmd.Parameters["@TotalPage"].Value.ToString());
+
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    CambiosTuberia d = new CambiosTuberia();
+                    d.Id = reader.SafeGetInt32("Id", 0);
+                    d.NumeroOleoducto = reader.SafeGetString("NumeroOleoducto", "");
+                    d.TuberiaId = reader.SafeGetInt32("TuberiaId", 0);
+                    d.Motivo = reader.SafeGetString("Motivo", "");
+                    d.OrdenServicio = reader.SafeGetString("OrdenServicio", "");
+                    d.RowState = reader.SafeGetString("RowState", "");
+                    d.LastUpdate = reader.SafeGetDateTime("LastUpdate", new DateTime(1950, 01, 01));
+                    ductos.List.Add(d);
+                }
+                ductos.Page = page;
+                ductos.Records = records;
+
+                cnn.Close();
+            }
+            using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+            {
+
+                SqlCommand cmd = new SqlCommand("uspGetCountCambiosTuberia", cnn);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@TuberiaId", SqlDbType.Int).Value = TuberiaId;
+                cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
+                cmd.Parameters.Add("@Records", SqlDbType.Int).Value = records;
 
                 cnn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -349,44 +409,90 @@ namespace CNPC.SISDUC.DAL
             }
             return result;
         }
-        public Usuario usp_ValidarUsuario(string Usuario, string Contrasenia, bool ActiveDirectory)
+        public Usuario usp_ValidarUsuario(string Usuario = "", string Contrasenia = "", bool ActiveDirectory = false)
         {
             Usuario result = new Usuario();
 
             using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
             {
                 SqlCommand cmd = new SqlCommand("usp_ValidarUsuario", cnn);
+                if (Usuario == null || Contrasenia == null)
+                {
+                    throw (new Exception("Error: Usuario o Contraseña no válidos"));
+                }
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Usuario", SqlDbType.VarChar, 50).Value = Usuario;
-                cmd.Parameters.Add("@Contrasenia", SqlDbType.VarChar, 50).Value = SHA1.Encode(Contrasenia); ;
+                cmd.Parameters.Add("@Contrasenia", SqlDbType.VarChar, 100).Value = SHA1.Encode(Contrasenia);
                 cmd.Parameters.Add("@ActiveDirectory", SqlDbType.Bit).Value = ActiveDirectory;
                 try
                 {
+                    cnn.Open();
                     SqlDataReader reader = cmd.ExecuteReader();
-                    reader.Read();
-                    result.Id = reader.SafeGetInt32("Id", 0);
-                    result.Usuario1 = reader.SafeGetString("Usuario", "");
-                    result.Contrasenia = reader.SafeGetString("Contrasenia", "");
-                    result.Nombre = reader.SafeGetString("Nombre", "");
-                    result.Apellido = reader.SafeGetString("Apellido", "");
-                    result.Activo = reader.SafeGetBoolean("Activo", false);
-                    result.ActiveDirectory = reader.SafeGetBoolean("ActiveDirectory", false);
-                    result.RolId = reader.SafeGetInt32("RolId", 0);
-                    result.FacilitadorId = reader.SafeGetInt32("FacilitadorId", 0);
-                    result.FiscalizadorId = reader.SafeGetInt32("FiscalizadorId", 0);
-                    result.RowState = reader.SafeGetString("RowState", "");
-                    result.LastUpdate = reader.SafeGetDateTime("LastUpdate", new DateTime(1950, 01, 01));
+                    while (reader.Read())
+                    {
+                        result.Id = reader.SafeGetInt32("Id", 0);
+                        result.Usuario1 = reader.SafeGetString("Usuario", "");
+                        result.Contrasenia = reader.SafeGetString("Contrasenia", "");
+                        result.Nombre = reader.SafeGetString("Nombre", "");
+                        result.Apellido = reader.SafeGetString("Apellido", "");
+                        result.Activo = reader.SafeGetBoolean("Activo", false);
+                        result.ActiveDirectory = reader.SafeGetBoolean("ActiveDirectory", false);
+                        result.RolId = reader.SafeGetInt32("RolId", 0);
+                        result.FacilitadorId = reader.SafeGetInt32("FacilitadorId", 0);
+                        result.FiscalizadorId = reader.SafeGetInt32("FiscalizadorId", 0);
+                        result.RowState = reader.SafeGetString("RowState", "");
+                        result.LastUpdate = reader.SafeGetDateTime("LastUpdate", new DateTime(1950, 01, 01));
+                    }
+                    if (result.Activo==false)
+                    {
+                        throw (new Exception("Error: Usuario o Contraseña no válidos"));
+                    }
                 }
                 catch (Exception ex)
                 {
-                   result= ValoresPrueba(result);
-                    //throw(new Exception("Error: " + ex.Message));
+                    //result = ValoresPrueba(result);
+                    result = null;
+                    throw (new Exception("Error: " + ex.Message));
                 }
 
             }
             return result;
         }
+        public Usuario usp_CreateUsuario(Usuario registro)
+        {
+            Usuario result = new Usuario();
 
+            using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+            {
+                SqlCommand cmd = new SqlCommand("usp_CreateUsuario", cnn);
+                if (registro.Usuario1 == null || registro.Contrasenia == null)
+                {
+                    throw (new Exception("Error: Usuario o Contraseña no válidos"));
+                }
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add("@Usuario", SqlDbType.VarChar, 50).Value = registro.Usuario1;
+                cmd.Parameters.Add("@Contrasenia", SqlDbType.VarChar, 100).Value = SHA1.Encode(registro.Contrasenia);
+                cmd.Parameters.Add("@Nombre", SqlDbType.VarChar, 100).Value = registro.Nombre;
+                cmd.Parameters.Add("@Apellido", SqlDbType.VarChar, 100).Value = registro.Apellido;
+                cmd.Parameters.Add("@Activo", SqlDbType.Bit).Value = registro.Activo;
+                cmd.Parameters.Add("@ActiveDirectory", SqlDbType.Bit).Value = registro.ActiveDirectory;
+                cmd.Parameters.Add("@RolId", SqlDbType.Int).Value = registro.RolId;
+                try
+                {
+                    cnn.Open();
+                    int reg = cmd.ExecuteNonQuery();
+                    cnn.Close();
+                }
+                catch (Exception ex)
+                {
+                    //result = ValoresPrueba(result);
+                    result = null;
+                    throw (new Exception("Error: " + ex.Message));
+                }
+
+            }
+            return result;
+        }
         public Usuario ValoresPrueba(Usuario result)
         {
             result.Id = 1;
@@ -397,11 +503,82 @@ namespace CNPC.SISDUC.DAL
             result.Activo = true;
             result.ActiveDirectory = false;
             result.RolId = 1;
-            result.FacilitadorId =0;
-            result.FiscalizadorId =  0;
+            result.FacilitadorId = 0;
+            result.FiscalizadorId = 0;
             result.RowState = "A";
-            result.LastUpdate =new DateTime(1950, 01, 01);
+            result.LastUpdate = new DateTime(1950, 01, 01);
             return result;
+        }
+        public TipoSoporteResponse usp_GetListTipoSoporte()
+        {
+            TipoSoporteResponse registros = new TipoSoporteResponse();
+            registros.List = new List<TipoSoporte>();
+            try
+            {
+                using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("usp_GetListTipoSoporte", cnn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cnn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        TipoSoporte d = new TipoSoporte();
+                        d.Valor = reader.SafeGetString("Valor", "");
+                        d.Nombre = reader.SafeGetString("Nombre", "");
+                        registros.List.Add(d);
+                    }
+                    cnn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                registros.Resultado = false;
+                registros.MensajeError = "Capa BLL: " + ex.Message;
+            }
+
+            return registros;
+        }
+        public CambiosTuberiaResponse usp_GetListCambiosTuberia(string NumeroOleoducto, int TuberiaID, int records, int page)
+        {
+            CambiosTuberiaResponse registros = new CambiosTuberiaResponse();
+            registros.List = new List<CambiosTuberia>();
+            try
+            {
+                using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("usp_GetListTipoSoporte", cnn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cnn.Open();
+
+                    cmd.ExecuteNonQuery();
+                    registros.TotalPages = Int32.Parse(cmd.Parameters["@TotalPage"].Value.ToString());
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        CambiosTuberia d = new CambiosTuberia();
+                        d.Id = reader.SafeGetInt32("Id", 0);
+                        d.NumeroOleoducto = reader.SafeGetString("NumeroOleoducto", "");
+                        d.CodigoDelTubo01 = reader.SafeGetString("CodigoDelTubo01", "");
+                        d.Motivo = reader.SafeGetString("Motivo", "");
+                        d.OrdenServicio = reader.SafeGetString("OrdenServicio", "");
+                        d.FechaOrdenservicio = reader.SafeGetDateTime("FechaOrdenservicio", new DateTime(1950, 01, 01));
+                        registros.List.Add(d);
+                    }
+                    registros.Page = page;
+                    registros.Records = records;
+
+                    cnn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                registros.Resultado = false;
+                registros.MensajeError = "Capa DAL: " + ex.Message;
+            }
+
+            return registros;
         }
         public void Dispose()
         {

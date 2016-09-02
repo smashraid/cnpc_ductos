@@ -96,10 +96,11 @@ namespace CNPC.SISDUC.Presentacion.Controllers
                     return View(model);
                 }
             }
+            UsuarioViewModel usuariologueado = null;
             if (ModelState.IsValid)
             {
                 var proxy = new UsuarioAgenteProxy();
-                UsuarioViewModel usuariologueado = proxy.ValidaLogin(model);
+                 usuariologueado = proxy.ValidaLogin(model);
                 if (usuariologueado != null) //existe y se valido correctamente
                 {
                     SesionActual.Usuario = usuariologueado;
@@ -111,7 +112,7 @@ namespace CNPC.SISDUC.Presentacion.Controllers
                 }
             }
             ModelState.AddModelError("", "Credencial Invalida");
-            return View(model);
+            return View(usuariologueado);
         }
     }
 }

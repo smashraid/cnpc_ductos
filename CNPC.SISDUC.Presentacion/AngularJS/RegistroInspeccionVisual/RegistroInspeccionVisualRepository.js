@@ -2,7 +2,7 @@
 var GetAccesorioUrl = '/api/WSAccesorio/GetAccesorio';
 var AddTuberiaUrl = '/api/WSRegistroInspeccionVisual/Post';
 var UpdateTuberiaUrl = '/api/WSRegistroInspeccionVisual/Put';
-var UpdateTuberiaUrl = '/api/WSRegistroInspeccionVisual/Put';
+var DeleteTuberiaUrl = '/api/WSRegistroInspeccionVisual/Delete';
 
 
 app.factory('RegistroInspeccionVisualRepository', function ($http) {
@@ -32,9 +32,9 @@ app.factory('RegistroInspeccionVisualRepository', function ($http) {
         add: function (tuberia) {
             return $http.post(AddTuberiaUrl, tuberia);
         },
-        //delete: function (tuberia) {
-        //    return $http.delete(oleoductoUrl + tuberia.id);
-        //},
+        delete: function (tuberia) {
+            return $http.delete(oleoductoUrl + tuberia.id);
+        },
         update: function (tuberia) {
             return $http.put(UpdateTuberiaUrl, tuberia);
         }

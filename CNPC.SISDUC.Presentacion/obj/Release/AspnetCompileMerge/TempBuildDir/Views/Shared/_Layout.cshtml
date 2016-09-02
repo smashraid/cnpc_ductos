@@ -1,4 +1,4 @@
-﻿@using CNPC.SISDUC.Presentacion.Security;
+﻿@using CNPC.SISDUC.Presentacion.Models;
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9">
 
     <title>SISTEMA DE INSPECCION DE DUCTOS</title>
-
+    <base href="/">
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/menu.css" rel="stylesheet" />
@@ -54,7 +54,7 @@
                                         <tr>
                                             <td width="80" height="29" class="user">Cerrar Sesi&oacute;n</td>
                                             <td width="20" class="user">
-                                                <a href="login.html">
+                                                <a href="Home/CerrarSesion">
                                                     <img src="Content/img/ico_salir.png" width="29" height="29" alt="" style="border:none" />
                                                 </a>
                                             </td>
@@ -115,6 +115,8 @@
     <script src="~/AngularJS/Oleoducto/OleoductoController.js"></script>
     <script src="~/AngularJS/RegistroInspeccionVisual/RegistroInspeccionVisualRepository.js"></script>
     <script src="~/AngularJS/RegistroInspeccionVisual/RegistroInspeccionVisualController.js"></script>
+    <script src="~/AngularJS/CerrarSesion/CerrarSesionRepository.js"></script>
+    <script src="~/AngularJS/CerrarSesion/CerrarSesionController.js"></script>
     <!--fin de nuestras librerias angularjs-->
 </body>
 </html>

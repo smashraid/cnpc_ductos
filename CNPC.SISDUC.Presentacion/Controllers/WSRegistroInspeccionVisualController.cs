@@ -25,6 +25,7 @@ namespace CNPC.SISDUC.Presentacion.Controllers
             ServicioClient proxy = new ServicioClient();
             string error = String.Empty;
             RegistroInspeccionVisualResponse listado = proxy.RegistroInspeccionVisualListarEntidad(oleoductoid, name, page, records);
+            listado.ListTipoSoporte = proxy.TipoSoporteListarAllEntidad();
             var result = Request.CreateResponse<RegistroInspeccionVisualResponse>(HttpStatusCode.OK, listado);
             return result;
         }
@@ -67,9 +68,6 @@ namespace CNPC.SISDUC.Presentacion.Controllers
             var proxy = new ServicioClient();
             if (ModelState.IsValid)
             {
-
-
-
                 if (editarTuberia != null && editarTuberia.CodigoDelTubo != string.Empty)
                 {
                     try

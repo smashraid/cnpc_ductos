@@ -27,9 +27,11 @@ namespace CNPC.SISDUC.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Accesorio> Accesorios { get; set; }
         public virtual DbSet<Oleoducto> Oleoductos { get; set; }
         public virtual DbSet<RegistroInspeccionVisual> RegistroInspeccionVisuals { get; set; }
-        public virtual DbSet<Accesorio> Accesorios { get; set; }
+        public virtual DbSet<Usuario> Usuarios { get; set; }
+        public virtual DbSet<CambiosTuberia> CambiosTuberias { get; set; }
     
         public virtual ObjectResult<uspGetListOleoductos_Result> uspGetListOleoductos(string nombre, Nullable<int> page, Nullable<int> records, ObjectParameter totalPage)
         {

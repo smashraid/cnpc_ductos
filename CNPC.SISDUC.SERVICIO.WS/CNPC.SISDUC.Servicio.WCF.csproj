@@ -110,7 +110,9 @@
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Servicio.svc" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Servicio.svc.cs">
@@ -127,6 +129,8 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Properties\PublishProfiles\wcfducto.pubxml" />
+    <None Include="Properties\PublishProfiles\wcflocal.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -138,6 +142,10 @@
     <ProjectReference Include="..\CNPC.SISDUC.BLL\CNPC.SISDUC.BLL.csproj">
       <Project>{303900E2-D8AD-45BB-8D73-9A4E0B1B1184}</Project>
       <Name>CNPC.SISDUC.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CNPC.SISDUC.DAL\CNPC.SISDUC.DAL.csproj">
+      <Project>{000F7ED3-5451-4692-BC8F-4E37E95770B4}</Project>
+      <Name>CNPC.SISDUC.DAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\CNPC.SISDUC.Model\CNPC.SISDUC.Model.csproj">
       <Project>{8CA54EF0-9D9A-434E-95FD-0E8DA49660F2}</Project>

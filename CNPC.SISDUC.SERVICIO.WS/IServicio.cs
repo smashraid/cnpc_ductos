@@ -18,7 +18,7 @@ namespace CNPC.SISDUC.SERVICIO.WCF
         [OperationContract]
         OleoductoResponse OleoductoListarEntidad(string search = null, int page = 1, int rowsPerPage = 10);
 
-        //TODO: agregue aquí sus operaciones de servicio
+        //Registro de Inspeccion Visual
         [OperationContract]
         RegistroInspeccionVisualResponse RegistroInspeccionVisualEjecutarOperacion(RegistroInspeccionVisualRequest request);
         [OperationContract]
@@ -26,7 +26,16 @@ namespace CNPC.SISDUC.SERVICIO.WCF
         [OperationContract]
         RegistroInspeccionVisualResponse RegistroInspeccionVisualListarEntidad(int oleoductoId, string search = null, int page = 1, int rowsPerPage = 10);
 
-        //TODO: agregue aquí sus operaciones de Accesorios
+
+        //Registro de Cambios Tubería
+        [OperationContract]
+        CambiosTuberiaResponse CambiosTuberiaEjecutarOperacion(CambiosTuberiaRequest request);
+        [OperationContract]
+        CambiosTuberiaResponse CambiosTuberiaListarAllEntidad();
+        [OperationContract]
+        CambiosTuberiaResponse CambiosTuberiaListarEntidad(string oleoducto, int TuberiaId = 0, int page = 1, int rowsPerPage = 10);
+
+        //Accesorios
         [OperationContract]
         AccesorioResponse AccesoriosEjecutarOperacion(AccesoriosRequest request);
         [OperationContract]
@@ -34,7 +43,11 @@ namespace CNPC.SISDUC.SERVICIO.WCF
         [OperationContract]
         AccesorioResponse AccesoriosListarEntidad(int oleoductoId, string search = null, int page = 1, int rowsPerPage = 10);
 
-        //TODO: agregue aquí sus operaciones de Usuario
+        //Servicio para las Constantes
+        [OperationContract]
+        TipoSoporteResponse TipoSoporteListarAllEntidad();
+
+        //Ooperaciones de Usuario
         [OperationContract]
         int ListCountUsuario(ref string error);
         [OperationContract]

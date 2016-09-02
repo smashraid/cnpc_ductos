@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+Este archivo es utilizado por el proceso de paquete/publicación de nuestro proyecto Web. Puede personalizar el comportamiento de este proceso
+editando este archivo MSBuild. Para conocer más acerca de esto, visite http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAiVA6orVG5kW7+rnOb934gAAAAAACAAAAAAAQZgAAAAEAACAAAACD5e3qSNAI7FIW55MxNp19okAS2305g5viX4GSq6KhtgAAAAAOgAAAAAIAACAAAACbQDEUK/4Zl/+Nmdqv60WJ9/ugtPcvQoNDYo6bhqCcJiAAAADHzuc5oW1rH/fHbj6dsaI8tNlPX/DPmu9sw0jwcUiKFUAAAAD3wy0ZZEpdaDFZkBfNCw11QV5nefsFGkpqARFO53YC5TyJZs7C8rg0Ry+aBlHoukysfHahot9NByhrcz2Oa81p</EncryptedPassword>
+    <_PublishTargetUrl>ftp://ftp.Smarterasp.net/wcfducto</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="ApplicationInsights.config">
+      <publishTime>07/15/2016 12:04:14</publishTime>
+    </File>
+    <File Include="bin/ApplicationInsights.config">
+      <publishTime>07/15/2016 12:04:14</publishTime>
+    </File>
+    <File Include="bin/CNPC.SISDUC.BLL.dll">
+      <publishTime>07/26/2016 21:17:32</publishTime>
+    </File>
+    <File Include="bin/CNPC.SISDUC.DAL.dll">
+      <publishTime>07/26/2016 21:17:31</publishTime>
+    </File>
+    <File Include="bin/CNPC.SISDUC.Model.dll">
+      <publishTime>07/24/2016 06:24:21</publishTime>
+    </File>
+    <File Include="bin/CNPC.SISDUC.SERVICIO.WS.dll">
+      <publishTime>07/26/2016 21:17:32</publishTime>
+    </File>
+    <File Include="bin/EntityFramework.dll">
+      <publishTime>05/21/2016 15:26:57</publishTime>
+    </File>
+    <File Include="bin/EPPlus.dll">
+      <publishTime>01/08/2016 10:00:08</publishTime>
+    </File>
+    <File Include="bin/es/System.Net.Http.Formatting.resources.dll">
+      <publishTime>01/28/2015 04:02:48</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.Http.resources.dll">
+      <publishTime>01/28/2015 04:02:58</publishTime>
+    </File>
+    <File Include="bin/es/System.Web.Http.WebHost.resources.dll">
+      <publishTime>01/28/2015 04:03:50</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Agent.Intercept.dll">
+      <publishTime>12/07/2015 19:04:38</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.DependencyCollector.dll">
+      <publishTime>03/10/2016 14:26:18</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.PerfCounterCollector.dll">
+      <publishTime>03/10/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.ServerTelemetryChannel.dll">
+      <publishTime>03/09/2016 12:00:14</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.Web.dll">
+      <publishTime>03/10/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.AI.WindowsServer.dll">
+      <publishTime>03/10/2016 14:26:26</publishTime>
+    </File>
+    <File Include="bin/Microsoft.ApplicationInsights.dll">
+      <publishTime>03/09/2016 11:57:34</publishTime>
+    </File>
+    <File Include="bin/Newtonsoft.Json.dll">
+      <publishTime>08/03/2014 20:33:56</publishTime>
+    </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>01/28/2015 04:02:42</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>01/28/2015 04:02:54</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>01/28/2015 04:03:46</publishTime>
+    </File>
+    <File Include="IServicio.cs">
+      <publishTime>07/24/2016 06:57:30</publishTime>
+    </File>
+    <File Include="packages.config">
+      <publishTime>07/18/2016 00:25:22</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>07/26/2016 21:17:39</publishTime>
+    </File>
+    <File Include="scripts/ai.0.22.9-build00167.js">
+      <publishTime>07/15/2016 12:04:14</publishTime>
+    </File>
+    <File Include="scripts/ai.0.22.9-build00167.min.js">
+      <publishTime>07/15/2016 12:04:14</publishTime>
+    </File>
+    <File Include="Servicio.svc">
+      <publishTime>07/15/2016 23:55:24</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/22/2016 14:04:20</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

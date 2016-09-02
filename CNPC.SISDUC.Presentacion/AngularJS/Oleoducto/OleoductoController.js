@@ -44,15 +44,15 @@
 
         //Validar Oleoducto a Guardar
         var validar = function (ducto) {
-            if (ducto.Codigo == "") {
+            if (ducto.Codigo === "") {
                 alert('Ingrese el Código');
                 return false;
             }
-            if (ducto.NoLamina == "") {
+            if (ducto.NoLamina === "") {
                 alert('Ingrese el Número de Lamina');
                 return false;
             }
-            if (ducto.Trayectoria == "") {
+            if (ducto.Trayectoria === "") {
                 alert('Ingrese la Trayectoria');
                 return false;
             }
@@ -108,8 +108,11 @@
         }
         $scope.editarOleoducto = function (oleoducto) {
             $scope.editarDucto = oleoducto;
+            //$scope.editarDucto.FechaInspeccion = new Date(2013, 9, 22);
+            
             $('#EditarOleoducto').modal('show');
         }
+
         //Fin Editar Oleoducto
 
         //paginación

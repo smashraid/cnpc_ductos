@@ -78,12 +78,10 @@ namespace CNPC.SISDUC.BLL
                     p.TipoProteccion == registroToUpdate.TipoProteccion &
                     p.EstadoProteccion == registroToUpdate.EstadoProteccion &
                     p.EstadoTuberia == registroToUpdate.EstadoTuberia &
-                    p.EspesorNominal == registroToUpdate.EspesorNominal &
-                    p.EspesorMinimoRealRemanente == registroToUpdate.EspesorMinimoRealRemanente &
-                    p.ObservacionesDeLaInspeccionVisual == registroToUpdate.ObservacionesDeLaInspeccionVisual &
-                    p.CondicionDelTramo == registroToUpdate.CondicionDelTramo &
                     p.UltimaFechaDeInspeccion == registroToUpdate.UltimaFechaDeInspeccion &
-                    p.SeleccionarTuberia == registroToUpdate.SeleccionarTuberia
+                    p.SeleccionarTuberia == registroToUpdate.SeleccionarTuberia &
+                    p.RowState == registroToUpdate.RowState &
+                    p.LastUpdate == registroToUpdate.LastUpdate
                     );
                 if (d == null)
                 {

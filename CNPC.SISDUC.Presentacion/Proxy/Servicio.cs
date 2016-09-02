@@ -99,6 +99,8 @@ namespace CNPC.SISDUC.Model
         
         private string NoLaminaField;
         
+        private string ObservacionesField;
+        
         private System.Nullable<decimal> PresionField;
         
         private string RowStateField;
@@ -291,6 +293,19 @@ namespace CNPC.SISDUC.Model
             set
             {
                 this.NoLaminaField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Observaciones
+        {
+            get
+            {
+                return this.ObservacionesField;
+            }
+            set
+            {
+                this.ObservacionesField = value;
             }
         }
         
@@ -578,9 +593,9 @@ namespace CNPC.SISDUC.Model
         
         private System.Nullable<decimal> BSCANField;
         
-        private string CodigoField;
-        
         private string CodigoDelTuboField;
+        
+        private string CodigoDelTubo01Field;
         
         private string CodigoDelTubo02Field;
         
@@ -596,13 +611,13 @@ namespace CNPC.SISDUC.Model
         
         private string DefectoField;
         
-        private string Defecto2Field;
+        private System.Nullable<bool> Defecto2Field;
         
         private System.Nullable<bool> ElastomeroField;
         
-        private System.Nullable<decimal> EspesorMinimoRealRemanenteField;
+        private decimal EspesorMinimoRealRemanenteField;
         
-        private System.Nullable<decimal> EspesorNominalField;
+        private decimal EspesorNominalField;
         
         private System.Nullable<decimal> EspesorParedField;
         
@@ -648,7 +663,7 @@ namespace CNPC.SISDUC.Model
         
         private System.Nullable<decimal> MapeoCorrisonField;
         
-        private System.Nullable<int> NPSField;
+        private System.Nullable<decimal> NPSField;
         
         private System.Nullable<int> NumeroAnteriorField;
         
@@ -680,6 +695,8 @@ namespace CNPC.SISDUC.Model
         
         private System.Nullable<bool> TuberiaAlrededorField;
         
+        private System.Nullable<int> TuberiaIdField;
+        
         private System.Nullable<System.DateTime> UltimaFechaDeInspeccionField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
@@ -708,19 +725,6 @@ namespace CNPC.SISDUC.Model
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Codigo
-        {
-            get
-            {
-                return this.CodigoField;
-            }
-            set
-            {
-                this.CodigoField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string CodigoDelTubo
         {
             get
@@ -730,6 +734,19 @@ namespace CNPC.SISDUC.Model
             set
             {
                 this.CodigoDelTuboField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CodigoDelTubo01
+        {
+            get
+            {
+                return this.CodigoDelTubo01Field;
+            }
+            set
+            {
+                this.CodigoDelTubo01Field = value;
             }
         }
         
@@ -825,7 +842,7 @@ namespace CNPC.SISDUC.Model
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Defecto2
+        public System.Nullable<bool> Defecto2
         {
             get
             {
@@ -851,7 +868,7 @@ namespace CNPC.SISDUC.Model
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> EspesorMinimoRealRemanente
+        public decimal EspesorMinimoRealRemanente
         {
             get
             {
@@ -864,7 +881,7 @@ namespace CNPC.SISDUC.Model
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> EspesorNominal
+        public decimal EspesorNominal
         {
             get
             {
@@ -1163,7 +1180,7 @@ namespace CNPC.SISDUC.Model
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> NPS
+        public System.Nullable<decimal> NPS
         {
             get
             {
@@ -1371,6 +1388,19 @@ namespace CNPC.SISDUC.Model
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> TuberiaId
+        {
+            get
+            {
+                return this.TuberiaIdField;
+            }
+            set
+            {
+                this.TuberiaIdField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         public System.Nullable<System.DateTime> UltimaFechaDeInspeccion
         {
             get
@@ -1498,6 +1528,438 @@ namespace CNPC.SISDUC.Model
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseOfTipoSoporteF0AnoamO", Namespace="http://schemas.datacontract.org/2004/07/CNPC.SISDUC.Model")]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CNPC.SISDUC.Model.Servicio.TipoSoporteResponse))]
+    public partial class ResponseOfTipoSoporteF0AnoamO : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private CNPC.SISDUC.Model.Servicio.TipoSoporte ItemField;
+        
+        private CNPC.SISDUC.Model.Servicio.TipoSoporte[] ListField;
+        
+        private int PageField;
+        
+        private int RecordsField;
+        
+        private int TotalPagesField;
+        
+        private int TotalRecordsField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CNPC.SISDUC.Model.Servicio.TipoSoporte Item
+        {
+            get
+            {
+                return this.ItemField;
+            }
+            set
+            {
+                this.ItemField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CNPC.SISDUC.Model.Servicio.TipoSoporte[] List
+        {
+            get
+            {
+                return this.ListField;
+            }
+            set
+            {
+                this.ListField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Page
+        {
+            get
+            {
+                return this.PageField;
+            }
+            set
+            {
+                this.PageField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Records
+        {
+            get
+            {
+                return this.RecordsField;
+            }
+            set
+            {
+                this.RecordsField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalPages
+        {
+            get
+            {
+                return this.TotalPagesField;
+            }
+            set
+            {
+                this.TotalPagesField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalRecords
+        {
+            get
+            {
+                return this.TotalRecordsField;
+            }
+            set
+            {
+                this.TotalRecordsField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ObjectRequestOfCambiosTuberiarLr2Zji1", Namespace="http://schemas.datacontract.org/2004/07/CNPC.SISDUC.Model")]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CNPC.SISDUC.Model.Servicio.CambiosTuberiaRequest))]
+    public partial class ObjectRequestOfCambiosTuberiarLr2Zji1 : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private CNPC.SISDUC.Model.CambiosTuberia ItemField;
+        
+        private CNPC.SISDUC.Model.Operacion OperacionField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CNPC.SISDUC.Model.CambiosTuberia Item
+        {
+            get
+            {
+                return this.ItemField;
+            }
+            set
+            {
+                this.ItemField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CNPC.SISDUC.Model.Operacion Operacion
+        {
+            get
+            {
+                return this.OperacionField;
+            }
+            set
+            {
+                this.OperacionField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CambiosTuberia", Namespace="http://schemas.datacontract.org/2004/07/CNPC.SISDUC.Model")]
+    public partial class CambiosTuberia : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private string CodigoDelTubo01Field;
+        
+        private System.Nullable<System.DateTime> FechaOrdenservicioField;
+        
+        private int IdField;
+        
+        private System.Nullable<System.DateTime> LastUpdateField;
+        
+        private string MotivoField;
+        
+        private string NumeroOleoductoField;
+        
+        private string OrdenServicioField;
+        
+        private string RowStateField;
+        
+        private int TuberiaIdField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CodigoDelTubo01
+        {
+            get
+            {
+                return this.CodigoDelTubo01Field;
+            }
+            set
+            {
+                this.CodigoDelTubo01Field = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> FechaOrdenservicio
+        {
+            get
+            {
+                return this.FechaOrdenservicioField;
+            }
+            set
+            {
+                this.FechaOrdenservicioField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id
+        {
+            get
+            {
+                return this.IdField;
+            }
+            set
+            {
+                this.IdField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> LastUpdate
+        {
+            get
+            {
+                return this.LastUpdateField;
+            }
+            set
+            {
+                this.LastUpdateField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Motivo
+        {
+            get
+            {
+                return this.MotivoField;
+            }
+            set
+            {
+                this.MotivoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NumeroOleoducto
+        {
+            get
+            {
+                return this.NumeroOleoductoField;
+            }
+            set
+            {
+                this.NumeroOleoductoField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string OrdenServicio
+        {
+            get
+            {
+                return this.OrdenServicioField;
+            }
+            set
+            {
+                this.OrdenServicioField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string RowState
+        {
+            get
+            {
+                return this.RowStateField;
+            }
+            set
+            {
+                this.RowStateField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TuberiaId
+        {
+            get
+            {
+                return this.TuberiaIdField;
+            }
+            set
+            {
+                this.TuberiaIdField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ResponseOfCambiosTuberiarLr2Zji1", Namespace="http://schemas.datacontract.org/2004/07/CNPC.SISDUC.Model")]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse))]
+    public partial class ResponseOfCambiosTuberiarLr2Zji1 : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private CNPC.SISDUC.Model.CambiosTuberia ItemField;
+        
+        private CNPC.SISDUC.Model.CambiosTuberia[] ListField;
+        
+        private int PageField;
+        
+        private int RecordsField;
+        
+        private int TotalPagesField;
+        
+        private int TotalRecordsField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CNPC.SISDUC.Model.CambiosTuberia Item
+        {
+            get
+            {
+                return this.ItemField;
+            }
+            set
+            {
+                this.ItemField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CNPC.SISDUC.Model.CambiosTuberia[] List
+        {
+            get
+            {
+                return this.ListField;
+            }
+            set
+            {
+                this.ListField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Page
+        {
+            get
+            {
+                return this.PageField;
+            }
+            set
+            {
+                this.PageField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Records
+        {
+            get
+            {
+                return this.RecordsField;
+            }
+            set
+            {
+                this.RecordsField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalPages
+        {
+            get
+            {
+                return this.TotalPagesField;
+            }
+            set
+            {
+                this.TotalPagesField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int TotalRecords
+        {
+            get
+            {
+                return this.TotalRecordsField;
+            }
+            set
+            {
+                this.TotalRecordsField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ObjectRequestOfAccesoriorLr2Zji1", Namespace="http://schemas.datacontract.org/2004/07/CNPC.SISDUC.Model")]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(CNPC.SISDUC.Model.Servicio.AccesoriosRequest))]
     public partial class ObjectRequestOfAccesoriorLr2Zji1 : object, System.Runtime.Serialization.IExtensibleDataObject
@@ -1556,65 +2018,35 @@ namespace CNPC.SISDUC.Model
         
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        private string Accesorio1Field;
+        private string CodigoAccesorioField;
         
-        private System.Nullable<decimal> BSCANField;
+        private string CodigoTuberiaField;
         
-        private string CodigoAccesorio1Field;
-        
-        private string CodigoAccesorio2Field;
-        
-        private string CodigoAccesorio3Field;
+        private string CondicionAccesorioField;
         
         private System.Nullable<int> CoordenadasUTMXField;
         
         private System.Nullable<int> CoordenadasUTMYField;
         
-        private string Defecto1Field;
-        
-        private string Defecto2Field;
-        
-        private System.Nullable<decimal> EspesorParedField;
-        
-        private System.Nullable<decimal> EspesorRemanenteField;
-        
-        private string EstadoAccesorioField;
-        
-        private System.Nullable<decimal> ExtremoFinalField;
-        
-        private System.Nullable<decimal> ExtremoInicialField;
-        
-        private System.Nullable<decimal> ExtremoMedioField;
+        private string CorrelativoField;
         
         private int IdField;
-        
-        private System.Nullable<decimal> InspeccionSonicaField;
         
         private System.Nullable<System.DateTime> LastUpdateField;
         
         private System.Nullable<decimal> LongitudField;
         
-        private System.Nullable<decimal> MapeoCorrosionField;
+        private System.Nullable<decimal> NPSField;
         
-        private System.Nullable<int> NPSField;
-        
-        private System.Nullable<int> NumeroGrapasField;
+        private string NombreAccesorioField;
         
         private string ObservacionesField;
-        
-        private System.Nullable<bool> PinturaField;
-        
-        private System.Nullable<decimal> PitCorrosionField;
         
         private string RowStateField;
         
         private System.Nullable<int> ScheduleField;
         
-        private string TipoAccesorioField;
-        
         private string TipoMaterialField;
-        
-        private System.Nullable<int> TuberiaIdField;
         
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData
         {
@@ -1629,67 +2061,41 @@ namespace CNPC.SISDUC.Model
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Accesorio1
+        public string CodigoAccesorio
         {
             get
             {
-                return this.Accesorio1Field;
+                return this.CodigoAccesorioField;
             }
             set
             {
-                this.Accesorio1Field = value;
+                this.CodigoAccesorioField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> BSCAN
+        public string CodigoTuberia
         {
             get
             {
-                return this.BSCANField;
+                return this.CodigoTuberiaField;
             }
             set
             {
-                this.BSCANField = value;
+                this.CodigoTuberiaField = value;
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CodigoAccesorio1
+        public string CondicionAccesorio
         {
             get
             {
-                return this.CodigoAccesorio1Field;
+                return this.CondicionAccesorioField;
             }
             set
             {
-                this.CodigoAccesorio1Field = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CodigoAccesorio2
-        {
-            get
-            {
-                return this.CodigoAccesorio2Field;
-            }
-            set
-            {
-                this.CodigoAccesorio2Field = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string CodigoAccesorio3
-        {
-            get
-            {
-                return this.CodigoAccesorio3Field;
-            }
-            set
-            {
-                this.CodigoAccesorio3Field = value;
+                this.CondicionAccesorioField = value;
             }
         }
         
@@ -1720,106 +2126,15 @@ namespace CNPC.SISDUC.Model
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Defecto1
+        public string Correlativo
         {
             get
             {
-                return this.Defecto1Field;
+                return this.CorrelativoField;
             }
             set
             {
-                this.Defecto1Field = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string Defecto2
-        {
-            get
-            {
-                return this.Defecto2Field;
-            }
-            set
-            {
-                this.Defecto2Field = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> EspesorPared
-        {
-            get
-            {
-                return this.EspesorParedField;
-            }
-            set
-            {
-                this.EspesorParedField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> EspesorRemanente
-        {
-            get
-            {
-                return this.EspesorRemanenteField;
-            }
-            set
-            {
-                this.EspesorRemanenteField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string EstadoAccesorio
-        {
-            get
-            {
-                return this.EstadoAccesorioField;
-            }
-            set
-            {
-                this.EstadoAccesorioField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> ExtremoFinal
-        {
-            get
-            {
-                return this.ExtremoFinalField;
-            }
-            set
-            {
-                this.ExtremoFinalField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> ExtremoInicial
-        {
-            get
-            {
-                return this.ExtremoInicialField;
-            }
-            set
-            {
-                this.ExtremoInicialField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> ExtremoMedio
-        {
-            get
-            {
-                return this.ExtremoMedioField;
-            }
-            set
-            {
-                this.ExtremoMedioField = value;
+                this.CorrelativoField = value;
             }
         }
         
@@ -1833,19 +2148,6 @@ namespace CNPC.SISDUC.Model
             set
             {
                 this.IdField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> InspeccionSonica
-        {
-            get
-            {
-                return this.InspeccionSonicaField;
-            }
-            set
-            {
-                this.InspeccionSonicaField = value;
             }
         }
         
@@ -1876,20 +2178,7 @@ namespace CNPC.SISDUC.Model
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> MapeoCorrosion
-        {
-            get
-            {
-                return this.MapeoCorrosionField;
-            }
-            set
-            {
-                this.MapeoCorrosionField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> NPS
+        public System.Nullable<decimal> NPS
         {
             get
             {
@@ -1902,15 +2191,15 @@ namespace CNPC.SISDUC.Model
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> NumeroGrapas
+        public string NombreAccesorio
         {
             get
             {
-                return this.NumeroGrapasField;
+                return this.NombreAccesorioField;
             }
             set
             {
-                this.NumeroGrapasField = value;
+                this.NombreAccesorioField = value;
             }
         }
         
@@ -1924,32 +2213,6 @@ namespace CNPC.SISDUC.Model
             set
             {
                 this.ObservacionesField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<bool> Pintura
-        {
-            get
-            {
-                return this.PinturaField;
-            }
-            set
-            {
-                this.PinturaField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<decimal> PitCorrosion
-        {
-            get
-            {
-                return this.PitCorrosionField;
-            }
-            set
-            {
-                this.PitCorrosionField = value;
             }
         }
         
@@ -1980,19 +2243,6 @@ namespace CNPC.SISDUC.Model
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string TipoAccesorio
-        {
-            get
-            {
-                return this.TipoAccesorioField;
-            }
-            set
-            {
-                this.TipoAccesorioField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         public string TipoMaterial
         {
             get
@@ -2002,19 +2252,6 @@ namespace CNPC.SISDUC.Model
             set
             {
                 this.TipoMaterialField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<int> TuberiaId
-        {
-            get
-            {
-                return this.TuberiaIdField;
-            }
-            set
-            {
-                this.TuberiaIdField = value;
             }
         }
     }
@@ -2632,6 +2869,8 @@ namespace CNPC.SISDUC.Model.Servicio
     public partial class RegistroInspeccionVisualResponse : CNPC.SISDUC.Model.ResponseOfRegistroInspeccionVisualrLr2Zji1
     {
         
+        private CNPC.SISDUC.Model.Servicio.TipoSoporteResponse ListTipoSoporteField;
+        
         private string MensajeErrorField;
         
         private bool ResultadoField;
@@ -2639,6 +2878,19 @@ namespace CNPC.SISDUC.Model.Servicio
         private CNPC.SISDUC.Model.Oleoducto oleoductoField;
         
         private CNPC.SISDUC.Model.RegistroInspeccionVisual registroInspeccionVisualField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public CNPC.SISDUC.Model.Servicio.TipoSoporteResponse ListTipoSoporte
+        {
+            get
+            {
+                return this.ListTipoSoporteField;
+            }
+            set
+            {
+                this.ListTipoSoporteField = value;
+            }
+        }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public string MensajeError
@@ -2689,6 +2941,138 @@ namespace CNPC.SISDUC.Model.Servicio
             set
             {
                 this.registroInspeccionVisualField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoSoporteResponse", Namespace="http://schemas.datacontract.org/2004/07/CNPC.SISDUC.Model.Servicio")]
+    public partial class TipoSoporteResponse : CNPC.SISDUC.Model.ResponseOfTipoSoporteF0AnoamO
+    {
+        
+        private string MensajeErrorField;
+        
+        private bool ResultadoField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MensajeError
+        {
+            get
+            {
+                return this.MensajeErrorField;
+            }
+            set
+            {
+                this.MensajeErrorField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Resultado
+        {
+            get
+            {
+                return this.ResultadoField;
+            }
+            set
+            {
+                this.ResultadoField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TipoSoporte", Namespace="http://schemas.datacontract.org/2004/07/CNPC.SISDUC.Model.Servicio")]
+    public partial class TipoSoporte : object, System.Runtime.Serialization.IExtensibleDataObject
+    {
+        
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        private string NombreField;
+        
+        private string ValorField;
+        
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+        {
+            get
+            {
+                return this.extensionDataField;
+            }
+            set
+            {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nombre
+        {
+            get
+            {
+                return this.NombreField;
+            }
+            set
+            {
+                this.NombreField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Valor
+        {
+            get
+            {
+                return this.ValorField;
+            }
+            set
+            {
+                this.ValorField = value;
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CambiosTuberiaRequest", Namespace="http://schemas.datacontract.org/2004/07/CNPC.SISDUC.Model.Servicio")]
+    public partial class CambiosTuberiaRequest : CNPC.SISDUC.Model.ObjectRequestOfCambiosTuberiarLr2Zji1
+    {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="CambiosTuberiaResponse", Namespace="http://schemas.datacontract.org/2004/07/CNPC.SISDUC.Model.Servicio")]
+    public partial class CambiosTuberiaResponse : CNPC.SISDUC.Model.ResponseOfCambiosTuberiarLr2Zji1
+    {
+        
+        private string MensajeErrorField;
+        
+        private bool ResultadoField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MensajeError
+        {
+            get
+            {
+                return this.MensajeErrorField;
+            }
+            set
+            {
+                this.MensajeErrorField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Resultado
+        {
+            get
+            {
+                return this.ResultadoField;
+            }
+            set
+            {
+                this.ResultadoField = value;
             }
         }
     }
@@ -2830,6 +3214,24 @@ public interface IServicio
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/RegistroInspeccionVisualListarEntidad", ReplyAction="http://tempuri.org/IServicio/RegistroInspeccionVisualListarEntidadResponse")]
     System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.RegistroInspeccionVisualResponse> RegistroInspeccionVisualListarEntidadAsync(int oleoductoId, string search, int page, int rowsPerPage);
     
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/CambiosTuberiaEjecutarOperacion", ReplyAction="http://tempuri.org/IServicio/CambiosTuberiaEjecutarOperacionResponse")]
+    CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse CambiosTuberiaEjecutarOperacion(CNPC.SISDUC.Model.Servicio.CambiosTuberiaRequest request);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/CambiosTuberiaEjecutarOperacion", ReplyAction="http://tempuri.org/IServicio/CambiosTuberiaEjecutarOperacionResponse")]
+    System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse> CambiosTuberiaEjecutarOperacionAsync(CNPC.SISDUC.Model.Servicio.CambiosTuberiaRequest request);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/CambiosTuberiaListarAllEntidad", ReplyAction="http://tempuri.org/IServicio/CambiosTuberiaListarAllEntidadResponse")]
+    CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse CambiosTuberiaListarAllEntidad();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/CambiosTuberiaListarAllEntidad", ReplyAction="http://tempuri.org/IServicio/CambiosTuberiaListarAllEntidadResponse")]
+    System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse> CambiosTuberiaListarAllEntidadAsync();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/CambiosTuberiaListarEntidad", ReplyAction="http://tempuri.org/IServicio/CambiosTuberiaListarEntidadResponse")]
+    CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse CambiosTuberiaListarEntidad(string oleoducto, int TuberiaId, int page, int rowsPerPage);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/CambiosTuberiaListarEntidad", ReplyAction="http://tempuri.org/IServicio/CambiosTuberiaListarEntidadResponse")]
+    System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse> CambiosTuberiaListarEntidadAsync(string oleoducto, int TuberiaId, int page, int rowsPerPage);
+    
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/AccesoriosEjecutarOperacion", ReplyAction="http://tempuri.org/IServicio/AccesoriosEjecutarOperacionResponse")]
     CNPC.SISDUC.Model.Servicio.AccesorioResponse AccesoriosEjecutarOperacion(CNPC.SISDUC.Model.Servicio.AccesoriosRequest request);
     
@@ -2847,6 +3249,12 @@ public interface IServicio
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/AccesoriosListarEntidad", ReplyAction="http://tempuri.org/IServicio/AccesoriosListarEntidadResponse")]
     System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.AccesorioResponse> AccesoriosListarEntidadAsync(int oleoductoId, string search, int page, int rowsPerPage);
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/TipoSoporteListarAllEntidad", ReplyAction="http://tempuri.org/IServicio/TipoSoporteListarAllEntidadResponse")]
+    CNPC.SISDUC.Model.Servicio.TipoSoporteResponse TipoSoporteListarAllEntidad();
+    
+    [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/TipoSoporteListarAllEntidad", ReplyAction="http://tempuri.org/IServicio/TipoSoporteListarAllEntidadResponse")]
+    System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.TipoSoporteResponse> TipoSoporteListarAllEntidadAsync();
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/ListCountUsuario", ReplyAction="http://tempuri.org/IServicio/ListCountUsuarioResponse")]
     ListCountUsuarioResponse ListCountUsuario(ListCountUsuarioRequest request);
@@ -3032,6 +3440,36 @@ public partial class ServicioClient : System.ServiceModel.ClientBase<IServicio>,
         return base.Channel.RegistroInspeccionVisualListarEntidadAsync(oleoductoId, search, page, rowsPerPage);
     }
     
+    public CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse CambiosTuberiaEjecutarOperacion(CNPC.SISDUC.Model.Servicio.CambiosTuberiaRequest request)
+    {
+        return base.Channel.CambiosTuberiaEjecutarOperacion(request);
+    }
+    
+    public System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse> CambiosTuberiaEjecutarOperacionAsync(CNPC.SISDUC.Model.Servicio.CambiosTuberiaRequest request)
+    {
+        return base.Channel.CambiosTuberiaEjecutarOperacionAsync(request);
+    }
+    
+    public CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse CambiosTuberiaListarAllEntidad()
+    {
+        return base.Channel.CambiosTuberiaListarAllEntidad();
+    }
+    
+    public System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse> CambiosTuberiaListarAllEntidadAsync()
+    {
+        return base.Channel.CambiosTuberiaListarAllEntidadAsync();
+    }
+    
+    public CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse CambiosTuberiaListarEntidad(string oleoducto, int TuberiaId, int page, int rowsPerPage)
+    {
+        return base.Channel.CambiosTuberiaListarEntidad(oleoducto, TuberiaId, page, rowsPerPage);
+    }
+    
+    public System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse> CambiosTuberiaListarEntidadAsync(string oleoducto, int TuberiaId, int page, int rowsPerPage)
+    {
+        return base.Channel.CambiosTuberiaListarEntidadAsync(oleoducto, TuberiaId, page, rowsPerPage);
+    }
+    
     public CNPC.SISDUC.Model.Servicio.AccesorioResponse AccesoriosEjecutarOperacion(CNPC.SISDUC.Model.Servicio.AccesoriosRequest request)
     {
         return base.Channel.AccesoriosEjecutarOperacion(request);
@@ -3060,6 +3498,16 @@ public partial class ServicioClient : System.ServiceModel.ClientBase<IServicio>,
     public System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.AccesorioResponse> AccesoriosListarEntidadAsync(int oleoductoId, string search, int page, int rowsPerPage)
     {
         return base.Channel.AccesoriosListarEntidadAsync(oleoductoId, search, page, rowsPerPage);
+    }
+    
+    public CNPC.SISDUC.Model.Servicio.TipoSoporteResponse TipoSoporteListarAllEntidad()
+    {
+        return base.Channel.TipoSoporteListarAllEntidad();
+    }
+    
+    public System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.TipoSoporteResponse> TipoSoporteListarAllEntidadAsync()
+    {
+        return base.Channel.TipoSoporteListarAllEntidadAsync();
     }
     
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]

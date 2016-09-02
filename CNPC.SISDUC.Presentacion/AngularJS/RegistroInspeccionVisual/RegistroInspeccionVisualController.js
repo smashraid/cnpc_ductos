@@ -1,8 +1,9 @@
 ﻿app.controller("RegistroInspeccionVisualController",
-    function ($scope, $routeParams, RegistroInspeccionVisualRepository) {
+    function ($scope, $routeParams, RegistroInspeccionVisualRepository, CambioRepository) {
         //Metodo GET
         var getSuccessCallback = function (data, status) {
             $scope.listaTuberia = data.List;
+            $scope.listaTipoSoporte = data.ListTipoSoporte.List;
             $scope.oleoducto = data.oleoducto;
             $scope.parameterlist.pages = data.TotalPages;
             $scope.parameterlist.totalRecords = data.TotalRecords;
@@ -98,7 +99,6 @@
 
                 RegistroInspeccionVisualRepository.add(tuberia).success(postSuccessCallBack).error(errorCallBack);
                 //TODO: VERIFICAR REFRESH AUTOMATICO
-
             }
         }
         //Fin Agregar Nueva Tuberia
@@ -123,12 +123,32 @@
             $('#EditarTuberia').modal('hide');
         }
 
-        $scope.guardarMotivo = function (tuberia, cambio) {
+        var cambiosTuberia = {
+            "Id": 0,
+            "NumeroOleoducto": 0,
+            "CodigoDelTubo01": "",
+            "TuberiaId": "",
+            "Motivo": "",
+            "OrdenServicio": "",
+            "FechaOrdenservicio": "",
+            "RowState": "",
+            "LastUpdate": ""
+        };
+
+
+
+
+        $scope.guardarMotivo = function (cambio) {
             if (validar(cambio)) {
-                cambio.TuberiaID = tuberia.Id
-                cambio.LastUpdate = new Date();
-                cambio.RowState = "A";
-                CambioRepository.add(cambio).success(postSuccessCallBack).error(errorCallBack);
+                cambiosTuberia.NumeroOleoducto = cambio.NumeroOleoducto;
+                cambiosTuberia.CodigoDelTubo01 = cambio.CodigoDelTubo;
+                cambiosTuberia.FechaOrdenservicio = cambio.Fecha;
+                cambiosTuberia.OrdenServicio = cambio.OrdenServicio;
+                cambiosTuberia.TuberiaId = cambio.Id;
+                cambiosTuberia.Motivo = cambio.Motivo;
+                cambiosTuberia.LastUpdate = new Date();
+                cambiosTuberia.RowState = "A";
+                CambioRepository.add(cambiosTuberia).success(postSuccessCallBack).error(errorCallBack);
             }
         }
 
@@ -144,6 +164,48 @@
             $('#EditarTuberia').modal('show');
         }
         //Fin Editar Tuberia
+
+        //Eliminar Tuberia
+        var deleteSuccessCallBack = function (status) {
+            alert('Tuberia Eliminada');
+        }
+
+        //Guardar Motivo
+
+
+        //Validar CambioTuberia a Guardar
+        var validar = function (registro) {
+            if (registro.Motivo == "") {
+                alert('Ingrese el Motivo');
+                return false;
+            }
+            if (registro.OrdenServicio == "") {
+                alert('Ingrese la Orden de Servicio');
+                return false;
+            }
+
+            return true;
+        }
+
+        //$scope.guardarMotivo = function () {
+
+        //    //Guardar CambioTuberia
+
+
+        //    $scope.editaTuberia = tuberia;
+        //    if (validar(tuberia)) {
+        //        tuberia.LastUpdate = new Date();
+        //        tuberia.RowState = "D";
+        //        RegistroInspeccionVisualRepository.update(tuberia).success(deleteSuccessCallBack).error(errorCallBack);
+        //    }
+        //}
+
+        $scope.EliminarTuberia = function (tuberia) {
+            $scope.deleteTuberia = tuberia;
+            $('#NuevoMotivo').modal('show');
+        }
+        //Fin Eliminar Tuberia
+
 
         //paginación
         $scope.firstPage = function () {

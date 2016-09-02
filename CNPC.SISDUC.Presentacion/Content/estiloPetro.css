@@ -255,17 +255,19 @@ a:hover {
 }
 
 .modal-footer {
-    padding: 19px 20px 20px;
-    margin-top: 400px;
+    padding: 19px 30px 20px;
+    /*margin-top: 220px;*/
     text-align: right;
     border-top: 1px solid #e5e5e5;
 }
+
 .sin-espacio {
     position: relative;
     min-height: 1px;
     padding-right: 1px;
     padding-left: 1px;
 }
+
 .form-control2 {
     display: block;
     width: 100%;
@@ -282,4 +284,13 @@ a:hover {
     box-shadow: inset 0px 1px 1px rgba(0,0,0,0.075);
     -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+p {
+    margin: 0 0 0px;
+}
+
+.modal-footer {
+    padding: 19px 20px 20px;
+    margin-top: 0px;
 }

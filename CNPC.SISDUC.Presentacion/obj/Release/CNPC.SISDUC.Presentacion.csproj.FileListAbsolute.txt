@@ -71,8 +71,6 @@ D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.Presentacion.dll.c
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.Presentacion.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.Presentacion.pdb
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Antlr3.Runtime.dll
-D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.BLL.dll
-D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.Model.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\EntityFramework.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\EntityFramework.SqlServer.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.AspNet.Identity.Core.dll
@@ -88,7 +86,6 @@ D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Owin.Security.Micros
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Owin.Security.OAuth.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Owin.Security.Twitter.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Web.Infrastructure.dll
-D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Newtonsoft.Json.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Owin.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Net.Http.Formatting.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.Helpers.dll
@@ -101,10 +98,6 @@ D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.WebPages.Deployment
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.WebPages.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.WebPages.Razor.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\WebGrease.dll
-D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.DAL.dll
-D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\EPPlus.dll
-D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.BLL.pdb
-D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.Model.pdb
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.Helpers.xml
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.Mvc.xml
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.Optimization.xml
@@ -112,7 +105,6 @@ D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.Razor.xml
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.WebPages.xml
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.WebPages.Deployment.xml
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.WebPages.Razor.xml
-D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Newtonsoft.Json.xml
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Antlr3.Runtime.pdb
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Net.Http.Formatting.xml
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\System.Web.Http.xml
@@ -131,10 +123,11 @@ D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Owin.Security.OAuth.
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Owin.Security.Google.xml
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Owin.Security.Twitter.xml
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\CNPC.SISDUC.DAL.pdb
-D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\EPPlus.xml
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Release\CNPC.SISDUC.Presentacion.csprojResolveAssemblyReference.cache
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Release\CNPC.SISDUC.Presentacion.Properties.Resources.resources
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Release\CNPC.SISDUC.Presentacion.csproj.GenerateResource.Cache
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Release\CNPC.SISDUC.Presentacion.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\obj\Release\CNPC.SISDUC.Presentacion.pdb
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\es\System.Net.Http.Formatting.resources.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\es\System.Web.Http.resources.dll
+D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.Presentacion\bin\es\System.Web.Http.WebHost.resources.dll

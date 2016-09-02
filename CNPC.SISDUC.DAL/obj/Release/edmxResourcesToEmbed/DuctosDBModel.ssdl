@@ -7,33 +7,18 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="TuberiaId" Type="int" />
-    <Property Name="Accesorio" Type="varchar" MaxLength="50" />
-    <Property Name="TipoAccesorio" Type="varchar" MaxLength="50" />
-    <Property Name="CodigoAccesorio1" Type="varchar" MaxLength="50" />
-    <Property Name="CodigoAccesorio2" Type="varchar" MaxLength="50" />
-    <Property Name="CodigoAccesorio3" Type="varchar" MaxLength="50" />
-    <Property Name="NPS" Type="int" />
+    <Property Name="NombreAccesorio" Type="varchar" MaxLength="50" />
+    <Property Name="CodigoTuberia" Type="varchar" MaxLength="50" />
+    <Property Name="Correlativo" Type="varchar" MaxLength="50" />
+    <Property Name="CodigoAccesorio" Type="varchar" MaxLength="103" StoreGeneratedPattern="Computed" />
+    <Property Name="NPS" Type="decimal" Precision="8" Scale="3" />
     <Property Name="Schedule" Type="int" />
     <Property Name="TipoMaterial" Type="varchar" MaxLength="50" />
     <Property Name="Longitud" Type="decimal" Precision="8" Scale="2" />
     <Property Name="CoordenadasUTMX" Type="int" />
     <Property Name="CoordenadasUTMY" Type="int" />
-    <Property Name="ExtremoInicial" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="ExtremoMedio" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="ExtremoFinal" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="BSCAN" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="MapeoCorrosion" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="InspeccionSonica" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="EspesorPared" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="PitCorrosion" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="EspesorRemanente" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="EstadoAccesorio" Type="varchar" MaxLength="50" />
-    <Property Name="Pintura" Type="bit" />
-    <Property Name="Defecto1" Type="varchar" MaxLength="50" />
-    <Property Name="Defecto2" Type="varchar" MaxLength="50" />
-    <Property Name="NumeroGrapas" Type="int" />
     <Property Name="Observaciones" Type="varchar" MaxLength="500" />
+    <Property Name="CondicionAccesorio" Type="varchar" MaxLength="50" />
     <Property Name="RowState" Type="char" MaxLength="1" />
     <Property Name="LastUpdate" Type="datetime" />
   </EntityType>
@@ -67,9 +52,13 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="OleoductoID" Type="int" Nullable="false" />
-    <Property Name="CodigoDelTubo" Type="varchar" MaxLength="100" />
+    <Property Name="CodigoDelTubo" Type="nvarchar" MaxLength="63" StoreGeneratedPattern="Computed" />
+    <Property Name="NumeroOleoducto" Type="varchar" MaxLength="50" />
+    <Property Name="CodigoDelTubo01" Type="varchar" MaxLength="5" />
+    <Property Name="CodigoDelTubo02" Type="nchar" MaxLength="1" />
+    <Property Name="CodigoDelTubo03" Type="nchar" MaxLength="4" />
     <Property Name="NumeroAnterior" Type="int" />
-    <Property Name="NPS" Type="int" />
+    <Property Name="NPS" Type="decimal" Precision="8" Scale="4" />
     <Property Name="Schedule" Type="int" />
     <Property Name="SHC" Type="int" />
     <Property Name="TipoMaterial" Type="varchar" MaxLength="50" />
@@ -80,24 +69,24 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
     <Property Name="ExtremoInicial2" Type="decimal" Precision="8" Scale="3" />
     <Property Name="ExtremoInicial3" Type="decimal" Precision="8" Scale="3" />
     <Property Name="ExtremoInicial4" Type="decimal" Precision="8" Scale="3" />
-    <Property Name="BSCAN" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="EspesorPared" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="BSCAN" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="EspesorPared" Type="decimal" Precision="8" Scale="3" />
     <Property Name="ExtremoMedio1" Type="decimal" Precision="8" Scale="3" />
     <Property Name="ExtremoMedio2" Type="decimal" Precision="8" Scale="3" />
     <Property Name="ExtremoMedio3" Type="decimal" Precision="8" Scale="3" />
     <Property Name="ExtremoMedio4" Type="decimal" Precision="8" Scale="3" />
-    <Property Name="MapeoCorrison" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="PitCorrosion" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="ExtremoFinal1" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="ExtremoFinal2" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="ExtremoFinal3" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="ExtremoFinal4" Type="decimal" Precision="8" Scale="2" />
+    <Property Name="MapeoCorrison" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="PitCorrosion" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoFinal1" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoFinal2" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoFinal3" Type="decimal" Precision="8" Scale="3" />
+    <Property Name="ExtremoFinal4" Type="decimal" Precision="8" Scale="3" />
     <Property Name="LEFT_MINIMO" Type="decimal" Precision="8" Scale="3" />
-    <Property Name="EspesorRemanente" Type="decimal" Precision="8" Scale="3" />
-    <Property Name="Defecto" Type="varchar" MaxLength="100" />
-    <Property Name="Defecto2" Type="varchar" MaxLength="50" />
+    <Property Name="EspesorRemanente" Type="decimal" Precision="9" Scale="3" StoreGeneratedPattern="Computed" />
+    <Property Name="Defecto" Type="varchar" MaxLength="1000" />
+    <Property Name="Defecto2" Type="bit" />
     <Property Name="NumeroGrapas" Type="int" />
-    <Property Name="TipoSoporte" Type="varchar" MaxLength="2" />
+    <Property Name="TipoSoporte" Type="varchar" MaxLength="100" />
     <Property Name="Elastomero" Type="bit" />
     <Property Name="Maleza" Type="bit" />
     <Property Name="TuberiaAlrededor" Type="bit" />
@@ -106,15 +95,15 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
     <Property Name="TipoProteccion" Type="varchar" MaxLength="50" />
     <Property Name="EstadoProteccion" Type="varchar" MaxLength="50" />
     <Property Name="EstadoTuberia" Type="varchar" MaxLength="3" />
-    <Property Name="EspesorNominal" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="EspesorMinimoRealRemanente" Type="decimal" Precision="8" Scale="2" />
-    <Property Name="ObservacionesDeLaInspeccionVisual" Type="varchar" MaxLength="500" />
-    <Property Name="CondicionDelTramo" Type="varchar" MaxLength="500" />
     <Property Name="UltimaFechaDeInspeccion" Type="datetime" />
     <Property Name="SeleccionarTuberia" Type="bit" />
     <Property Name="RowState" Type="char" MaxLength="1" />
     <Property Name="LastUpdate" Type="datetime" />
   </EntityType>
+  <Function Name="usp_ValidaRolconAccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="rolid" Type="int" Mode="In" />
+    <Parameter Name="controller" Type="varchar" Mode="In" />
+  </Function>
   <Function Name="usp_ValidarUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="Usuario" Type="varchar" Mode="In" />
     <Parameter Name="Contrasenia" Type="varchar" Mode="In" />
@@ -137,33 +126,18 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
     <EntitySet Name="Accesorios" EntityType="Self.Accesorios" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Accesorios].[Id] AS [Id], 
-    [Accesorios].[TuberiaId] AS [TuberiaId], 
-    [Accesorios].[Accesorio] AS [Accesorio], 
-    [Accesorios].[TipoAccesorio] AS [TipoAccesorio], 
-    [Accesorios].[CodigoAccesorio1] AS [CodigoAccesorio1], 
-    [Accesorios].[CodigoAccesorio2] AS [CodigoAccesorio2], 
-    [Accesorios].[CodigoAccesorio3] AS [CodigoAccesorio3], 
+    [Accesorios].[NombreAccesorio] AS [NombreAccesorio], 
+    [Accesorios].[CodigoTuberia] AS [CodigoTuberia], 
+    [Accesorios].[Correlativo] AS [Correlativo], 
+    [Accesorios].[CodigoAccesorio] AS [CodigoAccesorio], 
     [Accesorios].[NPS] AS [NPS], 
     [Accesorios].[Schedule] AS [Schedule], 
     [Accesorios].[TipoMaterial] AS [TipoMaterial], 
     [Accesorios].[Longitud] AS [Longitud], 
     [Accesorios].[CoordenadasUTMX] AS [CoordenadasUTMX], 
     [Accesorios].[CoordenadasUTMY] AS [CoordenadasUTMY], 
-    [Accesorios].[ExtremoInicial] AS [ExtremoInicial], 
-    [Accesorios].[ExtremoMedio] AS [ExtremoMedio], 
-    [Accesorios].[ExtremoFinal] AS [ExtremoFinal], 
-    [Accesorios].[BSCAN] AS [BSCAN], 
-    [Accesorios].[MapeoCorrosion] AS [MapeoCorrosion], 
-    [Accesorios].[InspeccionSonica] AS [InspeccionSonica], 
-    [Accesorios].[EspesorPared] AS [EspesorPared], 
-    [Accesorios].[PitCorrosion] AS [PitCorrosion], 
-    [Accesorios].[EspesorRemanente] AS [EspesorRemanente], 
-    [Accesorios].[EstadoAccesorio] AS [EstadoAccesorio], 
-    [Accesorios].[Pintura] AS [Pintura], 
-    [Accesorios].[Defecto1] AS [Defecto1], 
-    [Accesorios].[Defecto2] AS [Defecto2], 
-    [Accesorios].[NumeroGrapas] AS [NumeroGrapas], 
     [Accesorios].[Observaciones] AS [Observaciones], 
+    [Accesorios].[CondicionAccesorio] AS [CondicionAccesorio], 
     [Accesorios].[RowState] AS [RowState], 
     [Accesorios].[LastUpdate] AS [LastUpdate]
     FROM [dbo].[Accesorios] AS [Accesorios]</DefiningQuery>

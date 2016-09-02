@@ -184,6 +184,7 @@
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OleoductoController.cs" />
+    <Compile Include="Controllers\WSCambioController.cs" />
     <Compile Include="Filtros\ValidarAccesoAttribute.cs" />
     <Compile Include="Models\CuadrillaViewModel.cs" />
     <Compile Include="Models\OleoductoViewModel.cs" />
@@ -282,6 +283,7 @@
     <Content Include="Content\assets\font-awesome\fontawesome-webfont-v=4.0.3.woff" />
     <None Include="Properties\PublishProfiles\Default Settings %282%29.pubxml" />
     <None Include="Properties\PublishProfiles\Default Settings.pubxml" />
+    <None Include="Properties\PublishProfiles\presentacionLocal.pubxml" />
     <None Include="Properties\PublishProfiles\sisduc.pubxml" />
     <Content Include="Proxy\output.config" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

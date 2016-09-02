@@ -36,6 +36,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -50,27 +53,15 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Servicio.cs" />
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CNPC.SISDUC.BLL\CNPC.SISDUC.BLL.csproj">
-      <Project>{303900e2-d8ad-45bb-8d73-9a4e0b1b1184}</Project>
-      <Name>CNPC.SISDUC.BLL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CNPC.SISDUC.DAL\CNPC.SISDUC.DAL.csproj">
-      <Project>{000f7ed3-5451-4692-bc8f-4e37e95770b4}</Project>
-      <Name>CNPC.SISDUC.DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CNPC.SISDUC.Model\CNPC.SISDUC.Model.csproj">
-      <Project>{8ca54ef0-9d9a-434e-95fd-0e8da49660f2}</Project>
-      <Name>CNPC.SISDUC.Model</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="output.config" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
