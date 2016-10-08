@@ -16,16 +16,16 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/15/2016 12:04:14</publishTime>
     </File>
     <File Include="bin/CNPC.SISDUC.BLL.dll">
-      <publishTime>07/21/2016 02:46:21</publishTime>
+      <publishTime>10/03/2016 14:33:45</publishTime>
     </File>
     <File Include="bin/CNPC.SISDUC.DAL.dll">
-      <publishTime>07/21/2016 02:46:21</publishTime>
+      <publishTime>10/03/2016 14:33:45</publishTime>
     </File>
     <File Include="bin/CNPC.SISDUC.Model.dll">
-      <publishTime>07/21/2016 02:46:20</publishTime>
+      <publishTime>10/03/2016 14:33:43</publishTime>
     </File>
     <File Include="bin/CNPC.SISDUC.SERVICIO.WS.dll">
-      <publishTime>07/22/2016 09:49:40</publishTime>
+      <publishTime>10/03/2016 14:33:45</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>05/21/2016 15:26:57</publishTime>
@@ -79,7 +79,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/18/2016 00:25:22</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>07/22/2016 09:49:42</publishTime>
+      <publishTime>10/03/2016 14:33:47</publishTime>
     </File>
     <File Include="scripts/ai.0.22.9-build00167.js">
       <publishTime>07/15/2016 12:04:14</publishTime>
@@ -91,7 +91,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>07/15/2016 23:55:24</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>07/22/2016 09:49:41</publishTime>
+      <publishTime>10/03/2016 14:33:46</publishTime>
     </File>
   </ItemGroup>
 </Project>

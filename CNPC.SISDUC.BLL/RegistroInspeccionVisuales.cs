@@ -85,6 +85,7 @@ namespace CNPC.SISDUC.BLL
                     );
                 if (d == null)
                 {
+
                     Result = r.Update(registroToUpdate);
                 }
                 else
@@ -140,6 +141,26 @@ namespace CNPC.SISDUC.BLL
                 ducto = p.Retrieve(q => q.Id == OleoductoId);
                 ducto.LongitudTotal = p.LongitudOleoducto(OleoductoId);
             }
+            using (var q = new Repository<TipoSoporte>())
+            {
+                Result.ListTipoSoporte.List = q.Filter(p=>p.Nombre.Contains(""));
+            }
+            Result.oleoducto = ducto;
+            return Result;
+        }
+        public RegistroInspeccionVisualResponse FilterByDuctoIdRegistroInspeccionVisual(int ductoId, string Nombre)
+        {
+            RegistroInspeccionVisualResponse Result = new RegistroInspeccionVisualResponse();
+            Oleoducto ducto = null;
+            using (var r = new Repository<RegistroInspeccionVisual>())
+            {
+                Result.List = r.Filter(p=>p.OleoductoID==ductoId && p.CodigoDelTubo.Contains(Nombre));
+            }
+            using (var p = new Repository<Oleoducto>())
+            {
+                ducto = p.Retrieve(q => q.Id == ductoId);
+                ducto.LongitudTotal = p.LongitudOleoducto(ductoId);
+            }
             Result.oleoducto = ducto;
             return Result;
         }
@@ -152,6 +173,7 @@ namespace CNPC.SISDUC.BLL
             }
             return Result;
         }
+
         public void Dispose()
         {
             GC.SuppressFinalize(this);

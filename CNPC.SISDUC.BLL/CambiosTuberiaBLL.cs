@@ -8,15 +8,15 @@ namespace CNPC.SISDUC.BLL
 {
     public class CambiosTuberiaBLL : IDisposable
     {
-        public CambiosTuberia Create(CambiosTuberia registro)
+        public CambiosTuberiaResponse Create(CambiosTuberia registro)
         {
-            CambiosTuberia Result = null;
+            CambiosTuberiaResponse Result = null;
             using (var r = new Repository<CambiosTuberia>())
             {
                 CambiosTuberia d = r.Retrieve(p => p.Id == registro.Id);
                 if (d == null)
                 {
-                    Result = r.Create(registro);
+                    Result = r.usp_NewCambiosTuberia(registro);
                 }
                 else
                 {
@@ -42,7 +42,7 @@ namespace CNPC.SISDUC.BLL
                 CambiosTuberia d = r.Retrieve(p => p.Motivo == registro.Motivo &
                     p.OrdenServicio == registro.OrdenServicio &
                     p.RowState == registro.RowState &
-                    p.LastUpdate == registro.LastUpdate 
+                    p.LastUpdate == registro.LastUpdate
                     );
                 if (d == null)
                 {
@@ -97,7 +97,7 @@ namespace CNPC.SISDUC.BLL
             }
             return Result;
         }
-        public CambiosTuberiaResponse GetListCambiosTuberia(string NumeroOleoducto, int TuberiaID,  int page, int records)
+        public CambiosTuberiaResponse GetListCambiosTuberia(string NumeroOleoducto, int TuberiaID, int page, int records)
         {
             CambiosTuberiaResponse Result = null;
             using (var r = new Repository<CambiosTuberia>())

@@ -35,6 +35,20 @@ namespace CNPC.SISDUC.SERVICIO.WCF
                             {
                                 response.Resultado = dominio.Delete(request.Item.Id);
                             }
+
+                            break;
+                        case Operacion.BuscarPorId:
+                            {
+                                response.Item = dominio.FilterByID(request.Item.Id);
+                                if (response.Item != null)
+                                {
+                                    response.Resultado = true;
+                                }
+                                else
+                                {
+                                    response.Resultado = false;
+                                }
+                            }
                             break;
                     }
                     response.Resultado = true;
@@ -52,9 +66,23 @@ namespace CNPC.SISDUC.SERVICIO.WCF
         {
             throw new NotImplementedException();
         }
-        public OleoductoResponse OleoductoListarAllEntidad()
+        public OleoductoResponse OleoductoListarAllEntidad(string nombre)
         {
-            return new OleoductoResponse { MensajeError = "Error: Operacion no permitida" };
+            OleoductoResponse response = new OleoductoResponse();
+            try
+            {
+                using (var dominio = new Oleoductos())
+                {
+                    response.List = dominio.GetListOleoductosByNombre("");
+                    response.Resultado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Resultado = false;
+                response.MensajeError += "Error: " + ex.Message + " " + ex.InnerException;//+ " "+ ex.InnerException + " " + ex.StackTrace; 
+            }
+            return response;
         }
         public OleoductoResponse OleoductoListarEntidad(string search = null, int page = 1, int rowsPerPage = 10)
         {
@@ -100,6 +128,19 @@ namespace CNPC.SISDUC.SERVICIO.WCF
                                 response.Resultado = dominio.Delete(request.Item.Id);
                             }
                             break;
+                        case Operacion.BuscarPorId:
+                            {
+                                response.Item = dominio.FilterByID(request.Item.Id);
+                                if (response.Item != null)
+                                {
+                                    response.Resultado = true;
+                                }
+                                else
+                                {
+                                    response.Resultado = false;
+                                }
+                            }
+                            break;
                     }
                     response.Resultado = true;
                 }
@@ -120,6 +161,24 @@ namespace CNPC.SISDUC.SERVICIO.WCF
                 using (var dominio = new RegistroInspeccionVisuales())
                 {
                     response = dominio.FilterByNameRegistroInspeccionVisual(0, "", 1, 10);
+                    response.Resultado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Resultado = false;
+                response.MensajeError = ex.Message;//+ " "+ ex.InnerException + " " + ex.StackTrace; 
+            }
+            return response;
+        }
+        public RegistroInspeccionVisualResponse RegistroInspeccionVisualListarByDucto(int ductoId, string search = null)
+        {
+            RegistroInspeccionVisualResponse response = new RegistroInspeccionVisualResponse();
+            try
+            {
+                using (var dominio = new RegistroInspeccionVisuales())
+                {
+                    response = dominio.FilterByDuctoIdRegistroInspeccionVisual(ductoId, search);
                     response.Resultado = true;
                 }
             }
@@ -161,21 +220,23 @@ namespace CNPC.SISDUC.SERVICIO.WCF
             {
                 using (var dominio = new CambiosTuberiaBLL())
                 {
+                    CambiosTuberia item = request.Item;
                     switch (request.Operacion)
                     {
                         case Operacion.Agregar:
                             {
-                                response.Item = dominio.Create(request.Item);
+
+                                response = dominio.Create(item);
                             }
                             break;
                         case Operacion.Actualizar:
                             {
-                                response.Resultado = dominio.Update(request.Item);
+                                response.Resultado = dominio.Update(item);
                             }
                             break;
                         case Operacion.Eliminar:
                             {
-                                response.Resultado = dominio.Delete(request.Item.Id);
+                                response.Resultado = dominio.Delete(item.Id);
                             }
                             break;
                     }
@@ -197,7 +258,7 @@ namespace CNPC.SISDUC.SERVICIO.WCF
             {
                 using (var dominio = new CambiosTuberiaBLL())
                 {
-                    response = dominio.GetListCambiosTuberia("",0, 1, 10);
+                    response = dominio.GetListCambiosTuberia("", 0, 1, 10);
                     response.Resultado = true;
                 }
             }
@@ -218,7 +279,7 @@ namespace CNPC.SISDUC.SERVICIO.WCF
                     response = dominio.GetListCambiosTuberia(oleoducto, TuberiaId, page, rowsPerPage);
                     response.Resultado = true;
                 }
-               
+
             }
             catch (Exception ex)
             {
@@ -346,7 +407,7 @@ namespace CNPC.SISDUC.SERVICIO.WCF
             {
                 using (var dominio = new UsuarioBLL())
                 {
-                    request.Item.Contrasenia= SHA1.Encode(request.Item.Contrasenia);
+                    request.Item.Contrasenia = SHA1.Encode(request.Item.Contrasenia);
                     switch (request.Operacion)
                     {
                         case Operacion.Agregar:

@@ -178,7 +178,7 @@
         <MappingFragment StoreEntitySet="CambiosTuberias">
           <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
           <ScalarProperty Name="RowState" ColumnName="RowState" />
-          <ScalarProperty Name="FechaOrdenservicio" ColumnName="FechaOrdenservicio" />
+          <ScalarProperty Name="FechaOrdenServicio" ColumnName="FechaOrdenServicio" />
           <ScalarProperty Name="OrdenServicio" ColumnName="OrdenServicio" />
           <ScalarProperty Name="Motivo" ColumnName="Motivo" />
           <ScalarProperty Name="TuberiaId" ColumnName="TuberiaId" />

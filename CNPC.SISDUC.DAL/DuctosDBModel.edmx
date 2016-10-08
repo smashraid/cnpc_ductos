@@ -37,7 +37,7 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
           <Property Name="TuberiaId" Type="int" Nullable="false" />
           <Property Name="Motivo" Type="nvarchar" MaxLength="500" Nullable="false" />
           <Property Name="OrdenServicio" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="FechaOrdenservicio" Type="datetime" />
+          <Property Name="FechaOrdenServicio" Type="datetime" />
           <Property Name="RowState" Type="char" MaxLength="1" />
           <Property Name="LastUpdate" Type="datetime" />
         </EntityType>
@@ -379,7 +379,7 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
           <Property Name="TuberiaId" Type="Int32" Nullable="false" />
           <Property Name="Motivo" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="OrdenServicio" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="FechaOrdenservicio" Type="DateTime" Precision="3" />
+          <Property Name="FechaOrdenServicio" Type="DateTime" Precision="3" />
           <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
           <Property Name="LastUpdate" Type="DateTime" Precision="3" />
         </EntityType>
@@ -566,7 +566,7 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
               <MappingFragment StoreEntitySet="CambiosTuberias">
                 <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
                 <ScalarProperty Name="RowState" ColumnName="RowState" />
-                <ScalarProperty Name="FechaOrdenservicio" ColumnName="FechaOrdenservicio" />
+                <ScalarProperty Name="FechaOrdenServicio" ColumnName="FechaOrdenServicio" />
                 <ScalarProperty Name="OrdenServicio" ColumnName="OrdenServicio" />
                 <ScalarProperty Name="Motivo" ColumnName="Motivo" />
                 <ScalarProperty Name="TuberiaId" ColumnName="TuberiaId" />

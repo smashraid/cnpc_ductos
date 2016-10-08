@@ -20,7 +20,7 @@ namespace CNPC.SISDUC.Model
         public int TuberiaId { get; set; }
         public string Motivo { get; set; }
         public string OrdenServicio { get; set; }
-        public Nullable<System.DateTime> FechaOrdenservicio { get; set; }
+        public Nullable<System.DateTime> FechaOrdenServicio { get; set; }
         public string RowState { get; set; }
         public Nullable<System.DateTime> LastUpdate { get; set; }
     }

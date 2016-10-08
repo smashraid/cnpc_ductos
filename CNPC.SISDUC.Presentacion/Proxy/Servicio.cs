@@ -1700,7 +1700,7 @@ namespace CNPC.SISDUC.Model
         
         private string CodigoDelTubo01Field;
         
-        private System.Nullable<System.DateTime> FechaOrdenservicioField;
+        private System.Nullable<System.DateTime> FechaOrdenServicioField;
         
         private int IdField;
         
@@ -1742,15 +1742,15 @@ namespace CNPC.SISDUC.Model
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> FechaOrdenservicio
+        public System.Nullable<System.DateTime> FechaOrdenServicio
         {
             get
             {
-                return this.FechaOrdenservicioField;
+                return this.FechaOrdenServicioField;
             }
             set
             {
-                this.FechaOrdenservicioField = value;
+                this.FechaOrdenServicioField = value;
             }
         }
         

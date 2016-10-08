@@ -22,6 +22,20 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
     <Property Name="RowState" Type="char" MaxLength="1" />
     <Property Name="LastUpdate" Type="datetime" />
   </EntityType>
+  <EntityType Name="CambiosTuberias">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NumeroOleoducto" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CodigoDelTubo01" Type="varchar" MaxLength="5" Nullable="false" />
+    <Property Name="TuberiaId" Type="int" Nullable="false" />
+    <Property Name="Motivo" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="OrdenServicio" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FechaOrdenServicio" Type="datetime" />
+    <Property Name="RowState" Type="char" MaxLength="1" />
+    <Property Name="LastUpdate" Type="datetime" />
+  </EntityType>
   <EntityType Name="Oleoductos">
     <Key>
       <PropertyRef Name="Id" />
@@ -43,6 +57,7 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
     <Property Name="Temperatura" Type="decimal" Precision="6" Scale="2" />
     <Property Name="BSW" Type="varchar" MaxLength="50" />
     <Property Name="FechaInspeccion" Type="datetime" />
+    <Property Name="Observaciones" Type="varchar" MaxLength="500" />
     <Property Name="RowState" Type="char" MaxLength="1" Nullable="false" />
     <Property Name="LastUpdate" Type="datetime" Nullable="false" />
   </EntityType>
@@ -52,6 +67,7 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
     </Key>
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="OleoductoID" Type="int" Nullable="false" />
+    <Property Name="TuberiaId" Type="int" StoreGeneratedPattern="Computed" />
     <Property Name="CodigoDelTubo" Type="nvarchar" MaxLength="63" StoreGeneratedPattern="Computed" />
     <Property Name="NumeroOleoducto" Type="varchar" MaxLength="50" />
     <Property Name="CodigoDelTubo01" Type="varchar" MaxLength="5" />
@@ -100,6 +116,23 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
     <Property Name="RowState" Type="char" MaxLength="1" />
     <Property Name="LastUpdate" Type="datetime" />
   </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Usuario" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Contrasenia" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="Nombre" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Apellido" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="Activo" Type="bit" Nullable="false" />
+    <Property Name="ActiveDirectory" Type="bit" Nullable="false" />
+    <Property Name="RolId" Type="int" Nullable="false" />
+    <Property Name="FacilitadorId" Type="int" Nullable="false" />
+    <Property Name="FiscalizadorId" Type="int" Nullable="false" />
+    <Property Name="RowState" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="LastUpdate" Type="datetime" Nullable="false" />
+  </EntityType>
   <Function Name="usp_ValidaRolconAccion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="rolid" Type="int" Mode="In" />
     <Parameter Name="controller" Type="varchar" Mode="In" />
@@ -121,8 +154,10 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
     <Parameter Name="TotalPage" Type="int" Mode="InOut" />
   </Function>
   <EntityContainer Name="CNPC_DuctosModelStoreContainer">
+    <EntitySet Name="CambiosTuberias" EntityType="Self.CambiosTuberias" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Oleoductos" EntityType="Self.Oleoductos" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="RegistroInspeccionVisual" EntityType="Self.RegistroInspeccionVisual" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Accesorios" EntityType="Self.Accesorios" store:Type="Tables" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Accesorios].[Id] AS [Id], 

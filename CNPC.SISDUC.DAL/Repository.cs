@@ -39,7 +39,7 @@ namespace CNPC.SISDUC.DAL
                 Context.SaveChanges();
                 Result = toCreate;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 string error = "Error: " + ex.InnerException;
                 throw (new Exception(error));
@@ -101,6 +101,65 @@ namespace CNPC.SISDUC.DAL
                 var a = ex.Message;
             }
             return Result;
+        }
+        public List<Oleoducto> GetListOleoductosByNombre(string Nombre)
+        {
+            List<Oleoducto> ductos = new List<Oleoducto>();
+            try
+            {
+                using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("uspGetListOleoductosByNombre", cnn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
+
+                    cnn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        Oleoducto d = new Oleoducto();
+                        d.Id = reader.SafeGetInt32("Id", 0);
+                        d.Cliente = reader.SafeGetString("Cliente", "");
+                        d.Codigo = reader.SafeGetString("Codigo", "");
+                        d.Descripcion = reader.SafeGetString("Descripcion", "");
+                        d.Ubicacion = reader.SafeGetString("Ubicacion", "");
+                        d.NoLamina = reader.SafeGetString("NoLamina", "");
+                        d.FechaInspeccion = reader.SafeGetDateTime("FechaInspeccion", new DateTime(1950, 01, 01));
+                        d.Presion = reader.SafeGetDecimal("Presion", 0);
+                        d.Temperatura = reader.SafeGetDecimal("Temperatura", 0);
+                        d.BLPD = reader.SafeGetInt32("BLPD", 0);
+                        d.Schedule1 = reader.SafeGetInt32("Schedule1", 0);
+                        d.Schedule2 = reader.SafeGetInt32("Schedule2", 0);
+                        d.Schedule3 = reader.SafeGetInt32("Schedule3", 0);
+                        d.Material1 = reader.SafeGetString("Material1", "");
+                        d.Material2 = reader.SafeGetString("Material2", "");
+                        d.Material3 = reader.SafeGetString("Material3", "");
+                        d.LongitudTotal = reader.SafeGetDecimal("LongitudTotal", 0);
+                        d.BSW = reader.SafeGetString("BSW", "");
+                        d.RowState = reader.SafeGetString("RowState", "");
+                        d.LastUpdate = reader.SafeGetDateTime("LastUpdate", new DateTime(1950, 01, 01));
+                        ductos.Add(d);
+                    }
+                    cnn.Close();
+                }
+                //using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+                //{
+
+                //    SqlCommand cmd = new SqlCommand("uspGetCountOleoductos", cnn);
+                //    cmd.CommandType = CommandType.StoredProcedure;
+                //    cmd.Parameters.Add("@Nombre", SqlDbType.VarChar).Value = Nombre;
+                //    cnn.Open();
+                //    SqlDataReader reader = cmd.ExecuteReader();
+
+                //    cnn.Close();
+                //}
+            }
+            catch (Exception ex)
+            {
+                throw (new Exception("Error: " + ex.Message));
+            }
+
+            return ductos;
         }
         public OleoductoResponse FilterByNameOleoducto(string Nombre, int page, int records)
         {
@@ -422,7 +481,7 @@ namespace CNPC.SISDUC.DAL
                 }
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add("@Usuario", SqlDbType.VarChar, 50).Value = Usuario;
-                cmd.Parameters.Add("@Contrasenia", SqlDbType.VarChar, 100).Value = SHA1.Encode(Contrasenia);
+                cmd.Parameters.Add("@Contrasenia", SqlDbType.VarChar, 100).Value = Contrasenia;//SHA1.Encode(Contrasenia);
                 cmd.Parameters.Add("@ActiveDirectory", SqlDbType.Bit).Value = ActiveDirectory;
                 try
                 {
@@ -443,7 +502,7 @@ namespace CNPC.SISDUC.DAL
                         result.RowState = reader.SafeGetString("RowState", "");
                         result.LastUpdate = reader.SafeGetDateTime("LastUpdate", new DateTime(1950, 01, 01));
                     }
-                    if (result.Activo==false)
+                    if (result.Activo == false)
                     {
                         throw (new Exception("Error: Usuario o Contraseña no válidos"));
                     }
@@ -563,7 +622,7 @@ namespace CNPC.SISDUC.DAL
                         d.CodigoDelTubo01 = reader.SafeGetString("CodigoDelTubo01", "");
                         d.Motivo = reader.SafeGetString("Motivo", "");
                         d.OrdenServicio = reader.SafeGetString("OrdenServicio", "");
-                        d.FechaOrdenservicio = reader.SafeGetDateTime("FechaOrdenservicio", new DateTime(1950, 01, 01));
+                        d.FechaOrdenServicio = reader.SafeGetDateTime("FechaOrdenservicio", new DateTime(1950, 01, 01));
                         registros.List.Add(d);
                     }
                     registros.Page = page;
@@ -579,6 +638,61 @@ namespace CNPC.SISDUC.DAL
             }
 
             return registros;
+        }
+        public bool usp_ActualizarRegistroDeInspeccionVisual(RegistroInspeccionVisual reg)
+        {
+            bool result = false;
+            try
+            {
+                using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("usp_ActualizarRegistroDeInspeccionVisual", cnn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cnn.Open();
+                    result = cmd.ExecuteNonQuery() > 0;
+                    cnn.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                result = false;
+               
+            }
+            return result;
+        }
+        public CambiosTuberiaResponse usp_NewCambiosTuberia(CambiosTuberia registro)
+        {
+            CambiosTuberiaResponse Result = new CambiosTuberiaResponse();
+            try
+            {
+                using (SqlConnection cnn = new SqlConnection(ConfigurationManager.ConnectionStrings["CNPC_Ductos"].ConnectionString))
+                {
+                    SqlCommand cmd = new SqlCommand("usp_NewCambiosTuberia", cnn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@NumeroOleoducto", registro.NumeroOleoducto);
+                    cmd.Parameters.AddWithValue("@CodigoDelTubo01", registro.CodigoDelTubo01);
+                    cmd.Parameters.AddWithValue("@TuberiaId", registro.TuberiaId);
+                    cmd.Parameters.AddWithValue("@Motivo", registro.Motivo);
+                    cmd.Parameters.AddWithValue("@OrdenServicio", registro.OrdenServicio);
+                    cmd.Parameters.AddWithValue("@FechaOrdenServicio", registro.FechaOrdenServicio == null ? DateTime.Now : registro.FechaOrdenServicio);
+                    cmd.Parameters.AddWithValue("@RowState", registro.RowState);
+                    cmd.Parameters.AddWithValue("@LastUpdate", registro.LastUpdate);
+
+                    cnn.Open();
+                    cmd.ExecuteNonQuery();
+                    cnn.Close();
+                    Result.Item = registro;
+                    Result.Resultado = true;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Result.Resultado = false;
+                Result.MensajeError = "Capa DAL: " + ex.Message;
+            }
+
+            return Result;
         }
         public void Dispose()
         {

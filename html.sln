@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNPC.SISDUC.Testing", "CNPC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNPC.SISDUC.Servicio.WCF", "CNPC.SISDUC.SERVICIO.WS\CNPC.SISDUC.Servicio.WCF.csproj", "{CAB02A1E-39F5-4873-9603-4E55A5573A17}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CNPC.SISDUC.WEB", "CNPC.SISDUC.WEB\CNPC.SISDUC.WEB.csproj", "{6C7C8CEE-7018-45C7-9CF1-288B0B16E2E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{CAB02A1E-39F5-4873-9603-4E55A5573A17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAB02A1E-39F5-4873-9603-4E55A5573A17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAB02A1E-39F5-4873-9603-4E55A5573A17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C7C8CEE-7018-45C7-9CF1-288B0B16E2E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C7C8CEE-7018-45C7-9CF1-288B0B16E2E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C7C8CEE-7018-45C7-9CF1-288B0B16E2E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C7C8CEE-7018-45C7-9CF1-288B0B16E2E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

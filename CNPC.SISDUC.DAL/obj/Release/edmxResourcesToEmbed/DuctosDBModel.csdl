@@ -21,9 +21,11 @@
       <Parameter Name="rolid" Mode="In" Type="Int32" />
       <Parameter Name="controller" Mode="In" Type="String" />
     </FunctionImport>
+    <EntitySet Name="Accesorios" EntityType="CNPC_DuctosModel.Accesorio" />
     <EntitySet Name="Oleoductos" EntityType="CNPC_DuctosModel.Oleoducto" />
     <EntitySet Name="RegistroInspeccionVisuals" EntityType="CNPC_DuctosModel.RegistroInspeccionVisual" />
-    <EntitySet Name="Accesorios" EntityType="CNPC_DuctosModel.Accesorio" />
+    <EntitySet Name="Usuarios" EntityType="CNPC_DuctosModel.Usuario" />
+    <EntitySet Name="CambiosTuberias" EntityType="CNPC_DuctosModel.CambiosTuberia" />
   </EntityContainer>
   <ComplexType Name="uspGetListOleoductos_Result">
     <Property Type="Int32" Name="Id" Nullable="false" />
@@ -63,6 +65,26 @@
     <Property Type="DateTime" Name="LastUpdate" Nullable="false" Precision="23" />
     <Property Type="Int32" Name="RolId" Nullable="false" />
   </ComplexType>
+  <EntityType Name="Accesorio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NombreAccesorio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodigoTuberia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Correlativo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodigoAccesorio" Type="String" MaxLength="103" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="NPS" Type="Decimal" Precision="8" Scale="3" />
+    <Property Name="Schedule" Type="Int32" />
+    <Property Name="TipoMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Longitud" Type="Decimal" Precision="8" Scale="2" />
+    <Property Name="CoordenadasUTMX" Type="Int32" />
+    <Property Name="CoordenadasUTMY" Type="Int32" />
+    <Property Name="Observaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CondicionAccesorio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+  </EntityType>
   <EntityType Name="Oleoducto">
     <Key>
       <PropertyRef Name="Id" />
@@ -84,6 +106,7 @@
     <Property Name="Temperatura" Type="Decimal" Precision="6" Scale="2" />
     <Property Name="BSW" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="FechaInspeccion" Type="DateTime" Precision="3" />
+    <Property Name="Observaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="RowState" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
@@ -140,24 +163,36 @@
     <Property Name="SeleccionarTuberia" Type="Boolean" />
     <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="LastUpdate" Type="DateTime" Precision="3" />
+    <Property Name="TuberiaId" Type="Int32" annotation:StoreGeneratedPattern="Computed" />
   </EntityType>
-  <EntityType Name="Accesorio">
+  <EntityType Name="Usuario">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="NombreAccesorio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CodigoTuberia" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Correlativo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="CodigoAccesorio" Type="String" MaxLength="103" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Computed" />
-    <Property Name="NPS" Type="Decimal" Precision="8" Scale="3" />
-    <Property Name="Schedule" Type="Int32" />
-    <Property Name="TipoMaterial" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Longitud" Type="Decimal" Precision="8" Scale="2" />
-    <Property Name="CoordenadasUTMX" Type="Int32" />
-    <Property Name="CoordenadasUTMY" Type="Int32" />
-    <Property Name="Observaciones" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="CondicionAccesorio" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Usuario1" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Contrasenia" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="true" Unicode="true" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="ActiveDirectory" Type="Boolean" Nullable="false" />
+    <Property Name="RolId" Type="Int32" Nullable="false" />
+    <Property Name="FacilitadorId" Type="Int32" Nullable="false" />
+    <Property Name="FiscalizadorId" Type="Int32" Nullable="false" />
+    <Property Name="RowState" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="CambiosTuberia">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NumeroOleoducto" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CodigoDelTubo01" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="false" />
+    <Property Name="TuberiaId" Type="Int32" Nullable="false" />
+    <Property Name="Motivo" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="OrdenServicio" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FechaOrdenServicio" Type="DateTime" Precision="3" />
     <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="LastUpdate" Type="DateTime" Precision="3" />
   </EntityType>

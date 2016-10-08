@@ -117,6 +117,23 @@ namespace CNPC.SISDUC.BLL
             }
             return Result;
         }
+        public List<Oleoducto> GetListOleoductosByNombre(string Nombre)
+        {
+            List<Oleoducto> Result = null;
+            try
+            {
+                using (var r = new Repository<Oleoducto>())
+                {
+                    Result = r.GetListOleoductosByNombre(Nombre);
+                }
+            }
+            catch (Exception ex)
+            {
+            //    Result.Resultado = false;
+            //    Result.MensajeError += " Capa BLL: " + ex.Message;
+            }
+            return Result;
+        }
         public Oleoducto FilterByID(int ID)
         {
             Oleoducto Result = null;

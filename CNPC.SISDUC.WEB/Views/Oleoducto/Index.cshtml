@@ -1,0 +1,409 @@
+﻿@*@model  CNPC.SISDUC.Model.Servicio.OleoductoResponse*@
+@model PagedList.IPagedList<CNPC.SISDUC.Web.Models.OleoductoViewModel>
+@using PagedList.Mvc;
+ 
+<div id="content">
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="parameterlist.name" placeholder="Buscar" ng-keyup="firstPage()">
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button">Buscar</button>
+                    </span>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th align="center" class="titulo_grilla">ID</th>
+            <th align="center" class="titulo_grilla">Código</th>
+            <th align="center" class="titulo_grilla">Descripción</th>
+            <th align="center" class="titulo_grilla">N° de Lamina</th>
+            <th align="center" class="titulo_grilla">Ubicación</th>
+            <th align="center" class="titulo_grilla">Longitud</th>
+            <th align="center" class="titulo_grilla">FECHA INSPECCION</th>
+            <th width="5%" align="center" class="titulo_grilla">Registro</th>
+            <th width="6%" align="center" class="titulo_grilla">Información</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="5%" align="center" class="celda2_grilla">@item.Id</td>
+                <td width="8%" class="celda2_grilla">@item.Codigo</td>
+                <td width="27%" class="celda2_grilla">@item.Descripcion</td>    
+                <td width="17%" class="celda2_grilla">@item.NoLamina</td>
+                <td width="8%" class="celda2_grilla">@item.Ubicacion</td>
+                <td width="8%" class="celda2_grilla">@item.LongitudTotal</td>
+                <td width="10%" class="celda2_grilla">@item.FechaInspeccion.ToString("dd/MM/yyyy")</td>
+                <td align="center"><a href="/Tuberia/List/@item.Id"><img src="Content/img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
+                <td align="center"><a href="~/Oleoducto/Edit/@item.Id"><img src="../../Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
+
+            </tr>
+        }
+
+        <tr>
+            <td colspan="15" align="center">
+                <table width="30%" border="0" align="left">
+                    <tbody>
+                        <tr>
+                            <td class="texto"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table width="30%" border="0" align="right">
+                    <tbody>
+                        <tr>
+                            <td align="right" class="texto" style="text-align:right">
+                                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="15" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="15" align="center">
+                <table width="30%" border="0" align="right">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" align="right">
+                                    <td class="button">
+                                        @Html.ActionLink("Agregar Oleoducto", "Create")
+                                        @*<a href="#" onclick="agregarOleoducto()">
+                                            
+                                        </a>*@
+                                    </td>
+                                </table>
+                            </td>
+                            <td>
+                                <table width="100%" border="0" align="right">
+                                    <td class="button">
+                                        <a href="/Home/Index" target="_self">SALIR</a>
+
+                                    </td>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="15" align="center">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<!-- Modal -->
+<div id="NuevoOleoducto" class="modal fade" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close"
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Nuevo Oleoducto
+                </h4>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="txtCodigo" class="col-lg-2">Oleoducto:</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtCodigo" class="form-control" ng-model="nuevoDucto.Codigo">
+                        </div>
+                        <label for="txtFecha" class="control-label col-lg-2">Fecha:</label>
+                        <div class="col-lg-4">
+                            <input type="date" id="txtFecha" class="form-control" ng-model="nuevoDucto.FechaInspeccion">
+                            <!--<input type="date" id="txtFecha" class="form-control" >-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtNoLamina" class="control-label col-lg-2">No Lamina</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtNoLamina" class="form-control" ng-model="nuevoDucto.NoLamina">
+                        </div>
+                        <label for="txtUbicación" class="control-label col-lg-2">Ubicación</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtUbicación" class="form-control sin-espacio" ng-model="nuevoDucto.Ubicacion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDescripción" class="control-label col-lg-2">Descripción</label>
+                        <div class="col-lg-10">
+                            <input type="text" id="txtDescripción" class="form-control" ng-model="nuevoDucto.Descripcion">
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMaterial1" class="control-label col-lg-2">Material</label>
+                        <div class="col-lg-10">
+                            <input type="text" id="txtMaterial1" class="ui-txtfield col-xs-4" ng-model="nuevoDucto.Material1">
+                            <input type="text" id="txtMaterial2" class="ui-txtfield col-xs-4" ng-model="nuevoDucto.Material2">
+                            <input type="text" id="txtMaterial3" class="ui-txtfield col-xs-4" ng-model="nuevoDucto.Material3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtSchedule1" class="control-label col-lg-2">Schedule</label>
+                        <div class="col-lg-10">
+                            <input type="number" min="1" max="100" id="txtSchedule1" class="ui-txtfield col-xs-4" ng-model="nuevoDucto.Schedule1">
+                            <input type="number" min="1" max="100" id="txtSchedule2" class="ui-txtfield col-xs-4" ng-model="nuevoDucto.Schedule2">
+                            <input type="number" min="1" max="100" id="txtSchedule3" class="ui-txtfield col-xs-4" ng-model="nuevoDucto.Schedule3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lblBLPD" class="control-label col-lg-2">BLPD</label>
+                        <div class="col-lg-4">
+                            <input type="number" min="1" max="100000" id="txtBLPD" class="form-control" ng-model="nuevoDucto.BLPD">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPresion" class="control-label col-lg-2">Pres.(Psig)</label>
+                            <div class="col-lg-4">
+                                <input type="number" min="1" max="100000" step="any" id="txtPresion" class="form-control" ng-model="nuevoDucto.Presion">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtTemperatura" class="control-label col-lg-2">Tempe(°F)</label>
+                        <div class="col-lg-4">
+                            <input type="number" min="1" max="1000" step="any" id="txtTemperatura" class="form-control" ng-model="nuevoDucto.Temperatura">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtBSW" class="control-label col-lg-2">BSW</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtBSW" class="form-control" ng-model="nuevoDucto.BSW">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        ng-click="guardarOleoducto(nuevoDucto)">
+                    Guardar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="EditarOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Editar Oleoducto
+                </h4>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="txtCodigo" class="col-lg-2">Oleoducto:</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtCodigo" class="form-control" ng-model="editarDucto.Codigo">
+                        </div>
+                        <label for="txtFecha" class="control-label col-lg-2">Fecha:</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtFechaInspeccionEdit" class="form-control" datetime="yyyy-MM-dd" ng-model="editarDucto.FechaInspeccion" />
+                            <!--<input type="date" id="txtFecha" class="form-control" >-->
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtDescripción" class="control-label col-lg-2">Descripción</label>
+                        <div class="col-lg-10">
+                            <input type="text" id="txtDescripción" class="form-control" ng-model="editarDucto.Descripcion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtNoLamina" class="control-label col-lg-2">No Lamina</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtNoLamina" class="form-control" ng-model="editarDucto.NoLamina">
+                        </div>
+                        <label for="txtUbicación" class="control-label col-lg-2">Ubicación</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtUbicación" class="form-control sin-espacio" ng-model="editarDucto.Ubicacion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtMaterial1" class="control-label col-lg-2">Material</label>
+                        <div class="col-lg-10">
+                            <input type="text" id="txtMaterial1" class="ui-txtfield col-xs-4" ng-model="editarDucto.Material1">
+                            <input type="text" id="txtMaterial2" class="ui-txtfield col-xs-4" ng-model="editarDucto.Material2">
+                            <input type="text" id="txtMaterial3" class="ui-txtfield col-xs-4" ng-model="editarDucto.Material3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtSchedule1" class="control-label col-lg-2">Schedule</label>
+                        <div class="col-lg-10">
+                            <input type="number" min="1" max="100" id="txtSchedule1" class="ui-txtfield col-xs-4" ng-model="editarDucto.Schedule1">
+                            <input type="number" min="1" max="100" id="txtSchedule2" class="ui-txtfield col-xs-4" ng-model="editarDucto.Schedule2">
+                            <input type="number" min="1" max="100" id="txtSchedule3" class="ui-txtfield col-xs-4" ng-model="editarDucto.Schedule3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lblBLPD" class="control-label col-lg-2">BLPD</label>
+                        <div class="col-lg-4">
+                            <input type="number" min="1" max="100000" id="txtBLPD" class="form-control" ng-model="editarDucto.BLPD">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPresion" class="control-label col-lg-2">Pres.(Psig)</label>
+                            <div class="col-lg-4">
+                                <input type="number" min="1" max="100000" step="any" id="txtPresion" class="form-control" ng-model="editarDucto.Presion">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtTemperatura" class="control-label col-lg-2">Tempe(°F)</label>
+                        <div class="col-lg-4">
+                            <input type="number" min="1" max="1000" step="any" id="txtTemperatura" class="form-control" ng-model="editarDucto.Temperatura">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtBSW" class="control-label col-lg-2">BSW</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtBSW" class="form-control" ng-model="editarDucto.BSW">
+                        </div>
+                    </div>
+                    <p>*Verifique sus datos</p>
+                </form>
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Close
+                </button>
+                <button type="button" class="btn btn-primary"
+                        ng-click="actualizarOleoducto(editarDucto)">
+                    Actualizar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="VerOleoducto" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Ver Oleoducto
+                </h4>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="txtCodigo" class="col-lg-2">Oleoducto:</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtCodigo" class="form-control" ng-model="verDucto.Codigo">
+                        </div>
+                        <label for="txtFecha" class="control-label col-lg-2">Fecha:</label>
+                        <div class="col-lg-4">
+                            <input type="date" id="txtFecha" class="form-control">
+                            <!--<input type="date" id="txtFecha" class="form-control" ng-model="verDucto.FechaInspeccion">-->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtDescripción" class="control-label col-lg-2">Descripción</label>
+                        <div class="col-lg-10">
+                            <input type="text" id="txtDescripción" class="form-control" ng-model="verDucto.Descripcion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtNoLamina" class="control-label col-lg-2">No Lamina</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtNoLamina" class="form-control" ng-model="verDucto.NoLamina">
+                        </div>
+                        <label for="txtUbicación" class="control-label col-lg-2">Ubicación</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtUbicación" class="form-control sin-espacio" ng-model="verDucto.Ubicacion">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtMaterial1" class="control-label col-lg-2">Material</label>
+                        <div class="col-lg-10">
+                            <input type="text" id="txtMaterial1" class="ui-txtfield col-xs-4" ng-model="verDucto.Material1">
+                            <input type="text" id="txtMaterial2" class="ui-txtfield col-xs-4" ng-model="verDucto.Material2">
+                            <input type="text" id="txtMaterial3" class="ui-txtfield col-xs-4" ng-model="verDucto.Material3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtSchedule1" class="control-label col-lg-2">Schedule</label>
+                        <div class="col-lg-10">
+                            <input type="number" min="1" max="100" id="txtSchedule1" class="ui-txtfield col-xs-4" ng-model="verDucto.Schedule1">
+                            <input type="number" min="1" max="100" id="txtSchedule2" class="ui-txtfield col-xs-4" ng-model="verDucto.Schedule2">
+                            <input type="number" min="1" max="100" id="txtSchedule3" class="ui-txtfield col-xs-4" ng-model="verDucto.Schedule3">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lblBLPD" class="control-label col-lg-2">BLPD</label>
+                        <div class="col-lg-4">
+                            <input type="number" min="1" max="100000" id="txtBLPD" class="form-control" ng-model="verDucto.BLPD">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtPresion" class="control-label col-lg-2">Pres.(Psig)</label>
+                            <div class="col-lg-4">
+                                <input type="number" min="1" max="100000" step="any" id="txtPresion" class="form-control" ng-model="verDucto.Presion">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="txtTemperatura" class="control-label col-lg-2">Tempe(°F)</label>
+                        <div class="col-lg-4">
+                            <input type="number" min="1" max="1000" step="any" id="txtTemperatura" class="form-control" ng-model="verDucto.Temperatura">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtBSW" class="control-label col-lg-2">BSW</label>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtBSW" class="form-control" ng-model="verDucto.BSW">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

@@ -52,11 +52,33 @@
       </ResultMapping>
     </FunctionImportMapping>
     <FunctionImportMapping FunctionImportName="usp_ValidaRolconAccion" FunctionName="CNPC_DuctosModel.Store.usp_ValidaRolconAccion" />
+    <EntitySetMapping Name="Accesorios">
+      <EntityTypeMapping TypeName="CNPC_DuctosModel.Accesorio">
+        <MappingFragment StoreEntitySet="Accesorios">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="RowState" ColumnName="RowState" />
+          <ScalarProperty Name="CondicionAccesorio" ColumnName="CondicionAccesorio" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+          <ScalarProperty Name="CoordenadasUTMY" ColumnName="CoordenadasUTMY" />
+          <ScalarProperty Name="CoordenadasUTMX" ColumnName="CoordenadasUTMX" />
+          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
+          <ScalarProperty Name="TipoMaterial" ColumnName="TipoMaterial" />
+          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
+          <ScalarProperty Name="NPS" ColumnName="NPS" />
+          <ScalarProperty Name="CodigoAccesorio" ColumnName="CodigoAccesorio" />
+          <ScalarProperty Name="Correlativo" ColumnName="Correlativo" />
+          <ScalarProperty Name="CodigoTuberia" ColumnName="CodigoTuberia" />
+          <ScalarProperty Name="NombreAccesorio" ColumnName="NombreAccesorio" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Oleoductos">
       <EntityTypeMapping TypeName="CNPC_DuctosModel.Oleoducto">
         <MappingFragment StoreEntitySet="Oleoductos">
           <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
           <ScalarProperty Name="RowState" ColumnName="RowState" />
+          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
           <ScalarProperty Name="FechaInspeccion" ColumnName="FechaInspeccion" />
           <ScalarProperty Name="BSW" ColumnName="BSW" />
           <ScalarProperty Name="Temperatura" ColumnName="Temperatura" />
@@ -80,6 +102,7 @@
     <EntitySetMapping Name="RegistroInspeccionVisuals">
       <EntityTypeMapping TypeName="CNPC_DuctosModel.RegistroInspeccionVisual">
         <MappingFragment StoreEntitySet="RegistroInspeccionVisual">
+          <ScalarProperty Name="TuberiaId" ColumnName="TuberiaId" />
           <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
           <ScalarProperty Name="RowState" ColumnName="RowState" />
           <ScalarProperty Name="SeleccionarTuberia" ColumnName="SeleccionarTuberia" />
@@ -132,23 +155,35 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Accesorios">
-      <EntityTypeMapping TypeName="CNPC_DuctosModel.Accesorio">
-        <MappingFragment StoreEntitySet="Accesorios">
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="CNPC_DuctosModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
           <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
           <ScalarProperty Name="RowState" ColumnName="RowState" />
-          <ScalarProperty Name="CondicionAccesorio" ColumnName="CondicionAccesorio" />
-          <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
-          <ScalarProperty Name="CoordenadasUTMY" ColumnName="CoordenadasUTMY" />
-          <ScalarProperty Name="CoordenadasUTMX" ColumnName="CoordenadasUTMX" />
-          <ScalarProperty Name="Longitud" ColumnName="Longitud" />
-          <ScalarProperty Name="TipoMaterial" ColumnName="TipoMaterial" />
-          <ScalarProperty Name="Schedule" ColumnName="Schedule" />
-          <ScalarProperty Name="NPS" ColumnName="NPS" />
-          <ScalarProperty Name="CodigoAccesorio" ColumnName="CodigoAccesorio" />
-          <ScalarProperty Name="Correlativo" ColumnName="Correlativo" />
-          <ScalarProperty Name="CodigoTuberia" ColumnName="CodigoTuberia" />
-          <ScalarProperty Name="NombreAccesorio" ColumnName="NombreAccesorio" />
+          <ScalarProperty Name="FiscalizadorId" ColumnName="FiscalizadorId" />
+          <ScalarProperty Name="FacilitadorId" ColumnName="FacilitadorId" />
+          <ScalarProperty Name="RolId" ColumnName="RolId" />
+          <ScalarProperty Name="ActiveDirectory" ColumnName="ActiveDirectory" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Contrasenia" ColumnName="Contrasenia" />
+          <ScalarProperty Name="Usuario1" ColumnName="Usuario" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CambiosTuberias">
+      <EntityTypeMapping TypeName="CNPC_DuctosModel.CambiosTuberia">
+        <MappingFragment StoreEntitySet="CambiosTuberias">
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="RowState" ColumnName="RowState" />
+          <ScalarProperty Name="FechaOrdenServicio" ColumnName="FechaOrdenServicio" />
+          <ScalarProperty Name="OrdenServicio" ColumnName="OrdenServicio" />
+          <ScalarProperty Name="Motivo" ColumnName="Motivo" />
+          <ScalarProperty Name="TuberiaId" ColumnName="TuberiaId" />
+          <ScalarProperty Name="CodigoDelTubo01" ColumnName="CodigoDelTubo01" />
+          <ScalarProperty Name="NumeroOleoducto" ColumnName="NumeroOleoducto" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

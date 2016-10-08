@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace CNPC.SISDUC.DAL
@@ -166,4 +167,5 @@ namespace CNPC.SISDUC.DAL
             return BitConverter.ToString(hash.ComputeHash(combined)).ToLower().Replace("-", "");
         }
     }
+   
 }

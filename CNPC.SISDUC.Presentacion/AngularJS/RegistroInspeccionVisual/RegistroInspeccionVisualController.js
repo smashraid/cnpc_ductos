@@ -141,10 +141,10 @@
         $scope.guardarMotivo = function (cambio) {
             if (validar(cambio)) {
                 cambiosTuberia.NumeroOleoducto = cambio.NumeroOleoducto;
-                cambiosTuberia.CodigoDelTubo01 = cambio.CodigoDelTubo;
-                cambiosTuberia.FechaOrdenservicio = cambio.Fecha;
+                cambiosTuberia.CodigoDelTubo01 = cambio.CodigoDelTubo01;
+                cambiosTuberia.FechaOrdenServicio = cambio.FechaOrdenServicio;
                 cambiosTuberia.OrdenServicio = cambio.OrdenServicio;
-                cambiosTuberia.TuberiaId = cambio.Id;
+                cambiosTuberia.TuberiaId = cambio.TuberiaId;
                 cambiosTuberia.Motivo = cambio.Motivo;
                 cambiosTuberia.LastUpdate = new Date();
                 cambiosTuberia.RowState = "A";
@@ -201,7 +201,20 @@
         //}
 
         $scope.EliminarTuberia = function (tuberia) {
-            $scope.deleteTuberia = tuberia;
+
+           
+            var cambiosTuberia = {
+                "Id": 0,
+                "NumeroOleoducto": tuberia.NumeroOleoducto,
+                "CodigoDelTubo01": tuberia.CodigoDelTubo,
+                "TuberiaId": tuberia.Id,
+                "Motivo":"",
+                "OrdenServicio": "",
+                "FechaOrdenServicio": "",
+                "RowState": "",
+                "LastUpdate": ""
+            };
+            $scope.deleteTuberia = cambiosTuberia;
             $('#NuevoMotivo').modal('show');
         }
         //Fin Eliminar Tuberia

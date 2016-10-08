@@ -1,0 +1,1073 @@
+﻿@model PagedList.IPagedList<CNPC.SISDUC.WEB.Models.RegistroInspeccionVisualModel>
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div id="content">
+    <div class="form-group">
+        <label class="col-lg-5">CODIGO: @ViewBag.oleoducto.Codigo</label>
+        <label class="col-lg-4">UBICACIÓN: @ViewBag.oleoducto.Ubicacion</label>
+        <label class="col-lg-3">LONGITUD TOTAL: @ViewBag.oleoducto.LongitudTotal</label>
+    </div>
+    <div class="form-group">
+        <label class="col-lg-5">DESCRIPCION: @ViewBag.oleoducto.Descripcion</label>
+        <label class="col-lg-4">LAMINA: @ViewBag.oleoducto.NoLamina</label>
+        <label class="col-lg-3">PRESION: @ViewBag.oleoducto.Presion</label>
+    </div>
+    <div>
+        <label class="tituloh1"></label>
+    </div>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="parameterlist.name" placeholder="Buscar" ng-keyup="firstPage()">
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button">Buscar</button>
+                    </span>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<table class="table table-striped table-bordered" >
+    <thead>
+        <tr>
+            <th align="center" class="titulo_grilla">ID</th>
+            <th align="center" class="titulo_grilla">Código</th>
+            <th align="center" class="titulo_grilla">NPS</th>
+            <th align="center" class="titulo_grilla">SHC</th>
+            <th align="center" class="titulo_grilla">Longitud (m)</th>
+            <th align="center" class="titulo_grilla">Espesor Nominal</th>
+            <th align="center" class="titulo_grilla">Espesor Minimo Real Remanente</th>
+            <th align="center" class="titulo_grilla">Cruce Carretera</th>
+            <th align="center" class="titulo_grilla">Observaciones De La InspeccionVisual</th>
+            <th align="center" class="titulo_grilla">Condicion Del Tramo</th>
+            <th align="center" class="titulo_grilla">Ultima Fecha De Inspeccion</th>
+            <th align="center" class="titulo_grilla">Seleccionar Tuberia</th>
+            <th align="center" class="titulo_grilla">Editar</th>
+            <th align="center" class="titulo_grilla">Eliminar</th>
+            <th align="center" class="titulo_grilla">Ver</th>
+            <!--<th align="center" class="titulo_grilla">Accesorios</th>-->
+        </tr>
+    </thead>
+    <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="2%" align="center" class="celda2_grilla">@item.Id</td>
+                        <td width="12%" class="celda2_grilla">@item.CodigoDelTubo</td>
+                        <td width="3%" class="celda2_grilla">@Convert.ToInt32(item.NPS)</td>
+                        <td width="3%" class="celda2_grilla">@item.Schedule</td>
+                        <td width="5%" class="celda2_grilla">@item.Longitud</td>
+                        <td width="5%" class="celda2_grilla">@item.EspesorNominal</td>
+                        <td width="8%" class="celda2_grilla">@item.EspesorMinimoRealRemanente</td>
+                        <td width="5%" class="celda2_grilla">
+                        @item.CruceCarretera
+                        </td>
+                        <td width="15%" class="celda2_grilla">@item.ObservacionesDeLaInspeccionVisual</td>
+                        <td width="15%" class="celda2_grilla">@item.CondicionDelTramo</td>
+                        <td width="10%" class="celda2_grilla">@item.UltimaFechaDeInspeccion</td>
+                        <td width="5%" class="celda2_grilla">@item.SeleccionarTuberia</td>
+
+                        <td align="center">
+                            @*<a href="#" ng-click="EditarTuberia(item)"><img src="../../Content/img/ico-editar.png" width="14" height="14" alt="" style="border:none;" /></a>*@
+                            <a href="Tuberia/GetTuberia/@item.Id"><img src="../../Content/img/ico-editar.png" width="14" height="14" alt="" style="border:none;" /></a>
+
+                        </td>
+                        <td align="center">
+                            <a href="#" ng-click="EliminarTuberia(item)"><img src="../../Content/img/ico_delete.png" width="14" height="14" alt="" style="border:none;" /></a>
+                        </td>
+                        <td>
+                            <a href="#" ng-click="verTuberia(item)"><img src="../../Content/img/ico-ver.png" width="10" height="10" alt="" style="border:none;" /></a>
+                        </td>
+                        <!--<td>
+                        <a href="#" ng-click="agragarAccesorio(item)"><img src="../../Content/img/ico_select.png" width="14" height="14" alt="" style="border:none;" /></a>
+                    </td>-->
+                    </tr>
+                }
+        <tr>
+            <td colspan="15" align="center">
+                <table width="30%" border="0" align="left">
+                    <tbody>
+                        <tr>
+                            <td class="texto"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table width="30%" border="0" align="right">
+                    <tbody>
+                        <tr>
+                            <td align="right" class="texto" style="text-align:right">
+                                <a href="#" ng-click='firstPage()'><strong>[|<]</strong></a> <strong>
+                                    <a href="#" ng-click='firstPage()'>&nbsp;[<]</a>
+                                    &nbsp;<label>{{parameterlist.page}}/ {{parameterlist.pages}}</label>
+                                    <a href="#" ng-click='nextPage()'>[>]</a>&nbsp;
+                                    <a href="#" ng-click='lastPage()'>[>|]</a>
+                                </strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </td>
+        </tr>
+        <tr>
+            <td colspan="15" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="15" align="center">
+                <table width="60%" border="0" align="left">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table border="0" align="left">
+                                    <td class="button">
+                                        <a href="#" ng-click="ReporteGeneral()">
+                                            Reporte General
+                                        </a>
+                                    </td>
+                                </table>
+                            </td>
+                            <td>
+                                <table border="0" align="left">
+                                    <td class="button">
+                                        <a href="#" target="_self">Generar Reporte</a>
+
+                                    </td>
+                                </table>
+                            </td>
+                            <td>
+                                <table border="0" align="left">
+                                    <td class="button">
+                                        <a href="#" ng-click="TablaResumen()">
+                                            Tabla Resumen
+                                        </a>
+                                    </td>
+                                </table>
+                            </td>
+                            <td>
+                                <table border="0" align="left">
+                                    <td class="button">
+                                        <a href="#" ng-click="FiltroDatos()">
+                                            Filtro de Datos
+                                        </a>
+                                    </td>
+                                </table>
+                            </td>
+                            <td>
+                                <table border="0" align="right">
+                                    <td class="button">
+                                        <a href="#" ng-click="Historial()">
+                                            Historial
+                                        </a>
+                                    </td>
+                                </table>
+                            </td>
+                            <td>
+                                <table border="0" align="right">
+                                    <td class="button">
+                                        <a href="#" ng-click="NuevoRegistro()">
+                                            Nuevo Registro
+                                        </a>
+                                    </td>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="15" align="center">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table width="20%" border="0" align="right">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" align="right">
+                                    <td class="button">
+                                        @Html.ActionLink("Agregar Tuberia", "Create")
+                                        @*<a href="#" ng-click="agregarTuberia()">
+                                            Agregar Tuberia
+                                        </a>*@
+                                    </td>
+                                </table>
+                            </td>
+                            <td>
+                                <table width="100%" border="0" align="right">
+                                    <td class="button">
+                                        <a href="/Home/Index" target="_self">SALIR</a>
+
+                                    </td>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="15" align="center">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div id="NuevoMotivo" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Motivo del Cambio
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form name="formNuevoMotivo" role="form">
+                    <div class="form-group">
+                        <h6>
+                            <label for="txtDescripcion" class="control-label col-sm-2">Id Tubería:</label>
+                        </h6>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtCodigoDelTubo" name="txtFecha" class="form-control" ng-model="deleteTuberia.TuberiaId" required="required">
+                        </div>
+                        <h6>
+                            <label for="txtDescripcion" class="control-label col-sm-2">Código de Tuberia:</label>
+                        </h6>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtCodigoDelTubo" name="txtFecha" class="form-control" ng-model="deleteTuberia.CodigoDelTubo01" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6>
+                            <label for="txtDescripcion" class="control-label col-sm-2">Fecha:</label>
+                        </h6>
+                        <div class="col-sm-4">
+                            <input type="date" id="txtFecha" name="txtFecha" class="form-control" ng-model="deleteTuberia.FechaOrdenServicio" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6>
+                            <label for="txtDescripcion" class="control-label col-sm-2">Orden de Servicio:</label>
+                        </h6>
+                        <div class="col-sm-4">
+                            <input type="text" id="txtOrdenDeServicio" name="txtOrdenDeServicio" class="form-control" ng-model="deleteTuberia.OrdenServicio" required="required">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtOleoducto" class="col-sm-2">Motivo:</label></h6>
+                        <div class="col-sm-10">
+                            <input type="text" id="txtMotivo" name="txtMotivo" class="form-control" ng-model="deleteTuberia.Motivo" required="required">
+                        </div>
+                    </div>
+
+                    <p>Ingrese los datos obligatorios</p>
+                </form>
+            </div>
+            <div class="modal-footer modal-footerTuberia">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close" ng-click="guardarMotivo(deleteTuberia)">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="VerTuberia" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Reporte de Tuberia
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <h6><label for="txtOleoducto" class="col-lg-2">Oleoducto:</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtOleoducto" class="form-control" readonly ng-model="oleoducto.Codigo">
+                        </div>
+                        <h6>
+                            <label for="txtDescripcion" class="control-label col-lg-2">Descripción:</label>
+                        </h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtDescripcion" class="form-control" readonly ng-model="oleoducto.Descripcion">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h6><label for="txtCodigoTubo" class="control-label col-lg-2">Código del Tubo:</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtCodigoTubo" class="form-control" readonly ng-model="reporteTuberia.CodigoDelTubo">
+                        </div>
+                        <h6><label for="txtNumeroAnterior" class="control-label col-lg-2">Número Anterior</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtNumeroAnterior" class="form-control " readonly ng-model="reporteTuberia.NumeroAnterior">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h6><label for="txtNPS" class="control-label col-lg-2">NPS</label></h6>
+                        <div class="col-lg-4 sin-espacio">
+                            <input type="text" id="txtNPS" class="form-control " readonly ng-model="reporteTuberia.NPS">
+                        </div>
+                        <h6><label for="txtSchedule" class="control-label col-lg-2">Schedule</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtSchedule" class="form-control " readonly ng-model="reporteTuberia.Schedule">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h6><label for="txtTipoMaterial" class="control-label col-lg-2">Tipo Material:</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtTipoMaterial" class="form-control" readonly ng-model="reporteTuberia.TipoMaterial">
+                        </div>
+                        <h6><label for="txtLongitud" class="control-label col-lg-1">Longitud</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtLongitud" class="form-control " readonly ng-model="reporteTuberia.Longitud">
+                        </div>
+                        <h6><label for="txtCoordenadasUTM_X" class="control-label col-lg-1">Coordenas UTM</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtCoordenadasUTM_X" class="form-control " readonly ng-model="reporteTuberia.CoordenadasUTM_X">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtCoordenadasUTM_Y" class="form-control " readonly ng-model="reporteTuberia.CoordenadasUTM_Y">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <h5>
+                                Lecturas con Ultrasonido Pulso- Eco:
+                            </h5>
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>
+                                Otro Método:
+                            </h5>
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>
+                                Corrosión Externa:
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtExtremoInicial1" class="control-label col-lg-2 sin-espacio">Extremo Inicial:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial1" class="form-control" readonly ng-model="reporteTuberia.ExtremoInicial1">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial2" class="form-control" readonly ng-model="reporteTuberia.ExtremoInicial2">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial3" class="form-control" readonly ng-model="reporteTuberia.ExtremoInicial3">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial4" class="form-control" readonly ng-model="reporteTuberia.ExtremoInicial4">
+                        </div>
+                        <h6><label for="txtBSCAN" class="control-label col-lg-1 sin-espacio">BSCAN:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtBSCAN" class="form-control" readonly ng-model="reporteTuberia.BSCAN">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="button" id="btnBSCAN" class="btn btn-danger" value="..." />
+                        </div>
+                        <h6><label for="txtEspesorDePared" class="control-label col-lg-2 sin-espacio">Espesor de Pared:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtEspesorDePared" class="form-control" readonly ng-model="reporteTuberia.EspesorDePared">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtExtremoMedio1" class="control-label col-lg-2 sin-espacio">Extremo Medio:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoMedio1" class="form-control" readonly ng-model="reporteTuberia.ExtremoMedio1">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoMedio2" class="form-control" readonly ng-model="reporteTuberia.ExtremoMedio2">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoMedio3" class="form-control" readonly ng-model="reporteTuberia.ExtremoMedio3">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoMedio4" class="form-control" readonly ng-model="reporteTuberia.ExtremoMedio4">
+                        </div>
+                        <h6><label for="txtMapeoDeCorrosion" class="control-label col-lg-1 sin-espacio">Mapeo de Corrosión:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtMapeoDeCorrosion" class="form-control" readonly ng-model="reporteTuberia.MapeoDeCorrosion">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="button" id="btnMapeoDeCorrosion" class="btn btn-danger" value="..." />
+                        </div>
+                        <h6><label for="txtPitCorrosion" class="control-label col-lg-2 sin-espacio">Pit de Corrosión:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtPitCorrosion" class="form-control" readonly ng-model="reporteTuberia.PitCorrosion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtExtremoFinal1" class="control-label col-lg-2 sin-espacio">Extremo Final:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoFinal1" class="form-control" readonly ng-model="reporteTuberia.ExtremoFinal1">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoFinal2" class="form-control" readonly ng-model="reporteTuberia.ExtremoFinal2">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoFinal3" class="form-control" readonly ng-model="reporteTuberia.ExtremoFinal3">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoFinal4" class="form-control" readonly ng-model="reporteTuberia.ExtremoFinal4">
+                        </div>
+                        <h6><label for="txtLEFT" class="control-label col-lg-1 sin-espacio">LEFT:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtLEFT" class="form-control" readonly ng-model="reporteTuberia.LEFT">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="button" id="btnLEFT" class="btn btn-danger" value="..." />
+                        </div>
+                        <h6><label for="txtEspesorRemanente" class="control-label col-lg-2 sin-espacio">Espesor Remanente:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtEspesorRemanente" class="form-control" readonly ng-model="reporteTuberia.EspesorRemanente">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-2">
+                            <h5>
+                                Defecto:
+                            </h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <h5>
+                                Socavación en cordon de soldadura:
+                            </h5>
+                        </div>
+                        <div class="col-lg-2">
+                            <h5>
+                                Rechazado:
+                            </h5>
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>
+                                Número de Grapas:
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtTipoSoporte" class="control-label col-lg-2 sin-espacio">Tipo de Soporte:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtTipoSoporte" class="form-control2" readonly ng-model="reporteTuberia.TipoSoporte">
+                        </div>
+                        <h6><label for="chkElastomero" class="control-label col-lg-2 ">Elastomero:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkElastomero" class="control-label" onclick="return false;" onkeydown="return false;" ng-model="reporteTuberia.Elastomero">
+                        </div>
+                        <h6><label for="chkMaleza" class="control-label col-lg-2 ">Maleza:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkMaleza" class="control-label" onclick="return false;" onkeydown="return false;" ng-model="reporteTuberia.Maleza">
+                        </div>
+                        <h6><label for="chkTuberiaAlrededor" class="control-label col-lg-2 ">Tuberia Alrededor:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkTuberiaAlrededor" class="control-label" onclick="return false;" onkeydown="return false;" ng-model="reporteTuberia.TuberiaAlrededor">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="chkPintura" class="control-label col-lg-2 sin-espacio">Pintura:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkPintura" class="control-label" onclick="return false;" onkeydown="return false;" ng-model="reporteTuberia.Pintura">
+                        </div>
+                        <h6><label for="chkCruceCarretera" class="control-label col-lg-2 ">Cruce de Carretera:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkCruceCarretera" class="control-label" onclick="return false;" onkeydown="return false;" ng-model="reporteTuberia.CruceCarretera">
+                        </div>
+                        <h6><label for="txtTipoProteccion" class="control-label col-lg-2 ">Tipo de Proteccion:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtTipoProteccion" class="form-control2" readonly ng-model="reporteTuberia.TipoProteccion">
+                        </div>
+                        <h6><label for="txtEstadoProteccion" class="control-label col-lg-2 ">Estado de Protección:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtEstadoProteccion" class="form-control2" readonly ng-model="reporteTuberia.EstadoProteccion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtEstadoTuberia" class="control-label col-lg-2 sin-espacio">Estado de la tuberia:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtEstadoTuberia" class="form-control2" readonly ng-model="reporteTuberia.EstadoTuberia">
+                        </div>
+
+                        <h5><label for="txtTipoProteccion" class="control-label col-lg-9 ">NO SE PUEDE MODIFICAR VALORES - SOLO VERLOS</label></h5>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer modal-footerTuberia">
+                <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">Aceptar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="NuevaTuberia" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Nueva Tuberia
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <h6><label for="txtOleoducto" class="col-lg-2">Oleoducto:</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtOleoducto" class="form-control" readonly ng-model="oleoducto.Codigo">
+                        </div>
+                        <h6>
+                            <label for="txtDescripcion" class="control-label col-lg-2">Descripción:</label>
+                        </h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtDescripcion" class="form-control" readonly ng-model="oleoducto.Descripcion">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h6><label for="txtCodigoTubo" class="control-label col-lg-2">Código del Tubo:</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtCodigoTubo" class="form-control" ng-model="nuevoTuberia.CodigoDelTubo">
+                        </div>
+                        <h6><label for="txtNumeroAnterior" class="control-label col-lg-2">Número Anterior</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtNumeroAnterior" class="form-control " ng-model="nuevoTuberia.NumeroAnterior">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h6><label for="txtNPS" class="control-label col-lg-2">NPS</label></h6>
+                        <div class="col-lg-4 sin-espacio">
+                            <input type="text" id="txtNPS" class="form-control " ng-model="nuevoTuberia.NPS">
+                        </div>
+                        <h6><label for="txtSchedule" class="control-label col-lg-2">Schedule</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtSchedule" class="form-control " ng-model="nuevoTuberia.Schedule">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <h6><label for="txtTipoMaterial" class="control-label col-lg-2">Tipo Material:</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtTipoMaterial" class="form-control" ng-model="nuevoTuberia.TipoMaterial">
+                        </div>
+                        <h6><label for="txtLongitud" class="control-label col-lg-1">Longitud</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtLongitud" class="form-control " ng-model="nuevoTuberia.Longitud">
+                        </div>
+                        <h6><label for="txtCoordenadasUTM_X" class="control-label col-lg-1">Coordenas UTM</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtCoordenadasUTM_X" class="form-control " ng-model="nuevoTuberia.CoordenadasUTM_X">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtCoordenadasUTM_Y" class="form-control " ng-model="nuevoTuberia.CoordenadasUTM_Y">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <h5>
+                                Lecturas con Ultrasonido Pulso- Eco:
+                            </h5>
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>
+                                Otro Método:
+                            </h5>
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>
+                                Corrosión Externa:
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtExtremoInicial1" class="control-label col-lg-2 sin-espacio">Extremo Inicial:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial1" class="form-control" ng-model="nuevoTuberia.ExtremoInicial1">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial2" class="form-control" ng-model="nuevoTuberia.ExtremoInicial2">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial3" class="form-control" ng-model="nuevoTuberia.ExtremoInicial3">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial4" class="form-control" ng-model="nuevoTuberia.ExtremoInicial4">
+                        </div>
+                        <h6><label for="txtBSCAN" class="control-label col-lg-1 sin-espacio">BSCAN:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtBSCAN" class="form-control" ng-model="nuevoTuberia.BSCAN">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="button" id="btnBSCAN" class="btn btn-danger" value="..." />
+                        </div>
+                        <h6><label for="txtEspesorDePared" class="control-label col-lg-2 sin-espacio">Espesor de Pared:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtEspesorDePared" class="form-control" ng-model="nuevoTuberia.EspesorDePared">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtExtremoMedio1" class="control-label col-lg-2 sin-espacio">Extremo Medio:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoMedio1" class="form-control" ng-model="nuevoTuberia.ExtremoMedio1">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoMedio2" class="form-control" ng-model="nuevoTuberia.ExtremoMedio2">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoMedio3" class="form-control" ng-model="nuevoTuberia.ExtremoMedio3">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoMedio4" class="form-control" ng-model="editaTuberia.ExtremoMedio4">
+                        </div>
+                        <h6><label for="txtMapeoDeCorrosion" class="control-label col-lg-1 sin-espacio">Mapeo de Corrosión:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtMapeoDeCorrosion" class="form-control" ng-model="nuevoTuberia.MapeoDeCorrosion">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="button" id="btnMapeoDeCorrosion" class="btn btn-danger" value="..." />
+                        </div>
+                        <h6><label for="txtPitCorrosion" class="control-label col-lg-2 sin-espacio">Pit de Corrosión:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtPitCorrosion" class="form-control" ng-model="nuevoTuberia.PitCorrosion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtExtremoFinal1" class="control-label col-lg-2 sin-espacio">Extremo Final:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoFinal1" class="form-control" ng-model="nuevoTuberia.ExtremoFinal1">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoFinal2" class="form-control" ng-model="nuevoTuberia.ExtremoFinal2">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoFinal3" class="form-control" ng-model="nuevoTuberia.ExtremoFinal3">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoFinal4" class="form-control" ng-model="nuevoTuberia.ExtremoFinal4">
+                        </div>
+                        <h6><label for="txtLEFT" class="control-label col-lg-1 sin-espacio">LEFT:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtLEFT" class="form-control" ng-model="nuevoTuberia.LEFT">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="button" id="btnLEFT" class="btn btn-danger" value="..." />
+                        </div>
+                        <h6><label for="txtEspesorRemanente" class="control-label col-lg-2 sin-espacio">Espesor Remanente:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtEspesorRemanente" class="form-control" ng-model="nuevoTuberia.EspesorRemanente">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-2">
+                            <h5>
+                                Defecto:
+                            </h5>
+                        </div>
+                        <div class="col-lg-5">
+                            <h5>
+                                Socavación en cordon de soldadura:
+                            </h5>
+                        </div>
+                        <div class="col-lg-2">
+                            <h5>
+                                Rechazado:
+                            </h5>
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>
+                                Número de Grapas:
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtTipoSoporte" class="control-label col-lg-2 sin-espacio">Tipo de Soporte:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtTipoSoporte" class="form-control2" ng-model="nuevoTuberia.TipoSoporte">
+                        </div>
+                        <h6><label for="chkElastomero" class="control-label col-lg-2 ">Elastomero:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkElastomero" class="control-label" ng-model="nuevoTuberia.Elastomero">
+                        </div>
+                        <h6><label for="chkMaleza" class="control-label col-lg-2 ">Maleza:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkMaleza" class="control-label" ng-model="nuevoTuberia.Maleza">
+                        </div>
+                        <h6><label for="chkTuberiaAlrededor" class="control-label col-lg-2 ">Tuberia Alrededor:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkTuberiaAlrededor" class="control-label" ng-model="nuevoTuberia.TuberiaAlrededor">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="chkPintura" class="control-label col-lg-2 sin-espacio">Pintura:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkPintura" class="control-label" ng-model="nuevoTuberia.Pintura">
+                        </div>
+                        <h6><label for="chkCruceCarretera" class="control-label col-lg-2 ">Cruce de Carretera:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkCruceCarretera" class="control-label" ng-model="nuevoTuberia.CruceCarretera">
+                        </div>
+                        <h6><label for="txtTipoProteccion" class="control-label col-lg-2 ">Tipo de Proteccion:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtTipoProteccion" class="form-control2" ng-model="nuevoTuberia.TipoProteccion">
+                        </div>
+                        <h6><label for="txtEstadoProteccion" class="control-label col-lg-2 ">Estado de Protección:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtEstadoProteccion" class="form-control2" ng-model="nuevoTuberia.EstadoProteccion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtEstadoTuberia" class="control-label col-lg-2 sin-espacio">Estado de la tuberia:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtEstadoTuberia" class="form-control2" ng-model="nuevoTuberia.EstadoTuberia">
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer modal-footerTuberia">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" ng-click="guardarTuberia(nuevoTuberia, oleoducto)">Guardar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="EditarTuberia" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Editar Tuberia
+                </h4>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <h6><label for="txtOleoducto" class="col-lg-2">Oleoducto:</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtOleoducto" class="form-control" ng-model="oleoducto.Codigo">
+                        </div>
+                        <h6>
+                            <label for="txtDescripcion" class="control-label col-lg-2">Descripción:</label>
+                        </h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtDescripcion" class="form-control" ng-model="oleoducto.Descripcion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtCodigoTubo" class="control-label col-lg-2">Código del Tubo:</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtCodigoTubo" class="form-control" ng-model="editaTuberia.CodigoDelTubo">
+                        </div>
+                        <h6><label for="txtNumeroAnterior" class="control-label col-lg-2">Número Anterior</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtNumeroAnterior" class="form-control " ng-model="editaTuberia.NumeroAnterior">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtNPS" class="control-label col-lg-2">NPS</label></h6>
+                        <div class="col-lg-4 sin-espacio">
+                            <input type="text" id="txtNPS" class="form-control " ng-model="editaTuberia.NPS">
+                        </div>
+                        <h6><label for="txtSchedule" class="control-label col-lg-2">Schedule</label></h6>
+                        <div class="col-lg-4">
+                            <input type="text" id="txtSchedule" class="form-control " ng-model="editaTuberia.Schedule">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtTipoMaterial" class="control-label col-lg-2">Tipo Material:</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtTipoMaterial" class="form-control" ng-model="editaTuberia.TipoMaterial">
+                        </div>
+                        <h6><label for="txtLongitud" class="control-label col-lg-1">Longitud</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtLongitud" class="form-control " ng-model="editaTuberia.Longitud">
+                        </div>
+                        <h6><label for="txtCoordenadasUTM_X" class="control-label col-lg-1">Coordenas UTM</label></h6>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtCoordenadasUTM_X" class="form-control " ng-model="editaTuberia.CoordenadasUTM_X">
+                        </div>
+                        <div class="col-lg-2">
+                            <input type="text" id="txtCoordenadasUTM_Y" class="form-control " ng-model="editaTuberia.CoordenadasUTM_Y">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-lg-6">
+                            <h5>
+                                Lecturas con Ultrasonido Pulso- Eco:
+                            </h5>
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>
+                                Otro Método:
+                            </h5>
+                        </div>
+                        <div class="col-lg-3">
+                            <h5>
+                                Corrosión Externa:
+                            </h5>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtExtremoInicial1" class="control-label col-lg-2 sin-espacio">Extremo Inicial:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial1" class="form-control" ng-model="editaTuberia.ExtremoInicial1">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial2" class="form-control" ng-model="editaTuberia.ExtremoInicial2">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial3" class="form-control" ng-model="editaTuberia.ExtremoInicial3">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoInicial4" class="form-control" ng-model="editaTuberia.ExtremoInicial4">
+                        </div>
+                        <h6><label for="txtBSCAN" class="control-label col-lg-1 sin-espacio">BSCAN:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtBSCAN" class="form-control" ng-model="editaTuberia.BSCAN">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="button" id="btnBSCAN" class="btn btn-danger" value="..." />
+                        </div>
+                        <h6><label for="txtEspesorDePared" class="control-label col-lg-2 sin-espacio">Espesor de Pared:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtEspesorDePared" class="form-control" ng-model="editaTuberia.EspesorDePared">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtExtremoMedio1" class="control-label col-lg-2 sin-espacio">Extremo Medio:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoMedio1" class="form-control" ng-model="editaTuberia.ExtremoMedio1">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoMedio2" class="form-control" ng-model="editaTuberia.ExtremoMedio2">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoMedio3" class="form-control" ng-model="editaTuberia.ExtremoMedio3">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoMedio4" class="form-control" ng-model="editaTuberia.ExtremoMedio4">
+                        </div>
+                        <h6><label for="txtMapeoDeCorrosion" class="control-label col-lg-1 sin-espacio">Mapeo de Corrosión:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtMapeoDeCorrosion" class="form-control" ng-model="editaTuberia.MapeoDeCorrosion">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="button" id="btnMapeoDeCorrosion" class="btn btn-danger" value="..." />
+                        </div>
+                        <h6><label for="txtPitCorrosion" class="control-label col-lg-2 sin-espacio">Pit de Corrosión:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtPitCorrosion" class="form-control" ng-model="editaTuberia.PitCorrosion">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtExtremoFinal1" class="control-label col-lg-2 sin-espacio">Extremo Final:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoFinal1" class="form-control" ng-model="editaTuberia.ExtremoFinal1">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoFinal2" class="form-control" ng-model="editaTuberia.ExtremoFinal2">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoFinal3" class="form-control" ng-model="editaTuberia.ExtremoFinal3">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtExtremoFinal4" class="form-control" ng-model="editaTuberia.ExtremoFinal4">
+                        </div>
+                        <h6><label for="txtLEFT" class="control-label col-lg-1 sin-espacio">LEFT:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtLEFT" class="form-control" ng-model="editaTuberia.LEFT">
+                        </div>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="button" id="btnLEFT" class="btn btn-danger" value="..." />
+                        </div>
+                        <h6><label for="txtEspesorRemanente" class="control-label col-lg-2 sin-espacio">Espesor Remanente:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtEspesorRemanente" class="form-control" ng-model="editaTuberia.EspesorRemanente">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="cboTipoSoporte" class="control-label col-lg-2 sin-espacio">Tipo de Soporte:</label></h6>
+                        <div class="col-lg-5 sin-espacio">
+                            <!--<input type="text" id="txtTipoSoporte" class="form-control2" ng-model="editaTuberia.TipoSoporte">-->
+                            <select name="repeatSelect" id="repeatSelect" ng-model="editaTuberia.TipoSoporte">
+                                <option ng-repeat="option in listaTipoSoporte" value="{{option.Valor}}">{{option.Nombre}}</option>
+                            </select><br>
+                        </div>
+                        <h6><label for="chkElastomero" class="control-label col-lg-2 ">Elastomero:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkElastomero" class="control-label" ng-model="editaTuberia.Elastomero">
+                        </div>
+                        <h6><label for="chkMaleza" class="control-label col-lg-1 ">Maleza:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkMaleza" class="control-label" ng-model="editaTuberia.Maleza">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="chkTuberiaAlrededor" class="control-label col-lg-2 sin-espacio">Tuberia Alrededor:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkTuberiaAlrededor" class="control-label" ng-model="editaTuberia.TuberiaAlrededor">
+                        </div>
+                        <h6><label for="chkPintura" class="control-label col-lg-2 sin-espacio">Pintura:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="checkbox" id="chkPintura" class="control-label" ng-model="editaTuberia.Pintura">
+                        </div>
+                        <h6><label for="chkCruceCarretera" class="control-label col-lg-4 ">Cruce de Carretera:</label></h6>
+                        <div class="col-lg-2 sin-espacio">
+                            <input type="checkbox" id="chkCruceCarretera" class="control-label" ng-model="editaTuberia.CruceCarretera">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h6><label for="txtTipoProteccion" class="control-label col-lg-3 sin-espacio">Tipo de Proteccion:</label></h6>
+                        <div class="col-lg-3 sin-espacio">
+                            <input type="text" id="txtTipoProteccion" class="form-control2" ng-model="editaTuberia.TipoProteccion">
+                        </div>
+                        <h6><label for="txtEstadoProteccion" class="control-label col-lg-2 ">Estado de Protección:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtEstadoProteccion" class="form-control2" ng-model="editaTuberia.EstadoProteccion">
+                        </div>
+                        <h6><label for="txtEstadoTuberia" class="control-label col-lg-2 sin-espacio">Estado de la tuberia:</label></h6>
+                        <div class="col-lg-1 sin-espacio">
+                            <input type="text" id="txtEstadoTuberia" class="form-control2" ng-model="editaTuberia.EstadoTuberia">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer modal-footerTuberia">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary" ng-click="actualizarTuberia(editaTuberia)">Actualizar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="VerAccesorio" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="false">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    REPORTE DE ACCESORIOS
+                </h4>
+            </div>
+            <div class="modal-body">
+                <table border="0" align="center">
+                    <tr>
+                        <td class="texto">
+                            <label>Código</label>
+                        </td>
+                        <td class="texto" align="left">
+                            <div ng-class="{'has-error':verDucto.Codigo==''}">
+                                <input type="text" class="form-control ui-inputfield" id="txtCodigo" readonly ng-model="verDucto.Codigo">
+                            </div>
+                            <div ng-class="{'has-error':verDucto.Codigo==''}">
+                                <input type="text" class="form-control ui-inputfield" id="txtCodigo" readonly ng-model="verDucto.Codigo">
+                            </div>
+                        </td>
+                        <td class="texto">
+                            <label>Fecha</label>
+                        </td>
+                        <td align="left">
+                            <input class="form-control ui-inputfield" type="date" name="date" id="date" readonly ng-model="verDucto.FechaInspeccion">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Descripción</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <div ng-class="{'has-error':verDucto.Descripcion==''}">
+                                <input type="text" id="txtDescripcion" class="form-control ui-inputfield" readonly ng-model="verDucto.Descripcion">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Ubicación</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <div ng-class="{'has-error':verDucto.Ubicacion==''}">
+                                <input type="text" id="txtUbicación" class="form-control ui-inputfield" readonly ng-model="verDucto.Ubicacion">
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblMaterial">Material</label>
+                        </td>
+                        <td class="texto inlinecontrols" colspan="3" align="left">
+                            <input type="text" id="txtMaterial1" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material1">
+                            <input type="text" id="txtMaterial2" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material2">
+                            <input type="text" id="txtMaterial3" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Material3">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label>Schedule</label>
+                        </td>
+                        <td class="texto inlinecontrols" colspan="3" align="left">
+                            <input type="text" id="txtSchedule1" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule1">
+                            <input type="text" id="txtSchedule2" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule2">
+                            <input type="text" id="txtSchedule3" class="form-control ui-txtfield col-xs-4" readonly ng-model="verDucto.Schedule3">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBLPD">BLPD</label>
+                        </td>
+                        <td class="texto" colspan="3" align="left">
+                            <input type="text" id="txtBLPD" class="form-control ui-inputfield" readonly ng-model="verDucto.BLPD">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Pres.(Psig)</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <input type="text" id="txtPresion" class="form-control ui-inputfield" readonly ng-model="verDucto.Presion">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblPresion">Tempe(°F)</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <input type="text" id="txtTemperatura" class="form-control ui-inputfield" readonly ng-model="verDucto.Temperatura">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="texto">
+                            <label for="lblBSW">BSW</label>
+                        </td>
+                        <td class="texto" colspan="3">
+                            <input type="text" id="txtBSW" class="form-control ui-inputfield" readonly ng-model="verDucto.BSW">
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -22,3 +22,14 @@ D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\bin\Debug\EPPlus.xml
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\obj\Debug\CNPC.SISDUC.BLL.csprojResolveAssemblyReference.cache
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\obj\Debug\CNPC.SISDUC.BLL.dll
 D:\Datos\CNPC\DUCTOS\CNPC.SISDUC.BLL\obj\Debug\CNPC.SISDUC.BLL.pdb
+C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.BLL\bin\Debug\CNPC.SISDUC.BLL.dll
+C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.BLL\bin\Debug\CNPC.SISDUC.BLL.pdb
+C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.BLL\bin\Debug\CNPC.SISDUC.DAL.dll
+C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.BLL\bin\Debug\CNPC.SISDUC.Model.dll
+C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.BLL\bin\Debug\EPPlus.dll
+C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.BLL\bin\Debug\CNPC.SISDUC.DAL.pdb
+C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.BLL\bin\Debug\CNPC.SISDUC.Model.pdb
+C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.BLL\bin\Debug\EPPlus.xml
+C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.BLL\obj\Debug\CNPC.SISDUC.BLL.csprojResolveAssemblyReference.cache
+C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.BLL\obj\Debug\CNPC.SISDUC.BLL.dll
+C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.BLL\obj\Debug\CNPC.SISDUC.BLL.pdb

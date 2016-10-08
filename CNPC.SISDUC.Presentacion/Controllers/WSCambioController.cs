@@ -1,7 +1,6 @@
-﻿using CNPC.SISDUC.Model.Servicio;
+﻿using CNPC.SISDUC.Model;
+using CNPC.SISDUC.Model.Servicio;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
@@ -11,7 +10,7 @@ namespace CNPC.SISDUC.Presentacion.Controllers
     public class WSCambioController : ApiController
     {
         [HttpPost]
-        public HttpResponseMessage Post([FromBody]Model.CambiosTuberia registro)
+        public HttpResponseMessage Post([FromBody]CambiosTuberia registro)
         {
             var msg = new HttpResponseMessage(HttpStatusCode.NotAcceptable);
             CambiosTuberiaRequest RegistroRequest = new CambiosTuberiaRequest();
@@ -24,6 +23,12 @@ namespace CNPC.SISDUC.Presentacion.Controllers
                     RegistroRequest.Item = registro;
                     RegistroRequest.Operacion = Model.Operacion.Agregar;
                     resultado = proxy.CambiosTuberiaEjecutarOperacion(RegistroRequest);
+                    if (resultado.Item==null)
+                    {
+                        resultado.Resultado = false;
+                        resultado.MensajeError = "Error en el registro de datos";
+                        throw (new Exception(resultado.MensajeError));
+                    }
                 }
                 catch (Exception ex)
                 {

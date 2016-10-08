@@ -32,7 +32,7 @@ advertencia 6002: La tabla o vista 'DB_9EB27B_ducto.dbo.Accesorios' no tiene def
     <Property Name="TuberiaId" Type="int" Nullable="false" />
     <Property Name="Motivo" Type="nvarchar" MaxLength="500" Nullable="false" />
     <Property Name="OrdenServicio" Type="nvarchar" MaxLength="100" Nullable="false" />
-    <Property Name="FechaOrdenservicio" Type="datetime" />
+    <Property Name="FechaOrdenServicio" Type="datetime" />
     <Property Name="RowState" Type="char" MaxLength="1" />
     <Property Name="LastUpdate" Type="datetime" />
   </EntityType>

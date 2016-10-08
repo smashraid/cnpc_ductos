@@ -29,6 +29,8 @@ namespace CNPC.SISDUC.Presentacion.Controllers
             var result = Request.CreateResponse<RegistroInspeccionVisualResponse>(HttpStatusCode.OK, listado);
             return result;
         }
+       
+        
         [HttpPost]
         public HttpResponseMessage Post([FromBody]RegistroInspeccionVisual nuevoTuberia)
         {

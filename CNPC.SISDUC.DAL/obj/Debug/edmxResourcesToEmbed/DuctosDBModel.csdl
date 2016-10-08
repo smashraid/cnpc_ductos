@@ -192,7 +192,7 @@
     <Property Name="TuberiaId" Type="Int32" Nullable="false" />
     <Property Name="Motivo" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="OrdenServicio" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="FechaOrdenservicio" Type="DateTime" Precision="3" />
+    <Property Name="FechaOrdenServicio" Type="DateTime" Precision="3" />
     <Property Name="RowState" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
     <Property Name="LastUpdate" Type="DateTime" Precision="3" />
   </EntityType>
