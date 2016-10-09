@@ -57,6 +57,10 @@ namespace CNPC.SISDUC.WEB.Models
         public string EstadoProteccion { get; set; }
         public string EstadoTuberia { get; set; }
         public System.DateTime UltimaFechaDeInspeccion { get; set; }
+        public string UltimaFechaDeInspeccionStr
+        {
+            get { return this.UltimaFechaDeInspeccion.ToString("dd/MM/yyyy"); }
+        }
         public bool SeleccionarTuberia { get; set; }
         public string RowState { get; set; }
         public System.DateTime LastUpdate { get; set; }

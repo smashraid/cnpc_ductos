@@ -20,20 +20,36 @@ namespace CNPC.SISDUC.WEB.Controllers
 
         public ActionResult Create(int id)
         {
+            //RegistroInspeccionVisualResponse resultado = new RegistroInspeccionVisualResponse();
             RegistroInspeccionVisualModel Entidad = new RegistroInspeccionVisualModel();
 
-            //Oleoducto nuevoDucto = new Oleoducto();
-            OleoductoRequest registroOleo = new OleoductoRequest();
-            OleoductoResponse resultadoOleo = null;
             var proxy = new ServicioClient();
 
-            registroOleo.Item = new Oleoducto { Id = id };
-            registroOleo.Operacion = Model.Operacion.BuscarPorId;
-            resultadoOleo = proxy.OleoductoEjecutarOperacion(registroOleo);
+            OleoductoResponse oleoducto =
+               proxy.OleoductoEjecutarOperacion(new OleoductoRequest
+               {
+                   Item = new Model.Oleoducto
+                   {
+                       Id = id
+                   },
+                   Operacion = Model.Operacion.BuscarPorId
+               });
 
-            var Modelo_Oleo = resultadoOleo.Item.ConvertToViewModel();
+            //ViewBag.oleoducto = oleoducto.Item;
+            var Modelo_Oleo = oleoducto.Item.ConvertToViewModel();
 
-            //Entidad.Id = 0;
+            List<SelectListItem> list = new List<SelectListItem>();
+            var listado = proxy.TipoSoporteListarAllEntidad();
+            foreach (var item in listado.List)
+            {
+                var newItem = new SelectListItem { Text = item.Nombre, Value = item.Valor };
+                list.Add(newItem);
+            }            
+            //resultado.ListTipoSoporte = proxy.TipoSoporteListarAllEntidad();
+
+            //Entidad.ListaTipoSoporte = resultado.ListTipoSoporte;
+            Entidad.oleoducto = oleoducto.Item;
+            Entidad.ListaTipoSoporte = list;
             Entidad.OleoductoID = Modelo_Oleo.Id;
             Entidad.NumeroOleoducto = Modelo_Oleo.Codigo;
 
@@ -41,7 +57,7 @@ namespace CNPC.SISDUC.WEB.Controllers
 
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(int id,int Codigo)
         {
             var proxy = new ServicioClient();
             RegistroInspeccionVisualRequest registro = new RegistroInspeccionVisualRequest();
@@ -51,19 +67,69 @@ namespace CNPC.SISDUC.WEB.Controllers
             registro.Operacion = Model.Operacion.BuscarPorId;
             resultado = proxy.RegistroInspeccionVisualEjecutarOperacion(registro);
 
+            OleoductoResponse oleoducto =
+                proxy.OleoductoEjecutarOperacion(new OleoductoRequest
+                {
+                    Item = new Model.Oleoducto
+                    {
+                        Id = Codigo
+                    },
+                    Operacion = Model.Operacion.BuscarPorId
+                });
+            ViewBag.oleoducto = oleoducto.Item;
+
             return View(resultado.Item.ConvertToViewModel());
 
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Eliminar(string hd_id_oleoducto,int id_oleoducto, int hd_id_tuberia, string Motivo, string OrdenServicio)
+        {
+            CambiosTuberiaRequest registro = new CambiosTuberiaRequest();
+            CambiosTuberiaResponse resultado = null;
+            CambiosTuberia Entidad = new CambiosTuberia();
+            var proxy = new ServicioClient();
+
+            RegistroInspeccionVisualResponse Tuberia =
+                proxy.RegistroInspeccionVisualEjecutarOperacion(new RegistroInspeccionVisualRequest
+                {
+                    Item = new Model.RegistroInspeccionVisual
+                    {
+                        Id = hd_id_tuberia
+                    },
+                    Operacion = Model.Operacion.BuscarPorId
+                });
+
+            Entidad.NumeroOleoducto = hd_id_oleoducto;
+            Entidad.CodigoDelTubo01 = Tuberia.Item.ConvertToViewModel().CodigoDelTubo;
+            Entidad.LastUpdate = DateTime.Now;
+            Entidad.OrdenServicio = OrdenServicio;
+            Entidad.Motivo = Motivo;
+            Entidad.RowState = "A";
+            
+            registro.Item = Entidad;
+            registro.Operacion = Model.Operacion.Agregar;
+            resultado = proxy.CambiosTuberiaEjecutarOperacion(registro);
+
+            RegistroInspeccionVisualResponse ElimTuberia =
+               proxy.RegistroInspeccionVisualEjecutarOperacion(new RegistroInspeccionVisualRequest
+               {
+                   Item = new Model.RegistroInspeccionVisual
+                   {
+                       Id = hd_id_tuberia
+                   },
+                   Operacion = Model.Operacion.Eliminar
+               });
+
+            return RedirectToAction("List/" + id_oleoducto);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RegistroInspeccionVisual nuevaTuberia)
+        public ActionResult Create(RegistroInspeccionVisual nuevaTuberia, string motivo, string OrdenServicio)
         {
             RegistroInspeccionVisualRequest registro = new RegistroInspeccionVisualRequest();
-            //OleoductoRequest registroOleo = new OleoductoRequest();
-            //OleoductoResponse resultadoOleo = null;
-            //Oleoducto nuevoDucto = new Oleoducto();
 
             RegistroInspeccionVisualResponse resultado = null;
             var proxy = new ServicioClient();
@@ -71,10 +137,6 @@ namespace CNPC.SISDUC.WEB.Controllers
             {
                 try
                 {
-                    //nuevoDucto.Id = nuevaTuberia.Id;
-                    //registroOleo.Item = nuevoDucto;
-                    //registroOleo.Operacion = Model.Operacion.BuscarPorId;
-                    //resultadoOleo = proxy.OleoductoEjecutarOperacion(registroOleo);
 
                     nuevaTuberia.RowState = "A";
                     nuevaTuberia.LastUpdate = DateTime.Now;
@@ -84,12 +146,34 @@ namespace CNPC.SISDUC.WEB.Controllers
                                                                             , nuevaTuberia.CodigoDelTubo01
                                                                             , nuevaTuberia.CodigoDelTubo02
                                                                             , nuevaTuberia.CodigoDelTubo03);
-                    //nuevaTuberia.OleoductoID = nuevaTuberia.Id;
-                    //nuevaTuberia.NumeroOleoducto = resultadoOleo.Item.ConvertToViewModel().Codigo;
-                    //nuevaTuberia.Id = 0;
+
                     registro.Item = nuevaTuberia;
                     registro.Operacion = Model.Operacion.Agregar;
                     resultado = proxy.RegistroInspeccionVisualEjecutarOperacion(registro);
+
+                    //REGISTRO DE CAMBIOS
+                    CambiosTuberiaRequest CambioRequest = new CambiosTuberiaRequest();
+                    CambiosTuberiaResponse CambioResponse = null;
+                    CambiosTuberia Cambio = new CambiosTuberia();
+                    if (motivo == "Agregado")
+                    {
+                        Cambio.NumeroOleoducto = nuevaTuberia.NumeroOleoducto;
+                        Cambio.CodigoDelTubo01 = nuevaTuberia.CodigoDelTubo;
+                        Cambio.LastUpdate = DateTime.Now;
+                        Cambio.OrdenServicio = OrdenServicio;
+                        Cambio.Motivo = motivo;
+                        Cambio.RowState = "A";
+
+                        CambioRequest.Item = Cambio;
+                        CambioRequest.Operacion = Model.Operacion.Agregar;
+                        CambioResponse = proxy.CambiosTuberiaEjecutarOperacion(CambioRequest);
+                    }
+                    else { 
+                    
+                    }
+                   
+                    //FIN REGISTRO DE CAMBIOS
+
                     if (resultado.Resultado) return RedirectToAction("List/"+nuevaTuberia.OleoductoID);
                     else return View(nuevaTuberia.ConvertToViewModel());
                 }
@@ -146,6 +230,14 @@ namespace CNPC.SISDUC.WEB.Controllers
 
                     modelo = resultado.Item.ConvertToViewModel();
 
+                    List<SelectListItem> list = new List<SelectListItem>();
+                    foreach (var item in resultado.ListTipoSoporte.List)
+                    {
+                        var newItem = new SelectListItem { Text = item.Nombre, Value = item.Valor};
+                        list.Add(newItem);
+                    }
+                    modelo.ListaTipoSoporte = list;
+                    
                     OleoductoResponse ducto = proxy.OleoductoEjecutarOperacion(
                         new OleoductoRequest
                         {
@@ -180,13 +272,16 @@ namespace CNPC.SISDUC.WEB.Controllers
             RegistroInspeccionVisualResponse resultado = null;
             RegistroInspeccionVisual modelo = new RegistroInspeccionVisual();
             modelo = model.ConvertToModel();
-
-            OleoductoRequest registros = new OleoductoRequest();
-            OleoductoResponse resultados = null;
-
-            registros.Item = new Oleoducto { Id = modelo.OleoductoID };
-            registros.Operacion = Model.Operacion.BuscarPorId;
-            resultados = proxy.OleoductoEjecutarOperacion(registros);
+     
+            OleoductoResponse resultados =
+             proxy.OleoductoEjecutarOperacion(new OleoductoRequest
+             {
+                 Item = new Model.Oleoducto
+                 {
+                     Id = modelo.OleoductoID
+                 },
+                 Operacion = Model.Operacion.BuscarPorId
+             });
 
             if (ModelState.IsValid)
             {
@@ -194,9 +289,10 @@ namespace CNPC.SISDUC.WEB.Controllers
                 {
                     modelo.RowState = "A";
                     modelo.LastUpdate = DateTime.Now;
+                    modelo.NumeroOleoducto = resultados.Item.Codigo;
                     modelo.CodigoDelTubo02 = "0";
                     modelo.CodigoDelTubo03 = "0216";
-                    modelo.CodigoDelTubo = string.Format("{0}-{1}-{2}-{3}", resultados.Item.ConvertToViewModel().Codigo
+                    modelo.CodigoDelTubo = string.Format("{0}-{1}-{2}-{3}", modelo.NumeroOleoducto
                                                                             , modelo.CodigoDelTubo01
                                                                             , modelo.CodigoDelTubo02
                                                                             , modelo.CodigoDelTubo03);
@@ -205,7 +301,7 @@ namespace CNPC.SISDUC.WEB.Controllers
                     registro.Operacion = Model.Operacion.Actualizar;
                     resultado = proxy.RegistroInspeccionVisualEjecutarOperacion(registro);
                     if (resultado.Resultado) return RedirectToAction("List/" + model.OleoductoID);
-                    else return View(model.ConvertToModel().ConvertToViewModel());
+                    else return View(model);
                     //OleoductoResponse ducto = proxy.OleoductoEjecutarOperacion(
                     //    new OleoductoRequest
                     //    {

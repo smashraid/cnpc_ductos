@@ -21,6 +21,22 @@
 
         <div class="form-group">
             <div class="col-md-12">
+                <label class="control-label col-md-2">Oleoducto</label>
+                <div class="col-md-4">
+                    @*@Html.TextBox("DESCRIPCION", model.oleoducto.Codigo, new { @class = "form-control", @readonly = "readonly" })*@
+                    @Html.EditorFor(model => model.oleoducto.Codigo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </div>
+
+                <label class="control-label col-md-2">Descripción</label>
+                <div class="col-md-4">
+                    @*@Html.TextBox("DESCRIPCION", model.oleoducto.Descripcion, new { @class = "form-control", @readonly = "readonly" })*@
+                    @Html.EditorFor(model => model.oleoducto.Descripcion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
                 @Html.LabelFor(model => model.CodigoDelTubo01, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-4">
                     @Html.TextBoxFor(model => model.CodigoDelTubo01, new { @class = "form-control", @MaxLength = "5" })
@@ -175,7 +191,8 @@
             <div class="col-md-12">
                 @Html.LabelFor(model => model.TipoSoporte, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-1">
-                    @Html.TextBoxFor(model => model.TipoSoporte,  new { @class = "form-control" })
+                    @*@Html.TextBoxFor(model => model.TipoSoporte,  new { @class = "form-control" })*@
+                    @Html.DropDownListFor(model => model.TipoSoporte, Model.ListaTipoSoporte, new { @class = "form-control" })
                 </div>
 
                 @Html.LabelFor(model => model.Elastomero, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -220,11 +237,31 @@
         </div>
 
         <div class="form-group">
+            <div class="col-md-12">
+                <label class="control-label col-md-2">Motivo</label>
+                <div class="col-md-2">
+                    <select id="ddlmotivo" name="motivo" class="form-control">
+                        <option value="Agregado">Agregar</option>
+                        <option value="Reemplazar">Reemplazar</option>
+                    </select>
+                </div>
+                <label class="control-label col-md-2">Orden Servicio</label>
+                <div class="col-md-2">
+                    <input type="text" class="form-control input-sm limpiar" name="OrdenServicio" id="OrdenServicio" placeholder="Ingrese Orden Servicio">
+                </div>
+                <div id="div_eliminados" style="display:none;">
+                    <label class="control-label col-md-2" >Seleccionar Eliminados</label>
+                    <input type="button" onclick="MostrarDialog()" class="btn btn-danger" value="..." />
+                </div>
+            </div>
+        </div>
+
+        @*<div class="form-group">
             @Html.LabelFor(model => model.EstadoTuberia, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.EstadoTuberia, new { @class = "form-control" })
             </div>
-        </div>
+        </div>*@
 
         @*<div class="form-group">
             @Html.LabelFor(model => model.OleoductoID, "OleoductoID", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -348,6 +385,62 @@
     </div>
 }
 
-<div>
-    @*@Html.ActionLink("Back to List", "Index")*@
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog " style="width:480px;">
+        <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" style="color:#ff9242;;" id="myModalLabel">Seleccionar Tuberias</h4>
+
+                </div>
+                <div class="modal-body box" style="border-top:3px solid #ff9242;" id="modal-bodyku">
+
+                    <section>
+                        <div class="row">
+                            <input type="hidden" name="hd_id_oleoducto" id="hd_id_oleoducto" value="0" />
+                            <input type="hidden" name="id_oleoducto" id="id_oleoducto" value="0" />
+                            <input type="hidden" name="hd_id_tuberia" id="hd_id_tuberia" value="0" />
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="control-label col-md-4"> Motivo:</label>
+                                    <div class="col-md-8">
+                                        <input type="text" class="form-control input-sm limpiar" name="Motivo" id="Motivo" value="Eliminado" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                </div>
+                <div class="modal-footer" id="modal-footerq">
+                    <input type="submit" class="btn btn-primary" value="Guardar" />
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                </div>
+        </div>
+    </div>
 </div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#Editform").submit(function () {
+            var codigo = $("#CodigoDelTubo01").val();
+            if (codigo == "") {
+                alert("Ingrese Codigo");
+                return false;
+            } else
+                return true;
+        });
+
+        $("#ddlmotivo").change(function () {
+            var valor = $(this).val();
+            if(valor == "Agregado") $("#div_eliminados").hide();
+            else $("#div_eliminados").show();
+        });
+    });
+
+    function MostrarDialog()
+    {
+        $('#myModal').modal('show');
+    }
+</script>

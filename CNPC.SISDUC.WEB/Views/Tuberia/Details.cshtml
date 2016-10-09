@@ -13,11 +13,30 @@
 
     <div class="form-horizontal col-md-12">
         @* <h4>RegistroInspeccionVisualModel</h4>*@
-        <hr />
         @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
 
         @*@Html.HiddenFor(model => model.OleoductoID)
         @Html.HiddenFor(model => model.NumeroOleoducto)*@
+        @*<div class="form-group">
+            <label class="col-lg-5">CODIGO: @ViewBag.oleoducto.Codigo</label>
+            <label class="col-lg-4">DESCRIPCIÓN: @ViewBag.oleoducto.Descripcion</label>
+        </div>*@
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="control-label col-md-2">Oleoducto</label>
+                <div class="col-md-4">
+                    @Html.TextBox("DESCRIPCION", (string)@ViewBag.oleoducto.Codigo, new { @class = "form-control", @readonly = "readonly" })
+                   @* @Html.TextBoxFor(model => model.CodigoDelTubo, new { @class = "form-control", @MaxLength = "5", @readonly = "readonly" })*@
+                </div>
+
+                <label class="control-label col-md-2">Descripción</label>
+                <div class="col-md-4">
+                    @Html.TextBox("DESCRIPCION", (string)@ViewBag.oleoducto.Descripcion, new { @class = "form-control", @readonly = "readonly" })
+                    @*@Html.TextBoxFor(model => model.NumeroAnterior, new { @class = "form-control", @readonly = "readonly" })*@
+                </div>
+            </div>
+        </div>
 
         <div class="form-group">
             <div class="col-md-12">
@@ -219,12 +238,12 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.EstadoTuberia, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.EstadoTuberia, new { @class = "form-control", @readonly = "readonly" })
             </div>
-        </div>
+        </div>*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="button" onclick="javascript: window.location.href = '/Tuberia/List/@Model.OleoductoID'" value="Cancelar" class="btn btn-default" />

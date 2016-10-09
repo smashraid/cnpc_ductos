@@ -1,4 +1,5 @@
 ﻿@model PagedList.IPagedList<CNPC.SISDUC.WEB.Models.RegistroInspeccionVisualModel>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Edit";
 }
@@ -67,19 +68,20 @@
                         </td>
                         <td width="15%" class="celda2_grilla">@item.ObservacionesDeLaInspeccionVisual</td>
                         <td width="15%" class="celda2_grilla">@item.CondicionDelTramo</td>
-                        <td width="10%" class="celda2_grilla">@item.UltimaFechaDeInspeccion</td>
+                        <td width="10%" class="celda2_grilla">@item.UltimaFechaDeInspeccionStr</td>
                         <td width="5%" class="celda2_grilla">@item.SeleccionarTuberia</td>
 
                         <td align="center">
                             @*<a href="#" ng-click="EditarTuberia(item)"><img src="../../Content/img/ico-editar.png" width="14" height="14" alt="" style="border:none;" /></a>*@
                             <a href="Tuberia/GetTuberia/@item.Id"><img src="../../Content/img/ico-editar.png" width="14" height="14" alt="" style="border:none;" /></a>
-
                         </td>
                         <td align="center">
-                            <a href="#" ng-click="EliminarTuberia(item)"><img src="../../Content/img/ico_delete.png" width="14" height="14" alt="" style="border:none;" /></a>
+                            <a href="javascript:EliminarRegistro('@ViewBag.oleoducto.Codigo',@ViewBag.oleoducto.Id,@item.Id);"><img src="../../Content/img/ico_delete.png" width="14" height="14" alt="" style="border:none;" /></a>
                         </td>
                         <td>
-                            <a href="~/Tuberia/Details/@item.Id" ><img src="../../Content/img/ico-ver.png" width="10" height="10" alt="" style="border:none;" /></a>
+                            <a href="@Url.Action("Details", "Tuberia", new { id = @item.Id, Codigo = @ViewBag.oleoducto.Id })"><img src="../../Content/img/ico-ver.png" width="10" height="10" alt="" style="border:none;" /></a>
+                            @*<a href="~/Tuberia/Details/@item.Id" ><img src="../../Content/img/ico-ver.png" width="10" height="10" alt="" style="border:none;" /></a>*@
+                            @*@Html.ActionLink("Create New", "Tuberia", "GetTuberia", new { id = @item.Id, memberid = @ViewBag.oleoducto.Id }, null)*@
                         </td>
                         <!--<td>
                         <a href="#" ng-click="agragarAccesorio(item)"><img src="../../Content/img/ico_select.png" width="14" height="14" alt="" style="border:none;" /></a>
@@ -87,6 +89,27 @@
                     </tr>
                 }
         <tr>
+            <td colspan="15" align="center">
+                <table width="30%" border="0" align="left">
+                    <tbody>
+                        <tr>
+                            <td class="texto"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table width="100%" border="0" align="right">
+                    <tbody>
+                        <tr>
+                            <td align="right" class="texto" style="text-align:right">
+                                Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                                @Html.PagedListPager(Model, page => Url.Action("List", new { page }))
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        @*<tr>
             <td colspan="15" align="center">
                 <table width="30%" border="0" align="left">
                     <tbody>
@@ -111,7 +134,7 @@
                 </table>
 
             </td>
-        </tr>
+        </tr>*@
         <tr>
             <td colspan="15" align="center">&nbsp;</td>
         </tr>
@@ -210,7 +233,6 @@
         </tr>
     </tbody>
 </table>
-
 <!-- Modal -->
 <div id="NuevoMotivo" class="modal fade" role="dialog">
     <div class="modal-dialog">
@@ -1071,3 +1093,69 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby ="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog " style="width:480px;">
+        <div class="modal-content">
+        @using (Html.BeginForm("Eliminar", "Tuberia", FormMethod.Post, new { id = "Editform" }))
+        {
+            @Html.AntiForgeryToken()
+                <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" style="color:#ff9242;;" id="myModalLabel">Eliminar Tuberia</h4>
+
+            </div>
+            <div class="modal-body box" style="border-top:3px solid #ff9242;" id="modal-bodyku">
+           
+                <section>
+                    <div class="row">
+                        <input type="hidden" name="hd_id_oleoducto" id="hd_id_oleoducto" value="0" />
+                        <input type="hidden" name="id_oleoducto" id="id_oleoducto" value="0" />
+                        <input type="hidden" name="hd_id_tuberia" id="hd_id_tuberia" value="0" />
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label col-md-4"> Motivo:</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control input-sm limpiar" name="Motivo" id="Motivo" value="Eliminado" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <br />
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <label class="control-label col-md-4"> Orden Servicio:</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control input-sm limpiar" name="OrdenServicio" id="OrdenServicio" placeholder="Ingrese Orden Servicio">
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+                </section>
+           
+            </div>
+            <div class="modal-footer" id="modal-footerq">
+                <input type="submit" class="btn btn-primary" value="Guardar" />
+                <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+            </div>
+        }
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        //$("#displayinmodal").dialog({
+        //    autoOpen: true
+        //});
+    });
+
+    function EliminarRegistro(codigo,idoleo,id)
+    {
+        $("#hd_id_oleoducto").val(codigo);
+        $("#id_oleoducto").val(idoleo);
+        $("#hd_id_tuberia").val(id);
+        $('#myModal').modal('show');
+    }
+</script>
