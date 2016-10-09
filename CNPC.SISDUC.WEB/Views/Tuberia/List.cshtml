@@ -79,7 +79,7 @@
                             <a href="#" ng-click="EliminarTuberia(item)"><img src="../../Content/img/ico_delete.png" width="14" height="14" alt="" style="border:none;" /></a>
                         </td>
                         <td>
-                            <a href="#" ng-click="verTuberia(item)"><img src="../../Content/img/ico-ver.png" width="10" height="10" alt="" style="border:none;" /></a>
+                            <a href="~/Tuberia/Details/@item.Id" ><img src="../../Content/img/ico-ver.png" width="10" height="10" alt="" style="border:none;" /></a>
                         </td>
                         <!--<td>
                         <a href="#" ng-click="agragarAccesorio(item)"><img src="../../Content/img/ico_select.png" width="14" height="14" alt="" style="border:none;" /></a>
@@ -185,10 +185,10 @@
                             <td>
                                 <table width="100%" border="0" align="right">
                                     <td class="button">
-                                        @Html.ActionLink("Agregar Tuberia", "Create")
-                                        @*<a href="#" ng-click="agregarTuberia()">
+                                        @*@Html.ActionLink("Agregar Tuberia", "Create", new { id = @ViewBag.oleoducto.Id })*@
+                                        <a href="~/Tuberia/Create/@ViewBag.oleoducto.Id">
                                             Agregar Tuberia
-                                        </a>*@
+                                        </a>
                                     </td>
                                 </table>
                             </td>

@@ -1,0 +1,310 @@
+﻿@model CNPC.SISDUC.WEB.Models.RegistroInspeccionVisualModel
+
+@{
+    ViewBag.Title = "GetTuberia";
+}
+
+<h2>Tuberia</h2>
+
+
+<div id="EditarTuberia">
+    <div class="modal-body">
+        <div class="container">
+            <div class="modal-content">
+                @*<div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">
+                            Editar Tuberia
+                        </h4>
+                    </div>*@
+                <div class="modal-body">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <h6><label for="txtOleoducto" class="control-label col-lg-2">Oleoducto:</label></h6>
+                            <div class="col-lg-4">
+                                <input type="text" id="txtOleoducto" class="form-control" value=@ViewBag.Oleoducto.Codigo>
+                            </div>
+                            <h6>
+                                <label for="txtDescripcion" class="control-label col-lg-2">Descripción:</label>
+                            </h6>
+                            <div class="col-lg-4">
+                                <input type="text" id="txtDescripcion" class="form-control" value=@ViewBag.Oleoducto.Descripcion>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6><label for="txtCodigoTubo" class="control-label col-lg-2">Código del Tubo:</label></h6>
+                            <div class="col-lg-4">
+                                @*<input type="text" id="txtCodigoTubo" class="form-control" ng-model="editaTuberia.CodigoDelTubo">*@
+                                @Html.EditorFor(model => model.CodigoDelTubo, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CodigoDelTubo, "", new { @class = "text-danger" })
+                            </div>
+                            <h6><label for="txtNumeroAnterior" class="control-label col-lg-2">Número Anterior</label></h6>
+                            <div class="col-lg-4">
+                                @*<input type="text" id="txtNumeroAnterior" class="form-control " ng-model="editaTuberia.NumeroAnterior">*@
+                                @Html.EditorFor(model => model.NumeroAnterior, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NumeroAnterior, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6><label for="txtNPS" class="control-label col-lg-2">NPS</label></h6>
+                            <div class="col-lg-4">
+                                @*<input type="text" id="txtNPS" class="form-control " ng-model="editaTuberia.NPS">*@
+                                @Html.EditorFor(model => model.NPS, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NPS, "", new { @class = "text-danger" })
+                            </div>
+                            <h6><label for="txtSchedule" class="control-label col-lg-2">Schedule</label></h6>
+                            <div class="col-lg-4">
+                                @*<input type="text" id="txtSchedule" class="form-control " ng-model="editaTuberia.Schedule">*@
+                                @Html.EditorFor(model => model.Schedule, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Schedule, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6><label for="txtTipoMaterial" class="control-label col-lg-2">Tipo Material:</label></h6>
+                            <div class="col-lg-2">
+                                @*<input type="text" id="txtTipoMaterial" class="form-control" ng-model="editaTuberia.TipoMaterial">*@
+                                @Html.EditorFor(model => model.TipoMaterial, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TipoMaterial, "", new { @class = "text-danger" })
+                            </div>
+                            <h6><label for="txtLongitud" class="control-label col-lg-1">Longitud</label></h6>
+                            <div class="col-lg-2">
+                                @*<input type="text" id="txtLongitud" class="form-control " ng-model="editaTuberia.Longitud">*@
+                                @Html.EditorFor(model => model.Longitud, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Longitud, "", new { @class = "text-danger" })
+                            </div>
+                            <h6><label for="txtCoordenadasUTM_X" class="control-label col-lg-2">Coordenas UTM</label></h6>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtCoordenadasUTM_X" class="form-control " ng-model="editaTuberia.CoordenadasUTM_X">*@
+                                @Html.EditorFor(model => model.CoordenadasUTM_X, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CoordenadasUTM_X, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtCoordenadasUTM_Y" class="form-control " ng-model="editaTuberia.CoordenadasUTM_Y">*@
+                                @Html.EditorFor(model => model.CoordenadasUTM_Y, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.CoordenadasUTM_Y, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <div class="clearfix visible-lg-block"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="control-label col-lg-6">
+                                <h4>
+                                    Lecturas con Ultrasonido Pulso- Eco:
+                                </h4>
+                            </div>
+                            <div class="control-label col-lg-3">
+                                <h4>
+                                    Otro Método:
+                                </h4>
+                            </div>
+                            <div class="control-label col-lg-3">
+                                <h4>
+                                    Corrosión Externa:
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6><label for="txtExtremoInicial1" class="control-label col-lg-2 sin-espacio">Extremo Inicial:</label></h6>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtExtremoInicial1" class="form-control" ng-model="editaTuberia.ExtremoInicial1">*@
+                                @Html.EditorFor(model => model.ExtremoInicial1, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoInicial1, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtExtremoInicial2" class="form-control" ng-model="editaTuberia.ExtremoInicial2">*@
+                                @Html.EditorFor(model => model.ExtremoInicial2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoInicial2, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtExtremoInicial3" class="form-control" ng-model="editaTuberia.ExtremoInicial3">*@
+                                @Html.EditorFor(model => model.ExtremoInicial2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoInicial2, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtExtremoInicial4" class="form-control" ng-model="editaTuberia.ExtremoInicial4">*@
+                                @Html.EditorFor(model => model.ExtremoInicial2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoInicial2, "", new { @class = "text-danger" })
+                            </div>
+                            <h6><label for="txtBSCAN" class="control-label col-lg-1 sin-espacio">BSCAN:</label></h6>
+                            <div class="col-lg-2">
+                                @*<input type="text" id="txtBSCAN" class="form-control" ng-model="editaTuberia.BSCAN">*@
+                                @Html.EditorFor(model => model.ExtremoInicial2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoInicial2, "", new { @class = "text-danger" })
+                            </div>
+                            @*<div class="col-lg-1">
+                                    <input type="button" id="btnBSCAN" class="btn btn-danger" value="..." />
+                                </div>*@
+                            <h6><label for="txtEspesorDePared" class="control-label col-lg-2 sin-espacio">Espesor de Pared:</label></h6>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtEspesorDePared" class="form-control" ng-model="editaTuberia.EspesorDePared">*@
+                                @Html.EditorFor(model => model.ExtremoInicial2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoInicial2, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6><label for="txtExtremoMedio1" class="control-label col-lg-2 sin-espacio">Extremo Medio:</label></h6>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtExtremoMedio1" class="form-control" ng-model="editaTuberia.ExtremoMedio1">*@
+                                @Html.EditorFor(model => model.ExtremoInicial2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoInicial2, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtExtremoMedio2" class="form-control" ng-model="editaTuberia.ExtremoMedio2">*@
+                                @Html.EditorFor(model => model.ExtremoInicial2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoInicial2, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtExtremoMedio3" class="form-control" ng-model="editaTuberia.ExtremoMedio3">*@
+                                @Html.EditorFor(model => model.ExtremoMedio3, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoMedio3, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtExtremoMedio4" class="form-control" ng-model="editaTuberia.ExtremoMedio4">*@
+                                @Html.EditorFor(model => model.ExtremoMedio4, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoMedio4, "", new { @class = "text-danger" })
+                            </div>
+                            <h6><label for="txtMapeoDeCorrosion" class="control-label col-lg-1 sin-espacio">Corrosión:</label></h6>
+                            <div class="col-lg-2">
+                                @*<input type="text" id="txtMapeoDeCorrosion" class="form-control" ng-model="editaTuberia.MapeoDeCorrosion">*@
+                                @Html.EditorFor(model => model.MapeoCorrison, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.MapeoCorrison, "", new { @class = "text-danger" })
+                            </div>
+                            @*<div class="col-lg-1">
+                                    <input type="button" id="btnMapeoDeCorrosion" class="btn btn-danger" value="..." />
+                                </div>*@
+                            <h6><label for="txtPitCorrosion" class="control-label col-lg-2 sin-espacio">Pit de Corrosión:</label></h6>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtPitCorrosion" class="form-control" ng-model="editaTuberia.PitCorrosion">*@
+                                @Html.EditorFor(model => model.PitCorrosion, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.PitCorrosion, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6><label for="txtExtremoFinal1" class="control-label col-lg-2 sin-espacio">Extremo Final:</label></h6>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtExtremoFinal1" class="form-control" ng-model="editaTuberia.ExtremoFinal1">*@
+                                @Html.EditorFor(model => model.ExtremoFinal1, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoFinal1, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtExtremoFinal2" class="form-control" ng-model="editaTuberia.ExtremoFinal2">*@
+                                @Html.EditorFor(model => model.ExtremoFinal2, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoFinal2, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtExtremoFinal3" class="form-control" ng-model="editaTuberia.ExtremoFinal3">*@
+                                @Html.EditorFor(model => model.ExtremoFinal3, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoFinal3, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtExtremoFinal4" class="form-control" ng-model="editaTuberia.ExtremoFinal4">*@
+                                @Html.EditorFor(model => model.ExtremoFinal4, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.ExtremoFinal4, "", new { @class = "text-danger" })
+                            </div>
+                            <h6><label for="txtLEFT" class="control-label col-lg-1 sin-espacio">LEFT:</label></h6>
+                            <div class="col-lg-2">
+                                @*<input type="text" id="txtLEFT" class="form-control" ng-model="editaTuberia.LEFT">*@
+                                @Html.EditorFor(model => model.LEFT_MINIMO, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.LEFT_MINIMO, "", new { @class = "text-danger" })
+                            </div>
+                            @*<div class="col-lg-1">
+                                    <input type="button" id="btnLEFT" class="btn btn-danger" value="..." />
+                                </div>*@
+                            <h6><label for="txtEspesorRemanente" class="control-label col-lg-2 sin-espacio">Espesor Remanente:</label></h6>
+                            <div class="col-lg-1">
+                                @*<input type="text" id="txtEspesorRemanente" class="form-control" ng-model="editaTuberia.EspesorRemanente">*@
+                                @Html.EditorFor(model => model.EspesorRemanente, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EspesorRemanente, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h6><label for="cboTipoSoporte" class="control-label col-lg-2 sin-espacio">Tipo de Soporte:</label></h6>
+                            <div class="col-lg-3">
+                                <!--<input type="text" id="txtTipoSoporte" class="form-control2" ng-model="editaTuberia.TipoSoporte">-->
+                                @Html.DropDownListFor(model => model.TipoSoporte, Model.ListaTipoSoporte, new { @class = "form-control" })
+                                @*<select name="repeatSelect" id="repeatSelect" ng-model="editaTuberia.TipoSoporte">
+                                        <option ng-repeat="option in listaTipoSoporte" value="{{option.Valor}}">{{option.Nombre}}</option>
+                                    </select><br>*@
+                            </div>
+                            <h6><label for="txtTipoProteccion" class="control-label col-lg-1 ">Tipo Proteccion:</label></h6>
+                            <div class="col-lg-2">
+                                @*<input type="text" id="txtTipoProteccion" class="form-control2" ng-model="editaTuberia.TipoProteccion">*@
+                                @Html.EditorFor(model => model.TipoProteccion, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.TipoProteccion, "", new { @class = "text-danger" })
+                            </div>
+                            <h6><label for="txtEstadoProteccion" class="control-label col-lg-1 ">Estado Protección:</label></h6>
+                            <div class="col-lg-2">
+                                @*<input type="text" id="txtEstadoProteccion" class="form-control2" ng-model="editaTuberia.EstadoProteccion">*@
+                                @Html.EditorFor(model => model.EstadoProteccion, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EstadoProteccion, "", new { @class = "text-danger" })
+                            </div>
+
+                            <div class="form-group">
+                                <div class="clearfix visible-lg-block"></div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <h6><label for="chkElastomero" class="control-label col-lg-2 ">Elastomero:</label></h6>
+                            <div class="col-lg-1">
+                                @*<input type="checkbox" id="chkElastomero" class="control-label" ng-model="editaTuberia.Elastomero">*@
+                                @Html.CheckBoxFor(model => model.Elastomero, new { htmlAttributes = new { @class = "checkbox" } })
+                                @Html.ValidationMessageFor(model => model.Elastomero, "", new { @class = "text-danger" })
+                            </div>
+
+                            <h6><label for="chkTuberiaAlrededor" class="control-label col-lg-1">Tuberia Alrededor:</label></h6>
+                            <div class="col-lg-1">
+                                @*<input type="checkbox" id="chkTuberiaAlrededor" class="control-label" ng-model="editaTuberia.TuberiaAlrededor">*@
+                                @Html.CheckBoxFor(model => model.TuberiaAlrededor, new { htmlAttributes = new { @class = "checkbox" } })
+                                @Html.ValidationMessageFor(model => model.TuberiaAlrededor, "", new { @class = "text-danger" })
+                            </div>
+                            <h6><label for="chkPintura" class="control-label col-lg-1 ">Pintura:</label></h6>
+                            <div class="col-lg-1 ">
+                                @*<input type="checkbox" id="chkPintura" class="control-label" ng-model="editaTuberia.Pintura">*@
+                                @Html.CheckBoxFor(model => model.Pintura, new { @class = "checkbox" })
+                                @Html.ValidationMessageFor(model => model.Pintura, "", new { @class = "text-danger" })
+                            </div>
+                            <h6><label for="chkCruceCarretera" class="control-label col-lg-1 ">Cruce de Carretera:</label></h6>
+                            <div class="col-lg-1">
+                                @*<input type="checkbox" id="chkCruceCarretera" class="control-label" ng-model="editaTuberia.CruceCarretera">*@
+                                @Html.CheckBoxFor(model => model.CruceCarretera, new { htmlAttributes = new { @class = "checkbox" } })
+                                @Html.ValidationMessageFor(model => model.CruceCarretera, "", new { @class = "text-danger" })
+                            </div>
+                            <h6><label for="chkMaleza" class="control-label col-lg-1 ">Maleza:</label></h6>
+                            <div class="col-lg-1 ">
+                                @*<input type="checkbox" id="chkMaleza" class="control-label" ng-model="editaTuberia.Maleza">*@
+                                @Html.CheckBoxFor(model => model.Maleza, new { htmlAttributes = new { @class = "checkbox" } })
+                                @Html.ValidationMessageFor(model => model.Maleza, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="clearfix visible-lg-block"></div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <h6><label for="txtEstadoTuberia" class="control-label col-lg-2 sin-espacio">Estado de la tuberia:</label></h6>
+                            <div class="col-lg-3">
+                                @*<input type="text" id="txtEstadoTuberia" class="form-control2" ng-model="editaTuberia.EstadoTuberia">*@
+                                @Html.EditorFor(model => model.EstadoTuberia, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EstadoTuberia, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="clearfix visible-lg-block"></div>
+                            @*<div class="clearfix visible-lg-block"></div>*@
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer modal-footerTuberia">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    @*<button type="button" class="btn btn-primary" ng-click="actualizarTuberia(editaTuberia)">Actualizar</button>*@
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

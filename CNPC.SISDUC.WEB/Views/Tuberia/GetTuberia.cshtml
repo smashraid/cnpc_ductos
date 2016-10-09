@@ -19,7 +19,9 @@
                 <div class="form-group">
                     <h6><label for="txtOleoducto" class="control-label col-lg-2">Oleoducto:</label></h6>
                     <div class="col-lg-4">
-                        @Html.Hidden(model => model.Id, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.HiddenFor(model => model.OleoductoID)
+                        @Html.HiddenFor(model => model.Id)
+                        
                         @Html.EditorFor(model => model.oleoducto.Codigo, new { htmlAttributes = new { @class = "form-control" } })
                     </div>
                     <h6>
@@ -34,8 +36,8 @@
                     <h6><label for="txtCodigoTubo" class="control-label col-lg-2">Código del Tubo:</label></h6>
                     <div class="col-lg-4">
                         @*<input type="text" id="txtCodigoTubo" class="form-control" ng-model="editaTuberia.CodigoDelTubo">*@
-                        @Html.EditorFor(model => model.CodigoDelTubo, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.CodigoDelTubo, "", new { @class = "text-danger" })
+                        @Html.EditorFor(model => model.CodigoDelTubo01, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CodigoDelTubo01, "", new { @class = "text-danger" })
                     </div>
                     <h6><label for="txtNumeroAnterior" class="control-label col-lg-2">Número Anterior</label></h6>
                     <div class="col-lg-4">
@@ -293,7 +295,8 @@
                 </div>
             </div>
             <div class="controls">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                @*<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>*@
+                <input type="button" onclick="javascript: window.location.href = '/Tuberia/List/@Model.OleoductoID'" value="Cancelar" class="btn btn-default" />
                 @*<button type="button" class="btn btn-primary" ng-click="actualizarTuberia(editaTuberia)">Actualizar</button>*@
                 <input type="submit" class="btn btn-primary" value="Actualizar" />
             </div>

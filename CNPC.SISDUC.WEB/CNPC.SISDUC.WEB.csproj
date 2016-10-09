@@ -314,6 +314,7 @@
     <Content Include="Views\Oleoducto\Create.cshtml" />
     <Content Include="Views\Oleoducto\Edit.cshtml" />
     <Content Include="Views\Tuberia\Create.cshtml" />
+    <Content Include="Views\Tuberia\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -42,7 +42,7 @@
                 <td width="8%" class="celda2_grilla">@item.LongitudTotal</td>
                 <td width="10%" class="celda2_grilla">@item.FechaInspeccion.ToString("dd/MM/yyyy")</td>
                 <td align="center"><a href="/Tuberia/List/@item.Id"><img src="Content/img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
-                <td align="center"><a href="#" onclick="editarOleoducto(item)"><img src="../../Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
+                <td align="center"><a href="~/Oleoducto/Edit/@item.Id"><img src="../../Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
 
             </tr>
         }
@@ -79,9 +79,10 @@
                             <td>
                                 <table width="100%" border="0" align="right">
                                     <td class="button">
-                                        <a href="#" onclick="agregarOleoducto()">
-                                            Agregar Oleoducto
-                                        </a>
+                                        @Html.ActionLink("Agregar Oleoducto", "Create")
+                                        @*<a href="#" onclick="agregarOleoducto()">
+                                            
+                                        </a>*@
                                     </td>
                                 </table>
                             </td>

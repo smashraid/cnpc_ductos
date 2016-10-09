@@ -1,0 +1,668 @@
+﻿@model CNPC.SISDUC.WEB.Models.RegistroInspeccionVisualModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalle Tuberia</h2>
+
+<div>
+    @* <h4>RegistroInspeccionVisualModel</h4>*@
+        <hr />
+
+    <div class="form-horizontal col-md-12">
+        @* <h4>RegistroInspeccionVisualModel</h4>*@
+        <hr />
+        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+
+        @*@Html.HiddenFor(model => model.OleoductoID)
+        @Html.HiddenFor(model => model.NumeroOleoducto)*@
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.CodigoDelTubo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.CodigoDelTubo, new { @class = "form-control", @MaxLength = "5", @readonly = "readonly" })
+                </div>
+
+                @Html.LabelFor(model => model.NumeroAnterior, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.NumeroAnterior, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.NPS, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.NPS, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                @Html.LabelFor(model => model.Schedule, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.Schedule, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.TipoMaterial, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.TextBoxFor(model => model.TipoMaterial, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                @Html.LabelFor(model => model.Longitud, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.TextBoxFor(model => model.Longitud, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                @Html.LabelFor(model => model.CoordenadasUTM_X, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.CoordenadasUTM_X, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.CoordenadasUTM_Y, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.ExtremoInicial1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.ExtremoInicial1, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.ExtremoInicial2, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.ExtremoInicial3, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.ExtremoInicial4, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                @Html.LabelFor(model => model.BSCAN, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.BSCAN, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                @Html.LabelFor(model => model.EspesorPared, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.EspesorPared, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.ExtremoMedio1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.ExtremoMedio1, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.ExtremoMedio2, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.ExtremoMedio3, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.ExtremoMedio4, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                @Html.LabelFor(model => model.MapeoCorrison, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.MapeoCorrison, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                @Html.LabelFor(model => model.PitCorrosion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.PitCorrosion, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.ExtremoFinal1, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.ExtremoFinal1, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.ExtremoFinal2, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.ExtremoFinal3, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.ExtremoFinal4, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                @Html.LabelFor(model => model.LEFT_MINIMO, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.LEFT_MINIMO, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                @Html.LabelFor(model => model.EspesorRemanente, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.EspesorRemanente, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Defecto, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.TextBoxFor(model => model.Defecto, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                @Html.LabelFor(model => model.Defecto2, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.CheckBoxFor(model => model.Defecto2, new { @disabled = "disabled" })
+                </div>
+
+                @Html.LabelFor(model => model.NumeroGrapas, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-2">
+                    @Html.TextBoxFor(model => model.NumeroGrapas, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.TipoSoporte, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.TipoSoporte, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                @Html.LabelFor(model => model.Elastomero, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.CheckBoxFor(model => model.Elastomero, new { @disabled = "disabled" })
+                </div>
+
+                @Html.LabelFor(model => model.Maleza, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.CheckBoxFor(model => model.Maleza, new { @disabled = "disabled" })
+                </div>
+
+                @Html.LabelFor(model => model.TuberiaAlrededor, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.CheckBoxFor(model => model.TuberiaAlrededor, new { @disabled = "disabled" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Pintura, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.CheckBoxFor(model => model.Pintura, new { @disabled = "disabled" })
+                </div>
+
+                @Html.LabelFor(model => model.CruceCarretera, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.CheckBoxFor(model => model.CruceCarretera, new { @disabled = "disabled" })
+                </div>
+
+                @Html.LabelFor(model => model.TipoProteccion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.TipoProteccion, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+
+                @Html.LabelFor(model => model.EstadoProteccion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-1">
+                    @Html.TextBoxFor(model => model.EstadoProteccion, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EstadoTuberia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.EstadoTuberia, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" onclick="javascript: window.location.href = '/Tuberia/List/@Model.OleoductoID'" value="Cancelar" class="btn btn-default" />
+
+            </div>
+        </div>
+    </div>
+    
+
+
+        @*<dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.oleoducto.BSW)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.oleoducto.BSW)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CodigoDelTubo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CodigoDelTubo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumeroOleoducto)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumeroOleoducto)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CodigoDelTubo01)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CodigoDelTubo01)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CodigoDelTubo02)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CodigoDelTubo02)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CodigoDelTubo03)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CodigoDelTubo03)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumeroAnterior)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumeroAnterior)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NPS)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NPS)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Schedule)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Schedule)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SHC)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SHC)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoMaterial)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TipoMaterial)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Longitud)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Longitud)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CoordenadasUTM_X)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CoordenadasUTM_X)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CoordenadasUTM_Y)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CoordenadasUTM_Y)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtremoInicial1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtremoInicial1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtremoInicial2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtremoInicial2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtremoInicial3)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtremoInicial3)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtremoInicial4)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtremoInicial4)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.BSCAN)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.BSCAN)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EspesorPared)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EspesorPared)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtremoMedio1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtremoMedio1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtremoMedio2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtremoMedio2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtremoMedio3)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtremoMedio3)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtremoMedio4)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtremoMedio4)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.MapeoCorrison)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.MapeoCorrison)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PitCorrosion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PitCorrosion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtremoFinal1)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtremoFinal1)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtremoFinal2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtremoFinal2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtremoFinal3)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtremoFinal3)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ExtremoFinal4)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ExtremoFinal4)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LEFT_MINIMO)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LEFT_MINIMO)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EspesorRemanente)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EspesorRemanente)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EspesorNominal)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EspesorNominal)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Defecto)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Defecto)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Defecto2)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Defecto2)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.NumeroGrapas)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.NumeroGrapas)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoSoporte)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TipoSoporte)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Elastomero)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Elastomero)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Maleza)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Maleza)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TuberiaAlrededor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TuberiaAlrededor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Pintura)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Pintura)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CruceCarretera)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CruceCarretera)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TipoProteccion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TipoProteccion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EstadoProteccion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EstadoProteccion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EstadoTuberia)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EstadoTuberia)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.UltimaFechaDeInspeccion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.UltimaFechaDeInspeccion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SeleccionarTuberia)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SeleccionarTuberia)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.RowState)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.RowState)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LastUpdate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LastUpdate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TuberiaId)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TuberiaId)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.EspesorMinimoRealRemanente)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EspesorMinimoRealRemanente)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ObservacionesDeLaInspeccionVisual)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ObservacionesDeLaInspeccionVisual)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.CondicionDelTramo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.CondicionDelTramo)
+            </dd>
+
+        </dl>*@
+    </div>
+    @*<p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>*@

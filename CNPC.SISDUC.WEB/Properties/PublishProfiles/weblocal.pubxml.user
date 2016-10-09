@@ -6,7 +6,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>D:\Datos\WebPublicar</_PublishTargetUrl>
+    <_PublishTargetUrl>D:\publishmvc</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="ApplicationInsights.config">
@@ -19,13 +19,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/06/2016 23:31:43</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>10/03/2016 14:36:00</publishTime>
+      <publishTime>10/08/2016 14:21:42</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>10/03/2016 14:36:00</publishTime>
+      <publishTime>10/08/2016 14:21:42</publishTime>
     </File>
     <File Include="bin/CNPC.SISDUC.WEB.dll">
-      <publishTime>10/03/2016 14:35:42</publishTime>
+      <publishTime>10/08/2016 14:21:23</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>03/02/2015 09:32:26</publishTime>
@@ -292,10 +292,10 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/07/2016 01:25:48</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>10/03/2016 14:35:44</publishTime>
+      <publishTime>10/08/2016 14:21:30</publishTime>
     </File>
     <File Include="Proxy/output.config">
-      <publishTime>09/14/2016 11:14:39</publishTime>
+      <publishTime>10/05/2016 23:27:56</publishTime>
     </File>
     <File Include="Scripts/ai.0.22.19-build00125.js">
       <publishTime>09/06/2016 23:31:45</publishTime>
@@ -405,8 +405,14 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Views/Manage/VerifyPhoneNumber.cshtml">
       <publishTime>09/06/2016 23:31:31</publishTime>
     </File>
+    <File Include="Views/Oleoducto/Create.cshtml">
+      <publishTime>10/08/2016 13:54:42</publishTime>
+    </File>
+    <File Include="Views/Oleoducto/Edit.cshtml">
+      <publishTime>10/08/2016 13:56:23</publishTime>
+    </File>
     <File Include="Views/Oleoducto/Index.cshtml">
-      <publishTime>09/18/2016 19:46:12</publishTime>
+      <publishTime>10/08/2016 11:52:20</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>09/06/2016 23:31:31</publishTime>
@@ -420,11 +426,17 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="Views/Shared/_LoginPartial.cshtml">
       <publishTime>09/06/2016 23:31:31</publishTime>
     </File>
+    <File Include="Views/Tuberia/Create.cshtml">
+      <publishTime>10/08/2016 13:49:48</publishTime>
+    </File>
     <File Include="Views/Tuberia/GetTuberia.cshtml">
-      <publishTime>10/02/2016 12:11:57</publishTime>
+      <publishTime>10/07/2016 10:28:17</publishTime>
+    </File>
+    <File Include="Views/Tuberia/GetTuberia_old.cshtml">
+      <publishTime>10/04/2016 08:07:57</publishTime>
     </File>
     <File Include="Views/Tuberia/List.cshtml">
-      <publishTime>09/18/2016 20:54:23</publishTime>
+      <publishTime>10/08/2016 13:45:39</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>09/06/2016 23:31:05</publishTime>
@@ -433,7 +445,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>09/06/2016 23:31:05</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/03/2016 14:35:42</publishTime>
+      <publishTime>10/08/2016 14:21:25</publishTime>
     </File>
   </ItemGroup>
 </Project>

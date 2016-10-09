@@ -1,0 +1,138 @@
+﻿@model CNPC.SISDUC.Web.Models.OleoductoViewModel
+
+@{
+    ViewBag.Title = "Editar Oleoducto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Editar Oleoducto</h2>
+
+@using (Html.BeginForm("Edit", "Oleoducto", FormMethod.Post, new { id = "Editform" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal col-md-12">
+        @*<h4>OleoductoViewModel</h4>*@
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.Codigo, new { @class = "form-control" } )
+                </div>
+
+                @Html.LabelFor(model => model.FechaInspeccion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.FechaInspeccion,new { @class = "form-control" } )
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.NoLamina, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.NoLamina,  new { @class = "form-control" } )
+                </div>
+                @Html.LabelFor(model => model.Ubicacion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.Ubicacion, new { @class = "form-control" } )
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.TextBoxFor(model => model.Descripcion, new { @class = "form-control" } )
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="control-label col-md-2">Material</label>
+                <div class="col-md-3">
+                    @Html.TextBoxFor(model => model.Material1, new { @class = "form-control" } )
+                </div>
+                <div class="col-md-3">
+                    @Html.TextBoxFor(model => model.Material2, new { @class = "form-control" } )
+                </div>
+                <div class="col-md-3">
+                    @Html.TextBoxFor(model => model.Material3, new { @class = "form-control" } )
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                <label class="control-label col-md-2">Schedule</label>
+                <div class="col-md-3">
+                    @Html.TextBoxFor(model => model.Schedule1, new { @class = "form-control" } )
+                </div>
+                <div class="col-md-3">
+                    @Html.TextBoxFor(model => model.Schedule2, new { @class = "form-control" } )
+                </div>
+                <div class="col-md-3">
+                    @Html.TextBoxFor(model => model.Schedule3, new { @class = "form-control" } )
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.BLPD, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.BLPD, new { @class = "form-control" } )
+                </div>
+
+                @Html.LabelFor(model => model.Presion, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.Presion, new { @class = "form-control" } )
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Temperatura, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.Temperatura, new { @class = "form-control" } )
+                </div>
+
+                @Html.LabelFor(model => model.BSW, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-4">
+                    @Html.TextBoxFor(model => model.BSW, new { @class = "form-control" } )
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar Registro" class="btn btn-primary" />
+                <input type="button" onclick="javascript:window.location.href='/Oleoducto/Index'" value="Cancelar" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @*@Html.ActionLink("Back to List", "Index")*@
+</div>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#Editform").submit(function () {
+            var codigo = $("#Codigo").val();
+            if (codigo == "") {
+                alert("Ingrese Codigo");
+                return false;
+            } else
+                return true;
+        });
+    });
+</script>
