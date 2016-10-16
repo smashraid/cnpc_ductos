@@ -1,0 +1,172 @@
+﻿@model PagedList.IPagedList<CNPC.SISDUC.Model.CambiosTuberia>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Administrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    CNPC.SISDUC.Model.Oleoducto oleoducto = (CNPC.SISDUC.Model.Oleoducto)ViewBag.oleoducto;
+}
+
+<h2>Administrar Tuberia</h2>
+
+
+@using (Html.BeginForm("Administrar", "Tuberia", FormMethod.Post, new { id = "adminForm" }))
+{
+    <div class="col-md-12">
+
+        <hr />
+
+        <div class="form-inline">
+            <div class="form-group">
+                <label>Oleoducto</label>
+                <input type="text" class="form-control" name="search" />
+                <input type="hidden" name="id" value="@oleoducto.Id" />
+            </div>
+            <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+    </div>
+}
+@using (Html.BeginForm("GrabarAdministrar", "Tuberia", FormMethod.Post, new { id = "saveForm" }))
+{
+    @Html.AntiForgeryToken()
+    <div class="col-md-12">
+        <div class="col-md-4">
+            <ul class="list-group">
+                @foreach (var item in Model)
+                {
+                    <li class="list-group-item">
+                        <span>
+                            <a href="#" class="add" title="Agregar" data-id="@item.CodigoDelTubo01" data-orden="@item.OrdenServicio" ><i class="glyphicon glyphicon-plus-sign" style="font-size:15px;"></i></a>
+                            <a href="#" class="remove" title="Remover" data-id="@item.CodigoDelTubo01" data-orden="@item.OrdenServicio"><i class="glyphicon glyphicon-minus-sign" style="font-size:15px;"></i></a>
+                        </span>
+                        @item.CodigoDelTubo01
+                    </li>
+                }
+                <li class="list-group-item">
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                    @Html.PagedListPager(Model, page => Url.Action("Administracion", new { id = oleoducto.Id, page = page }))
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            @*<select multiple="multiple" name="addList" class="form-control"></select>*@
+            <ul id="addList" class="list-group"></ul>
+            <input type="hidden" name="removerIds" value="" />            
+            <input type="hidden" name="id" value="@oleoducto.Id" />
+            <input type="hidden" name="codigoOleoducto" value="@oleoducto.Codigo" />
+        </div>
+        
+        <div class="col-md-6">
+            <h3>Se reemplazara por</h3>
+            @*<select multiple="multiple" name="removeList" class="form-control"></select>*@
+            <ul id="removeList" class="list-group"></ul>            
+            <input type="hidden" name="addIds" value="" />
+            <input type="hidden" name="addOrdenes" value="" />
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="col-md-offset-2 col-md-10">
+            <label class="text-danger validacion" style="display:none;">Agregar o remover debe ser para una tuberia</label>
+            </div>
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Guardar Registro" class="btn btn-primary save" />
+                <input type="button" onclick="javascript: window.location.href = '/Tuberia/List/1'" value="Cancelar" class="btn btn-default" />
+
+            </div>
+        </div>
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script>
+    function Remove(e) {
+        //e.preventDefault();
+        var id = $(e).data("id");
+        var orden = $(e).data("orden");
+        var tipo = $(e).data("tipo");
+        var v = [];
+        var o = [];
+        if (tipo == "a") {
+            var ids = $("input[name='addIds']").val();
+            var ordenes = $("input[name='addOrdenes']").val();
+            ids.split(',').forEach(function (e, i) {
+                if (parseInt(e) !== id) {
+                    v.push(e);
+                    o.push(ordenes[i]);
+                }
+            });
+            $("input[name='addIds']").val(v.join(','));
+            $("input[name='addOrdenes']").val(o.join(','));
+        } else {
+            var ids = $("input[name='removerIds']").val();
+            ids.split(',').forEach(function (e, i) {
+                if (parseInt(e) !== id) {
+                    v.push(e);
+                }
+            });
+            $("input[name='removerIds']").val(v.join(','));
+        }
+        $(e).parent().parent().remove();
+        return false;
+    };
+
+    $(document).ready(function () {
+        $(".add").click(function (e) {
+            e.preventDefault();
+            var id = $(this).data("id");
+            var orden = $(this).data("orden");
+            var exist = false;
+            var ids = $("input[name='addIds']").val();
+            var ordenes = $("input[name='addOrdenes']").val();
+            ids.split(',').forEach(function (e, i) {
+                if (parseInt(e) === id) {
+                    exist = true;
+                }
+            });
+
+            if (!exist) {
+                $("#addList")
+                .append($("<li class='list-group-item'><span><a href='#' class='delete' title='Eliminar' data-id='" + id +
+                "' data-orden='" + orden +
+                "' data-tipo='a' onclick='return Remove(this);'><i class='glyphicon glyphicon-remove-sign' style='font-size:15px;'></i></a></span>" + tubo + "</li>"));
+                $("input[name='addIds']").val(ids + "," + id);
+                $("input[name='addOrdenes']").val(ordenes + "," + orden);
+               
+            }
+        });
+
+        $(".remove").click(function (e) {
+            e.preventDefault();
+            var id = $(this).data("id");
+            var orden = $(this).data("orden");
+            var exist = false;
+            var ids = $("input[name='removerIds']").val();
+            ids.split(',').forEach(function (e, i) {
+                if (e === id) {
+                    exist = true;
+                }
+            });
+
+            if (!exist) {
+                $("#removeList")
+                   .append($("<li class='list-group-item'><span><a href='#' class='delete' title='Eliminar' data-id='" + id +
+                    "' data-orden='" + orden +
+                    "' data-tipo='r' onclick='return Remove(this);'><i class='glyphicon glyphicon-remove-sign' style='font-size:15px;'></i></a></span>" + tubo + "</li>"));
+                $("input[name='removerIds']").val(ids + "," + id);
+
+                
+            }
+        });
+        
+        $(".save").click(function (e) {
+            e.preventDefault();
+            var removerIds = $("input[name='removerIds']").val().split(',').length;
+            var addIds = $("input[name='addIds']").val().split(',').length;
+            if (removerIds > 2 && addIds > 2) {
+                $(".validacion").show();
+            } else if (removerIds == 1 || addIds == 1) {
+                $(".validacion").show();
+            } else {
+                $(".validacion").hide();
+                $("#saveForm").submit();
+            }
+        })
+    });
+</script>

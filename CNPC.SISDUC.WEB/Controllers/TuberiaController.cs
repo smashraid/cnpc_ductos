@@ -371,5 +371,65 @@ namespace CNPC.SISDUC.WEB.Controllers
                 httpPostedFileBase.SaveAs(file);
             }
         }
+
+        public ActionResult Administrar(int id, int? page, string search = "", int pageSize = 10)
+        {
+            ServicioClient proxy = new ServicioClient();
+            OleoductoResponse oleoducto =
+             proxy.OleoductoEjecutarOperacion(new OleoductoRequest
+             {
+                 Item = new Model.Oleoducto
+                 {
+                     Id = id
+                 },
+                 Operacion = Model.Operacion.BuscarPorId
+             });
+
+            CambiosTuberiaResponse Resultado = proxy.CambiosTuberiaListarByDucto(id, search, "A");
+            Resultado.List = Resultado.List ?? new CambiosTuberia[0];
+            ViewBag.oleoducto = oleoducto.Item;
+            int pageNumber = (page ?? 1);
+            return View(Resultado.List.ToPagedList(pageNumber, pageSize));
+        }
+
+        [HttpPost]
+        public ActionResult GrabarAdministrar(int id, string codigoOleoducto, string addIds, string addOrdenes, string removerIds)
+        {
+            string[] agregar = addIds.Split(',');
+            string[] remover = removerIds.Split(',');
+            ServicioClient proxy = new ServicioClient();
+            RegistroInspeccionVisualRequest registro = new RegistroInspeccionVisualRequest();
+            RegistroInspeccionVisualResponse resultado = null;
+            RegistroInspeccionVisualModel modelo = new RegistroInspeccionVisualModel();
+            CambiosTuberiaRequest CambioRequest = new CambiosTuberiaRequest();
+            CambiosTuberiaResponse CambioResponse = null;
+
+
+            if (remover.Length > agregar.Length)
+            {
+                registro.Item = new RegistroInspeccionVisual { Id = id };
+                registro.Operacion = Model.Operacion.BuscarPorId;
+                resultado = proxy.RegistroInspeccionVisualEjecutarOperacion(registro);
+
+                foreach (string item in remover)
+                {
+                    CambiosTuberia Cambio = new CambiosTuberia();
+                    //Cambio.NumeroOleoducto = codigoOleoducto;
+                    //Cambio.CodigoDelTubo01 = resultado.CodigoDelTubo;
+                    //Cambio.CodigoDelTuboReemplazado = "";
+                    Cambio.LastUpdate = DateTime.Now;
+                    //Cambio.OrdenServicio = OrdenServicio;
+                    Cambio.Motivo = "Eliminado";
+                    Cambio.RowState = "D";
+
+                    CambioRequest.Item = Cambio;
+                    CambioRequest.Operacion = Model.Operacion.Agregar;
+                    CambioResponse = proxy.CambiosTuberiaEjecutarOperacion(CambioRequest);
+                }
+            }
+
+
+            return RedirectToAction("Oleoducto", "Home", new { id = id });
+        }
     }
 }

@@ -8,3 +8,13 @@ body {
     width: 90%;
     text-align:center;
 }
+
+.input-group-button{
+    position:relative;
+    font-size: 0px;
+    white-space:nowrap;
+    width: 1%;
+    vertical-align:middle;
+    display:table-cell;
+}
+

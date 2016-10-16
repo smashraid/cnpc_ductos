@@ -7,7 +7,7 @@
 
 <h2>Nueva Tuberia</h2>
 
-@using (Html.BeginForm("Create", "Tuberia", FormMethod.Post, new { id = "Editform" })) 
+@using (Html.BeginForm("Create", "Tuberia", FormMethod.Post, new { id = "Editform", enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
     
@@ -102,7 +102,15 @@
 
                 @Html.LabelFor(model => model.BSCAN, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-1">
-                    @Html.TextBoxFor(model => model.BSCAN, new { @class = "form-control" } )
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.BSCAN, new { @class = "form-control" })
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary open-file" type="button">
+                                <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                            </button>
+                            <input type="file" name="bscanFile" class="hidden" />
+                        </span>
+                    </div>
                 </div>
 
                 @Html.LabelFor(model => model.EspesorPared, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -130,7 +138,15 @@
 
                 @Html.LabelFor(model => model.MapeoCorrison, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-1">
-                    @Html.TextBoxFor(model => model.MapeoCorrison, new { @class = "form-control" } )
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.MapeoCorrison, new { @class = "form-control" })
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary open-file" type="button">
+                                <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                            </button>
+                            <input type="file" name="bscanFile" class="hidden" />
+                        </span>
+                    </div>
                 </div>
 
                 @Html.LabelFor(model => model.PitCorrosion, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -158,9 +174,16 @@
 
                 @Html.LabelFor(model => model.LEFT_MINIMO, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-1">
-                    @Html.TextBoxFor(model => model.LEFT_MINIMO,new { @class = "form-control" } )
+                    <div class="input-group">
+                        @Html.TextBoxFor(model => model.LEFT_MINIMO, new { @class = "form-control" })
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary open-file" type="button">
+                                <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                            </button>
+                            <input type="file" name="bscanFile" class="hidden" />
+                        </span>
+                    </div>
                 </div>
-
                 @Html.LabelFor(model => model.EspesorRemanente, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-1">
                     @Html.TextBoxFor(model => model.EspesorRemanente, new { @class = "form-control" } )
@@ -443,6 +466,10 @@
             //Remover_Seleccionados();
             $('#myModal').modal('hide');
         });
+        $(".open-file").click(function (e) {
+            e.preventDefault();
+            $(this).next().click();
+        })
     });
 
     function Remover_Seleccionados()
@@ -478,6 +505,6 @@
         $.each(ids, function (key, value) {
             $("#chk_" + value).prop('checked', true);
         });
-        $('#myModal').modal('show');
+        $('#myModal').modal('show');        
     }
 </script>
