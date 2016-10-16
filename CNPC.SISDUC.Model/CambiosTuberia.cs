@@ -17,6 +17,7 @@ namespace CNPC.SISDUC.Model
         public int Id { get; set; }
         public string NumeroOleoducto { get; set; }
         public string CodigoDelTubo01 { get; set; }
+        public string CodigoDelTuboReemplazado { get; set; }
         public int TuberiaId { get; set; }
         public string Motivo { get; set; }
         public string OrdenServicio { get; set; }

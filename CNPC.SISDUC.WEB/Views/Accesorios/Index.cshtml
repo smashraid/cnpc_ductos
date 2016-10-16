@@ -1,0 +1,112 @@
+﻿@model IEnumerable<CNPC.SISDUC.WEB.Models.AccesoriosModels>
+@using PagedList.Mvc;
+
+
+<div id="content">
+    <table border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <td>
+                <div class="input-group">
+                    <input type="text" class="form-control" ng-model="parameterlist.name" placeholder="Buscar" ng-keyup="firstPage()">
+                    <span class="input-group-btn">
+                        <button class="btn btn-danger" type="button">Buscar</button>
+                    </span>
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th align="center" class="titulo_grilla">NombreAccesorio</th>
+            <th align="center" class="titulo_grilla">CodigoTuberia</th>
+            <th align="center" class="titulo_grilla">Correlativo</th>
+            <th align="center" class="titulo_grilla">NPS</th>
+            <th align="center" class="titulo_grilla">Schedule</th>
+            <th align="center" class="titulo_grilla">TipoMaterial</th>
+            <th align="center" class="titulo_grilla">Longitud</th>
+            <th align="center" class="titulo_grilla">CoordenadasUTMX</th>
+            <th align="center" class="titulo_grilla">CoordenadasUTMY</th>
+            <th align="center" class="titulo_grilla">Observaciones</th>
+            <th align="center" class="titulo_grilla">CondicionAccesorio</th>
+            <th align="center" class="titulo_grilla">Editar</th>
+            <th align="center" class="titulo_grilla">Ver</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td width="5%" align="center" class="celda2_grilla">@item.NombreAccesorio</td>
+                <td width="8%" class="celda2_grilla">@item.CodigoTuberia</td>
+                <td width="27%" class="celda2_grilla">@item.Correlativo</td>
+                <td width="17%" class="celda2_grilla">@item.NPS</td>
+                <td width="8%" class="celda2_grilla">@item.Schedule</td>
+                <td width="8%" class="celda2_grilla">@item.TipoMaterial</td>
+                <td width="10%" class="celda2_grilla">@item.Longitud</td>
+                <td width="10%" class="celda2_grilla">@item.CoordenadasUTMX</td>
+                <td width="10%" class="celda2_grilla">@item.CoordenadasUTMY</td>
+                <td width="10%" class="celda2_grilla">@item.Observaciones</td>
+                <td width="10%" class="celda2_grilla">@item.CondicionAccesorio</td>
+                <td align="center"><a href="/Tuberia/List/@item.Id"><img src="Content/img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
+                <td align="center"><a href="~/Oleoducto/Edit/@item.Id"><img src="../../Content/img/ico-ver.png" width="16" height="18" alt="" style="border:none;" /></a></td>
+            </tr>
+        }
+        <tr>
+            <td colspan="15" align="center">
+                <table width="30%" border="0" align="left">
+                    <tbody>
+                        <tr>
+                            <td class="texto"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table width="30%" border="0" align="right">
+                    <tbody>
+                        <tr>
+                            <td align="right" class="texto" style="text-align:right">
+                                @*Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))*@
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="15" align="center">&nbsp;</td>
+        </tr>
+        <tr>
+            <td colspan="15" align="center">
+                <table width="30%" border="0" align="right">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" align="right">
+                                    <td class="button">
+                                        @Html.ActionLink("Agregar Accesorio", "Create")
+                                        @*<a href="#" onclick="agregarOleoducto()">
+
+                                            </a>*@
+                                    </td>
+                                </table>
+                            </td>
+                            <td>
+                                <table width="100%" border="0" align="right">
+                                    <td class="button">
+                                        <a href="/Home/Index" target="_self">SALIR</a>
+                                    </td>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="15" align="center">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </tbody>
+</table>
+

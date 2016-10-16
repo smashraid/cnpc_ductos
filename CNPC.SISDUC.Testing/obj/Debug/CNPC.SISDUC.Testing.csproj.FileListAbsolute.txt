@@ -1,0 +1,6 @@
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.Testing\bin\Debug\CNPC.SISDUC.Testing.dll.config
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.Testing\bin\Debug\CNPC.SISDUC.Testing.dll
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.Testing\bin\Debug\CNPC.SISDUC.Testing.pdb
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.Testing\obj\Debug\CNPC.SISDUC.Testing.csprojResolveAssemblyReference.cache
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.Testing\obj\Debug\CNPC.SISDUC.Testing.dll
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.Testing\obj\Debug\CNPC.SISDUC.Testing.pdb

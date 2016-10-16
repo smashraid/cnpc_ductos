@@ -117,6 +117,16 @@ namespace CNPC.SISDUC.BLL
            
             return Result;
         }
+
+        public AccesorioResponse FilterByTuberiaAccesorios(string TuberiaCodigo, string Nombre)
+        {
+            AccesorioResponse Result = new AccesorioResponse();
+            using (var r = new Repository<Accesorio>())
+            {
+                Result.List = r.Filter(p => p.CodigoTuberia == TuberiaCodigo && p.NombreAccesorio.Contains(Nombre));
+            }
+            return Result;
+        }
         public Accesorio FilterByID(int ID)
         {
             Accesorio Result = null;

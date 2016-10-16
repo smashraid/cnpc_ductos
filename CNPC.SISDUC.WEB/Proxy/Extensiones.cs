@@ -346,4 +346,75 @@ namespace CNPC.SISDUC.Web.Proxy
             return resultado;
         }
     }
+
+    public static class AccesoriosAssembler
+    {
+        public static List<AccesoriosModels> ConvertToViewModel(this AccesorioResponse request)
+        {
+            List<AccesoriosModels> Result = new List<AccesoriosModels>();
+            foreach (var item in request.List)
+            {
+                Result.Add(new AccesoriosModels
+                {
+                    Id = item.Id,
+                    NombreAccesorio = item.NombreAccesorio,
+                    CodigoTuberia = item.CodigoTuberia,
+                    Correlativo = item.Correlativo,
+                    NPS = item.NPS.HasValue ? item.NPS.Value : 0,
+                    Schedule = item.Schedule.HasValue ? item.Schedule.Value : 0,
+                    TipoMaterial = item.TipoMaterial,
+                    Longitud = item.Longitud.HasValue ? item.Longitud.Value : 0,
+                    CoordenadasUTMX = item.CoordenadasUTMX.HasValue ? item.CoordenadasUTMX.Value : 0,
+                    CoordenadasUTMY = item.CoordenadasUTMY.HasValue ? item.CoordenadasUTMY.Value : 0,
+                    Observaciones = item.Observaciones,
+                    CondicionAccesorio = item.CondicionAccesorio,
+                    RowState = item.RowState,
+                    LastUpdate = item.LastUpdate.HasValue ? item.LastUpdate.Value : DateTime.Now
+                });
+            }
+            return Result;
+        }
+        public static AccesoriosModels ConvertToViewModel(this Accesorio request)
+        {
+            var resultado = new AccesoriosModels
+            {
+                Id = request.Id,
+                NombreAccesorio = request.NombreAccesorio,
+                CodigoTuberia = request.CodigoTuberia,
+                Correlativo = request.Correlativo,
+                NPS = request.NPS.HasValue ? request.NPS.Value : 0,
+                Schedule = request.Schedule.HasValue ? request.Schedule.Value : 0,
+                TipoMaterial = request.TipoMaterial,
+                Longitud = request.Longitud.HasValue ? request.Longitud.Value : 0,
+                CoordenadasUTMX = request.CoordenadasUTMX.HasValue ? request.CoordenadasUTMX.Value : 0,
+                CoordenadasUTMY = request.CoordenadasUTMY.HasValue ? request.CoordenadasUTMY.Value : 0,
+                Observaciones = request.Observaciones,
+                CondicionAccesorio = request.CondicionAccesorio,
+                RowState = request.RowState,
+                LastUpdate = request.LastUpdate.HasValue ? request.LastUpdate.Value : DateTime.Now
+            };
+            return resultado;
+        }
+        public static Accesorio ConvertToModel(this AccesoriosModels model)
+        {
+            Accesorio resultado = new Accesorio
+            {
+                Id = model.Id,
+                NombreAccesorio = model.NombreAccesorio,
+                CodigoTuberia = model.CodigoTuberia,
+                Correlativo = model.Correlativo,
+                NPS = model.NPS,
+                Schedule = model.Schedule,
+                TipoMaterial = model.TipoMaterial,
+                Longitud = model.Longitud,
+                CoordenadasUTMX = model.CoordenadasUTMX,
+                CoordenadasUTMY = model.CoordenadasUTMY,
+                Observaciones = model.Observaciones,
+                CondicionAccesorio = model.CondicionAccesorio,
+                RowState = model.RowState,
+                LastUpdate = model.LastUpdate
+            };
+            return resultado;
+        }
+    }
 }

@@ -51,3 +51,17 @@ C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.DAL\bin\Debug\EntityF
 C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.DAL\bin\Debug\EPPlus.xml
 C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.dll
 C:\Users\Familia Altamirano\Desktop\mvc\Ductos\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.pdb
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.DAL.dll.config
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.DAL.dll
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.DAL.pdb
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.Model.dll
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\bin\Debug\EntityFramework.dll
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\bin\Debug\EPPlus.dll
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\bin\Debug\CNPC.SISDUC.Model.pdb
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\bin\Debug\EntityFramework.xml
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\bin\Debug\EPPlus.xml
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.dll
+C:\Users\Familia Altamirano\Source\Repos\cnpc_ductos\CNPC.SISDUC.DAL\obj\Debug\CNPC.SISDUC.DAL.pdb

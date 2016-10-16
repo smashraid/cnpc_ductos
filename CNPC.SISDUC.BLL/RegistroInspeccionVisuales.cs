@@ -105,7 +105,9 @@ namespace CNPC.SISDUC.BLL
                 {
                     using (var r = new Repository<RegistroInspeccionVisual>())
                     {
-                        Result = r.Delete(d);
+                        d.RowState = "D";
+                        Result = r.Update(d);
+                        //Result = r.Delete(d);
                     }
                 }
                 else
@@ -148,13 +150,13 @@ namespace CNPC.SISDUC.BLL
             Result.oleoducto = ducto;
             return Result;
         }
-        public RegistroInspeccionVisualResponse FilterByDuctoIdRegistroInspeccionVisual(int ductoId, string Nombre)
+        public RegistroInspeccionVisualResponse FilterByDuctoIdRegistroInspeccionVisual(int ductoId, string Nombre, string Estado)
         {
             RegistroInspeccionVisualResponse Result = new RegistroInspeccionVisualResponse();
             Oleoducto ducto = null;
             using (var r = new Repository<RegistroInspeccionVisual>())
             {
-                Result.List = r.Filter(p=>p.OleoductoID==ductoId && p.CodigoDelTubo.Contains(Nombre));
+                Result.List = r.Filter(p => p.OleoductoID == ductoId && p.CodigoDelTubo.Contains(Nombre) && p.RowState == Estado);
             }
             using (var p = new Repository<Oleoducto>())
             {

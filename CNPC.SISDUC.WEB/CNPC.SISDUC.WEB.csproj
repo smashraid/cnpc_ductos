@@ -207,6 +207,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccesoriosController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CuentasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -217,6 +218,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccesoriosModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CuadrillaViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -315,6 +317,9 @@
     <Content Include="Views\Oleoducto\Edit.cshtml" />
     <Content Include="Views\Tuberia\Create.cshtml" />
     <Content Include="Views\Tuberia\Details.cshtml" />
+    <Content Include="Views\Tuberia\ListarEliminados.cshtml" />
+    <Content Include="Views\Accesorios\Index.cshtml" />
+    <Content Include="Views\Accesorios\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
