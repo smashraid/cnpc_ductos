@@ -6,6 +6,9 @@ using CNPC.SISDUC.Model;
 using System.Collections.Generic;
 using CNPC.SISDUC.WEB.Models;
 using CNPC.SISDUC.Web.Proxy;
+using System.Web;
+using System.Configuration;
+using System.IO;
 //using CNPC.SISDUC.WEB.Proxy;
 
 namespace CNPC.SISDUC.WEB.Controllers
@@ -44,7 +47,7 @@ namespace CNPC.SISDUC.WEB.Controllers
             {
                 var newItem = new SelectListItem { Text = item.Nombre, Value = item.Valor };
                 list.Add(newItem);
-            }            
+            }
             //resultado.ListTipoSoporte = proxy.TipoSoporteListarAllEntidad();
 
             //Entidad.ListaTipoSoporte = resultado.ListTipoSoporte;
@@ -52,7 +55,7 @@ namespace CNPC.SISDUC.WEB.Controllers
             Entidad.ListaTipoSoporte = list;
             Entidad.OleoductoID = Modelo_Oleo.Id;
             Entidad.NumeroOleoducto = Modelo_Oleo.Codigo;
-            
+
 
             RegistroInspeccionVisualResponse Resultado = null;
             Resultado = proxy.RegistroInspeccionVisualListarByDucto(id, "", "D");
@@ -62,12 +65,12 @@ namespace CNPC.SISDUC.WEB.Controllers
 
         }
 
-        public ActionResult Details(int id,int Codigo)
+        public ActionResult Details(int id, int Codigo)
         {
             var proxy = new ServicioClient();
             RegistroInspeccionVisualRequest registro = new RegistroInspeccionVisualRequest();
             RegistroInspeccionVisualResponse resultado = null;
-            
+
             registro.Item = new RegistroInspeccionVisual { Id = id };
             registro.Operacion = Model.Operacion.BuscarPorId;
             resultado = proxy.RegistroInspeccionVisualEjecutarOperacion(registro);
@@ -89,7 +92,7 @@ namespace CNPC.SISDUC.WEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Eliminar(string hd_id_oleoducto,int id_oleoducto, int hd_id_tuberia, string Motivo, string OrdenServicio)
+        public ActionResult Eliminar(string hd_id_oleoducto, int id_oleoducto, int hd_id_tuberia, string Motivo, string OrdenServicio)
         {
             CambiosTuberiaRequest registro = new CambiosTuberiaRequest();
             CambiosTuberiaResponse resultado = null;
@@ -112,7 +115,7 @@ namespace CNPC.SISDUC.WEB.Controllers
             Entidad.OrdenServicio = OrdenServicio;
             Entidad.Motivo = Motivo;
             Entidad.RowState = "A";
-            
+
             registro.Item = Entidad;
             registro.Operacion = Model.Operacion.Agregar;
             resultado = proxy.CambiosTuberiaEjecutarOperacion(registro);
@@ -132,7 +135,7 @@ namespace CNPC.SISDUC.WEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RegistroInspeccionVisual nuevaTuberia, string motivo, string OrdenServicio, string id_marcados)
+        public ActionResult Create(RegistroInspeccionVisual nuevaTuberia, string motivo, string OrdenServicio, string id_marcados, HttpPostedFileBase bscanFile, HttpPostedFileBase corrosionFile, HttpPostedFileBase leftFile)
         {
             RegistroInspeccionVisualRequest registro = new RegistroInspeccionVisualRequest();
 
@@ -159,7 +162,7 @@ namespace CNPC.SISDUC.WEB.Controllers
                     //REGISTRO DE CAMBIOS
                     CambiosTuberiaRequest CambioRequest = new CambiosTuberiaRequest();
                     CambiosTuberiaResponse CambioResponse = null;
-                    
+
                     if (motivo == "Agregado")
                     {
                         CambiosTuberia Cambio = new CambiosTuberia();
@@ -175,7 +178,8 @@ namespace CNPC.SISDUC.WEB.Controllers
                         CambioRequest.Operacion = Model.Operacion.Agregar;
                         CambioResponse = proxy.CambiosTuberiaEjecutarOperacion(CambioRequest);
                     }
-                    else {
+                    else
+                    {
                         foreach (var item in id_marcados.Split(','))
                         {
                             CambiosTuberia Cambio = new CambiosTuberia();
@@ -192,11 +196,17 @@ namespace CNPC.SISDUC.WEB.Controllers
                             CambioResponse = proxy.CambiosTuberiaEjecutarOperacion(CambioRequest);
                         }
                     }
-                   
+
                     //FIN REGISTRO DE CAMBIOS
 
-                    if (resultado.Resultado) return RedirectToAction("List/"+nuevaTuberia.OleoductoID);
-                    else return View(nuevaTuberia.ConvertToViewModel());
+                    if (resultado.Resultado)
+                    {
+                        SaveFile(resultado.Item.Id, bscanFile);
+                        SaveFile(resultado.Item.Id, corrosionFile);
+                        SaveFile(resultado.Item.Id, leftFile);
+                        return RedirectToAction("List/" + nuevaTuberia.OleoductoID);
+                    }
+                    else { return View(nuevaTuberia.ConvertToViewModel()); }
                 }
                 catch (Exception ex)
                 {
@@ -254,11 +264,11 @@ namespace CNPC.SISDUC.WEB.Controllers
                     List<SelectListItem> list = new List<SelectListItem>();
                     foreach (var item in resultado.ListTipoSoporte.List)
                     {
-                        var newItem = new SelectListItem { Text = item.Nombre, Value = item.Valor};
+                        var newItem = new SelectListItem { Text = item.Nombre, Value = item.Valor };
                         list.Add(newItem);
                     }
                     modelo.ListaTipoSoporte = list;
-                    
+
                     OleoductoResponse ducto = proxy.OleoductoEjecutarOperacion(
                         new OleoductoRequest
                         {
@@ -286,14 +296,17 @@ namespace CNPC.SISDUC.WEB.Controllers
             return books;
         }
         [HttpPost]
-        public ActionResult ActualizarTuberia(RegistroInspeccionVisualModel model, string returnUrl)
+        public ActionResult ActualizarTuberia(RegistroInspeccionVisualModel model, string returnUrl, HttpPostedFileBase bscanFile, HttpPostedFileBase corrosionFile, HttpPostedFileBase leftFile)
         {
+            SaveFile(model.Id, bscanFile);
+            SaveFile(model.Id, corrosionFile);
+            SaveFile(model.Id, leftFile);
             ServicioClient proxy = new ServicioClient();
             RegistroInspeccionVisualRequest registro = new RegistroInspeccionVisualRequest();
             RegistroInspeccionVisualResponse resultado = null;
             RegistroInspeccionVisual modelo = new RegistroInspeccionVisual();
             modelo = model.ConvertToModel();
-     
+
             OleoductoResponse resultados =
              proxy.OleoductoEjecutarOperacion(new OleoductoRequest
              {
@@ -344,5 +357,19 @@ namespace CNPC.SISDUC.WEB.Controllers
             return View(modelo);
         }
 
+        private void SaveFile(int Id, HttpPostedFileBase httpPostedFileBase)
+        {
+            if (httpPostedFileBase != null)
+            {
+                string pathFile = ConfigurationManager.AppSettings["filesPath"];
+                string directory = Path.Combine(pathFile, Id.ToString());
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+                string file = string.Format(@"{0}\{1}", directory, Path.GetFileName(httpPostedFileBase.FileName));
+                httpPostedFileBase.SaveAs(file);
+            }
+        }
     }
 }

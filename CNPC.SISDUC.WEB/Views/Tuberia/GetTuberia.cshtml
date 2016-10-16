@@ -6,7 +6,7 @@
 
 
 
-@using (Html.BeginForm("ActualizarTuberia", "Tuberia", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "Editform" }))
+@using (Html.BeginForm("ActualizarTuberia", "Tuberia", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "Editform", enctype = "multipart/form-data" }))
 {
 
     <h2>Tuberia</h2>
@@ -130,9 +130,20 @@
                     </div>
                     <h6><label for="txtBSCAN" class="control-label col-lg-1 sin-espacio">BSCAN:</label></h6>
                     <div class="col-lg-2">
-                        @*<input type="text" id="txtBSCAN" class="form-control" ng-model="editaTuberia.BSCAN">*@
-                        @Html.EditorFor(model => model.BSCAN, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.BSCAN, "", new { @class = "text-danger" })
+                        <div class="input-group">
+                            @*<input type="text" id="txtBSCAN" class="form-control" ng-model="editaTuberia.BSCAN">*@
+                            @Html.EditorFor(model => model.BSCAN, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.BSCAN, "", new { @class = "text-danger" })
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary open-file" type="button">
+                                    <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                                </button>
+                                <input type="file" name="bscanFile" class="hidden" />
+                            </span>
+
+
+
+                        </div>
                     </div>
                     @*<div class="col-lg-1">
                             <input type="button" id="btnBSCAN" class="btn btn-danger" value="..." />
@@ -168,9 +179,17 @@
                     </div>
                     <h6><label for="txtMapeoDeCorrosion" class="control-label col-lg-1 sin-espacio">Corrosión:</label></h6>
                     <div class="col-lg-2">
-                        @*<input type="text" id="txtMapeoDeCorrosion" class="form-control" ng-model="editaTuberia.MapeoDeCorrosion">*@
-                        @Html.EditorFor(model => model.MapeoCorrison, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.MapeoCorrison, "", new { @class = "text-danger" })
+                        <div class="input-group">
+                            @*<input type="text" id="txtMapeoDeCorrosion" class="form-control" ng-model="editaTuberia.MapeoDeCorrosion">*@
+                            @Html.EditorFor(model => model.MapeoCorrison, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.MapeoCorrison, "", new { @class = "text-danger" })
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary open-file" type="button">
+                                    <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                                </button>
+                                <input type="file" name="corrosionFile" class="hidden" />
+                            </span>
+                        </div>
                     </div>
                     @*<div class="col-lg-1">
                             <input type="button" id="btnMapeoDeCorrosion" class="btn btn-danger" value="..." />
@@ -206,9 +225,17 @@
                     </div>
                     <h6><label for="txtLEFT" class="control-label col-lg-1 sin-espacio">LEFT:</label></h6>
                     <div class="col-lg-2">
-                        @*<input type="text" id="txtLEFT" class="form-control" ng-model="editaTuberia.LEFT">*@
-                        @Html.EditorFor(model => model.LEFT_MINIMO, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.LEFT_MINIMO, "", new { @class = "text-danger" })
+                        <div class="input-group">
+                            @*<input type="text" id="txtLEFT" class="form-control" ng-model="editaTuberia.LEFT">*@
+                            @Html.EditorFor(model => model.LEFT_MINIMO, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.LEFT_MINIMO, "", new { @class = "text-danger" })
+                            <span class="input-group-btn">
+                                <button class="btn btn-secondary open-file" type="button">
+                                    <i class="glyphicon glyphicon-circle-arrow-up"></i>
+                                </button>
+                                <input type="file" name="leftFile" class="hidden" />
+                            </span>
+                        </div>
                     </div>
                     @*<div class="col-lg-1">
                             <input type="button" id="btnLEFT" class="btn btn-danger" value="..." />
@@ -306,5 +333,9 @@
             } else
                 return true;
         });
+        $(".open-file").click(function (e) {
+            e.preventDefault();
+            $(this).next().click();
+        })
     });
 </script>
