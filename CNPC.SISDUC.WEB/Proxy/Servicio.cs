@@ -1699,6 +1699,7 @@ namespace CNPC.SISDUC.Model
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         private string CodigoDelTubo01Field;
+        private string CodigoDelTuboReemplazadoField;
         
         private System.Nullable<System.DateTime> FechaOrdenServicioField;
         
@@ -1738,6 +1739,19 @@ namespace CNPC.SISDUC.Model
             set
             {
                 this.CodigoDelTubo01Field = value;
+            }
+        }
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CodigoDelTuboReemplazado
+        {
+            get
+            {
+                return this.CodigoDelTuboReemplazadoField;
+            }
+            set
+            {
+                this.CodigoDelTuboReemplazadoField = value;
             }
         }
         
@@ -3230,10 +3244,10 @@ public interface IServicio
     System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.RegistroInspeccionVisualResponse> RegistroInspeccionVisualListarEntidadAsync(int oleoductoId, string search, int page, int rowsPerPage);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/RegistroInspeccionVisualListarByDucto", ReplyAction="http://tempuri.org/IServicio/RegistroInspeccionVisualListarByDuctoResponse")]
-    CNPC.SISDUC.Model.Servicio.RegistroInspeccionVisualResponse RegistroInspeccionVisualListarByDucto(int ductoId, string search);
+    CNPC.SISDUC.Model.Servicio.RegistroInspeccionVisualResponse RegistroInspeccionVisualListarByDucto(int ductoId, string search, string Estado);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/RegistroInspeccionVisualListarByDucto", ReplyAction="http://tempuri.org/IServicio/RegistroInspeccionVisualListarByDuctoResponse")]
-    System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.RegistroInspeccionVisualResponse> RegistroInspeccionVisualListarByDuctoAsync(int ductoId, string search);
+    System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.RegistroInspeccionVisualResponse> RegistroInspeccionVisualListarByDuctoAsync(int ductoId, string search, string Estado);
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/CambiosTuberiaEjecutarOperacion", ReplyAction="http://tempuri.org/IServicio/CambiosTuberiaEjecutarOperacionResponse")]
     CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse CambiosTuberiaEjecutarOperacion(CNPC.SISDUC.Model.Servicio.CambiosTuberiaRequest request);
@@ -3270,7 +3284,17 @@ public interface IServicio
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/AccesoriosListarEntidad", ReplyAction="http://tempuri.org/IServicio/AccesoriosListarEntidadResponse")]
     System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.AccesorioResponse> AccesoriosListarEntidadAsync(int oleoductoId, string search, int page, int rowsPerPage);
+
+
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IServicio/AccesoriosListarByTuberia", ReplyAction = "http://tempuri.org/IServicio/AccesoriosListarByTuberiaResponse")]
+    CNPC.SISDUC.Model.Servicio.AccesorioResponse AccesoriosListarByTuberia(string IdTuberia, string search);
+
+    [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IServicio/AccesoriosListarByTuberia", ReplyAction = "http://tempuri.org/IServicio/AccesoriosListarByTuberiaResponse")]
+    System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.AccesorioResponse> AccesoriosListarByTuberiaAsync(string IdTuberia, string search);
     
+    
+
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IServicio/TipoSoporteListarAllEntidad", ReplyAction="http://tempuri.org/IServicio/TipoSoporteListarAllEntidadResponse")]
     CNPC.SISDUC.Model.Servicio.TipoSoporteResponse TipoSoporteListarAllEntidad();
     
@@ -3460,15 +3484,15 @@ public partial class ServicioClient : System.ServiceModel.ClientBase<IServicio>,
     {
         return base.Channel.RegistroInspeccionVisualListarEntidadAsync(oleoductoId, search, page, rowsPerPage);
     }
-    
-    public CNPC.SISDUC.Model.Servicio.RegistroInspeccionVisualResponse RegistroInspeccionVisualListarByDucto(int ductoId, string search)
+
+    public CNPC.SISDUC.Model.Servicio.RegistroInspeccionVisualResponse RegistroInspeccionVisualListarByDucto(int ductoId, string search, string Estado)
     {
-        return base.Channel.RegistroInspeccionVisualListarByDucto(ductoId, search);
+        return base.Channel.RegistroInspeccionVisualListarByDucto(ductoId, search, Estado);
     }
-    
-    public System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.RegistroInspeccionVisualResponse> RegistroInspeccionVisualListarByDuctoAsync(int ductoId, string search)
+
+    public System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.RegistroInspeccionVisualResponse> RegistroInspeccionVisualListarByDuctoAsync(int ductoId, string search, string Estado)
     {
-        return base.Channel.RegistroInspeccionVisualListarByDuctoAsync(ductoId, search);
+        return base.Channel.RegistroInspeccionVisualListarByDuctoAsync(ductoId, search, Estado);
     }
     
     public CNPC.SISDUC.Model.Servicio.CambiosTuberiaResponse CambiosTuberiaEjecutarOperacion(CNPC.SISDUC.Model.Servicio.CambiosTuberiaRequest request)
@@ -3525,7 +3549,8 @@ public partial class ServicioClient : System.ServiceModel.ClientBase<IServicio>,
     {
         return base.Channel.AccesoriosListarEntidad(oleoductoId, search, page, rowsPerPage);
     }
-    
+
+
     public System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.AccesorioResponse> AccesoriosListarEntidadAsync(int oleoductoId, string search, int page, int rowsPerPage)
     {
         return base.Channel.AccesoriosListarEntidadAsync(oleoductoId, search, page, rowsPerPage);
@@ -3609,5 +3634,16 @@ public partial class ServicioClient : System.ServiceModel.ClientBase<IServicio>,
     public System.Threading.Tasks.Task<bool> ValidaRolconAccionAsync(int rolid, string controller)
     {
         return base.Channel.ValidaRolconAccionAsync(rolid, controller);
+    }
+
+
+    public CNPC.SISDUC.Model.Servicio.AccesorioResponse AccesoriosListarByTuberia(string IdTuberia, string search)
+    {
+        return base.Channel.AccesoriosListarByTuberia(IdTuberia, search);
+    }
+
+    public System.Threading.Tasks.Task<CNPC.SISDUC.Model.Servicio.AccesorioResponse> AccesoriosListarByTuberiaAsync(string IdTuberia, string search)
+    {
+        return base.Channel.AccesoriosListarByTuberiaAsync(IdTuberia, search);
     }
 }

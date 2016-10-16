@@ -671,6 +671,7 @@ namespace CNPC.SISDUC.DAL
                     cmd.CommandType = CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@NumeroOleoducto", registro.NumeroOleoducto);
                     cmd.Parameters.AddWithValue("@CodigoDelTubo01", registro.CodigoDelTubo01);
+                    cmd.Parameters.AddWithValue("@CodigoDelTuboReemplazado", registro.CodigoDelTuboReemplazado);
                     cmd.Parameters.AddWithValue("@TuberiaId", registro.TuberiaId);
                     cmd.Parameters.AddWithValue("@Motivo", registro.Motivo);
                     cmd.Parameters.AddWithValue("@OrdenServicio", registro.OrdenServicio);

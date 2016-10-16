@@ -49,6 +49,7 @@
             <th align="center" class="titulo_grilla">Editar</th>
             <th align="center" class="titulo_grilla">Eliminar</th>
             <th align="center" class="titulo_grilla">Ver</th>
+            <th align="center" class="titulo_grilla">Accesorios</th>
             <!--<th align="center" class="titulo_grilla">Accesorios</th>-->
         </tr>
     </thead>
@@ -83,13 +84,14 @@
                             @*<a href="~/Tuberia/Details/@item.Id" ><img src="../../Content/img/ico-ver.png" width="10" height="10" alt="" style="border:none;" /></a>*@
                             @*@Html.ActionLink("Create New", "Tuberia", "GetTuberia", new { id = @item.Id, memberid = @ViewBag.oleoducto.Id }, null)*@
                         </td>
+                        <td align="center"><a href="/Accesorios/Index/@item.CodigoDelTubo"><img src="Content/img/ico-editar.png" width="17" height="17" alt="" style="border:none;" /></a></td>
                         <!--<td>
                         <a href="#" ng-click="agragarAccesorio(item)"><img src="../../Content/img/ico_select.png" width="14" height="14" alt="" style="border:none;" /></a>
                     </td>-->
                     </tr>
                 }
         <tr>
-            <td colspan="15" align="center">
+            <td colspan="16" align="center">
                 <table width="30%" border="0" align="left">
                     <tbody>
                         <tr>

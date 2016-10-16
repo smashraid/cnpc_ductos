@@ -171,14 +171,14 @@ namespace CNPC.SISDUC.SERVICIO.WCF
             }
             return response;
         }
-        public RegistroInspeccionVisualResponse RegistroInspeccionVisualListarByDucto(int ductoId, string search = null)
+        public RegistroInspeccionVisualResponse RegistroInspeccionVisualListarByDucto(int ductoId, string search = null, string Estado = null)
         {
             RegistroInspeccionVisualResponse response = new RegistroInspeccionVisualResponse();
             try
             {
                 using (var dominio = new RegistroInspeccionVisuales())
                 {
-                    response = dominio.FilterByDuctoIdRegistroInspeccionVisual(ductoId, search);
+                    response = dominio.FilterByDuctoIdRegistroInspeccionVisual(ductoId, search, Estado);
                     response.Resultado = true;
                 }
             }
@@ -344,6 +344,26 @@ namespace CNPC.SISDUC.SERVICIO.WCF
             }
             return response;
         }
+
+        public AccesorioResponse AccesoriosListarByTuberia(string IdTuberia, string search = null)
+        {
+            AccesorioResponse response = new AccesorioResponse();
+            try
+            {
+                using (var dominio = new Accesorios())
+                {
+                    response = dominio.FilterByTuberiaAccesorios(IdTuberia, search);
+                    response.Resultado = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Resultado = false;
+                response.MensajeError = ex.Message;//+ " "+ ex.InnerException + " " + ex.StackTrace; 
+            }
+            return response;
+        }
+
         public AccesorioResponse AccesoriosListarEntidad(int oleoductoId, string search = null, int page = 1, int rowsPerPage = 10)
         {
             AccesorioResponse response = new AccesorioResponse();

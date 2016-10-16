@@ -9,6 +9,8 @@ namespace CNPC.SISDUC.WEB.Models
     {
         public IEnumerable<SelectListItem> ListaTipoSoporte { get; set; }
         public IEnumerable<RegistroInspeccionVisual> List { get; set; }
+
+        public List<RegistroInspeccionVisualModel> ListaEliminados { get; set; }
         public Oleoducto oleoducto { get; set; }
         public int Id { get; set; }
         public int OleoductoID { get; set; }

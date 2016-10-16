@@ -35,5 +35,7 @@ namespace CNPC.SISDUC.WEB.Models
         public System.Data.Entity.DbSet<CNPC.SISDUC.WEB.Models.RegistroInspeccionVisualModel> RegistroInspeccionVisualModels { get; set; }
 
         public System.Data.Entity.DbSet<CNPC.SISDUC.Model.Oleoducto> Oleoductoes { get; set; }
+
+        public System.Data.Entity.DbSet<CNPC.SISDUC.WEB.Models.AccesoriosModels> AccesoriosModels { get; set; }
     }
 }

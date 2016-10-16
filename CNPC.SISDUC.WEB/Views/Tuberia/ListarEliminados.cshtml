@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CNPC.SISDUC.WEB.Models.RegistroInspeccionVisualModel>
+
+<table class="table table-striped table-bordered">
+    <tr>
+        <th align="center" class="titulo_grilla"></th>
+        <th align="center" class="titulo_grilla">ID</th>
+        <th align="center" class="titulo_grilla">Código</th>
+        <th align="center" class="titulo_grilla">NPS</th>
+        <th align="center" class="titulo_grilla">SHC</th>
+        <th align="center" class="titulo_grilla">Longitud (m)</th>
+        <th align="center" class="titulo_grilla">Espesor Nominal</th>
+        <th align="center" class="titulo_grilla">Espesor Minimo Real Remanente</th>
+        <th align="center" class="titulo_grilla">Cruce Carretera</th>
+        <th align="center" class="titulo_grilla">Observaciones De La InspeccionVisual</th>
+        <th align="center" class="titulo_grilla">Condicion Del Tramo</th>
+        <th align="center" class="titulo_grilla">Ultima Fecha De Inspeccion</th>
+        <th align="center" class="titulo_grilla">Seleccionar Tuberia</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td width="2%" align="center" class="celda2_grilla"><input type="checkbox" id="chk_@item.CodigoDelTubo" class="chk_selec" value="" /></td>
+            <td width="2%" align="center" class="celda2_grilla">@item.Id</td>
+            <td width="12%" class="celda2_grilla">@item.CodigoDelTubo</td>
+            <td width="3%" class="celda2_grilla">@Convert.ToInt32(item.NPS)</td>
+            <td width="3%" class="celda2_grilla">@item.Schedule</td>
+            <td width="5%" class="celda2_grilla">@item.Longitud</td>
+            <td width="5%" class="celda2_grilla">@item.EspesorNominal</td>
+            <td width="8%" class="celda2_grilla">@item.EspesorMinimoRealRemanente</td>
+            <td width="5%" class="celda2_grilla">
+                @item.CruceCarretera
+            </td>
+            <td width="15%" class="celda2_grilla">@item.ObservacionesDeLaInspeccionVisual</td>
+            <td width="15%" class="celda2_grilla">@item.CondicionDelTramo</td>
+            <td width="10%" class="celda2_grilla">@item.UltimaFechaDeInspeccionStr</td>
+            <td width="5%" class="celda2_grilla">@item.SeleccionarTuberia</td>
+        </tr>
+    }
+
+</table>

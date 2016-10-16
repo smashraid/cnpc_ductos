@@ -52,6 +52,11 @@ namespace CNPC.SISDUC.WEB.Controllers
             Entidad.ListaTipoSoporte = list;
             Entidad.OleoductoID = Modelo_Oleo.Id;
             Entidad.NumeroOleoducto = Modelo_Oleo.Codigo;
+            
+
+            RegistroInspeccionVisualResponse Resultado = null;
+            Resultado = proxy.RegistroInspeccionVisualListarByDucto(id, "", "D");
+            Entidad.ListaEliminados = Resultado.ConvertToViewModel();
 
             return View(Entidad);
 
@@ -127,7 +132,7 @@ namespace CNPC.SISDUC.WEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RegistroInspeccionVisual nuevaTuberia, string motivo, string OrdenServicio)
+        public ActionResult Create(RegistroInspeccionVisual nuevaTuberia, string motivo, string OrdenServicio, string id_marcados)
         {
             RegistroInspeccionVisualRequest registro = new RegistroInspeccionVisualRequest();
 
@@ -154,11 +159,13 @@ namespace CNPC.SISDUC.WEB.Controllers
                     //REGISTRO DE CAMBIOS
                     CambiosTuberiaRequest CambioRequest = new CambiosTuberiaRequest();
                     CambiosTuberiaResponse CambioResponse = null;
-                    CambiosTuberia Cambio = new CambiosTuberia();
+                    
                     if (motivo == "Agregado")
                     {
+                        CambiosTuberia Cambio = new CambiosTuberia();
                         Cambio.NumeroOleoducto = nuevaTuberia.NumeroOleoducto;
                         Cambio.CodigoDelTubo01 = nuevaTuberia.CodigoDelTubo;
+                        Cambio.CodigoDelTuboReemplazado = "";
                         Cambio.LastUpdate = DateTime.Now;
                         Cambio.OrdenServicio = OrdenServicio;
                         Cambio.Motivo = motivo;
@@ -168,8 +175,22 @@ namespace CNPC.SISDUC.WEB.Controllers
                         CambioRequest.Operacion = Model.Operacion.Agregar;
                         CambioResponse = proxy.CambiosTuberiaEjecutarOperacion(CambioRequest);
                     }
-                    else { 
-                    
+                    else {
+                        foreach (var item in id_marcados.Split(','))
+                        {
+                            CambiosTuberia Cambio = new CambiosTuberia();
+                            Cambio.NumeroOleoducto = nuevaTuberia.NumeroOleoducto;
+                            Cambio.CodigoDelTubo01 = nuevaTuberia.CodigoDelTubo;
+                            Cambio.CodigoDelTuboReemplazado = item;
+                            Cambio.LastUpdate = DateTime.Now;
+                            Cambio.OrdenServicio = OrdenServicio;
+                            Cambio.Motivo = motivo;
+                            Cambio.RowState = "A";
+
+                            CambioRequest.Item = Cambio;
+                            CambioRequest.Operacion = Model.Operacion.Agregar;
+                            CambioResponse = proxy.CambiosTuberiaEjecutarOperacion(CambioRequest);
+                        }
                     }
                    
                     //FIN REGISTRO DE CAMBIOS
@@ -196,7 +217,7 @@ namespace CNPC.SISDUC.WEB.Controllers
 
             ServicioClient proxy = new ServicioClient();
             string error = String.Empty;
-            Resultado = proxy.RegistroInspeccionVisualListarByDucto(id, search);
+            Resultado = proxy.RegistroInspeccionVisualListarByDucto(id, search, "A");
             OleoductoResponse oleoducto =
                 proxy.OleoductoEjecutarOperacion(new OleoductoRequest
                 {

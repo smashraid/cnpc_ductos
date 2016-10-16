@@ -374,7 +374,7 @@
                 @Html.ValidationMessageFor(model => model.CondicionDelTramo, "", new { @class = "text-danger" })
             </div>
         </div>*@
-
+        <input type="hidden" name="id_marcados" id="id_marcados" value="0" />
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Guardar Registro" class="btn btn-primary" />
@@ -386,7 +386,7 @@
 }
 
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" data-backdrop="static" data-keyboard="false" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog " style="width:480px;">
+    <div class="modal-dialog " style="width:1050px;">
         <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
@@ -397,15 +397,12 @@
 
                     <section>
                         <div class="row">
-                            <input type="hidden" name="hd_id_oleoducto" id="hd_id_oleoducto" value="0" />
-                            <input type="hidden" name="id_oleoducto" id="id_oleoducto" value="0" />
-                            <input type="hidden" name="hd_id_tuberia" id="hd_id_tuberia" value="0" />
+                            
                             <div class="form-group">
                                 <div class="col-md-12">
-                                    <label class="control-label col-md-4"> Motivo:</label>
-                                    <div class="col-md-8">
-                                        <input type="text" class="form-control input-sm limpiar" name="Motivo" id="Motivo" value="Eliminado" readonly>
-                                    </div>
+                                    
+                                    @Html.Partial("ListarEliminados", Model.ListaEliminados)
+
                                 </div>
                             </div>
                         </div>
@@ -413,8 +410,8 @@
 
                 </div>
                 <div class="modal-footer" id="modal-footerq">
-                    <input type="submit" class="btn btn-primary" value="Guardar" />
-                    <button class="btn" data-dismiss="modal" aria-hidden="true">Cancelar</button>
+                    <input type="button" id="btn_agregar" class="btn btn-primary" value="Guardar" />
+                    <button class="btn" id="btn_agregar_cancelar" aria-hidden="true">Cancelar</button>
                 </div>
         </div>
     </div>
@@ -422,6 +419,7 @@
 
 <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 <script>
+    var ids = [];
     $(document).ready(function () {
         $("#Editform").submit(function () {
             var codigo = $("#CodigoDelTubo01").val();
@@ -437,10 +435,49 @@
             if(valor == "Agregado") $("#div_eliminados").hide();
             else $("#div_eliminados").show();
         });
+        $("#btn_agregar").click(function () {
+            Agregar_Seleccionados();
+        })
+
+        $("#btn_agregar_cancelar").click(function () {
+            //Remover_Seleccionados();
+            $('#myModal').modal('hide');
+        });
     });
+
+    function Remover_Seleccionados()
+    {
+        $(".chk_selec").each(function () {
+            $(this).prop('checked', false);
+        });
+        $("#id_marcados").val("");
+        $('#myModal').modal('hide');
+    }
+
+    function Agregar_Seleccionados()
+    {
+        ids = [];
+        $(".chk_selec").each(function () {
+            if ($(this).prop('checked'))
+            {
+                var id = $(this).prop('id');
+                ids.push(id.replace("chk_", ""));
+            }
+        });
+        
+        $("#id_marcados").val(ids.toString());
+        $('#myModal').modal('hide');
+    }
+
 
     function MostrarDialog()
     {
+        $(".chk_selec").each(function () {
+            $(this).prop('checked', false);
+        });
+        $.each(ids, function (key, value) {
+            $("#chk_" + value).prop('checked', true);
+        });
         $('#myModal').modal('show');
     }
 </script>
